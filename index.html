@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>Search Branch</title>
+    <link href="css/jquery.mobile-1.3.1.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="css/branch.css?v=300620145PM" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.mobile-1.3.1.min.js"></script>
+    <script src="js/jquery-ui.js" type="text/javascript"></script>
+    <script src="cordova.js" type="text/javascript"></script>
+    <script src="js/WifiWizard.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+    <!-- Application Javascripts -->
+    <script src="js/encrypt/aes.js" type="text/javascript"></script>
+    <script src="js/helpers/services.js" type="text/javascript"></script>
+    <script src="js/helpers/app.js" type="text/javascript"></script>
+    <script src="js/helpers/barcode.js" type="text/javascript"></script>
+    <script src="js/logs/logstatus.js" type="text/javascript"></script>
+    <script src="js/helpers/navigation.js" type="text/javascript"></script>
+    <script src="js/branch/findbranch.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/cart/cartlisting.js"></script>
+    <script src="js/cart/submitorder.js" type="text/javascript"></script>
+    <script src="js/login/userlogin.js" type="text/javascript"></script>
+    <script src="js/myaccount/accountcrud.js" type="text/javascript"></script>
+    <script src="js/products/productcrud.js" type="text/javascript"></script>
+    <script src="js/products/productlisting.js" type="text/javascript"></script>
+    <script src="js/helpers/kitchenGeneralfunction.js" type="text/javascript"></script>
+    <!-- End of application javascripts-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input').keypress(function (e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if ((code == 13) || (code == 10)) {
+                    search_branch();
+                }
+
+            });
+        });
+
+        if (GetLS("encryptedkey") == null || GetLS("encryptedkey") == "") {
+            location.href = "products.html";
+        }
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady() {
+            document.addEventListener("backbutton", function (e) {
+                var c_page = GetLS("page");
+                var result = c_page.split(",");
+                changepage(result[result.length - 1]);
+                if (result.length == 1) {
+                    //var new_page = c_page.replace(result[result.length - 1], "");
+                    //SetLS("page", new_page);
+                    SetLS("page", "index");
+                }
+                else {
+                    var new_page = c_page.replace(',' + result[result.length - 1], "");
+                    SetLS("page", new_page);
+                }
+            });
+        }
+       
+        $(document).ready(function () {
+            //loadstatedetails();
+           
+            var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
+
+            dbinsert.transaction(function branchdetails(tx) {
+                tx.executeSql('DROP TABLE IF EXISTS  iteminfo');
+                tx.executeSql('DROP TABLE IF EXISTS  sectioninfo');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS branchinfo (id INTEGER PRIMARY KEY AUTOINCREMENT,BranchName VARCHAR UNIQUE,BranchCode,Latitude,Longitude,Address,PhoneNumber,Faxnumber,Managername,Email)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS sectioninfo (id INTEGER PRIMARY KEY AUTOINCREMENT,SECTION,DESCRIPTION,GROUPCOUNT)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)');
+            }, errorCB);
+
+
+            if (GetLS("Isuserlogged") == 'yes') {
+                $(".exitbtn").show();
+            }
+            else {
+                $(".exitbtn").hide();
+            }
+        });
+
+    </script>
+    <style>
+        #loading, #loading_pdt
+        {
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            position: fixed;
+            opacity: 0.7;
+            background-color: #fff;
+            z-index: 99;
+            text-align: center;
+        }
+        
+        .ui-widget-header .ui-icon
+        {
+            background-image: url(images/ui-icons_222222_256x240.png);
+        }
+    </style>
+</head>
+<body onload="onbodyload();" class="globalbodyclass" id="mapbody">
+    <div id="loading" style="display: none">
+    </div>
+    <div id="loading_pdt" style="display: none">
+    </div>
+    <div style="background: #000; float: left; width: 100%; position: fixed;">
+        <div style="float: left; width: 11%">
+            <p style="margin: 0px;">
+                <img id="locationfinder1" src="images/menu.png" style="margin-top: 20px; margin-right: 10px;
+                    height: 32px; width: 32px; cursor: pointer; margin-left: 2px;">
+            </p>
+        </div>
+        <div style="text-align: center; width: 78%; float: left;">
+            <p style="margin: 0px;">
+                <img style="margin: 15px 0 0;" src="images/logo.png" alt="blackman">
+            </p>
+        </div>
+        <div style="float: right; width: 11%">
+            <p style="margin: 0px;">
+                <img class="exitbtn" src="images/exit.png" onclick="exit()" style="margin-top: 20px; margin-right: 2px; float: right; cursor: pointer; display: none;">
+            </p>
+        </div>
+    </div>
+        <div class="clear">
+        </div>
+    
+    <!--<div style="float: left; position: relative; top: -50px;">
+        <p style="margin: 0px;">
+            <img id="locationfinder" src="images/menu.png" style="margin-top: 5px; margin-right: 10px;
+                height: 32px; width: 32px; cursor: pointer; margin-left: 2px;" /></p>
+    </div>
+    <div style="float: right; position: relative; top: -50px;">
+        <p style="margin: 0px;">
+            <img src="images/exit.png" onclick="exit()" style="margin-top: 5px; margin-right: 2px;
+                cursor: pointer" /></p>
+    </div>-->
+    <div>
+        <div class="srchdivimg">
+            <div class="searchdiv imgsizesrch" style="width: 10%; text-align: center">
+                <a onclick="manualsearch();">
+                    <img src="images/LocationArrow.png" class="imagesearch" alt="" /></a>
+            </div>
+            <div class="searchdiv serchdivtxt" style="margin-top: -7px">
+                <input type="text" id="txtsearch_branch" onfocus="popuphide();" class="txtbox1" placeholder="Type your address" />
+            </div>
+            <div class="searchdiv imgsizesrch" style="width: 10%; text-align: center; margin-left: 1%">
+                <a onclick="search_branch();">
+                    <img src="images/search3.png" class="imagesearch" alt="" /></a>
+            </div>
+            <div class="searchdiv">
+                <img id="locationfinder123" onclick="show_showrooms()" src="images/list-alt.png"
+                    class="imagesearch" alt="ShowRooms" /></div>
+        </div>
+        <div class="clear">
+        </div>
+        <div id="map_canvas" style="width: 100%; margin-top: 10px">
+        </div>
+        <div id="light" class="white_content" style="width: 250px; font-size: 13px; left: 0;
+            right: 0; margin: 0 auto;">
+        </div>
+        <div id="lightdirection" class="white_contentdirection">
+            <div style="background: none repeat scroll 0 0 #304589; height: 32px; width: 100%;
+                color: #fff">
+                <div style="width: 87%; float: left">
+                    <p class="p-content" style="text-align: center; font-weight: bold; font-size: 19px;">
+                        Directions
+                    </p>
+                </div>
+                <div style="float: right; margin-top: 1px;">
+                    <img src="images/close_square_white.png" style="height: 30px; width: 30px; cursor: pointer;
+                        border-radius: 10px" alt="Close" onclick="toggle_directionclose()" />
+                </div>
+            </div>
+            <div>
+                <div id="text_results" style="width: 100%; height: 280px; overflow: auto; font-family: calibri;
+                    font-size: 12px; float: left; margin-top: -10px;">
+                </div>
+                <div id="map_results" style="width: 100%; height: 200px; display: none; float: left;
+                    margin-top: -14px;">
+                </div>
+                <div>
+                    <a class="imgdirectionfinder" onclick="mapdirection(1);" style="cursor: pointer;">
+                        <img width="30px" src="images/car.png" class="mapviewalign" />
+                    </a><a onclick="mapdirection(2);" style="cursor: pointer;">
+                        <img width="30px" src="images/bicycle.png" style="height: 29px; margin-left: 28px;" />
+                    </a><a onclick="mapdirection(3);" style="cursor: pointer;">
+                        <img width="30px" src="images/walk.png" style="margin-left: 26px; height: 29px;" />
+                    </a><a onclick="mapdirection(4);" style="cursor: pointer;">
+                        <img width="30px" src="images/bus.png" style="margin-left: 26px;" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="white_contentlistnew" style="display: none;" class="white_contentlistnew popupheight" >
+    </div>
+    <div id="white_contentlistnew1" style="display: none; float: right; overflow-x: hidden;"
+        class="white_contentlistnew1">
+    </div>
+    <div id="fade" class="black_overlayin">
+    </div>
+    <div id="terms_condition" class="terms_condition" style="display: none; top: 10%;
+        left: 0; right: 0; margin: 0 auto;">
+        <div class="termsconditioninnerdiv" style="margin-top: 0px; width: 100%">
+            <div style="background: none repeat scroll 0 0 #304589; color: #fff; font-size: 19px !important;
+                margin-bottom: 5px; margin-left: 4px; margin-top: 0px; text-align: center; width: 96%;
+                height: 30px">
+                <div style="width: 87%; float: left; margin-top: 9px; font-size: 19px; font-weight: bold;
+                    text-align: center;">
+                    <!--<img src="images/myaccount.png" style="height: 20px; margin-top: 3px; vertical-align: top;
+                        width: 20px;" />-->
+                    Terms & Conditions
+                </div>
+                <div>
+                    <img src="images/close_square_white.png" style="cursor: pointer; height: 30px; margin-top: 5px;
+                        float: right; width: 30px; border-radius: 10px" onclick="closeshow()" /></div>
+            </div>
+        </div>
+        <div style="overflow: auto; font-size: 14px; margin-top: 5px; margin-left: 10px;">
+            Title to all material mentioned herein is to remain in the name of the seller until
+            fully paid for in cash. Goods are sold with understanding that we will furnish new
+            material for any providing defective through manufacturer, but under no circumstance
+            shall we be under any liability of any kind for labor or consequential damages involved.
+            2% per month service charge on all accounts past due 30 days. Buyer agrees to pay
+            reasonable attorney’s fees of unpaid balance when turned over for collection.
+            <br />
+            <br />
+            <b>RETURNS :</b> Must have our prior consent. Original invoice number with date
+            must be furnished. Restocking, rehandling, reconditioning and freight charges are
+            applicable on returns.
+        </div>
+    </div>
+    <!--
+    Added on 13/10/2014
+    -->
+    <div id="addressbook" style="display: none; float: right; width: 295px; min-height: 265px;
+        left: 0; right: 0; margin: 0 auto; background: #fff; font-size: 16px;" class="addressbook">
+        <div id="scandetails" style="width: 297px;">
+            <div class="scroll_div" id="div_scan">
+            </div>
+        </div>
+        <div id="calendardetails" style="display: none; background-color: white; padding: 5px;">
+            <div id="appointmentcalendar">
+                <div class="maindivaddress" style="width: 100%; margin-left: 1px">
+                    <div style="background: none repeat scroll 0 0 #304589; color: #fff; font-size: 19px !important;
+                        margin-bottom: 5px; margin-left: -3px; margin-top: 5px; text-align: center; width: 100%;
+                        height: 30px">
+                        <div style="width: 82%; float: left; margin-top: 3px; font-weight: bold;">
+                            <!--<img src="images/myaccount.png" style="height: 20px; margin-top: 3px; vertical-align: top;
+                        width: 20px;" />-->
+                            My Calendar
+                        </div>
+                        <div>
+                            <img src="images/close_square_white.png" style="cursor: pointer; height: 30px; margin-top: 0px;
+                                width: 30px; border-radius: 10px" onclick="adclsoe()" /></div>
+                    </div>
+                </div>
+                <div class="addressdetail" style="width: 289px; margin-left: -2px; margin-top: 10px;">
+                    <div id='calendar'>
+                    </div>
+                </div>
+            </div>
+            <div id="appointmentprogramschedule" style="display: none;">
+                <div class="maindivaddress" style="width: 100%; margin-left: 1px">
+                    <div style="background: none repeat scroll 0 0 #304589; color: #fff; margin-bottom: 5px;
+                        margin-left: 4px; margin-top: 5px; text-align: center; width: 96%; height: 30px">
+                        <div style="width: 88%; float: left; margin-top: 6px; font-size: 19px; font-weight: bold;">
+                            <img src="images/myaccount.png" style="height: 20px; vertical-align: top; float: left;
+                                width: 20px;"><span>Schedule Appointment</span></div>
+                        <div>
+                            <img src="images/close_square_white.png" style="cursor: pointer; height: 30px; margin-top: 0px;
+                                width: 30px; border-radius: 10px" onclick="scheduleappointmentclose()"></div>
+                    </div>
+                </div>
+                <div class="feedbkcondiv" style="font-size: 12px">
+                    <table id="mytab" style="padding: 4px 0px 21px 0px;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 100px">
+                                    <span class="tabcontent">Subject:</span>
+                                </td>
+                                <td>
+                                    <input data-role="none" id="Text6" type="text" value="Product Purchase" style="width: 200px">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                    <span class="tabcontent">Date:</span>
+                                </td>
+                                <td>
+                                    <input data-role="none" id="Txtdate" type="text" value="11/05/2014" style="width: 200px">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                    <span class="tabcontent">Time:</span>
+                                </td>
+                                <td>
+                                    <select data-role="none" style="width: 100%;">
+                                        <option value="volvo">2PM</option>
+                                        <option value="saab">3:00</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                    <span class="tabcontent">Branch:</span>
+                                </td>
+                                <td>
+                                    <label style="width: 200px">
+                                        BLACKMAN - WAREHOUSE</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px; vertical-align: top;">
+                                    <span class="tabcontent">Address:</span>
+                                </td>
+                                <td>
+                                    <label style="width: 200px; vertical-align: super;">
+                                        900 Sylvan Avenue Bayport, NY 11705</label><img src="images/download.jpg" style="width: 20px;
+                                            margin-left: 4px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px; vertical-align: top;">
+                                    <span class="tabcontent">Phone:</span>
+                                </td>
+                                <td>
+                                    <label style="width: 200px; vertical-align: top;">
+                                        (631)823-4302</label><a href="tel:(631)823-4302"><img src="images/phone.png" style="width: 15px;
+                                            margin-left: 4px;"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <span><a href="#" onclick="Makeappointment();">
+                            <img style="width: 75px; margin-top: -8px; height: 30px; cursor: pointer; float: right;
+                                margin-bottom: 10px" src="images/Schedule1.png"></a></span></div>
+                </div>
+            </div>
+            <div id="appointmentprogramcancel" style="display: none;">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

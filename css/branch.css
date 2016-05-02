@@ -1,0 +1,4748 @@
+﻿body
+{
+    font-family: calibri,Helvetica;
+    margin: -16px 0px 0 0px;
+}
+.popupheight { height: 262px; overflow-x: hidden; overflow-y: scroll; }
+.globalbodyclass
+{
+    overflow: hidden !important;
+}
+.mapbody{overflow-y:hidden}
+#mytab1 td
+{
+    width: 100px;
+    padding : 5px 0
+}
+#mytab td
+{
+     width: 100px;
+    padding : 5px 0
+}
+.header
+{
+    background: #000;
+}
+.loading-image 
+{
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  z-index: 100;
+}
+.descdtl {
+      color: #ccc;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    vertical-align: super;
+}
+.termscondition {
+    cursor: pointer;
+}
+.termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 5px;  z-index:2;width:24%
+}
+#invoiceclick {
+    background: #ccc; min-height: 471px; display: none;font-size:15px;overflow:auto
+}
+.accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+.imgdescdtl {
+    height: 600px; margin-top: -35px; width: 100%;
+}
+textarea
+{
+     font-family: calibri,Helvetica;
+}
+input
+{
+    border:1px solid #304589;
+    width:70%;height:20px;
+}
+select
+{
+    border:1px solid #304589;
+    width:85%;height:20px;
+}
+.feedbkcondiv
+{
+    background: none repeat scroll 0 0 #fff; margin-left: 5px; margin-top: 5px;
+            width: 96%;
+}
+.addressdetail
+{
+    background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%;margin-top: 31px;
+}
+.addressdetailnew
+{
+    
+    background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%
+}
+.addressdetailedit
+{
+    background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%;display:none
+}
+.itemselecttax
+{
+    background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
+}
+.itemselect
+{
+    background: #304589; border: 1px solid #ccc; color: #fff; width: 45px; text-align: center;float: right;
+}
+.itempayed
+{
+    background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+}
+.itempayed:hover
+{
+    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+}
+.itempay
+{
+    background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+}
+.itempay:hover
+{
+    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+}
+.itemselect1
+{
+    background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
+}
+.itemselect1:hover
+{
+    background: #ccc; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
+
+        
+}
+.available
+{font-size:14px
+
+}
+  .removebtn {
+        width:67px;color: #304589;cursor:pointer
+    }
+.imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 19px;
+    vertical-align: top;
+    width: 13px;
+}
+.arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 65px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+
+    margin-left: 526px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow3 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 710px;
+    margin-top: 0;
+    width: 23px;
+}
+.carttaxtbl {
+    color: #304589;
+    float: right;
+    font-weight: bold;
+    margin-top: 2px;
+}
+.footertable {
+    width:100%;font-size:14px
+}
+.sbbtn {
+    width: 100px;
+}
+.tablecart
+{
+ margin-bottom: 1px;
+    margin-left: 40px;
+    margin-top: 1px;
+    width: 95%;
+    font-size:16px
+}
+.lblcart {
+    color: #304589; font-size: 21px;font-weight:bold;margin-left:10px
+}
+.cartpdt {
+      width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+.contentdiv {
+    height: 485px;
+    overflow:auto;
+}
+.footer {
+    background:#ccc;
+}
+hr {
+    display: block; 
+    height: 1px;
+    border: 0; 
+    border-top: 1px solid #ccc;
+}
+.widthtd
+{
+    width:85%;
+}
+.addressbook
+{
+border: 1px solid #CCC;
+left: 39%;
+position: absolute;
+top: 0%;
+width: 25%;
+z-index: 1002;
+}
+.itempdtimg
+{
+    border: 1px solid #ccc;
+    left: 0;
+    position: absolute;
+    top: 23%;
+    width: 100%;
+    z-index:1002;
+}
+	.black_overlay{
+			display: none;
+			position: fixed;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color: gray;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+	
+          
+		}	
+    	.black_overlayin{
+			display: none;
+			position: fixed;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color: gray;
+			z-index:0;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+	
+          
+		}
+		  	.black_overlayinnew{
+			display: none;
+		
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color: gray;
+			z-index:1001;
+			-moz-opacity: 0.8;
+	
+			filter: alpha(opacity=80);
+	
+          
+		}	
+.cartimg {
+
+     float: right;
+    margin-top: 50px;
+    width: 16%;
+    cursor:pointer;
+}
+.catlbl {
+    float: left; color: #304589; font-weight: bold; width: 170px; margin-left: 10px
+}
+  #map_canvas {
+    height:600px;}
+.imgpdt
+{
+    width: 310px;
+    height: 310px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+.mapviewalign {
+      height: 30px;
+    margin-left: 100px;
+    margin-top: 11px;
+    
+}
+.pdtimgdivdisplay {
+   width:95%;margin-left:2%;
+}
+.pdtimgkitchendivdisplay1 {
+   width:93px;
+    margin-top: 5px;
+}
+.pdtimgkitchendivdisplay2 {
+   width:60px;
+}
+.pdtimgkitchendivdisplay3 {
+width:60px;
+}
+.pdtimgkitchendivdisplay4 {
+    width:60px;
+}
+.filter
+{
+
+width:100%;float:left;display:none
+}
+.filterkitchensub
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+
+}
+.filterkitchen
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+  /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+
+}
+.filterbathroom
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+  /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+
+}
+.filterstorage
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+  
+}
+.filterlight
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+   /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+ 
+}
+.trclasspdt
+{
+    width: 100%;
+    height: 200px;
+}
+.white_contentdirection
+{
+    display: none;
+    position: absolute;
+    top: 19%;
+    left: 28%;
+    width: 368px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+.pdtimg
+{
+    width: 0%;
+    height: 0%;
+}
+.tableproducts
+{
+    margin-top: 0px;
+      width:100%; margin-left: -1%;
+}
+.tableproducts1
+{
+     border: 1px solid #ccc;
+     margin-left: 123px;
+    margin-top: 0;
+    width: 1098px;
+}
+.imgsmall
+{
+    width: 20px;
+    height: 20px;
+    display: inline;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.searchtextbox
+{
+    width: 100%;
+    color: #fff;
+    font-size: 12px;
+    height: 32px;
+}
+.srchdivimg
+{
+    float: left;
+    height: 44px;
+    margin-top: 70px;
+    width: 100%;
+}
+.submitlinediv
+{
+    float: left;
+    margin-left: 5px;
+}
+.frgtpwd
+{
+    background: none repeat scroll 0 0 #1A2856;
+    color: #FFFFFF;
+    font-weight: bold;
+    height: 25px;
+    padding: 5px 1px 2px 0;
+    text-align: left;
+    width: 100%;
+}
+.searchdiv1
+{
+    float: left;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+.searchdiv
+{
+    float: left;
+    margin-right: 1%;
+}
+#searchtxt
+{
+    margin: 0;
+}
+.imagesearch
+{
+    margin-top: 5px;
+    cursor: pointer;
+}
+.imgsizesrch
+{
+    width: 32px;
+    height: 32px;
+}
+.imgsizesrchcls
+{
+    width: 28px;
+    height: 28px;
+}
+.white_content
+{
+    display: none;
+    position: absolute;
+    top: 22%;
+    left: 24%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+.white_contentlist
+{
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    display: none;
+    left: 77%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 16%;
+    width: 17%;
+    z-index: 1002;
+    width: 100%;
+}
+.loginpopup
+{
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    display: none;
+    left: 1%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 25%;
+    width: 95%;
+    z-index: 1002;
+    width: 100%;
+}
+.white_contentlistnewpdt
+{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    left:0%;
+    border-bottom: 1px solid #ccc;
+}
+.white_contentlistnew
+{
+    position: relative;
+   top: -659px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+}
+.white_contentlistnew1
+{
+    left: 0%;
+    position: relative;
+    top: -600px;
+    width: 23%;
+    border: 1px solid #ccc;
+}
+.terms_condition
+{
+    float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+
+top: 9%;
+position: absolute;
+width:25%;
+left: 37%;
+}
+
+
+.white_content1
+{
+    display: none;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 50%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #1a2856;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+.innerpopup
+{
+    background: #fff;
+    font-size: 11px;
+}
+.filtertxt {
+    color: #304589;
+    cursor: pointer;
+    font-size: 19px;
+   
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+}
+    .filtertxt:hover {
+           color: #ccc;
+    cursor: pointer;
+    font-size: 19px;
+   
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+    }
+.p-menu
+{
+    color: #304589;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 7px;
+    cursor: pointer;
+    margin-left: 10px;
+    width: 100%;
+}
+.pdt-content
+{
+    color: #304589;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+}
+.p-content
+{
+  
+    float: left;
+    font-size: 17px;
+    font-weight: bold;
+    margin-left: 6px;
+    margin-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+.p-contentlist
+{
+    color: #304589;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: -30px;
+    margin-left: -27px;
+    text-align: center;
+    width: 100%;
+}
+.p-contentblack
+{
+    color: #000;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 7px;
+    text-align: center;
+    width: 86%;
+}
+.popdiv
+{
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 100%;
+}
+.txtbox1
+{
+    margin-top: 2px;
+    height: 32px;
+    width: 100%;
+}
+.txtbox
+{
+    height: 32px;
+    width: 40%;
+}
+.clear
+{
+    clear: both;
+}
+tableclass1
+{
+    background: #fff;
+    border-radius: 10px;
+    width: 220px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.tableclass
+{
+    background: #fff;
+    width:100%;
+  
+  
+}
+.txtarea
+{
+    width: 40%;
+    height: 100px;
+}
+.empty
+{
+    height: 5px;
+}
+.tabcontent
+{
+    color: #304589;
+    font-weight: bold;
+}
+.tabcontent1
+{
+    color: #304589;
+    font-weight: bold;
+    margin-left: 20px;
+    text-align: left;
+}
+.content
+{
+    width: 100%;
+    margin-left: 6px;
+}
+.trpop
+{
+    width: 220px;
+}
+.tdpop
+{
+    width: 40px;
+}
+.submitdiv
+{
+    height: 30px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+.serchdivtxt
+{
+    width: 69%;
+    margin-right: 1%;
+}
+.serchdivtxtpdt
+{
+    width: 81%;
+    margin-right: 1%;
+}
+.centeralign
+{
+    text-align: center;
+    height: 47px;
+}
+.logindiv
+{
+    width: 100%;
+    margin-top: 10%;
+}
+.logintext
+{
+    height: 32px;
+    margin: -10px 0 0 20px;
+    width: 90%;
+}
+.tdtbl80
+{
+    width: 80%;
+    text-align: left;
+}
+.tdtbl20
+{
+    text-align: left;
+    width: 7%;
+}
+.btnlogin_div
+{
+    margin-bottom: 10px;
+    float: left;
+    margin-left: 18px;
+    width: 40%;
+}
+.login_inner
+{
+    border: 2px solid #CCC;
+    border-radius: 10px;
+    margin: 110px auto;
+    width: 45%;
+}
+.login_inner1
+{
+    border-radius: 0px;
+    margin: 110px auto;
+    width: 25%;
+}
+.forgotdiv
+{
+    float: left;
+    margin-left: 25px;
+    width: 48%;
+}
+.motherdiv
+{
+    float: left;
+    margin: 20px 0 0;
+    width: 100%;
+}
+.forgot_span
+{
+    margin: 0 10px 0 0px;
+}
+.leftdivalign {margin-left: 40%; cursor: pointer
+}
+@media only screen and (min-width: 991px) and (max-width: 1300px)
+{
+    .termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px; z-index:2;width:43%
+}
+    .terms_condition {float: left;
+background: none repeat scroll 0% 0% #FFF;
+top: 12%;
+position: absolute;
+width: 43%;
+left: 28%; }
+        .loading-image {
+  position: absolute;
+  top: 30%;
+  left: 44%;
+  z-index: 100;
+}
+    .leftdivalign {margin-left: 10%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 315px; display: none;font-size:15px;overflow:auto
+}
+    .addressbook {
+ border: 1px solid #ccc;
+    left: 37%;
+    position: absolute;
+    top: 5%;
+    width: 27%;
+    z-index: 1002;
+}
+
+       .contentdiv {
+    height: 1115px;
+    overflow:auto;
+}
+      .tablecart {
+    margin-bottom: 1px;
+    margin-left: 12px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:14px
+}
+    .tableproducts1
+{
+     border: 1px solid #ccc;
+   margin-left: 117px;
+    margin-top: 0;
+    width: 1043px;
+}
+.pdtimgkitchendivdisplay1 {
+    margin-top: 5px;
+    width: 88px;
+}
+.pdtimgkitchendivdisplay2 {
+    margin-top: 5px;
+    width: 88px;
+}
+.pdtimgkitchendivdisplay3 {
+    margin-top: 5px;
+    width: 88px;
+}
+.pdtimgkitchendivdisplay4 {
+    margin-top: 5px;
+    width: 88px;
+}
+             .white_contentlistnew
+{
+    position: relative;
+    top: -659px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+    
+      #map_canvas {
+    height:600px;}
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        width: 50%;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 45%;
+    }
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 60px auto;
+        width: 45%;
+    }
+    .login_inner1
+    {
+        border-radius: 0px;
+        margin: 60px auto;
+        width: 45%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        width: 34%;
+    }
+
+    .innerpopup1
+    {
+        width: 230px;
+    }
+    .innerpopup
+    {
+        background: #fff;
+        font-size: 11px;
+    }
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 68%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 8%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .white_contentlistnew1
+    {
+        left: 0%;
+        position: relative;
+        top: -600px;
+        width: 32%;
+        border: 1px solid #ccc;
+        height:500px;
+    }
+
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-left: 2px;
+        margin-top: -30px;
+        text-align: center;
+        width: 100%;
+    }
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 150px;
+    }
+        .pdtimg {
+        height:0;width:0;
+    }
+    .imgpdt
+    {
+        width: 243px;
+        height: 243px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+
+.white_content
+{
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 39%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+.cartimg {
+    cursor: pointer;
+    float: right;
+    margin-top: 50px;
+    width: 20%;
+}
+.arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 170px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 510px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow3 {
+    height: 11px;
+    margin-bottom: -5px;
+    margin-left: 339px;
+    margin-top: 0;
+    width: 23px;
+}
+.imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 13px;
+}
+}
+@media only screen and (min-width: 901px) and (max-width: 990px)
+{
+    .termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 5px; z-index:2;width:42%
+}
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 43%;
+left: 28%; }
+    .loading-image {
+  position: absolute;
+  top: 14%;
+  left: 46%;
+  z-index: 100;
+}
+    .leftdivalign {margin-left: 30%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 1115px; display: none;font-size:15px;overflow:auto
+}
+    .imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 16px;
+    vertical-align: top;
+    width: 13px;
+}
+    .addressbook {
+   border: 1px solid #ccc;
+    left: 33%;
+    position: absolute;
+    top: 5%;
+    width: 32%;
+    z-index: 1002;
+}
+       .contentdiv {
+    height: 1115px;
+    overflow:auto;
+}
+    .loginpopup {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    display: none;
+    left: 1%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 20%;
+    width: 95%;
+    z-index: 1002;
+}
+     .tableproducts1
+{
+    border: 1px solid #ccc;
+    margin-left: 90px;
+    margin-top: 0;
+    width: 800px;
+}
+.pdtimgkitchendivdisplay1 {
+    margin-top: 5px;
+    width: 56px;
+}
+.pdtimgkitchendivdisplay2 {
+    margin-top: 5px;
+    width: 56px;
+}
+.pdtimgkitchendivdisplay3 {
+    margin-top: 5px;
+    width: 56px;
+}
+.pdtimgkitchendivdisplay4 {
+    margin-top: 5px;
+    width: 56px;
+}
+         .white_contentlistnew
+{
+    position: relative;
+    top: -1231px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+               .pdtimgdivdisplay {
+    float:left;width:100%;
+}
+            
+    .filter
+{
+
+width:100%;float:left;display:none
+}
+.filterkitchensub
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterkitchen
+{
+ background: none repeat scroll 0 0 #CCCCCC;
+   /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+ 
+    width: 200px;
+}
+.filterbathroom
+{
+  background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterstorage
+{
+   background: none repeat scroll 0 0 #CCCCCC;
+   /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterlight
+{
+  background: none repeat scroll 0 0 #CCCCCC;
+   /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+ 
+    width: 200px;
+}
+
+
+
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        width: 50%;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 45%;
+    }
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 60px auto;
+        width: 45%;
+    }
+    .login_inner1
+    {
+        border-radius: 0px;
+        margin: 60px auto;
+        width: 45%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        width: 34%;
+    }
+
+    .innerpopup1
+    {
+        width: 230px;
+    }
+    .innerpopup
+    {
+        background: #fff;
+        font-size: 11px;
+    }
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 68%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 8%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .white_contentlistnew1
+    {
+        left: 0%;
+        position: relative;
+        top: -1182px;
+        width: 32%;
+        border: 1px solid #ccc;
+        height:500px;
+    }
+
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-left: 2px;
+        margin-top: -30px;
+        text-align: center;
+        width: 100%;
+    }
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 150px;
+    }
+        .pdtimg {
+        height:0;width:0;
+    }
+    .imgpdt
+    {
+        width: 206px;
+        height: 206px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .white_contentdirection
+{
+  background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    left: 25%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 9%;
+    width: 450px;
+    z-index: 1002;
+}
+
+.white_content
+{
+    display: none;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+  #map_canvas {
+    height:1177px;}
+  .cartimg {
+    cursor: pointer;
+    float: right;
+    margin-top: 50px;
+    width: 25%;
+}
+  .tablecart {
+    margin-bottom: 1px;
+    margin-left: 12px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:14px
+}
+  .arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 65px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 420px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow3 {
+    height: 11px;
+    margin-bottom: -5px;
+    margin-left: 460px;
+    margin-top: 0;
+    width: 23px;
+}
+}
+@media only screen and (min-width: 769px) and (max-width: 900px)
+{
+    .termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;z-index:2;width:43%
+}
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 43%;
+left: 28%; }
+    .loading-image {
+  position: absolute;
+  top: 14%;
+  left: 45%;
+  z-index: 100;
+}
+
+    .leftdivalign {margin-left: 25%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 1115px; display: none;font-size:15px;overflow:auto
+}
+    .imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 13px;
+}
+    .addressbook {
+  border: 1px solid #ccc;
+    left: 30%;
+    position: absolute;
+    top: 10%;
+    width: 38%;
+    z-index: 1002;
+}
+    .contentdiv {
+    height: 1115px;
+    overflow:auto;
+}
+      .tablecart {
+    margin-bottom: 1px;
+    margin-left: 12px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:14px
+}
+  .tableproducts1
+{
+     border: 1px solid #ccc;
+    margin-left: 74px;
+    margin-top: 0;
+    width: 654px;
+    
+}
+.pdtimgkitchendivdisplay1 {
+    margin-top: 5px;
+    width: 56px;
+}
+.pdtimgkitchendivdisplay4 {
+    margin-top: 5px;
+    width: 56px;
+}
+.pdtimgkitchendivdisplay2 {
+    margin-top: 5px;
+    width: 56px;
+}
+.pdtimgkitchendivdisplay3 {
+    margin-top: 5px;
+    width: 56px;
+}
+    .tableproducts
+{
+    margin-top: 0px;
+      width:100%; margin-left: -1%;
+}
+
+           .pdtimgdivdisplay {
+    float:left;width:100%;
+}
+      #map_canvas {
+    height:1177px;}
+                
+    .filter
+{
+
+width:100%;float:left;display:none
+}
+.filterkitchensub
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+  /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterkitchen
+{
+ background: none repeat scroll 0 0 #CCCCCC;
+  /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterbathroom
+{
+    background: none repeat scroll 0 0 #CCCCCC;
+     /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterstorage
+{
+   background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterlight
+{
+
+    background: none repeat scroll 0 0 #CCCCCC;
+  /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        width: 50%;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 45%;
+    }
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 60px auto;
+        width: 45%;
+    }
+    .login_inner1
+    {
+        border-radius: 0px;
+        margin: 300px auto;
+        width: 45%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        width: 34%;
+    }
+
+    .innerpopup1
+    {
+        width: 230px;
+    }
+    .innerpopup
+    {
+        background: #fff;
+        font-size: 11px;
+    }
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 68%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 8%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .white_contentlistnew1
+    {
+        left: 0%;
+        position: relative;
+        top: -1182px;
+        width: 42%;
+        border: 1px solid #ccc;
+        height:500px;
+    }
+
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-left: 2px;
+        margin-top: -30px;
+        text-align: center;
+        width: 100%;
+    }
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 150px;
+    }
+        .pdtimg {
+        height:0;width:0;
+    }
+    .imgpdt
+    {
+        width: 180px;
+        height: 180px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .white_contentdirection
+{
+     background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    left: 25%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 9%;
+    width: 400px;
+    z-index: 1002;
+}
+
+.white_content
+{
+ background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    left: 32%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 10%;
+    z-index: 1002;
+}
+     .white_contentlistnew
+{
+    position: relative;
+    top: -1235px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+  .widthtd
+{
+    width:85%;
+}
+.cartimg {
+    cursor: pointer;
+    float: right;
+    margin-top: 50px;
+    width: 30%;
+}
+.loginpopup {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    
+    display: none;
+    left: 1%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 20%;
+    width: 95%;
+    z-index: 1002;
+}
+.arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 65px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 400px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow3 {
+    height: 11px;
+    margin-bottom: -5px;
+    margin-left: 374px;
+    margin-top: 0;
+    width: 23px;
+}
+}
+@media only screen and (min-width: 681px) and (max-width: 768px)
+{
+        .termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
+}
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 70%;
+left: 16%; }
+    .loading-image {
+  position: absolute;
+  top: 18%;
+  left: 45%;
+  z-index: 100;
+}
+    .leftdivalign {margin-left: 25%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+#invoiceclick {
+    background: #ccc; min-height: 859px; display: none;font-size:15px;overflow:auto
+}
+
+
+    .imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 13px;
+}
+    .addressbook {
+ border: 1px solid #ccc;
+    left: 29%;
+    position: absolute;
+    top: 5%;
+    width: 45%;
+    z-index: 1002;
+}
+    .contentdiv {
+    height: 859px;
+    overflow:auto;
+}
+    .tablecart {
+    margin-bottom: 1px;
+    margin-left: 12px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:14px
+}
+    .cartimg {
+    cursor: pointer;
+    float: right;
+    margin-top: 50px;
+    width: 30%;
+}
+  .tableproducts1
+{
+     border: 1px solid #ccc;
+   margin-left: 72px;
+    margin-top: 0;
+    width: 626px;
+ 
+}
+.pdtimgkitchendivdisplay1 {
+    margin-top: 5px;
+    width: 54px;
+}
+.pdtimgkitchendivdisplay2 {
+    margin-top: 5px;
+    width: 54px;
+}
+.pdtimgkitchendivdisplay3 {
+    margin-top: 5px;
+    width: 54px;
+}
+.pdtimgkitchendivdisplay4 {
+    margin-top: 5px;
+    width: 54px;
+}
+     .white_contentlistnew
+{
+    position: relative;
+    top: -981px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+
+        .tableproducts
+{
+    margin-top: 0px;
+      width:100%; margin-left: 100%;
+}
+
+        .pdtimgdivdisplay {
+    float:left;width:0%;
+}
+        
+    .filter
+{
+
+float:left;display:none
+}
+.filterkitchensub
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+   /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterkitchen
+{
+ background: none repeat scroll 0 0 #CCCCCC;
+     /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+ 
+    width: 200px;
+}
+.filterbathroom
+{
+    background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterstorage
+{
+   background: none repeat scroll 0 0 #CCCCCC;
+   /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterlight
+{
+
+    background: none repeat scroll 0 0 #CCCCCC;
+     /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+
+
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 75px auto;
+        width: 52%;
+    }
+    .login_inner1
+    {
+        border-radius: 0px;
+        margin: 200px auto;
+        width: 52%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-left: 20px;
+        width: 38%;
+        margin-bottom: 10px;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 45%;
+    }
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 19px;
+        width: 44%;
+    }
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 64%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 16%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .white_contentlistnew1
+    {
+        left: 0%;
+        position: relative;
+        top: -926px;
+        width: 37%;
+        border: 1px solid #ccc;
+        height:500px;
+    }
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: -3px;
+        text-align: center;
+        width: 100%;
+    }
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 150px;
+    }
+    .pdtimg {
+        height:0;width:0;
+    }
+    .imgpdt
+    {
+        width: 160px;
+        height: 160px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .white_contentdirection
+{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    left: 22%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 11%;
+    width: 400px;
+    z-index: 1002;
+}
+
+.white_content
+{
+   background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    left: 32%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 15%;
+    z-index: 1002;
+}
+  #map_canvas {
+    height:924px;}
+     .loginpopup {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        display: none;
+        left: 1%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 20%;
+        width: 95%;
+        z-index: 1002;
+    }
+     .arrow3 {
+    height: 11px;
+    margin-bottom: -5px;
+    margin-left: 364px;
+    margin-top: 0;
+    width: 23px;
+}
+     .arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 65px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 325px;
+    margin-top: 0;
+    width: 23px;
+}
+}
+@media only screen and (min-width: 591px) and (max-width: 680px)
+{
+    .termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
+}
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 70%;
+left: 16%; }
+    .loading-image {
+  position: absolute;
+  top: 30%;
+  left: 44%;
+  z-index: 100;
+}
+    .leftdivalign {margin-left: 25%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+#invoiceclick {
+    background: #ccc; min-height: 859px; display: none;font-size:15px;overflow:auto
+}
+
+
+    .imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 13px;
+}
+    .addressbook {
+border: 1px solid #ccc;
+left: 24%;
+position: absolute;
+top: 9%;
+width: 55%;
+z-index: 1002;
+}
+    .contentdiv {
+    height: 859px;
+    overflow:auto;
+}
+    .tablecart {
+    margin-bottom: 1px;
+    margin-left: 12px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:14px
+}
+    .cartimg {
+    cursor: pointer;
+    float: right;
+    margin-top: 50px;
+    width: 30%;
+}
+  .tableproducts1
+{
+     border: 1px solid #ccc;
+   margin-left: 72px;
+    margin-top: 0;
+    width: 626px;
+ 
+}
+.pdtimgkitchendivdisplay1 {
+    margin-top: 5px;
+    width: 54px;
+}
+.pdtimgkitchendivdisplay2 {
+    margin-top: 5px;
+    width: 54px;
+}
+.pdtimgkitchendivdisplay3 {
+    margin-top: 5px;
+    width: 54px;
+}
+.pdtimgkitchendivdisplay4 {
+    margin-top: 5px;
+    width: 54px;
+}
+     .white_contentlistnew
+{
+    position: relative;
+    top: -981px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+
+        .tableproducts
+{
+    margin-top: 0px;
+      width:100%; margin-left: 100%;
+}
+
+        .pdtimgdivdisplay {
+    float:left;width:0%;
+}
+        
+    .filter
+{
+
+float:left;display:none
+}
+.filterkitchensub
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+   /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterkitchen
+{
+ background: none repeat scroll 0 0 #CCCCCC;
+     /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+ 
+    width: 200px;
+}
+.filterbathroom
+{
+    background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterstorage
+{
+   background: none repeat scroll 0 0 #CCCCCC;
+   /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+.filterlight
+{
+
+    background: none repeat scroll 0 0 #CCCCCC;
+     /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 200px;
+}
+
+
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 75px auto;
+        width: 52%;
+    }
+    .login_inner1
+    {
+        border-radius: 0px;
+        margin: 200px auto;
+        width: 52%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-left: 20px;
+        width: 38%;
+        margin-bottom: 10px;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 45%;
+    }
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 19px;
+        width: 44%;
+    }
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 64%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 16%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .white_contentlistnew1
+    {
+        left: 0%;
+        position: relative;
+        top: -926px;
+        width: 50%;
+        border: 1px solid #ccc;
+        height:500px;
+    }
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: -3px;
+        text-align: center;
+        width: 100%;
+    }
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 150px;
+    }
+    .pdtimg {
+        height:0;width:0;
+    }
+    .imgpdt
+    {
+        width: 141px;
+        height: 141px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .white_contentdirection
+{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    left: 20%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 11%;
+    width: 400px;
+    z-index: 1002;
+}
+
+.white_content
+{
+   background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    left: 32%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 15%;
+    z-index: 1002;
+}
+  #map_canvas {
+    height:924px;}
+     .loginpopup {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        display: none;
+        left: 1%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 20%;
+        width: 95%;
+        z-index: 1002;
+    }
+     .arrow3 {
+    height: 11px;
+    margin-bottom: -5px;
+    margin-left: 364px;
+    margin-top: 0;
+    width: 23px;
+}
+     .arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 65px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 325px;
+    margin-top: 0;
+    width: 23px;
+}
+
+}
+@media only screen and (min-width: 500px) and (max-width: 590px)
+{
+    .popupheight { height: 150px;overflow-x: hidden; overflow-y: scroll; }
+    .addressbook {
+border: 1px solid #CCC;
+left: 18%;
+position: absolute;
+top: 15%;
+width: 65%;
+z-index: 1002;
+}
+
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 70%;
+left: 16%; }
+    .loading-image {
+  position: absolute;
+  top: 30%;
+  left: 41%;
+  z-index: 100;
+}
+    .leftdivalign {margin-left: 25%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 315px; display: none;font-size:15px;overflow:auto
+}
+    .arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 60px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 276px;
+    margin-top: 0;
+    width: 23px;
+}
+
+.arrow3 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 300px;
+    margin-top: 0;
+    width: 23px;
+}
+
+
+    .tablecart {
+    margin-bottom: 1px;
+    margin-left: 12px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:14px
+}
+
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 60px auto;
+        width: 72%;
+    }
+    .login_inner1
+    {
+        border-radius: 0px;
+        margin: 60px auto;
+        width: 72%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        width: 53%;
+    }
+    .serchdivtxt
+    {
+        width: 66%;
+        margin-right: 1%;
+    }
+
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 70%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 16%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .white_contentlistnew1
+    {
+        left: 0%;
+position: relative;
+top: -600px;
+width: 52%;
+border: 1px solid #ccc;
+height:360px;
+    }
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: 8px;
+        text-align: center;
+        width: 100%;
+    }
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 12px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 150px;
+    }
+    .imgpdt
+    {
+        width: 118px;
+        height: 118px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .white_contentdirection
+{
+    display: none;
+    position: absolute;
+    top:12%;
+    left:9%;
+    width: 400px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+
+.white_content
+{
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+    .loginpopup {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        display: none;
+        left: 1%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 20%;
+        width: 95%;
+        z-index: 1002;
+    }
+.termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
+}
+}
+@media only screen and (min-width: 400px) and (max-width: 499px)
+{
+      .popupheight { height: 150px;overflow-x: hidden; overflow-y: scroll; }
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 70%;
+left: 16%; }
+    .leftdivalign {margin-left: 25%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 315px; display: none;font-size:15px;overflow:auto
+}
+
+.arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 64px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 266px;
+    margin-top: 0;
+    width: 23px;
+}
+
+.arrow3 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 280px;
+    margin-top: 0;
+    width: 23px;
+}
+
+    .loginpopup {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        display: none;
+        left: 1%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 20%;
+        width: 95%;
+        z-index: 1002;
+    }
+
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 50px auto;
+        width: 70%;
+    }
+    .login_inner1
+    {
+        border-radius: 0px;
+        margin: 50px auto;
+        width: 70%;
+    }
+
+    .forgotdiv
+    {
+        float: left;
+        margin-left: 20px;
+        width: 37%;
+        margin-bottom: 10px;
+    }
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 18px;
+        width: 45%;
+    }
+    .logintext
+    {
+        height: 32px;
+        margin: -10px 0 0 20px;
+        width: 87%;
+    }
+    .txtbox
+    {
+        height: 32px;
+        width: 60%;
+    }
+    .txtarea
+    {
+        height: 80px;
+        width: 90%;
+    }
+    .forgot_span
+    {
+        margin: 0 10px 0 0px;
+        font-size: 13px;
+    }
+    .newaccount_span
+    {
+        font-size: 13px;
+    }
+    .serchdivtxt
+    {
+        width: 66%;
+        margin-right: 1%;
+    }
+    .p-contentblack
+    {
+        color: #000;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 7px;
+        text-align: center;
+        width: 86%;
+    }
+    .imgsizesrchcls
+    {
+        width: 25px;
+        height: 25px;
+    }
+    .white_contentlist
+    {
+        display: none;
+        position: absolute;
+        top: 16%;
+        left: 38%;
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #CCC;
+        background-color: #fff;
+        z-index: 1002;
+        overflow-x: hidden;
+    }
+    .white_contentlistnew1
+    {
+        left: 0%;
+        position: relative;
+        top: -600px;
+        width: 65%;
+        border: 1px solid #ccc;
+        height:360px;
+    }
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: -20px;
+        text-align: center;
+        width: 100%;
+    }
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 11px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 120px;
+    }
+    .imgpdt
+    {
+        width: 90px;
+        height: 90px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+ 
+    }
+    .white_contentdirection
+{
+    display: none;
+    position: absolute;
+    top: 9%;
+    left: 12%;
+    width: 324px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+    .mapviewalign {
+      height: 30px;
+    margin-left: 110px;
+    margin-top: 11px;
+    margin-left: 57px;
+}
+   .tablecart {
+    margin-bottom: 1px;
+    margin-left: 12px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:14px
+} 
+    .addressbook {
+border: 1px solid #ccc;
+left: 14%;
+position: absolute;
+top: 9%;
+width: 85%;
+z-index: 1002;
+}
+.termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
+}
+}
+@media only screen and (min-width: 321px) and (max-width: 399px)
+{
+    
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 80%;
+left: 8%; }
+    .leftdivalign {margin-left: 20%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 475px; display: none;font-size:15px;overflow:auto
+}
+    .imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 13px;
+}
+    .addressbook {
+ border: 1px solid #ccc;
+left: 7%;
+position: absolute;
+top: 12%;
+width: 100%;
+z-index: 1002;
+}
+    .carttaximg {
+        width:60px;
+        height:20px;
+    }
+    .contentdiv {
+    height: 479px;
+    overflow:auto;
+}
+       .pdtimgkitchendivdisplay1 {
+    width:3px;
+}
+.pdtimgkitchendivdisplay2 {
+   width:3px;
+}
+.pdtimgkitchendivdisplay3 {
+   width:3px;
+}
+.pdtimgkitchendivdisplay4 {
+   width:3px;
+}
+       .white_contentlistnew
+{
+    position: relative;
+    top: -659px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+    
+    .filtertxt {
+    color: #304589;
+    cursor: pointer;
+    font-size: 17px;
+   
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+}
+        .filtertxt:hover {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 17px;
+   
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+        }
+    .filter
+{
+
+width:360px;float:left;display:none;
+}
+.filterkitchensub
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+     /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 100%;
+   /*   height:600px;*/
+}
+.filterkitchen
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 100%;
+    /*   height:600px;*/
+}
+.filterbathroom
+{
+
+  background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 100%;
+       /*   height:600px;*/
+}
+.filterstorage
+{
+
+  background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+ 
+    width: 100%;
+     /*   height:600px;*/
+}
+.filterlight
+{
+
+    background: none repeat scroll 0 0 #CCCCCC;
+     /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+
+    width: 100%;
+      /*   height:600px;*/
+}
+
+
+
+
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 40px auto;
+        width: 85%;
+    }
+    .login_inner1
+    {
+        border-radius: 0;
+    margin: 85px auto;
+    width: 85%;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 30%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        width: 40%;
+    }
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 18px;
+        width: 45%;
+    }
+
+    .forgot_span
+    {
+        margin: 0 10px 0 0px;
+        font-size: 13px;
+    }
+    .newaccount_span
+    {
+        font-size: 13px;
+    }
+    .logintext
+    {
+        height: 32px;
+        margin: -10px 0 0 20px;
+        width: 87%;
+    }
+    .tdtbl20
+    {
+        width: 15%;
+        text-align: left;
+    }
+    .txtbox
+    {
+        height: 32px;
+        width: 90%;
+    }
+
+    .txtbox1
+    {
+        height: 27px;
+        width: 99%;
+    }
+    .txtarea
+    {
+        height: 80px;
+        width: 90%;
+    }
+    .imagesearch
+    {
+        cursor: pointer;
+        height: 27px;
+    }
+    .serchdivtxt
+    {
+        width: 64%;
+        margin-right: 1%;
+    }
+    .p-contentblack
+    {
+        color: #000;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 7px;
+        text-align: center;
+        width: 86%;
+    }
+    .imgsizesrchcls
+    {
+        width: 25px;
+        height: 25px;
+    }
+
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 21%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 16%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .innerpopup
+    {
+        background: #fff;
+        margin-left: 0px;
+        font-size: 11px !important;
+
+    }
+    .white_contentlistnew1
+    {
+        left: 0%;
+        position: relative;
+        top: -600px;
+        width: 68%;
+        border: 1px solid #ccc;
+        height:400px;
+    }
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: 0px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 11px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 60px;
+        height: 35px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 130px;
+    }
+    .imgpdt
+    {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .white_contentdirection
+{
+    display: none;
+    position: absolute;
+    top: 10%;
+    left: 9%;
+    width: 284px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+
+.white_content
+{
+    display: none;
+    position: absolute;
+    top: 22%;
+    left: 13%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+.mapviewalign {
+ height: 30px; margin-top: 11px; margin-left: 38px;
+}
+    #map_canvas {
+    height:600px;}
+        .pdtimgdivdisplay {
+    float:left;width:100%;
+}
+         .tableproducts
+    {
+        margin-top: 0px;
+        width:100%; margin-left: 1%;
+    }
+             .tableclass
+{
+    background: #fff;
+    width: 100%;
+   
+}
+   
+                    .tableproducts1
+{
+     border: 1px solid #ccc;
+  margin-left: 5px;
+    margin-top: 0;
+    width: 350px;
+}
+                    .cartimg {
+
+     float: right;
+    margin-top: 0%;
+    width: 42%;
+    cursor:pointer;
+}
+.widthtd
+{
+    width:85%;
+}
+.loginpopup {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    display: none;
+    left: 1%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 30%;
+    width: 95%;
+    z-index: 1002;
+}
+.sbbtn {
+    width: 50px;
+}
+.footertable {
+    width:100%;font-size:10px
+}
+.tablecart {
+    margin-bottom: 1px;
+    margin-left: 12px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:14px
+}
+.arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 63px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 246px;
+    margin-top: 0;
+    width: 23px;
+}
+
+.arrow3 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 240px;
+    margin-top: 0;
+    width: 23px;
+}
+
+.black_overlay{
+			display: none;
+			position: fixed;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 808px;
+			background-color: gray;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+	
+          
+		}
+.imgdescdtl {
+    height: 200px; margin-top: -35px; width: 100%;
+}
+    .loading-image {
+  position: absolute;
+  top: 30%;
+  left: 42%;
+  z-index: 100;
+}
+.termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:80%
+}
+}
+@media only screen and (min-width: 300px) and (max-width: 320px)
+{
+  
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 70%;
+left: 16%; }
+    .leftdivalign {margin-left: 10%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 315px; display: none;font-size:15px;overflow:auto
+}
+    .addressbook {
+    border: 1px solid #ccc;
+    left: 23%;
+    position: absolute;
+    top: 0%;
+    width: 76%;
+       z-index:1002;
+}
+     .carttaximg {
+        width:60px;
+        height:20px;
+    }
+    .pdtimgkitchendivdisplay1 {
+    width:3px;
+}
+.pdtimgkitchendivdisplay2 {
+   width:3px;
+}
+.pdtimgkitchendivdisplay3 {
+   width:3px;
+}
+.pdtimgkitchendivdisplay4 {
+   width:3px;
+}
+
+
+       .white_contentlistnew
+{
+    position: relative;
+    top: -420px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+        .tableclass
+{
+    background: #fff;
+    width: 100%;
+   
+}
+     .tableproducts
+    {
+        margin-top: 0px;
+        width:100%; margin-left: 1%;
+    }
+
+
+    .filtertxt {
+    color: #304589;
+    cursor: pointer;
+    font-size: 17px;
+   
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+}
+        .filtertxt:hover {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 17px;
+   
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+        }
+    .filter
+{
+
+   width:100%;float:left;display:none;
+}
+.filterkitchensub
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+     /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+      /*   height:600px;*/
+    width: 100%;
+}
+.filterkitchen
+{
+
+   background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+   /*   height:600px;*/
+    width: 100%;
+}
+.filterbathroom
+{
+
+  background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+   /*   height:600px;*/
+    width: 100%;
+}
+.filterstorage
+{
+
+  background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+       /*   height:600px;*/
+    width: 100%;
+}
+.filterlight
+{
+
+    background: none repeat scroll 0 0 #CCCCCC;
+    /*  border-bottom: 1px solid #CCCCCC;*/
+    display: none;
+   /*   height:600px;*/
+    width: 100%;
+}
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 40px auto;
+        width: 85%;
+    }
+    .login_inner1
+    {
+        border-radius: 0px;
+        margin: 40px auto;
+        width: 85%;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 17%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        width: 40%;
+    }
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 18px;
+        width: 45%;
+    }
+
+    .forgot_span
+    {
+        margin: 0 10px 0 0px;
+        font-size: 13px;
+    }
+    .newaccount_span
+    {
+        font-size: 13px;
+    }
+    .logintext
+    {
+        height: 32px;
+        margin: -10px 0 0 20px;
+        width: 87%;
+    }
+    .tdtbl20
+    {
+        width: 15%;
+        text-align: left;
+    }
+    .txtbox
+    {
+        height: 32px;
+        width: 90%;
+    }
+
+    .txtbox1
+    {
+        height: 20px;
+        width: 97%;
+    }
+    .txtarea
+    {
+        height: 80px;
+        width: 90%;
+    }
+    .imagesearch
+    {
+        cursor: pointer;
+        height: 20px;
+    }
+    .serchdivtxt
+    {
+        width: 64%;
+        margin-right: 1%;
+    }
+    .p-contentblack
+    {
+        color: #000;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 7px;
+        text-align: center;
+        width: 86%;
+    }
+    .imgsizesrchcls
+    {
+        width: 25px;
+        height: 25px;
+    }
+
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 21%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 16%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .innerpopup
+    {
+        background: #fff;
+        margin-left: 0px;
+        font-size: 11px;
+    }
+    .white_contentlistnew1
+    {
+        left: 0%;
+        position: relative;
+        top: -600px;
+        width: 85%;
+        border: 1px solid #ccc;
+        height:360px;
+    }
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: 0px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 10px;
+        font-weight: bold;
+        height: 35px;
+        margin-bottom: 0;
+        margin-left: -7px;
+        margin-top: 0;
+        text-align: center;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 80px;
+    }
+    .imgpdt
+    {
+        width: 60px;
+        height: 55px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .pdtimg
+    {
+        width: 0%;
+        height: 0%;
+    }
+    .white_contentdirection
+{
+    display: none;
+    position: absolute;
+    top: 22%;
+    left: 10%;
+    width: 250px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+
+.white_content
+{
+    display: none;
+    position: absolute;
+    top: 22%;
+    left: 10%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+.mapviewalign {
+  height: 30px; margin-top: 11px; margin-left: 17px;
+}
+    #map_canvas {
+        height:600px
+    }
+    .srchdivimg
+{
+    float: left;
+    height: 33px;
+    margin-top: 70px;
+    width: 100%;
+}
+    .pdtimgdivdisplay {
+    float:left;width:90%;margin-left:4%;
+}
+  
+    .tableproducts1
+{
+     border: 1px solid #ccc;
+    margin-left: 3px;
+    margin-top: 0;
+    width: 310px;
+}
+    .cartimg {
+
+     float: right;
+    margin-top: 0%;
+    width: 42%;
+    cursor:pointer;
+}
+.widthtd
+{
+    width:85%;
+}
+.loginpopup {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    display: none;
+    left: 1%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 30%;
+    width: 95%;
+    z-index: 1002;
+}
+.tablecart {
+    margin-bottom: 1px;
+    margin-left: 40px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:12px
+}
+.contentdiv {
+    height: 301px;
+    overflow:auto;
+}
+.sbbtn {
+    width: 50px;
+}
+.footertable {
+    width:100%;font-size:10px
+}
+  .removebtn {
+        width:56px;color: #304589;cursor:pointer
+    }
+  .arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 76px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 246px;
+    margin-top: 0;
+    width: 23px;
+}
+
+.available{font-size:13px}
+.black_overlay{
+			display: none;
+			position: fixed;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 608px;
+			background-color: gray;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+	
+          
+		}
+.imgdescdtl {
+    height: 200px; margin-top: -35px; width: 100%;
+}
+.loading-image {
+  position: absolute;
+  top: 35%;
+  left: 36%;
+  z-index: 100;
+}
+.termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 5px;  z-index:2;width:68%
+}
+}
+@media only screen and (min-width: 280px) and (max-width: 319px)
+{
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 70%;
+left: 16%; }
+    .leftdivalign {margin-left: 10%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 365px; display: none;font-size:15px;overflow:auto
+}
+
+
+    .addressbook {
+    border: 1px solid #ccc;
+    left: 2%;
+    position: absolute;
+    top: 0%;
+    width: 95%;
+       z-index:1002;
+
+}
+     .carttaximg {
+        width:60px;
+        height:20px;
+    }
+.footertable {
+    width:100%;font-size:10px
+}
+    
+        .tableproducts1
+{
+     border: 1px solid #ccc;
+     margin-left: 3px;
+    margin-top: 0;
+    width: 314px;
+}
+    
+   .white_contentlistnew
+{
+    position: relative;
+    top: -420px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+    
+    .tableclass
+{
+    background: #fff;
+    width: 100%;
+ 
+}
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 40px auto;
+        width: 94%;
+    }
+    .login_inner1
+    {
+     border-radius: 0;
+    margin: 25px auto;
+    width: 88%;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 15%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 12px;
+        width: 43%;
+    }
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        width: 49%;
+    }
+    .forgot_span
+    {
+        margin: 0 10px 0 0px;
+        font-size: 13px;
+    }
+    .newaccount_span
+    {
+        font-size: 13px;
+    }
+    .logintext
+    {
+        height: 32px;
+        margin: -10px 0 0 10px;
+        width: 87%;
+    }
+    .tdtbl20
+    {
+        width: 14%;
+        text-align: left;
+    }
+
+    .txtbox1
+    {
+        height: 27px;
+        width: 95%;
+        margin-left:2px
+    }
+
+    .txtbox
+    {
+        height: 32px;
+        width: 80%;
+    }
+    .txtarea
+    {
+        width: 70%;
+        height: 100px;
+        font-family: calibri;
+    }
+    .imagesearch
+    {
+        cursor: pointer;
+    height: 24px;
+    margin-left: 0;
+    }
+    .tabcontent1
+    {
+        color: #304589;
+        font-weight: bold;
+        margin-left: 10px;
+        text-align: left;
+    }
+    .serchdivtxt
+    {
+        width: 62%;
+        margin-right: 1%;
+    }
+
+    .p-contentblack
+    {
+        color: #000;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 7px;
+        text-align: center;
+        width: 86%;
+    }
+    .imgsizesrchcls
+    {
+        width: 25px;
+        height: 25px;
+    }
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 10%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 16%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .innerpopup
+    {
+        background: #fff;
+        margin-left: 0px;
+        font-size: 11px;
+    }
+    .white_contentlistnew1
+    {
+        position: relative;
+        top: -600px;
+        width: 70%;
+        left: 0%;
+        border: 1px solid #ccc;
+        height:360px;
+    }
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: 3px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 90px;
+    }
+    .imgpdt
+    {
+     
+        height: 60px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .tableproducts
+    {
+        margin-top: 5px;
+        width:100%; margin-left: 1%;
+    }
+    .pdtimg
+    {
+        width: 0%;
+        height: 0%;
+        font-size: 12px;
+    }
+    .white_contentdirection
+{
+    display: none;
+    position: absolute;
+    top: 21%;
+    left: 10%;
+    width: 250px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+
+.white_content
+{
+    display: none;
+    position: absolute;
+    top: 11%;
+    left: 9%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+.mapviewalign {
+height: 30px; margin-top: 11px; margin-left: 17px;
+}
+.cartimg {
+   cursor: pointer;
+    float: right;
+    margin-top: 2px;
+    width: 40%;
+}
+
+.widthtd
+{
+    width:85%;
+}
+.loginpopup {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    display: none;
+    left: 1%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 25%;
+    width: 95%;
+    z-index: 1002;
+}
+.catlbl {
+    color: #304589;
+    float: left;
+    font-weight: bold;
+    margin-left: 10px;
+    width: 122px;
+}
+
+.filtertxt {
+    color: #304589;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+}
+
+    .filtertxt:hover {
+           color: #ccc;
+    cursor: pointer;
+    font-size: 16px;
+   
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+    }
+.tablecart {
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:12px
+}
+.contentdiv {
+    height: 378px;
+    overflow:auto;
+}
+.sbbtn {
+    width: 50px;
+}
+    .removebtn {
+        width:56px;color: #304589;cursor:pointer
+    }
+    .imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 13px;
+}
+    .arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 67px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 210px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow3 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 210px;
+    margin-top: 0;
+    width: 23px;
+}
+.black_overlay{
+			display: none;
+			position: fixed;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 608px;
+			background-color: gray;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+	
+          
+		}
+.available{font-size:10px}
+.imgdescdtl {
+    height: 200px; margin-top: -35px; width: 100%;
+}
+        .tableproducts1
+{
+     border: 1px solid #ccc;
+     margin-left: 0;
+    margin-top: 0;
+    width: 318px;
+}
+        .descdtl {
+      color: #ccc;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: super;
+}
+        .itemselect1
+{
+    background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+}
+.itemselect1:hover
+{
+    background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+
+        
+}
+.pdtimgdivdisplay {
+    margin-left: -2px;
+    width: 0;
+}
+.loading-image {
+   position: absolute;
+  top: 35%;
+  left: 36%;
+  z-index: 100;
+}
+.termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 5px; margin-right: 5px; margin-top: 5px;z-index:2;width:68%
+}
+}
+@media only screen and (max-width: 320px)
+{
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 88%;
+left: 7%; }
+    .leftdivalign {margin-left: 10%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 315px; display: none;font-size:15px;overflow:auto
+}
+
+
+    .addressbook {
+    border: 1px solid #ccc;
+    left: 3%;
+    position: absolute;
+    top: 9%;
+    width: 100%;
+       z-index:1002;
+       overflow:auto;
+
+}
+     .carttaximg {
+        width:60px;
+        height:20px;
+    }
+.footertable {
+    width:100%;font-size:10px
+}
+    
+        .tableproducts1
+{
+     border: 1px solid #ccc;
+     margin-left: 3px;
+    margin-top: 0;
+    width: 314px;
+}
+    
+   .white_contentlistnew
+{
+    position: relative;
+    top: -649px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+    
+    .tableclass
+{
+    background: #fff;
+    width: 100%;
+ 
+}
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 40px auto;
+        width: 94%;
+    }
+    .login_inner1
+    {
+     border-radius: 0;
+    margin: 25px auto;
+    width: 88%;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 15%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 12px;
+        width: 43%;
+    }
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        width: 49%;
+    }
+    .forgot_span
+    {
+        margin: 0 10px 0 0px;
+        font-size: 13px;
+    }
+    .newaccount_span
+    {
+        font-size: 13px;
+    }
+    .logintext
+    {
+        height: 32px;
+        margin: -10px 0 0 10px;
+        width: 87%;
+    }
+    .tdtbl20
+    {
+        width: 14%;
+        text-align: left;
+    }
+
+    .txtbox1
+    {
+        height: 27px;
+        width: 98%;
+    }
+
+    .txtbox
+    {
+        height: 32px;
+        width: 80%;
+    }
+    .txtarea
+    {
+        width: 70%;
+        height: 100px;
+        font-family: calibri;
+    }
+    .imagesearch
+    {
+        cursor: pointer;
+    height: 24px;
+    margin-left: 1px;
+    }
+    .tabcontent1
+    {
+        color: #304589;
+        font-weight: bold;
+        margin-left: 10px;
+        text-align: left;
+    }
+    .serchdivtxt
+    {
+        width: 62%;
+        margin-right: 1%;
+    }
+
+    .p-contentblack
+    {
+        color: #000;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 7px;
+        text-align: center;
+        width: 86%;
+    }
+    .imgsizesrchcls
+    {
+        width: 25px;
+        height: 25px;
+    }
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 10%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 16%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .innerpopup
+    {
+        background: #fff;
+        margin-left: 0px;
+        font-size: 11px !important;
+
+    }
+    .white_contentlistnew1
+    {
+        position: relative;
+        top: -600px;
+        width: 70%;
+        left: 0%;
+        border: 1px solid #ccc;
+        height:360px;
+    }
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: 3px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 90px;
+    }
+    .imgpdt
+    {
+        width: 65px;
+        height: 60px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .tableproducts
+    {
+        margin-top: 5px;
+        width:100%; margin-left: 1%;
+    }
+    .pdtimg
+    {
+        width: 0%;
+        height: 0%;
+    }
+    .white_contentdirection
+{
+    display: none;
+    position: absolute;
+    top: 10%;
+    left: 7%;
+    width: 250px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+
+.white_content
+{
+    display: none;
+    position: absolute;
+    top: 11%;
+    left: 9%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+.mapviewalign {
+height: 30px; margin-top: 11px; margin-left: 17px;
+}
+.cartimg {
+   cursor: pointer;
+    float: right;
+    margin-top: 2px;
+    width: 40%;
+}
+
+.widthtd
+{
+    width:85%;
+}
+.loginpopup {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    display: none;
+    left: 1%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 25%;
+    width: 95%;
+    z-index: 1002;
+}
+.catlbl {
+    color: #304589;
+    float: left;
+    font-weight: bold;
+    margin-left: 10px;
+    width: 145px;
+}
+.tablecart {
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:12px
+}
+.contentdiv {
+    height: 321px;
+    overflow:auto;
+}
+.sbbtn {
+    width: 50px;
+}
+    .removebtn {
+        width:56px;color: #304589;cursor:pointer
+    }
+    .imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 13px;
+}
+    .arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 67px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 210px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow3 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 210px;
+    margin-top: 0;
+    width: 23px;
+}
+.black_overlay{
+			display: none;
+			position: fixed;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 608px;
+			background-color: gray;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+	
+          
+		}
+.available{font-size:11px}
+.imgdescdtl {
+    height: 200px; margin-top: -35px; width: 100%;
+}
+.loading-image {
+  position: absolute;
+  top: 35%;
+  left: 36%;
+  z-index: 100;
+}
+.termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:88%
+}
+}
+@media only screen and (min-width: 220px) and (max-width: 299px)
+{
+    .terms_condition {float: left;
+
+background: none repeat scroll 0% 0% #FFF;
+top: 9%;
+position: absolute;
+width: 85%;
+left: 9%;
+overflow: auto; }
+    .leftdivalign {margin-left: 10%; cursor: pointer
+}
+    .accclickdiv {
+font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
+
+}
+    #invoiceclick {
+    background: #ccc; min-height: 365px; display: none;font-size:15px;overflow:auto
+}
+
+
+    .addressbook {
+    border: 1px solid #ccc;
+    left: 2%;
+    position: absolute;
+    top: 9%;
+    width: 95%;
+       z-index:1002;
+
+}
+     .carttaximg {
+        width:60px;
+        height:20px;
+    }
+.footertable {
+    width:100%;font-size:10px
+}
+    
+        .tableproducts1
+{
+     border: 1px solid #ccc;
+     margin-left: 3px;
+    margin-top: 0;
+    width: 314px;
+}
+    
+   .white_contentlistnew
+{
+    position: relative;
+    top: -659px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+} 
+    
+    .tableclass
+{
+    background: #fff;
+    width: 100%;
+ 
+}
+    .login_inner
+    {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin: 40px auto;
+        width: 94%;
+    }
+    .login_inner1
+    {
+     border-radius: 0;
+    margin: 25px auto;
+    width: 88%;
+    }
+    .logindiv
+    {
+        width: 100%;
+        margin-top: 15%;
+    }
+    .forgotdiv
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 12px;
+        width: 43%;
+    }
+    .btnlogin_div
+    {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        width: 49%;
+    }
+    .forgot_span
+    {
+        margin: 0 10px 0 0px;
+        font-size: 13px;
+    }
+    .newaccount_span
+    {
+        font-size: 13px;
+    }
+    .logintext
+    {
+        height: 32px;
+        margin: -10px 0 0 10px;
+        width: 87%;
+    }
+    .tdtbl20
+    {
+        width: 14%;
+        text-align: left;
+    }
+
+    .txtbox1
+    {
+        height: 27px;
+        width: 95%;
+        margin-left:2px
+    }
+
+    .txtbox
+    {
+        height: 32px;
+        width: 80%;
+    }
+    .txtarea
+    {
+        width: 70%;
+        height: 100px;
+        font-family: calibri;
+    }
+    .imagesearch
+    {
+        cursor: pointer;
+    height: 24px;
+    margin-left: 0;
+    }
+    .tabcontent1
+    {
+        color: #304589;
+        font-weight: bold;
+        margin-left: 10px;
+        text-align: left;
+    }
+    .serchdivtxt
+    {
+        width: 62%;
+        margin-right: 1%;
+    }
+
+    .p-contentblack
+    {
+        color: #000;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 7px;
+        text-align: center;
+        width: 86%;
+    }
+    .imgsizesrchcls
+    {
+        width: 25px;
+        height: 25px;
+    }
+    .white_contentlist
+    {
+        background-color: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        display: none;
+        left: 10%;
+        overflow-x: hidden;
+        padding: 5px;
+        position: absolute;
+        top: 16%;
+        width: 100%;
+        z-index: 1002;
+    }
+    .innerpopup
+    {
+        background: #fff;
+        margin-left: 0px;
+        font-size: 11px !important;
+
+    }
+    .white_contentlistnew1
+    {
+        position: relative;
+        top: -600px;
+        width: 70%;
+        left: 0%;
+        border: 1px solid #ccc;
+        height:360px;
+    }
+    .p-contentlist
+    {
+        color: #304589;
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: -30px;
+        margin-left: 3px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .pdt-content
+    {
+        color: #304589;
+        float: left;
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+    }
+    .trclasspdt
+    {
+        width: 100%;
+        height: 90px;
+    }
+    .imgpdt
+    {
+     
+        height: 60px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    .tableproducts
+    {
+        margin-top: 5px;
+        width:100%; margin-left: 1%;
+    }
+    .pdtimg
+    {
+        width: 0%;
+        height: 0%;
+        font-size: 12px;
+    }
+    .white_contentdirection
+{
+    display: none;
+    position: absolute;
+    top: 10%;
+    left: 6%;
+    width: 250px;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+
+.white_content
+{
+    display: none;
+    position: absolute;
+    top: 11%;
+    left: 9%;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background-color: #fff;
+    z-index: 1002;
+    overflow-x: hidden;
+}
+.mapviewalign {
+height: 30px; margin-top: 11px; margin-left: 17px;
+}
+.cartimg {
+   cursor: pointer;
+    float: right;
+    margin-top: 2px;
+    width: 40%;
+}
+
+.widthtd
+{
+    width:85%;
+}
+.loginpopup {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    display: none;
+    left: 1%;
+    overflow-x: hidden;
+    padding: 5px;
+    position: absolute;
+    top: 25%;
+    width: 95%;
+    z-index: 1002;
+}
+.catlbl {
+    color: #304589;
+    float: left;
+    font-weight: bold;
+    margin-left: 10px;
+    width: 122px;
+}
+
+.filtertxt {
+    color: #304589;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+}
+
+    .filtertxt:hover {
+           color: #ccc;
+    cursor: pointer;
+    font-size: 16px;
+   
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 100%;
+    }
+.tablecart {
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-top: 1px;
+    width: 95%;
+        font-size:12px
+}
+.contentdiv {
+    height: 378px;
+    overflow:auto;
+}
+.sbbtn {
+    width: 50px;
+}
+    .removebtn {
+        width:56px;color: #304589;cursor:pointer
+    }
+    .imgemv {
+    float: left;
+    height: 13px;
+    margin-top: 20px;
+    vertical-align: top;
+    width: 13px;
+}
+    .arrow1 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 67px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow2 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 210px;
+    margin-top: 0;
+    width: 23px;
+}
+.arrow3 {
+       height: 11px;
+    margin-bottom: -5px;
+    margin-left: 210px;
+    margin-top: 0;
+    width: 23px;
+}
+.black_overlay{
+			display: none;
+			position: fixed;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 608px;
+			background-color: gray;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+	
+          
+		}
+.available{font-size:10px}
+.imgdescdtl {
+    height: 200px; margin-top: -35px; width: 100%;
+}
+        .tableproducts1
+{
+     border: 1px solid #ccc;
+     margin-left: 0;
+    margin-top: 0;
+    width: 318px;
+}
+        .descdtl {
+      color: #ccc;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: super;
+}
+        .itemselect1
+{
+    background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+}
+.itemselect1:hover
+{
+    background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+
+        
+}
+.pdtimgdivdisplay {
+    margin-left: -2px;
+    width: 0;
+}
+.loading-image {
+   position: absolute;
+  top: 35%;
+  left: 36%;
+  z-index: 100;
+}
+.termsconditioninnerdiv
+{
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:85%
+}
+
+
+}

@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>Search Branch</title>
+    <link href="css/jquery.mobile-1.3.1.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="css/branch.css?v=300620145PM" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.mobile-1.3.1.min.js"></script>
+    <script src="js/jquery-ui.js" type="text/javascript"></script>
+    <script src="cordova.js" type="text/javascript"></script>
+    <script src="js/WifiWizard.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+    <!-- Application Javascripts -->
+    <script src="js/encrypt/aes.js" type="text/javascript"></script>
+    <script src="js/helpers/services.js" type="text/javascript"></script>
+    <script src="js/helpers/app.js" type="text/javascript"></script>
+    <script src="js/helpers/barcode.js" type="text/javascript"></script>
+    <script src="js/logs/logstatus.js" type="text/javascript"></script>
+    <script src="js/helpers/navigation.js" type="text/javascript"></script>
+    <script src="js/branch/findbranch.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/cart/cartlisting.js"></script>
+    <script src="js/cart/submitorder.js" type="text/javascript"></script>
+    <script src="js/login/userlogin.js" type="text/javascript"></script>
+    <script src="js/myaccount/accountcrud.js" type="text/javascript"></script>
+    <script src="js/products/productcrud.js" type="text/javascript"></script>
+    <script src="js/products/productlisting.js" type="text/javascript"></script>
+    <script src="js/helpers/kitchenGeneralfunction.js" type="text/javascript"></script>
+    <!-- End of application javascripts-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            $('input').keypress(function (e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if ((code == 13) || (code == 10)) {
+                    search_branch();
+                }
+
+            });
+        });
+
+        if (GetLS("encryptedkey") == null || GetLS("encryptedkey") == "") {
+            location.href = "products.html";
+        }
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady() {
+            document.addEventListener("backbutton", function (e) {
+                var c_page = GetLS("page");
+                var result = c_page.split(",");
+                changepage(result[result.length - 1]);
+                if (result.length == 1) {
+                    //var new_page = c_page.replace(result[result.length - 1], "");
+                    //SetLS("page", new_page);
+                    SetLS("page", "index");
+                }
+                else {
+                    var new_page = c_page.replace(',' + result[result.length - 1], "");
+                    SetLS("page", new_page);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadstatedetails();
+
+            var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
+
+            dbinsert.transaction(function branchdetails(tx) {
+                tx.executeSql('DROP TABLE IF EXISTS  iteminfo');
+                tx.executeSql('DROP TABLE IF EXISTS  sectioninfo');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS branchinfo (id INTEGER PRIMARY KEY AUTOINCREMENT,BranchName VARCHAR UNIQUE,BranchCode,Latitude,Longitude,Address,PhoneNumber,Faxnumber,Managername,Email)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS sectioninfo (id INTEGER PRIMARY KEY AUTOINCREMENT,SECTION,DESCRIPTION,GROUPCOUNT)');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)');
+            }, errorCB);
+
+
+            if (GetLS("Isuserlogged") == 'yes') {
+                $(".exitbtn").show();
+            }
+            else {
+                $(".exitbtn").hide();
+            }
+        });
+
+    </script>
+    <style>
+        #loading, #loading_pdt
+        {
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            position: fixed;
+            opacity: 0.7;
+            background-color: #fff;
+            z-index: 99;
+            text-align: center;
+        }
+        
+        .ui-widget-header .ui-icon
+        {
+            background-image: url(images/ui-icons_222222_256x240.png);
+        }
+    </style>
+</head>
+<body>
+    <div style="background: #000; float: left; width: 100%; position: fixed;">
+        <div style="float: left; width: 11%">
+            <p style="margin: 0px;">
+                <img id="locationfindercart" src="images/menu.png" style="margin-top: 20px; margin-right: 10px;
+                    height: 32px; width: 32px; cursor: pointer; margin-left: 2px;">
+            </p>
+        </div>
+        <div style="text-align: center; width: 78%; float: left;">
+            <p style="margin: 0px;">
+                <img style="margin: 15px 0 0;" src="images/logo.png" alt="blackman">
+            </p>
+        </div>
+        <div style="float: right; width: 11%">
+            <p style="margin: 0px;">
+                <img class="exitbtn" src="images/exit.png" onclick="exit()" style="margin-top: 20px; margin-right: 2px; float: right; cursor: pointer; display: none;">
+            </p>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div>
+        <div class="srchdivimg">
+            <div class="searchdiv imgsizesrch" style="width: 10%; text-align: center">
+                <a onclick="manualsearch();">
+                    <img src="images/LocationArrow.png" class="imagesearch" alt="" /></a>
+            </div>
+            <div class="searchdiv serchdivtxt" style="margin-top: -7px">
+                <input type="text" id="txtsearch_branch" onfocus="popuphide();" class="txtbox1" placeholder="Type your address" />
+            </div>
+            <div class="searchdiv imgsizesrch" style="width: 10%; text-align: center; margin-left: 1%">
+                <a onclick="search_branch();">
+                    <img src="images/search3.png" class="imagesearch" alt="" /></a>
+            </div>
+            <div class="searchdiv">
+                <img id="locationfinder123" onclick="show_showrooms()" src="images/list-alt.png"
+                    class="imagesearch" alt="ShowRooms" /></div>
+        </div>
+        <div class="clear">
+        </div>
+        <div id="map_canvas" style="width: 100%; margin-top: 10px">
+        </div>
+        <div id="light" class="white_content" style="width: 250px; font-size: 13px; left: 0;
+            right: 0; margin: 0 auto;">
+        </div>
+        <div id="lightdirection" class="white_contentdirection">
+            <div style="background: none repeat scroll 0 0 #304589; height: 32px; width: 100%;
+                color: #fff">
+                <div style="width: 87%; float: left">
+                    <p class="p-content" style="text-align: center; font-weight: bold; font-size: 19px;">
+                        Directions
+                    </p>
+                </div>
+                <div style="float: right; margin-top: 1px;">
+                    <img src="images/close_square_white.png" style="height: 30px; width: 30px; cursor: pointer;
+                        border-radius: 10px" alt="Close" onclick="toggle_directionclose()" />
+                </div>
+            </div>
+            <div>
+                <div id="text_results" style="width: 100%; height: 280px; overflow: auto; font-family: calibri;
+                    font-size: 12px; float: left; margin-top: -10px;">
+                </div>
+                <div id="map_results" style="width: 100%; height: 200px; display: none; float: left;
+                    margin-top: -14px;">
+                </div>
+                <div>
+                    <a class="imgdirectionfinder" onclick="mapdirection(1);" style="cursor: pointer;">
+                        <img width="30px" src="images/car.png" class="mapviewalign" />
+                    </a><a onclick="mapdirection(2);" style="cursor: pointer;">
+                        <img width="30px" src="images/bicycle.png" style="height: 29px; margin-left: 28px;" />
+                    </a><a onclick="mapdirection(3);" style="cursor: pointer;">
+                        <img width="30px" src="images/walk.png" style="margin-left: 26px; height: 29px;" />
+                    </a><a onclick="mapdirection(4);" style="cursor: pointer;">
+                        <img width="30px" src="images/bus.png" style="margin-left: 26px;" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
