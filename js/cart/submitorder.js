@@ -70,11 +70,13 @@ function submitcart() {
     var OrderAgeCode = 2;
     var Order = "O";
     var ShipToAddressFlag = "Y";
+    var TaxableFlag = '';
     if (pricetax != 0 && pricetax != null) {
-        var TaxableFlag = "Y";
+        TaxableFlag = 'Y';
     }
-    else {
-        var TaxableFlag = "N";
+    else
+    {
+         TaxableFlag = 'N';
     }
     var salesmanid = "";
     if (GetLS('salesmanid') != "" && GetLS('salesmanid') != null) {
@@ -144,7 +146,7 @@ function submitcart() {
                 for (var i = 0; i < res.rows.length; i++) {
 
                     var ss = res.rows.item(i);
-                    var LineItemSequenceNumber = parseInt(i + 1);
+                    var LineItemSequenceNumber = parseInt(i + 1,10);
                     var OurProductNumber = ss.OurProductNumber;
                     var OurItemNumber = ss.OurItemNumber;
                     var ItemPricingUnitofMeasure = ss.ItemStockingUnitOfMeasure; //doubt
@@ -532,13 +534,12 @@ function onConfirmCancelOrder(buttonIndex)
     if (buttonIndex == 1) 
     {
         var c_page = GetLS('page');
-        var result = c_page.split(",");
+        var result = c_page.split(","), new_page;
         if (result.length == 1) {
-            var new_page = c_page.replace(result[result.length - 1], "");
+            new_page = c_page.replace(result[result.length - 1], "");
             SetLS('page', new_page);
         } else {
-            var new_page = c_page.replace('estimateshipping,' + result[result.length - 1], "");
-
+            new_page = c_page.replace('estimateshipping,' + result[result.length - 1], "");
             SetLS('page', new_page);
         }
 

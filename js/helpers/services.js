@@ -71,7 +71,7 @@ var imagepath = "https://www.blackmancommercialaccounts.com/Categories/";  //Cen
 var productimagepath = "https://www.blackmancommercialaccounts.com/productimages/"; //Product image path
 
 var TotalProductCount = 10;
-var ToNextCount = parseInt(TotalProductCount) - 1;
+var ToNextCount = parseInt(TotalProductCount,10) - 1;
 
 
 //Global Variables

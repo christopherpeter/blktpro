@@ -49,30 +49,30 @@ function accountpage_load() {
     $("#ddshippment").val(ShippingMethod);
 
     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-    showproduct.transaction(function showitemsbyid(tx) {
-
-        tx.executeSql('select CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CustomerShippingAddress1,CustomerShippingCity,CustomerShippingState,CustomerMainShippingZipCode from userinfo', [], function successitem(txx, res) {
-
-            for (var i = 0; i < res.rows.length; i++) {
+    showproduct.transaction(function showitemsbyid(tx)
+    {
+        tx.executeSql('select CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CustomerShippingAddress1,CustomerShippingCity,CustomerShippingState,CustomerMainShippingZipCode from userinfo', [], function successitem(txx, res)
+        {
+            var address1, addresscity, addressstate, addresszip, CustomerTelephoneAreaCode, CustomerTelephonePrefixNumber, CustomerTelephoneSuffixNumber;
+            for (var i = 0; i < res.rows.length; i++)
+            {
                 var ss = res.rows.item(i);
-                var address1 = ss.CustomerShippingAddress1;
-                var addresscity = ss.CustomerShippingCity;
-                var addressstate = ss.CustomerShippingState;
-                var addresszip = ss.CustomerMainShippingZipCode;
-                var CustomerTelephoneAreaCode = ss.CustomerTelephoneAreaCode;
-                var CustomerTelephonePrefixNumber = ss.CustomerTelephonePrefixNumber;
-                var CustomerTelephoneSuffixNumber = ss.CustomerTelephoneSuffixNumber;
-
-                $("#txtaddress").val(address1);
-                $("#txtcity").val(addresscity);
-                $("#txtstate").val(addressstate);
-                $("#txtpincode").val(addresszip);
-                $("#txtphonenumber").val(CustomerTelephoneAreaCode + '-' + CustomerTelephonePrefixNumber + '-' + CustomerTelephoneSuffixNumber);
-
-                $("#div_address1").html(address1);
-                $("#div_address2").html(addresscity + "," + addressstate + "-" + addresszip);
-
+                address1 = ss.CustomerShippingAddress1;
+                addresscity = ss.CustomerShippingCity;
+                addressstate = ss.CustomerShippingState;
+                addresszip = ss.CustomerMainShippingZipCode;
+                CustomerTelephoneAreaCode = ss.CustomerTelephoneAreaCode;
+                CustomerTelephonePrefixNumber = ss.CustomerTelephonePrefixNumber;
+                CustomerTelephoneSuffixNumber = ss.CustomerTelephoneSuffixNumber;
             }
+
+            $("#txtaddress").val(address1);
+            $("#txtcity").val(addresscity);
+            $("#txtstate").val(addressstate);
+            $("#txtpincode").val(addresszip);
+            $("#txtphonenumber").val(CustomerTelephoneAreaCode + '-' + CustomerTelephonePrefixNumber + '-' + CustomerTelephoneSuffixNumber);
+            $("#div_address1").html(address1);
+            $("#div_address2").html(addresscity + "," + addressstate + "-" + addresszip);
         });
 
 

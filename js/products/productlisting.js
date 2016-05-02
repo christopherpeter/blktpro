@@ -67,12 +67,12 @@ function backpage() {
 function backpage1() {
     
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","), new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
 
@@ -94,12 +94,12 @@ function terms_condition() {
 }
 function terms_conditioncls() {
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","), new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
 
@@ -321,12 +321,12 @@ function pdtdesc(itemid) {
 
 function loginclose() {
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","), new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
 
@@ -508,12 +508,12 @@ function filterlight() {
 function backcategory() {
 
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","), new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
 
@@ -602,16 +602,16 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode)
     myFuncCalls = 0;
     var filterbackbutton = GetLS('filterbackbutton');
     $("#txtpdtsrch").val("");
+    var c_page = GetLS('page');
+    var result = c_page.split(",");
     if (filterbackbutton == 'filter') {
-        var c_page = GetLS('page');
-        var result = c_page.split(",");
+       
         if (result[result.length - 1] !== 'filterselection') {
             SetLS('page', c_page + ",filterselection");
         }
     }
     else {
-        var c_page = GetLS('page');
-        var result = c_page.split(",");
+
         if (result[result.length - 1] != "filterresult") {
             SetLS('page', c_page + ",filterresult");
         }
@@ -1066,9 +1066,10 @@ function loadmoreproducts() {
     else {
         AccessTokenKey = GetLS('AccessTokenKey');
     }
-
+    var product_count, from_count, to_count;
     var showmoreproducts = GetLS('showmoreproducts');
-    if (showmoreproducts == 'filter') {
+    if (showmoreproducts == 'filter')
+    {
 
         $("#loading_pdt").show();
         $.mobile.loading("show", {
@@ -1083,21 +1084,21 @@ function loadmoreproducts() {
         var branch_code = GetLS('default_branchcode');
         var sectioncode = GetLS('F_Sectioncode');
         var GroupCode = GetLS('F_Groupcode');
-        var CategoryCode = GetLS('F_Categorycode');
+        var CategoryCode = GetLS('F_Categorycode'), sectioncode1, GroupCode1, CategoryCode1;
 
         if (sectioncode != null && sectioncode != "" && sectioncode != 'null') {
-            var sectioncode1 = sectioncode;
-            var GroupCode1 = GroupCode;
-            var CategoryCode1 = CategoryCode;
+            sectioncode1 = sectioncode;
+            GroupCode1 = GroupCode;
+            CategoryCode1 = CategoryCode;
         }
         else {
-            var sectioncode1 = GetLS('SEC_CODE'); ;
-            var GroupCode1 = "";
-            var CategoryCode1 = "";
+            sectioncode1 = GetLS('SEC_CODE'); ;
+            GroupCode1 = "";
+            CategoryCode1 = "";
         }
-        var product_count = GetLS('product_count');
-        var from_count = parseInt(product_count) + 1;
-        var to_count = parseInt(from_count) + ToNextCount;
+        product_count = GetLS('product_count');
+        from_count = parseInt(product_count,10) + 1;
+        to_count = parseInt(from_count,10) + ToNextCount;
 
         var sectionname1 = GetLS('F_HSCODE');
         var sectname = "";
@@ -1171,12 +1172,13 @@ function loadmoreproducts() {
     }
     else if (showmoreproducts == 'filterproducts')
     {
-        var product_count = GetLS('product_count');
-        var FromCount = parseInt(product_count) + 1;
-        var ToCount = parseInt(product_count) + TotalProductCount;
+        product_count = GetLS('product_count');
+        FromCount = parseInt(product_count,10) + 1;
+        ToCount = parseInt(product_count,10) + TotalProductCount;
         GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCount)
     }
-    else {
+    else
+    {
         
         $("#loading_pdt").show();
         $.mobile.loading("show", {
@@ -1188,9 +1190,9 @@ function loadmoreproducts() {
 
         });
 
-        var product_count = GetLS('product_count');
-        var from_count = parseInt(product_count) + 1;
-        var to_count = parseInt(from_count) + ToNextCount;
+        product_count = GetLS('product_count');
+        from_count = parseInt(product_count,10) + 1;
+        to_count = parseInt(from_count,10) + ToNextCount;
         var branch_id = GetLS('default_branchcode');
         var searchtext = $("#txtpdtsrch").val().trim();
 
@@ -1283,8 +1285,8 @@ function loadmoreproducts() {
 function loadmoreprodutsbyusingsecondservice() {
     GlobalItemsList.length = 0;
     var product_count = GetLS('product_count');
-    var from_count = parseInt(product_count) + 1;
-    var to_count = parseInt(from_count) + ToNextCount;
+    var from_count = parseInt(product_count,10) + 1;
+    var to_count = parseInt(from_count,10) + ToNextCount;
     var branch_id = GetLS('default_branchcode');
 
     var searchtext = $("#txtpdtsrch").val().trim();
@@ -1456,31 +1458,33 @@ function addtocart(page, ItemNumber, textboxid) {
     carinsert.transaction(function carinsertdetails(tx) {
 
         tx.executeSql('CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)');
-        tx.executeSql('select OurItemNumber from cartitems where OurItemNumber=?', [ItemNumber], function successitem(txx, results) {
-
-
-            if (results.rows.length == 0) {
-
-                if (quantity == "" || quantity == null || parseInt(quantity) <= 0) {
+        tx.executeSql('select OurItemNumber from cartitems where OurItemNumber=?', [ItemNumber], function successitem(txx, results)
+        {
+            if (results.rows.length == 0)
+            {
+                if (quantity == "" || quantity == null || parseInt(quantity, 10) <= 0)
+                {
                     navigator.notification.alert('Enter valid quantity!', null, 'Alert', 'OK');
                       $("#" + textboxid).focus();
                     return false;
                 }
-                else if (isNaN(quantity) == true) {
+                else if (isNaN(quantity) == true)
+                {
                     navigator.notification.alert('Enter only numeric values!', null, 'Alert', 'OK');
                       $("#" + textboxid).focus();
                     return false;
                 }
-                else if (parseInt(quantity) > parseInt(aval)) {
+                else if (parseInt(quantity, 10) > parseInt(aval, 10))
+                {
                     navigator.notification.alert('The quantity entered is not available currently.\nTotal quantity available in stock is ' + quantity123[1] + '.', null, 'Alert', 'OK');
                       $("#" + textboxid).focus();
                     return false;
                 }
-                else {
-
+                else
+                {
                     $("#loading_pdt").show();
-
-                    $.mobile.loading("show", {
+                    $.mobile.loading("show",
+                    {
                         text: "Please Wait...",
                         textVisible: true,
                         theme: "a",
@@ -1489,10 +1493,10 @@ function addtocart(page, ItemNumber, textboxid) {
 
                     });
 
-                    tx.executeSql('select * from iteminfo where OurItemNumber=? LIMIT 1', [ItemNumber], function successitem(txx, res) {
-
-                        for (var i = 0; i < res.rows.length; i++) {
-
+                    tx.executeSql('select * from iteminfo where OurItemNumber=? LIMIT 1', [ItemNumber], function successitem(txx, res)
+                    {
+                        for (var i = 0; i < res.rows.length; i++)
+                        {
                             var ss = res.rows.item(i);
                             var OurItemNumber = ss.OurItemNumber;
                             var OurProductNumber = ss.OurProductNumber;
@@ -1508,7 +1512,8 @@ function addtocart(page, ItemNumber, textboxid) {
                             var ReplacementCostUnitPriceCompany = "";
                             var totalweight = parseFloat(InventoryItemWeight) * quantity;
 
-                            if (RepairReplacementCoverage == 0) {
+                            if (RepairReplacementCoverage == 0)
+                            {
                                 ReplacementCostUnitPriceCompany = 0;
                             }
 
@@ -1523,10 +1528,9 @@ function addtocart(page, ItemNumber, textboxid) {
                     });
                 }
             }
-            else {
+            else
+            {
                 navigator.notification.alert('Item already added to cart', null, 'Cart', 'OK');
-
-             
             }
         });
     }, errorCB);
@@ -1658,7 +1662,7 @@ function inventoryaddtocart(ItemNumber) {
             tx.executeSql(query2, [], function successitem(txx, results) {
                 if (results.rows.length == 0) {
 
-                    if (quantity == "" || quantity == null || parseInt(quantity) <= 0) {
+                    if (quantity == "" || quantity == null || parseInt(quantity,10) <= 0) {
                         navigator.notification.alert('Enter valid quantity!', null, 'Alert', 'OK');
                          $("#txtinventory").focus();
                         return false;
@@ -1668,7 +1672,7 @@ function inventoryaddtocart(ItemNumber) {
                          $("#txtinventory").focus();
                         return false;
                     }
-                    else if (parseInt(quantity) > parseInt(aval)) {
+                    else if (parseInt(quantity,10) > parseInt(aval,10)) {
                         navigator.notification.alert('The quantity entered is not available currently.\nTotal quantity available in stock is ' + aval + '.', null, 'Alert', 'OK');
                          $("#txtinventory").focus();
                         return false;
@@ -1854,12 +1858,12 @@ function checkinventoryfuncls()
 {
     
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","), new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
    
@@ -2179,12 +2183,12 @@ function pdoductpagereload() {
     $(".cleardivivfilter").hide();
 
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","), new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
    // $(".pdtimgkitchendivdisplay1").css('margin-top', '0px');

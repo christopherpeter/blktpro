@@ -10,12 +10,13 @@ function onbodyload()
 {
     var encryptedKey = GetLS('encryptedkey');
 
-    if (encryptedKey == null) {
-        setencryptedkey();
+    if(encryptedKey === null)
+    {
+       setencryptedkey();
     }
     else 
     {
-        loadallbranches_tolocalDB(); // function to save all the branches details to localDB
+       loadallbranches_tolocalDB(); // function to save all the branches details to localDB
     }
    
 }
@@ -74,7 +75,7 @@ function loadallbranches_tolocalDB()
                     var Faxnumber = '', ManagerName = '', Email='';
 
 
-                    if (BranchCode == defaultbranchcode) 
+                    if (BranchCode === defaultbranchcode) 
                     {
                         var defaultBranchCode = GetLS('default_branchcode');
                         if (defaultBranchCode === "" || defaultBranchCode === null)
@@ -287,7 +288,7 @@ function search_branch()
             SetLS('Source_lat', lat1);
             SetLS('Source_lon', lon1);
 
-            for (i = 0; i < locations.length; i++) {
+            for (var i = 0; i < locations.length; i++) {
                 var lat2 = locations[i][1];
                 var lon2 = locations[i][2];
 
@@ -302,8 +303,8 @@ function search_branch()
                 dist = Math.acos(dist);
                 dist = dist * 180 / Math.PI;
                 dist = dist * 60 * 1.1515;
-                if (unit == "K") { dist = dist * 1.609344 }
-                if (unit == "N") { dist = dist * 0.8684 }
+                if (unit === "K") { dist = dist * 1.609344 }
+                if (unit === "N") { dist = dist * 0.8684 }
 
                 var distance_in_KM = (dist / 1.6).toFixed(2);
                 if (distance_in_KM <= 20) {
@@ -455,7 +456,7 @@ function loadmap1(load)
     });
     for (i = 0; i < changedValues.length; i++) {
 
-        if (i == 0) {
+        if (i === 0) {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(changedValues[i][1], changedValues[i][2]),
                 map: map,
@@ -952,12 +953,12 @@ function toggle_visibilityclose()
 {
     $("body").addClass('globalbodyclass');
     var c_page = GetLS('page');
-    var result = c_page.split(",");
-    if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+    var result = c_page.split(","), new_page;
+    if (result.length === 1) {
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
 
@@ -974,13 +975,13 @@ function mapdirection(mode) {
 window.onresize = function () 
 {
 
-    if (GetLS('Default') == 3) {
+    if (GetLS('Default') === 3) {
         mapinitialize();
     }
-    else if (GetLS('Default') == 1) {
+    else if (GetLS('Default') === 1) {
         search_mapinitialize(2);
     }
-    else if (GetLS('Default') == 2) {
+    else if (GetLS('Default') === 2) {
         search_mapinitialize(1);
     }
 };
@@ -998,11 +999,11 @@ function getdirections(g, maptype, load)
 
     var Source_lat;
     var Source_lon;
-    if (load == 1) {
+    if (load === 1) {
         Source_lat = GetLS('Source_lat');
         Source_lon = GetLS('Source_lon');
     }
-    else if (load == 2) {
+    else if (load === 2) {
 
         if (GetLS('GPS_lat') != null) {
             Source_lat = GetLS('GPS_lat');
@@ -1067,7 +1068,7 @@ function getdirections(g, maptype, load)
     };
 
     directionsService.route(request, function (response, status) {
-        if (status == google.maps.DirectionsStatus.OK) 
+        if (status === google.maps.DirectionsStatus.OK) 
         {
            directionsDisplay.setDirections(response);
         }
@@ -1092,6 +1093,7 @@ function loadGPS_locations()
     SetLS('Showroom', 'none');  //old branch place
     changedValues.length = 0;
 
+    var lat1, lon1;
 
     if (GetLS('GPS_lat') != null) {
         lat1 = GetLS('GPS_lat');
@@ -1120,8 +1122,8 @@ function loadGPS_locations()
         dist = Math.acos(dist);
         dist = dist * 180 / Math.PI;
         dist = dist * 60 * 1.1515;
-        if (unit == "K") { dist = dist * 1.609344 }
-        if (unit == "N") { dist = dist * 0.8684 }
+        if (unit === "K") { dist = dist * 1.609344 }
+        if (unit === "N") { dist = dist * 0.8684 }
 
         var distance_in_KM = (dist / 1.6).toFixed(2);
         if (distance_in_KM <= 20) {

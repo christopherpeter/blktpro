@@ -189,17 +189,3 @@ function changepage(page) {
 
     }
 }
-
-
-function TestBack() {
-    var c_page = GetLS('page');
-    var result = c_page.split(",");
-    changepage(result[result.length - 1]);
-    if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS('page', new_page);
-    } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS('page', new_page);
-    }
-}

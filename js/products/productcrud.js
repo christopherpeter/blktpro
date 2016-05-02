@@ -153,7 +153,7 @@ function CheckAspectRatio(imageid) {
     var imgheight = image.height;
     var divwidth = $(".mainpagepdt").width();
     var divheight = $(".mainpagepdt").height();
-
+    var Width, Height;
     Width = divwidth; //retrieve current window width
     if (imgheight > divheight) {
         Height = divheight; //retrieve current window height
@@ -164,19 +164,19 @@ function CheckAspectRatio(imageid) {
     var widthRatio = parseFloat(imgwidth / Width).toFixed(2);
     var heightRatio = parseFloat(imgheight / Height).toFixed(2);
     var ratio = Math.max(widthRatio, heightRatio);
-    var newWidth = parseInt(imgwidth / ratio);
-    var newHeight = parseInt(imgheight / ratio);
+    var newWidth = parseInt(imgwidth / ratio,10);
+    var newHeight = parseInt(imgheight / ratio,10);
 
     if (imgheight > divheight) {
-        $("#" + imageid).css("margin-top", parseInt((Height - newHeight) / 2) + "px");
-        $("#" + imageid).css("margin-left", parseInt((Width - newWidth) / 2) + "px");
+        $("#" + imageid).css("margin-top", parseInt((Height - newHeight) / 2,10) + "px");
+        $("#" + imageid).css("margin-left", parseInt((Width - newWidth) / 2,10) + "px");
     }
     else {
-        $("#" + imageid).css("margin-top", parseInt((divheight - newHeight) / 2) + "px");
+        $("#" + imageid).css("margin-top", parseInt((divheight - newHeight) / 2,10) + "px");
     }
 
-    $("#" + imageid).css("width", parseInt(newWidth) + "px");
-    $("#" + imageid).css("height", parseInt(newHeight - 2) + "px");
+    $("#" + imageid).css("width", parseInt(newWidth,10) + "px");
+    $("#" + imageid).css("height", parseInt(newHeight - 2,10) + "px");
 
 }
 
@@ -433,8 +433,8 @@ function loadsectionimages() {
 function product_next() {
 
     var count = GetLS('images_oldcount');
-    var from = parseInt(count) + 1;
-    var to = parseInt(count) + totalgridlength;
+    var from = parseInt(count,10) + 1;
+    var to = parseInt(count,10) + totalgridlength;
     var where = from + ' and ' + to;
 
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
@@ -517,8 +517,8 @@ function product_next() {
 
 function product_previous() {
     var count = GetLS('images_oldcount');
-    var from = parseInt(count) - totalgridlength - (totalgridlength - 1);
-    var to = parseInt(count) - totalgridlength;
+    var from = parseInt(count,10) - totalgridlength - (totalgridlength - 1);
+    var to = parseInt(count,10) - totalgridlength;
     var where = from + ' and ' + to;
 
     if (to > 0) {
@@ -899,12 +899,9 @@ function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
 
     });
 
-    StartIndex = 1;
-    EndIndex = 500;
     $.ajax({
         type: "GET",
-        crossDomain: true,
-       // url: newproductlistpage1 + "?StartIndex=" + StartIndex + "&EndIndex=" + EndIndex + "&SecName=" + description + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib,
+        crossDomain: true,      
         url: NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + Sectioncode + "&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
@@ -1022,12 +1019,12 @@ function pdtimgkitchendivdisplaynew1back() {
     $("#default_div").show();
 
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","), new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
 
@@ -1169,12 +1166,12 @@ function pdtimgkitchendivdisplaynew2back() {
     $(".breadcrumstylefilter").hide();
     $("#default_div").show();
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","), new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
 }
@@ -1200,7 +1197,6 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
     });
-    DESCRIPTIONlast = DESCRIPTIONlast.replace(/_/g, " ");
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -1282,8 +1278,6 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     $("#list3products").show();
     $("#backbuttongrid").hide();
     $(".breadcrumstyle").show();
-   
-
 }
 function pdtimgkitchendivdisplaynew3back() {
     $("#prdtsectionimges").hide();
@@ -1298,12 +1292,12 @@ function pdtimgkitchendivdisplaynew3back() {
     $(".breadcrumstyle").show();
     $(".breadcrumstylefilter").hide();
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","), new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
 }

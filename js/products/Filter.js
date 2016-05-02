@@ -48,11 +48,17 @@ function filterselection1() {
 
         if (showMoreProducts === 'filter' || showMoreProducts === 'filterproducts')
         {
-            ServiceURL = FilterOptionsURL + "sectionId=" + GetLS('F_Sectioncode') + "&HEADSECID=&groupId=" + GetLS('F_Groupcode') + "&categoryId=" + GetLS('F_Categorycode') + "&splib=" + splib + "&tablelib=" + tablelib;
+            var fSectionCode = GetLS('F_Sectioncode');
+            var fGroupCode = GetLS('F_Groupcode');
+            var fCategoryCode = GetLS('F_Categorycode');
+
+            ServiceURL = FilterOptionsURL + 'sectionId=' + fSectionCode + '&HEADSECID=&groupId=' + fGroupCode + '&categoryId=' + fCategoryCode + '&splib=' + splib + '&tablelib=' + tablelib;
         }
         else
         {
-            ServiceURL = NewFilterAttributesURL + "SEARCHTYPE=" + GetLS('SearchType') + "&SEARCHTXT=" + GetLS('LS_SearchText').toUpperCase() + "&BRANCHCODE=" + branch_id + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib;
+            var searchType = GetLS('SearchType');
+            var searchText = GetLS('LS_SearchText');
+            ServiceURL = NewFilterAttributesURL + 'SEARCHTYPE=' + searchType + '&SEARCHTXT=' + searchText.toUpperCase() + '&BRANCHCODE=' + branch_id + '&deviceencryptedkey=' + encryptedkey + '&splib=' + splib + '&tablelib=' + tablelib;
         }
 
         $.ajax({
@@ -87,21 +93,21 @@ function filterselection1() {
 
 
                 var output = '';
-                if (list.length > 0) {
-
-                    $.each(list, function (i, item) {
-
+                if (list.length > 0)
+                {
+                    $.each(list, function (i, item)
+                    {
                         var AttributeNames = item.AttributeNames.split(",");
                         if (AttributeNames.length - 1 > 0) {
-                            for (var i = 0; i <= AttributeNames.length - 1; i++) {
-                                GlobalFilterArray.push(AttributeNames[i]);
+                            for (var m = 0; m <= AttributeNames.length - 1; m++) {
+                                GlobalFilterArray.push(AttributeNames[m]);
                                 output = output + '<div>';
-                                output = output + "<div onclick=\"Filterdiv('" + AttributeNames[i] + "')\" id='Filterhead_" + AttributeNames[i].replace(/ /g, "").replace(/\//g, "_") + "' class='odd'>";
+                                output = output + "<div onclick=\"Filterdiv('" + AttributeNames[m] + "')\" id='Filterhead_" + AttributeNames[m].replace(/ /g, "").replace(/\//g, "_") + "' class='odd'>";
                                 output = output + '<div style="margin: 8px 10px 10px 10px;font-size: 13px;">';
                                 output = output + '<img src="css/images/filterplus.png" style="float: left; width: 25px" />';
-                                output = output + AttributeNames[i] + '</div>';
+                                output = output + AttributeNames[m] + '</div>';
                                 output = output + '</div>';
-                                output = output + '<div id="filterdiv_' + AttributeNames[i].replace(/ /g, "").replace(/\//g, "_") + '" style="display: none; overflow-y: scroll;">';
+                                output = output + '<div id="filterdiv_' + AttributeNames[m].replace(/ /g, "").replace(/\//g, "_") + '" style="display: none; overflow-y: scroll;">';
                                 output = output + '</div>';
                                 output = output + '</div>';
                             }
@@ -280,12 +286,12 @@ function filterbackbtn() {
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
     var c_page = GetLS('page');
-    var result = c_page.split(",");
+    var result = c_page.split(","),new_page;
     if (result.length == 1) {
-        var new_page = c_page.replace(result[result.length - 1], "");
+        new_page = c_page.replace(result[result.length - 1], "");
         SetLS('page', new_page);
     } else {
-        var new_page = c_page.replace(',' + result[result.length - 1], "");
+        new_page = c_page.replace(',' + result[result.length - 1], "");
         SetLS('page', new_page);
     }
     var valuefilter = GetLS('showmoreproducts');
