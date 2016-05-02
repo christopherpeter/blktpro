@@ -33,13 +33,13 @@ else {
 
 $(document).ready(function ()
 {
-    SetLS("viewimg", "no");   //added on 1/12/2014
+    SetLS('viewimg', 'no');   //added on 1/12/2014
     $("#viewoff").click(function ()
     {
         var message = "View Image turned ON";
         writetologfile(message, 3);
         $('#viewoff').show();
-        SetLS("viewimg", "no");
+        SetLS('viewimg', 'no');
         if ($(".pdtimgkitchendivdisplay1").css('display') != "none") {
             loadsectionproductscontents("Yes");
 
@@ -66,14 +66,14 @@ function backpage() {
 }
 function backpage1() {
     
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
 
     $('#pdt').show();
@@ -83,24 +83,24 @@ function backpage1() {
     ProductOverview();
 }
 function terms_condition() {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "terms") {
-        SetLS("page", c_page + ",terms");
+        SetLS('page', c_page + ",terms");
     }
 
     $('.terms_condition').show();
     $('#fade').show();
 }
 function terms_conditioncls() {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
 
     $('.terms_condition').hide();
@@ -288,12 +288,12 @@ function pdtdesc(itemid) {
 
                        
 
-                        SetLS("pItemOrProductDescription", ItemOrProductDescription);
-                        SetLS("pOurProductNumber", OurProductNumber);
-                        SetLS("pOurItemNumber", OurItemNumber);
-                        SetLS("pInventoryItemWeight", InventoryItemWeight);
-                        SetLS("pItemVendorManufacturerIDNumber", ItemVendorManufacturerIDNumber);
-                        SetLS("pBrand", Brand);
+                        SetLS('pItemOrProductDescription', ItemOrProductDescription);
+                        SetLS('pOurProductNumber', OurProductNumber);
+                        SetLS('pOurItemNumber', OurItemNumber);
+                        SetLS('pInventoryItemWeight', InventoryItemWeight);
+                        SetLS('pItemVendorManufacturerIDNumber', ItemVendorManufacturerIDNumber);
+                        SetLS('pBrand', Brand);
 
                         $("#prdtdesc").html(html);
                         $("#productdesc").show();
@@ -320,14 +320,14 @@ function pdtdesc(itemid) {
 }
 
 function loginclose() {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
 
     document.getElementById('loginpopup').style.display = 'none';
@@ -345,19 +345,19 @@ function product_pageload()
     }
     else {
         
-        product_pageload_2(); // function to save all the branches details to localDB
+        productPageLoad2(); // function to save all the branches details to localDB
     }
 }
 
-function product_pageload_2()
+function productPageLoad2()
 {
-    if (GetLS("default_branchcode") == "" || GetLS("default_branchcode") == null)
+    var defaultBranchCode = GetLS('default_branchcode');
+    if (defaultBranchCode === "" || defaultBranchCode === null)
     {
-
-        SetLS("default_branchcode", defaultbranchcode);
-        SetLS("default_branchname", defaultbranchname);
-        SetLS("default_branchcode1", defaultbranchcode);
-        SetLS("default_branchname1", defaultbranchname);
+        SetLS('default_branchcode', defaultbranchcode);
+        SetLS('default_branchname', defaultbranchname);
+        SetLS('default_branchcode1', defaultbranchcode);
+        SetLS('default_branchname1', defaultbranchname);
     }
 
     $("#loading_pdt").show();
@@ -423,10 +423,10 @@ function handleChange(input) {
 }
 
 function loginpopup() {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "loginpopup") {
-        SetLS("page", c_page + ",loginpopup");
+    if (result[result.length - 1] !== 'loginpopup') {
+        SetLS('page', c_page + ",loginpopup");
     }
     $("#fade").show();
     $("#loginpopup").show();
@@ -469,10 +469,10 @@ function filter() {
     $("#img_next").hide();
     SetLS('secname', null);
 
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "filter") {
-        SetLS("page", c_page + ",filter");
+    if (result[result.length - 1] !== 'filter') {
+        SetLS('page', c_page + ",filter");
     }
 }
 function filterout() {
@@ -507,14 +507,14 @@ function filterlight() {
 
 function backcategory() {
 
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
 
     $(".pdtimgdivdisplay").show();
@@ -553,19 +553,19 @@ $(function () {
 function checkinventory(branch_id) {
 
     if (isuserlogged == 'yes') {
-        var getbranchname = GetLS('default_branchname2');
-        var getbranchcode = GetLS('default_branchcode2');
+        var getBranchName = GetLS('default_branchname2');
+        var getBranchCode = GetLS('default_branchcode2');
 
-        SetLS('default_branchcode', getbranchcode);
-        SetLS("Current_branch", getbranchcode);
-        SetLS('default_branchname', GetLS('default_branchname2'));
-        writetologfile("Checked inventory-Branch Name: " + getbranchname, 1);
+        SetLS('default_branchcode', getBranchCode);
+        SetLS('Current_branch', getBranchCode);
+        SetLS('default_branchname', getBranchName);
+        writetologfile("Checked inventory-Branch Name: " + getBranchName, 1);
     }
     else {
-        var c_page = GetLS("page");
+        var c_page = GetLS('page');
         var result = c_page.split(",");
-        if (result[result.length - 1] != "newlogin") {
-            SetLS("page", c_page + ",newlogin");
+        if (result[result.length - 1] != 'newlogin') {
+            SetLS('page', c_page + ",newlogin");
         }
 
         $("#loading_pdt").hide();
@@ -579,9 +579,9 @@ function checkinventory(branch_id) {
 // This Function is used to get the products based on section,gropucode and category code and load the contents to table iteminfo
 
 function pdtimgkitchendivdisplay(sec, group, cate, id) {
-    SetLS("breadlast", id.replace(/_/g, " "));
+    SetLS('breadlast', id.replace(/_/g, " "));
     $("#descriptioncat").html(id.replace(/_/g, " "));
-    SetLS("IsNewFilterAttributes", "Yes");
+    SetLS('IsNewFilterAttributes', 'Yes');
     pdtimgkitchendivdisplay1(sec, group, cate);
 }
 
@@ -593,27 +593,27 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode)
     var from_count = 1;
     var to_count = TotalProductCount;
 
-    SetLS("F_Sectioncode", sectioncode);
-    SetLS("F_Groupcode", groupcode);
-    SetLS("F_Categorycode", categorycode);
+    SetLS('F_Sectioncode', sectioncode);
+    SetLS('F_Groupcode', groupcode);
+    SetLS('F_Categorycode', categorycode);
 
     localStorage.removeItem('breadcrumb');
-    SetLS("currentview", GetLS("viewimg"));
+    SetLS('currentview', GetLS('viewimg'));
     myFuncCalls = 0;
     var filterbackbutton = GetLS('filterbackbutton');
     $("#txtpdtsrch").val("");
     if (filterbackbutton == 'filter') {
-        var c_page = GetLS("page");
+        var c_page = GetLS('page');
         var result = c_page.split(",");
-        if (result[result.length - 1] != "filterselection") {
-            SetLS("page", c_page + ",filterselection");
+        if (result[result.length - 1] !== 'filterselection') {
+            SetLS('page', c_page + ",filterselection");
         }
     }
     else {
-        var c_page = GetLS("page");
+        var c_page = GetLS('page');
         var result = c_page.split(",");
         if (result[result.length - 1] != "filterresult") {
-            SetLS("page", c_page + ",filterresult");
+            SetLS('page', c_page + ",filterresult");
         }
     }
   
@@ -710,8 +710,8 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode)
 
                     });
                 }
-                SetLS("product_count", to_count);
-                loadsectionproductscontents("Yes");
+                SetLS('product_count', to_count);
+                loadsectionproductscontents('Yes');
 
             }, errorCB);
         }, error: function (data, errorThrown) {
@@ -765,10 +765,10 @@ function loadsectionproductscontents(FirstLoad)
     $("#search").hide();
     myFuncCalls = 0;
 
-    var view = GetLS("viewimg");
+    var view = GetLS('viewimg');
     var limit = GetLS('product_count');
 
-    if (GetLS("breadcrumb") == "search") 
+    if (GetLS('breadcrumb') === 'search') 
     {
         var searchtext = $("#txtpdtsrch").val().trim();
         if (searchtext == "" || searchtext == null) {
@@ -787,7 +787,7 @@ function loadsectionproductscontents(FirstLoad)
     showitems.transaction(function showitemsbybranch(tx) {
         var html = '';
 
-        if (GetLS("Isuserlogged") == 'yes') {
+        if (GetLS('Isuserlogged') === 'yes') {
             html = html + '<table  id="filternavigation" style="width:100%;background:#304589;text-align:center;color:#fff;height: 36px" > <tr><td style="text-decoration:underline;" onclick="filterselection1()"><img src="images/filte.png" style="width: 20px; height: 20px; margin-bottom: -3px;margin-left:4px;margin-top:4px;float:left" /><label  class="signinbtn1" style="float: left; font-size: 12px; margin-top: 7px">FILTERS</label></td></tr></table>';
         }
         else {
@@ -1095,7 +1095,7 @@ function loadmoreproducts() {
             var GroupCode1 = "";
             var CategoryCode1 = "";
         }
-        var product_count = GetLS("product_count");
+        var product_count = GetLS('product_count');
         var from_count = parseInt(product_count) + 1;
         var to_count = parseInt(from_count) + ToNextCount;
 
@@ -1159,8 +1159,8 @@ function loadmoreproducts() {
                             tx.executeSql(qry, [OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, ItemUnitPriceAmount, BRANCH, STOCK]);
                         });
                     }
-                    SetLS("product_count", to_count);
-                    loadsectionproductscontents("Yes");
+                    SetLS('product_count', to_count);
+                    loadsectionproductscontents('Yes');
                 }, errorCB);
             }, error: function (data, errorThrown) {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -1171,7 +1171,7 @@ function loadmoreproducts() {
     }
     else if (showmoreproducts == 'filterproducts')
     {
-        var product_count = GetLS("product_count");
+        var product_count = GetLS('product_count');
         var FromCount = parseInt(product_count) + 1;
         var ToCount = parseInt(product_count) + TotalProductCount;
         GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCount)
@@ -1188,7 +1188,7 @@ function loadmoreproducts() {
 
         });
 
-        var product_count = GetLS("product_count");
+        var product_count = GetLS('product_count');
         var from_count = parseInt(product_count) + 1;
         var to_count = parseInt(from_count) + ToNextCount;
         var branch_id = GetLS('default_branchcode');
@@ -1261,8 +1261,8 @@ function loadmoreproducts() {
   
 
                         });
-                        SetLS("product_count", to_count);
-                        loadsectionproductscontents("Yes");
+                        SetLS('product_count', to_count);
+                        loadsectionproductscontents('Yes');
                     }
                     else {
                         loadmoreprodutsbyusingsecondservice();
@@ -1282,7 +1282,7 @@ function loadmoreproducts() {
 
 function loadmoreprodutsbyusingsecondservice() {
     GlobalItemsList.length = 0;
-    var product_count = GetLS("product_count");
+    var product_count = GetLS('product_count');
     var from_count = parseInt(product_count) + 1;
     var to_count = parseInt(from_count) + ToNextCount;
     var branch_id = GetLS('default_branchcode');
@@ -1353,8 +1353,8 @@ function loadmoreprodutsbyusingsecondservice() {
                     });
                 }
 
-                SetLS("product_count", to_count);
-                loadsectionproductscontents("Yes");
+                SetLS('product_count', to_count);
+                loadsectionproductscontents('Yes');
 
             }, errorCB);
         }, error: function (data, errorThrown) {
@@ -1378,10 +1378,10 @@ function errorCB() {
 // Product details page function
 
 function storetolocal(id) {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "productlist") {
-        SetLS("page", c_page + ",productlist");
+    if (result[result.length - 1] !== 'productlist') {
+        SetLS('page', c_page + ",productlist");
     }
 
     // window.location.href = "productdesc.html";
@@ -1391,7 +1391,7 @@ function storetolocal(id) {
     pdtdesc(id);
     $("#pdt").hide();
     var isuserlogged = GetLS('Isuserlogged');
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === 'yes') {
         $("#show_addcart").show();
         $("#show_price").show();
         $("#show_qty").show();
@@ -1750,10 +1750,10 @@ function checkinventoryfun(ItemNumber) {
     $('#checkinventory1').css('margin-top', screenTop);
     $("#checkinventory").html("<div style='Text-align:center;margin-top:50px;color:#304589;font-family:calibri'><p><b>Please Wait</b></p></div>");
 
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "checkinventory") {
-        SetLS("page", c_page + ",checkinventory");
+        SetLS('page', c_page + ",checkinventory");
     }
 
 
@@ -1853,14 +1853,14 @@ function keypressInventory(e)
 function checkinventoryfuncls() 
 {
     
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
    
    
@@ -2051,12 +2051,12 @@ function Specification(itemno) {
                         //attributesvalue.push(attributesvalue32);
 
                         var regex = /[a-zA-Z]/;
-                        var ItemOrProductDescription = GetLS("pItemOrProductDescription");
-                        var OurProductNumber = GetLS("pOurProductNumber");
-                        var OurItemNumber = GetLS("pOurItemNumber");
-                        var InventoryItemWeight = GetLS("pInventoryItemWeight");
-                        var ItemVendorManufacturerIDNumber = GetLS("pItemVendorManufacturerIDNumber");
-                        var Brand = GetLS("pBrand");
+                        var ItemOrProductDescription = GetLS('pItemOrProductDescription');
+                        var OurProductNumber = GetLS('pOurProductNumber');
+                        var OurItemNumber = GetLS('pOurItemNumber');
+                        var InventoryItemWeight = GetLS('pInventoryItemWeight');
+                        var ItemVendorManufacturerIDNumber = GetLS('pItemVendorManufacturerIDNumber');
+                        var Brand = GetLS('pBrand');
 
 
 
@@ -2178,14 +2178,14 @@ function pdoductpagereload() {
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
 
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
    // $(".pdtimgkitchendivdisplay1").css('margin-top', '0px');
 }

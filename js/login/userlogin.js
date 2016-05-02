@@ -6,38 +6,38 @@ License:Tychons solutions
 
 function backtoindexpage() 
 {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     changepage(result[result.length - 1]);
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
 } 
 
 
 function login() 
 {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
 
     if (c_page != null ) 
     {
         if (c_page.indexOf(',') > -1) {
             var result = c_page.split(",");
-            if (result[result.length - 1] != "newlogin") {
-                SetLS("page", c_page + ",newlogin");
+            if (result[result.length - 1] !== "newlogin") {
+                SetLS('page', c_page + ",newlogin");
             }
         }
         else 
         {
-            SetLS("page", "newlogin");
+            SetLS('page', 'newlogin');
         }
     }
     else {
-        SetLS("page", "newlogin");
+        SetLS('page', 'newlogin');
     }
     var isuserlogged = GetLS('Isuserlogged');
     if (isuserlogged == 'yes') 
@@ -45,56 +45,15 @@ function login()
         var result = c_page.split(",");
         if (result[result.length - 1] != 'home');
         {
-            SetLS("page", c_page + ",home");
+            SetLS('page', c_page + ",home");
         }
         window.location.href = 'products.html';
     }
     else 
     {
-        //SetLS("page", "indexpage");
         window.location.href = 'login.html';
     }
 
-}
-
-
-function Frontlogin() 
-{
-    var c_page = GetLS("page");
-
-    if (c_page != null) {
-        if (c_page.indexOf(',') > -1) {
-            var result = c_page.split(",");
-            if (result[result.length - 1] != "newlogin") {
-                SetLS("page", c_page + ",newlogin");
-            }
-        }
-        else {
-            SetLS("page", "newlogin");
-        }
-    }
-    else {
-        SetLS("page", "newlogin");
-    }
-    var isuserlogged = GetLS('Isuserlogged');
-    if (isuserlogged == 'yes') {
-        var result = c_page.split(",");
-        if (result[result.length - 1] != 'home');
-        {
-            SetLS("page", c_page + ",home");
-        }
-        window.location.href = 'products.html';
-    }
-    else {
-        //SetLS("page", "indexpage");
-        window.location.href = 'login.html';
-    }
-}
-
-
-function popup() 
-{
-    document.getElementById('light1').style.display = 'block';
 }
 
 //This function handled user log in 
@@ -228,16 +187,16 @@ function submitButton(page)
                         var AccessTokenKey = obj.AccessTokenKey;
 
                         var SALESPERSONID = obj.SALESPERSONID;
-                        SetLS("salesmanid", SALESPERSONID);
+                        SetLS('salesmanid', SALESPERSONID);
 
-                        SetLS("AccessTokenKey", AccessTokenKey);
-                        SetLS("UserID", UserIDOfMaintenance);
-                        SetLS("UserProfile", UserProfile);
-                        SetLS("CustomerNumber", CustomerNumber);
-                        SetLS("Zipcode", CustomerMainShippingZipCode);
-                        SetLS("UserName", UserName);
-                        SetLS("CustomerShippingState", CustomerShippingState);
-                        SetLS("ShippingMethod", PreferredMethodOfShipment);
+                        SetLS('AccessTokenKey', AccessTokenKey);
+                        SetLS('UserID', UserIDOfMaintenance);
+                        SetLS('UserProfile', UserProfile);
+                        SetLS('CustomerNumber', CustomerNumber);
+                        SetLS('Zipcode', CustomerMainShippingZipCode);
+                        SetLS('UserName', UserName);
+                        SetLS('CustomerShippingState', CustomerShippingState);
+                        SetLS('ShippingMethod', PreferredMethodOfShipment);
 
                         var defaultbranchname = GetLS('default_branchname');
                         var defaultbranchcode = GetLS('default_branchcode');
@@ -254,7 +213,7 @@ function submitButton(page)
                                 if (getbranchcode != null && getbranchcode != "") {
 
                                     SetLS('default_branchcode', getbranchcode);
-                                    SetLS("Current_branch", getbranchcode);
+                                    SetLS('Current_branch', getbranchcode);
                                     SetLS('default_branchname', getbranchname);
                                     writetologfile("User Logged in", 1);
                                 }

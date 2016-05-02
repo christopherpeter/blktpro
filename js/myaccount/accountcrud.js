@@ -45,7 +45,7 @@ function accountpage_load() {
 
     var branch_id = GetLS('default_branchcode');
 
-    var ShippingMethod = GetLS("ShippingMethod");
+    var ShippingMethod = GetLS('ShippingMethod');
     $("#ddshippment").val(ShippingMethod);
 
     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
@@ -202,13 +202,13 @@ function loadallbranches_tolocalDB_account() {
 
                     if (BranchCode == defaultbranchcode)
                     {
-                       
-                        if (GetLS("default_branchcode") == "" || GetLS("default_branchcode") == null) {
+                        var defaultBranchCode = GetLS('default_branchcode');
+                        if (defaultBranchCode === "" || defaultBranchCode === null) {
                             
-                            SetLS("default_branchcode", BranchCode);
-                            SetLS("default_branchname", BranchName);
-                            SetLS("default_branchcode1", BranchCode);
-                            SetLS("default_branchname1", BranchName);
+                            SetLS('default_branchcode', BranchCode);
+                            SetLS('default_branchname', BranchName);
+                            SetLS('default_branchcode1', BranchCode);
+                            SetLS('default_branchname1', BranchName);
                         }
                     }
 
@@ -315,10 +315,10 @@ function savebranch() {
     var branch_code = $("#branch_list").val();
     var branch_name = $("#branch_list option:selected").text();
 
-    SetLS("default_branchcode", branch_code);
-    SetLS("default_branchname", branch_name);
-    SetLS("default_branchcode1", branch_code);
-    SetLS("default_branchname1", branch_name);
+    SetLS('default_branchcode', branch_code);
+    SetLS('default_branchname', branch_name);
+    SetLS('default_branchcode1', branch_code);
+    SetLS('default_branchname1', branch_name);
 
     var address1 = $("#txtaddress").val();
     var addresscity = $("#txtcity").val();
@@ -428,18 +428,18 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
 
                 var resultJSON = $Name.text();
                 var json = $.parseJSON(resultJSON);
-                if (json.IsUpdated == "True")
+                if (json.IsUpdated == 'True')
                 {
                     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
                     showproduct.transaction(function showitemsbyid(tx)
                     {
                         var query = "update userinfo set CustomerTelephoneAreaCode=" + CustomerTelephoneAreaCode + ",CustomerTelephonePrefixNumber=" + CustomerTelephonePrefixNumber + ",CustomerTelephoneSuffixNumber=" + CustomerTelephoneSuffixNumber + ", CustomerShippingAddress1='" + address1 + "', CustomerShippingCity='" + addresscity + "', CustomerShippingState='" + addressstate + "', CustomerMainShippingZipCode='" + addresszip + "' where CustomerNumber=" + CustomerNumber;
                         tx.executeSql(query);
-                        SetLS("CustomerShippingState", addressstate);
-                        SetLS("Toaddress", address1);
-                        SetLS("Tocity", addresscity);
-                        SetLS("Tostate", addressstate);
-                        SetLS("Tozip", addresszip);
+                        SetLS('CustomerShippingState', addressstate);
+                        SetLS('Toaddress', address1);
+                        SetLS('Tocity', addresscity);
+                        SetLS('Tostate', addressstate);
+                        SetLS('Tozip', addresszip);
 
                         $('.addressbook').hide();
                         navigator.notification.alert('User Information Updated!', null, 'Account', 'OK');
@@ -601,10 +601,10 @@ $(function () {
     })
 });
 function addressbook() {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "accpopup") {
-        SetLS("page", c_page + ",accpopup");
+        SetLS('page', c_page + ",accpopup");
     }
     saveaddress();
     feedbackrtn();

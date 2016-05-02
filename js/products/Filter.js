@@ -12,22 +12,22 @@ var user_ID = GetLS('UserID');
 var UserProfile = GetLS('UserProfile');
 var isuserlogged = GetLS('Isuserlogged');
 var Isvalid = "";
-if (isuserlogged == 'yes') {
-    Isvalid = "Y";
+if (isuserlogged === 'yes') {
+    Isvalid = 'Y';
 }
 else {
-    Isvalid = "N";
+    Isvalid = 'N';
 }
 
 var branch_id = GetLS('default_branchcode');
 function filterselection1() {
 
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "FilterPopUp") {
-        SetLS("page", c_page + ",FilterPopUp");
+        SetLS('page', c_page + ",FilterPopUp");
     }
-    if (GetLS("IsNewFilterAttributes")== "Yes")
+    if (GetLS('IsNewFilterAttributes')=== 'Yes')
     {
         GlobalFilterArray.length = 0;
         $.mobile.loading("show",
@@ -44,13 +44,15 @@ function filterselection1() {
         
         var ServiceURL = "";
 
-        if (GetLS("showmoreproducts") == 'filter' || GetLS("showmoreproducts") == 'filterproducts')
+        var showMoreProducts = GetLS('showmoreproducts');
+
+        if (showMoreProducts === 'filter' || showMoreProducts === 'filterproducts')
         {
-            ServiceURL = FilterOptionsURL + "sectionId=" + GetLS("F_Sectioncode") + "&HEADSECID=&groupId=" + GetLS("F_Groupcode") + "&categoryId=" + GetLS("F_Categorycode") + "&splib=" + splib + "&tablelib=" + tablelib;
+            ServiceURL = FilterOptionsURL + "sectionId=" + GetLS('F_Sectioncode') + "&HEADSECID=&groupId=" + GetLS('F_Groupcode') + "&categoryId=" + GetLS('F_Categorycode') + "&splib=" + splib + "&tablelib=" + tablelib;
         }
         else
         {
-            ServiceURL = NewFilterAttributesURL + "SEARCHTYPE=" + GetLS("SearchType") + "&SEARCHTXT=" + GetLS("LS_SearchText").toUpperCase() + "&BRANCHCODE=" + branch_id + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib;
+            ServiceURL = NewFilterAttributesURL + "SEARCHTYPE=" + GetLS('SearchType') + "&SEARCHTXT=" + GetLS('LS_SearchText').toUpperCase() + "&BRANCHCODE=" + branch_id + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib;
         }
 
         $.ajax({
@@ -75,7 +77,7 @@ function filterselection1() {
                 var outputresult = $.parseJSON(finalresult);
                 var list = "";
 
-                if (GetLS("showmoreproducts") == 'filter') {
+                if (showMoreProducts === 'filter') {
                     list = outputresult.BMCItemFilter;
                 }
                 else
@@ -118,7 +120,6 @@ function filterselection1() {
                     $(".pdtloadlistdiv").hide();
                     $(".tableproducts1filter").show();
                     $(".cleardivivfilter").show();
-                    SetLS("IsNewFilterAttributes", "No");
                 }
                 else {
 
@@ -128,9 +129,10 @@ function filterselection1() {
                     $("#loading_pdt").hide();
                     $(".pdtloadlistdiv").hide();
                     $(".tableproducts1filter").show();
-                    $(".cleardivivfilter").show();
-                    SetLS("IsNewFilterAttributes", "No");
+                    $(".cleardivivfilter").show();                   
                 }
+
+                SetLS('IsNewFilterAttributes', 'No');
 
             }, error: function (data, errorThrown) {
                 $.mobile.loading("hide");
@@ -172,7 +174,7 @@ function Filterdiv(Divid) {
 
         var ServiceURL = "";
 
-        if (GetLS("showmoreproducts") == 'filter') {
+        if (GetLS('showmoreproducts') == 'filter') {
             ServiceURL = FilterValueURL + "sectionId=" + GetLS("F_Sectioncode") + "&HEADSECID=&groupId=" + GetLS("F_Groupcode") + "&categoryId=" + GetLS("F_Categorycode") + "&attributeName=" + Divid + "&userId=&deviceencryptedkey=" + GetLS('encryptedkey') + "&accesstoken=&splib=" + splib + "&tablelib=" + tablelib;
         }
         else {
@@ -277,14 +279,14 @@ function filterbackbtn() {
     $("#filterselctiondiv").hide();
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
     var valuefilter = GetLS('showmoreproducts');
    
@@ -295,7 +297,7 @@ function filterbackbtn() {
     }
     else
     {
-        pdtimgkitchendivdisplay(GetLS("F_Sectioncode"), GetLS("F_Groupcode"), GetLS("F_Categorycode"), GetLS("breadlist1"));
+        pdtimgkitchendivdisplay(GetLS('F_Sectioncode'), GetLS('F_Groupcode'), GetLS('F_Categorycode'), GetLS('breadlist1'));
     }
 }
 var GlobalFilterArray = [];
@@ -360,7 +362,7 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue,FromCount,ToCoun
 
     var ServiceURL = "";
 
-    if (GetLS("showmoreproducts") == 'filter') {
+    if (GetLS('showmoreproducts') == 'filter') {
         ServiceURL = FilterProductsURL + "SectionCode=" + GetLS('F_Sectioncode') + "&HEADSECID=&GroupCode=" + GetLS('F_Groupcode') + "&CategoryCode=" + GetLS('F_Categorycode') + "&AttrName=" + AttributeName + "&AttrValue=" + AttributeValue + "&StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&brchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib;
     }
     else {
@@ -423,7 +425,7 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue,FromCount,ToCoun
 
                     });
                 }
-                SetLS("product_count", 10);
+                SetLS('product_count', 10);
                 SetLS('showmoreproducts', 'filterproducts');
                 loadsectionproductscontents("Yes");
 

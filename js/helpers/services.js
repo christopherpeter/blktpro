@@ -61,16 +61,9 @@ var NewFilterAttributesURL = "https://www.blackmancommercialaccounts.com/axis2/s
 var NewFilterAttributesVauesURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCAttributeValues/getAttributeValues?";
 var NewFilterProductsResultsURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCAllProducts/getAllProducts?";
 
-// Calender Section
-
-var CalenderURL = "https://199.103.7.38/mail/atychons.nsf/api/calendar/events";
-var Cal_Username = "Admin Tychons/Tychons";
-var Cal_password = "F2PunVA3x";
-
 var splib = "TYCHLIB";
 var tablelib = "TYCHLIB";
 var orderedbyname = "BTP";
-//var orderedbyname = "BKD";
 var initials = "WOE";
 
 //Image path url
@@ -100,8 +93,6 @@ function getCookie(cname)
     }
     return "";
 }
-
-
 
 //Function To set Localstorage
 

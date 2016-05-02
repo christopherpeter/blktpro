@@ -64,11 +64,11 @@ function setencryptedkey() {
                 SetLS('encryptedkey', DeviceEncrptedKey);
                 setCookie("AlphanumericToken", AlphanumericToken);
                 SecretPhrase = getCookie("AlphanumericToken");
-                SetLS("encryptedkey", DeviceEncrptedKey);
+                SetLS('encryptedkey', DeviceEncrptedKey);
                 encryptedkey = GetLS('encryptedkey');
                 //$.mobile.loading("hide");
                 $("#fade").hide();
-                product_pageload_2();
+                productPageLoad2();
                 //SecretPhrase = AlphanumericToken;
             }
 
@@ -198,8 +198,8 @@ function show_showrooms()
         $("#white_contentlistnew1").css("min-height", "340px");
     }
 
-    var test = GetLS("Showroom");
-    if (test == 'all') 
+    var showRoom = GetLS('Showroom');
+    if (showRoom == 'all')
     {
         
         var html = "<div class='empty'></div>";
@@ -328,41 +328,37 @@ function show_showrooms()
 function findbranch(page) 
 {
    // clearfilters();
-
+    var c_page = GetLS('page');
     switch (page) 
     {
         case 1:
 
-            var c_page = GetLS("page");
             var result = c_page.split(",");
-            if (result[result.length - 1] != "index");
+            if (result[result.length - 1] !== 'index');
             {
-                SetLS("page", c_page + ",home");
+                SetLS('page', c_page + ",home");
             }
             break;
         case 2:
-            var c_page = GetLS("page");
             var result = c_page.split(",");
-            if (result[result.length - 1] != "products");
+            if (result[result.length - 1] !== 'products');
             {
-                SetLS("page", c_page + ",products");
+                SetLS('page', c_page + ",products");
             }
            
             break;
         case 3:
-            var c_page = GetLS("page");
             var result = c_page.split(",");
-            if (result[result.length - 1] != "cart");
+            if (result[result.length - 1] !== 'cart');
             {
-                SetLS("page", c_page + ",cart");
+                SetLS('page', c_page + ",cart");
             }
             break;
         case 4:
-            var c_page = GetLS("page");
             var result = c_page.split(",");
-            if (result[result.length - 1] != "account");
+            if (result[result.length - 1] !== 'account');
             {
-                SetLS("page", c_page + ",account");
+                SetLS('page', c_page + ",account");
             }
             break;
     }
@@ -374,7 +370,6 @@ function toggle_visibilityclose1()
 {
     document.getElementById('white_contentlistnew1').style.display = 'none';
     $("#fade").hide();
-    // location.reload();
 }
 function listbox() 
 {
@@ -383,39 +378,40 @@ function listbox()
 
 function product(page) 
 {
-    switch (page) 
+    var c_page = GetLS('page');
+    switch (page)
     {
         case 1:
-            var c_page = GetLS("page");
+           
             var result = c_page.split(",");
-            if (result[result.length - 1] != "index");
+            if (result[result.length - 1] !== 'index');
             {
-                SetLS("page", c_page + ",home");
+                SetLS('page', c_page + ",home");
             }
             break;
         case 2:
-            var c_page = GetLS("page");
+
             var result = c_page.split(",");
            
-            if (result[result.length - 1] != "products");
+            if (result[result.length - 1] !== 'products');
             {
-                SetLS("page", c_page + ",products");
+                SetLS('page', c_page + ",products");
             }
             break;
         case 3:
-            var c_page = GetLS("page");
+
             var result = c_page.split(",");
-            if (result[result.length - 1] != "cart");
+            if (result[result.length - 1] !== 'cart');
             {
-                SetLS("page", c_page + ",cart");
+                SetLS('page', c_page + ",cart");
             }
             break;
         case 4:
-            var c_page = GetLS("page");
+
             var result = c_page.split(",");
-            if (result[result.length - 1] != "account");
+            if (result[result.length - 1] !== 'account');
             {
-                SetLS("page", c_page + ",account");
+                SetLS('page', c_page + ",account");
             }
             break;
     }
@@ -426,38 +422,39 @@ function product(page)
 
 function findcart(page) 
 {
+    var c_page = GetLS('page');
     switch (page) {
         case 1:
-            var c_page = GetLS("page");
+    
             var result = c_page.split(",");
-            if (result[result.length - 1] != "index");
+            if (result[result.length - 1] !== 'index');
             {
-                SetLS("page", c_page + ",home");
+                SetLS('page', c_page + ",home");
             }
             break;
         case 2:
-            var c_page = GetLS("page");
+
             var result = c_page.split(",");
-            if (result[result.length - 1] != "products");
+            if (result[result.length - 1] !== 'products');
             {
-                SetLS("page", c_page + ",products");
+                SetLS('page', c_page + ",products");
             }
 
             break;
         case 3:
-            var c_page = GetLS("page");
+   
             var result = c_page.split(",");
-            if (result[result.length - 1] != "cart");
+            if (result[result.length - 1] !== 'cart');
             {
-                SetLS("page", c_page + ",cart");
+                SetLS('page', c_page + ",cart");
             }
             break;
         case 4:
-            var c_page = GetLS("page");
+        
             var result = c_page.split(",");
-            if (result[result.length - 1] != "account");
+            if (result[result.length - 1] !== 'account');
             {
-                SetLS("page", c_page + ",account");
+                SetLS('page', c_page + ",account");
             }
             break;
     }
@@ -466,38 +463,39 @@ function findcart(page)
 
 function findaccount(page) 
 {
+    var c_page = GetLS('page');
     switch (page) {
         case 1:
-            var c_page = GetLS("page");
+
             var result = c_page.split(",");
-            if (result[result.length - 1] != "index");
+            if (result[result.length - 1] !== 'index');
             {
-                SetLS("page", c_page + ",home");
+                SetLS('page', c_page + ",home");
             }
             break;
         case 2:
-            var c_page = GetLS("page");
+
             var result = c_page.split(",");
-            if (result[result.length - 1] != "products");
+            if (result[result.length - 1] !== 'products');
             {
-                SetLS("page", c_page + ",products");
+                SetLS('page', c_page + ",products");
             }
 
             break;
         case 3:
-            var c_page = GetLS("page");
+
             var result = c_page.split(",");
-            if (result[result.length - 1] != "cart");
+            if (result[result.length - 1] !== 'cart');
             {
-                SetLS("page", c_page + ",cart");
+                SetLS('page', c_page + ",cart");
             }
             break;
         case 4:
-            var c_page = GetLS("page");
+
             var result = c_page.split(",");
-            if (result[result.length - 1] != "account");
+            if (result[result.length - 1] !== 'account');
             {
-                SetLS("page", c_page + ",account");
+                SetLS('page', c_page + ",account");
             }
             break;
     }
@@ -508,14 +506,14 @@ function findaccount(page)
 function toggle_directionclose() 
 {
     $("body").addClass('globalbodyclass');
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
     
     document.getElementById('lightdirection').style.display = 'none';

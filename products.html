@@ -34,7 +34,7 @@
         $(document).ready(function () {
             loadstatedetails();
             loadallbranches_tolocalDB_account();
-            SetLS("page", "index");
+            SetLS('page', 'index');
 
             document.addEventListener('deviceready', GetIMEI, false);
             function GetIMEI() {
@@ -42,13 +42,13 @@
                 var IMEI = cordova.plugins.uid.IMEI;
                 var UUID = cordova.plugins.uid.UUID;
 
-                SetLS("IMEI", IMEI);
-                SetLS("UUID", UUID);
+                SetLS('IMEI', IMEI);
+                SetLS('UUID', UUID);
             }
 
             var view = GetLS('viewimg');
             if (view == null) {
-                SetLS("viewimg", "no");
+                SetLS('viewimg', 'no');
             }
             filter();
 
@@ -72,7 +72,7 @@
 
            
 
-            if (GetLS("Isuserlogged") == 'yes') {
+            if (GetLS('Isuserlogged') === 'yes') {
                 $(".exitbtn").show();
             }
             else {
@@ -87,15 +87,15 @@
             
             document.addEventListener("backbutton", function (e)
             {
-                var c_page = GetLS("page");
+                var c_page = GetLS('page');
                 var result = c_page.split(",");
                 changepage(result[result.length - 1]);
                 if (result.length == 1) {
                     var new_page = c_page.replace(result[result.length - 1], "");
-                    SetLS("page", new_page);
+                    SetLS('page', new_page);
                 } else {
                     var new_page = c_page.replace(',' + result[result.length - 1], "");
-                    SetLS("page", new_page);
+                    SetLS('page', new_page);
                 }
             });
         }
@@ -175,14 +175,14 @@
 					{
 					    swipe: function (event, direction) {
 					        if (direction == 'left') {
-					            var limit_count = GetLS("images_oldcount");
-					            var total_count = GetLS("TotalSections");
+					            var limit_count = GetLS('images_oldcount');
+					            var total_count = GetLS('TotalSections');
 					            if (parseInt(limit_count) < total_count) {
 					                product_next();
 					            }
 					        }
 					        else if (direction == 'right') {
-					            var limit_count = GetLS("images_oldcount");
+					            var limit_count = GetLS('images_oldcount');
 					            if (parseInt(limit_count) != 12) {
 					                product_previous();
 					            }

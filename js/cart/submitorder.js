@@ -63,9 +63,8 @@ function submitcart() {
 
     });
 
-    var BranchNumber = GetLS('default_branchcode');
-    var TotalCartWeight = GetLS("Totalcartweight");
-    var ShipViaDescription = GetLS("ShipViaDescription");
+    var TotalCartWeight = GetLS('Totalcartweight');
+    var ShipViaDescription = GetLS('ShipViaDescription');
     var Ourstatuscode = "N";
     var OrderEnteredAsType = "A";
     var OrderAgeCode = 2;
@@ -229,11 +228,11 @@ function sendsummitorder(param1, param2)
     //-------------------------------------------
     //Forming New Parameter
 
-    var ShippingMethod = GetLS("ShippingMethod");
+    var ShippingMethod = GetLS('ShippingMethod');
     var name = UserName;
     var street = ""; var city = ""; var state = ""; var postcode = "";
 
-    if (ShippingMethod != "P") 
+    if (ShippingMethod !== 'P') 
     {
 
         if (GetLS('Toaddress') == null || GetLS('Toaddress') == "") {
@@ -465,10 +464,10 @@ function submitpopup() {
     var OrderMethodOfShipment = $("#ddshippment1").val();
 
     if (OrderMethodOfShipment == "D") {
-        var c_page = GetLS("page");
+        var c_page = GetLS('page');
         var result = c_page.split(",");
         if (result[result.length - 1] != "submitpopup") {
-            SetLS("page", c_page + ",submitpopup");
+            SetLS('page', c_page + ",submitpopup");
         }
 
         $("#shipping_popup").hide();
@@ -477,10 +476,10 @@ function submitpopup() {
 
     }
     else if (OrderMethodOfShipment == "O") {
-        var c_page = GetLS("page");
+        var c_page = GetLS('page');
         var result = c_page.split(",");
         if (result[result.length - 1] != "submitpopup") {
-            SetLS("page", c_page + ",submitpopup");
+            SetLS('page', c_page + ",submitpopup");
         }
 
         $("#shipping_popup").hide();
@@ -496,10 +495,10 @@ function submitpopup() {
             return false;
         }
         
-        var c_page = GetLS("page");
+        var c_page = GetLS('page');
         var result = c_page.split(",");
         if (result[result.length - 1] != "submitpopup") {
-            SetLS("page", c_page + ",submitpopup");
+            SetLS('page', c_page + ",submitpopup");
         }
         $("#shipping_popup").hide();
         $("#fade").show();
@@ -515,10 +514,10 @@ function submitpopup() {
         }
 
         
-        var c_page = GetLS("page");
+        var c_page = GetLS('page');
         var result = c_page.split(",");
         if (result[result.length - 1] != "submitpopup") {
-            SetLS("page", c_page + ",submitpopup");
+            SetLS('page', c_page + ",submitpopup");
         }
         $("#shipping_popup").hide();
         $("#fade").show();
@@ -532,15 +531,15 @@ function onConfirmCancelOrder(buttonIndex)
 {
     if (buttonIndex == 1) 
     {
-        var c_page = GetLS("page");
+        var c_page = GetLS('page');
         var result = c_page.split(",");
         if (result.length == 1) {
             var new_page = c_page.replace(result[result.length - 1], "");
-            SetLS("page", new_page);
+            SetLS('page', new_page);
         } else {
             var new_page = c_page.replace('estimateshipping,' + result[result.length - 1], "");
 
-            SetLS("page", new_page);
+            SetLS('page', new_page);
         }
 
         document.getElementById('submitpopup').style.display = 'none';

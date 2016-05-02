@@ -10,7 +10,6 @@ var AccessTokenKey = GetLS('AccessTokenKey');
 var customerno = GetLS('CustomerNumber');
 var user_ID = GetLS('UserID');
 var UserProfile = GetLS('UserProfile');
-var UserName = GetLS('UserName');
 var isuserlogged = GetLS('Isuserlogged');
 var Isvalid = "";
 if (isuserlogged == 'yes') {
@@ -31,7 +30,7 @@ function ChangeUserBranch()
 
 function loadsectionfilter() {
 
-    var view = GetLS("viewimg");
+    var view = GetLS('viewimg');
 
     if (view == 'yes') {
 
@@ -72,7 +71,7 @@ function loadsectionfilter() {
                         tx.executeSql(query, [HSCODE, SECTION, DESCRIPTION, GROUPCOUNT]);
 
                     });
-                    SetLS("cat_oldcount", "0");
+                    SetLS('cat_oldcount', "0");
                     loadsections();
                 }, errorCB);
 
@@ -124,7 +123,7 @@ function loadsectionfilter() {
                         tx.executeSql(query, [HSCODE,SECTION, DESCRIPTION, GROUPCOUNT]);
 
                     });
-                    SetLS("cat_oldcount", "0");
+                    SetLS('cat_oldcount', '0');
                     loadsections();
                 }, errorCB);
 
@@ -179,111 +178,6 @@ function CheckAspectRatio(imageid) {
     $("#" + imageid).css("width", parseInt(newWidth) + "px");
     $("#" + imageid).css("height", parseInt(newHeight - 2) + "px");
 
-}
-
-
-
-// This function will fire when user clicks section name in filter
-
-function filterkitchen(sectioncode, x) {
-    var divdisplaystatus = $("#kitchendiv" + sectioncode).css('display');
-    if (divdisplaystatus == "none") {
-        $(".sidearrowimagedown" + sectioncode).show();
-        $(".sidearrowimage" + sectioncode).hide();
-
-    } else {
-
-        $(".sidearrowimagedown" + sectioncode).hide();
-        $(".sidearrowimage" + sectioncode).show();
-    }
-    $.mobile.loading("show", {
-        text: "Loading,Please Wait...",
-        textVisible: true,
-        theme: "a",
-        textonly: true,
-        html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
-
-    });
-    $("#loading_pdt").show();
-
-    SetLS('Filter_sectioncode', sectioncode);
-    SetLS('Filter_sectionname', $(x).text());
-    SetLS('Filter_groupname', null);
-    SetLS('Filter_categoryname', null);
-
-    $.ajax({
-        type: "GET",
-        crossDomain: true,
-        url: groupcodeURL + "?SCode=" + sectioncode + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib,
-        dataType: "xml",
-        success: function (xmlData) {
-            var xmlString;
-            if (window.ActiveXObject) {
-                xmlString = xmlData.xml;
-            }
-            else {
-                xmlString = (new XMLSerializer()).serializeToString(xmlData);
-            }
-
-            var xmlDoc = $.parseXML(xmlString);
-
-            var $xml = $(xmlDoc);
-            var $Name = $xml.find('return');
-
-            var resultJSON = $Name.text();
-            var finalresult = "{" + resultJSON + "}";
-            var output = $.parseJSON(finalresult);
-            var list = output.BMCGroupCode;
-            if (output.BMCGroupCode.length > 0) // Check the count of groups available
-            {
-                var html = "";
-                html = html + '<div class="innerpopup">';
-                html = html + '<div class="empty">';
-                html = html + '</div>';
-                $.each(list, function (i, item) {
-                    var GROUPCODE = item.GROUPCODE;
-                    var DESCRIPTION = item.DESCRIPTION;
-                    var CATAGORYCOUNT = item.CATAGORYCOUNT;
-
-                    html = html + "<div class='innerpopup'>";
-                    html = html + "<div class='empty'>";
-                    html = html + "</div>";
-                    html = html + "<div class='popdiv'>";
-                    html = html + "<table class='tableclass' style='background-color: #F9F9F9;border-color: #F9F9F9;'>";
-                    html = html + "<tr style='width: 220px; text-align:left'>";
-                    html = html + "<td>";
-                    html = html + "<span class='filtertxt' onclick=filterkitchensub('" + sectioncode + "','" + GROUPCODE + "',this)>";
-                    html = html + "<img src='images/ListRightArrow.png' style='width: 16px; height: 15px; float: left; margin-left: 9px;padding:3px;margin-top:0px' class='filterkitchensubimg" + sectioncode + GROUPCODE + "' /> <img src='images/ListRightArrowdown.png' style='width: 16px; height: 21px; float: left; margin-left: 9px;display:none;padding:3px;margin-top:-5px' class='filterkitchensubimgdown" + sectioncode + GROUPCODE + "' />";
-                    html = html + DESCRIPTION + "</span><span class='filtertxt'>(" + CATAGORYCOUNT + ")</span>";
-                    html = html + "<div id='kitchensubdiv" + sectioncode + GROUPCODE + "' class='filterkitchensub'>";
-                    html = html + "</div>";
-                    html = html + "</td>";
-                    html = html + "</tr>";
-                    html = html + "</table>";
-                    html = html + "</div>";
-                    html = html + "</div>";
-
-                });
-                html = html + '</div>';
-                $("#kitchendiv" + sectioncode).html(html);
-                $("#kitchendiv" + sectioncode).slideToggle();
-                $.mobile.loading("hide");
-                $("#loading_pdt").hide();
-
-            }
-            else {
-                // If no groups available get the products using section code
-
-                filterkitchenproduts(sectioncode);
-            }
-
-        }, error: function (data, errorThrown) {
-
-            navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-
-            $.mobile.loading("hide");
-        }
-    });
 }
 
 // This function will fire when a section has no sub groups in it
@@ -461,7 +355,7 @@ function loadsectionimages() {
         var html = "";
         tx.executeSql('SELECT * FROM sectioninfo', [], function itembranchsucce(tx, results)
         {
-            SetLS("TotalSections", results.rows.length);
+            SetLS('TotalSections', results.rows.length);
         });
         tx.executeSql('SELECT * FROM sectioninfo WHERE id between 1 and ' + totalgridlength, [], function itembranchsucces(txx, res) {
             var count = 0;
@@ -526,7 +420,7 @@ function loadsectionimages() {
             }
 
             html = html + "</div>";
-            SetLS("images_oldcount", totalgridlength);
+            SetLS('images_oldcount', totalgridlength);
             document.getElementById("prdtsectionimges").innerHTML = html;
             $.mobile.loading("hide");
             $("#loading_pdt").hide();
@@ -538,7 +432,7 @@ function loadsectionimages() {
 
 function product_next() {
 
-    var count = GetLS("images_oldcount");
+    var count = GetLS('images_oldcount');
     var from = parseInt(count) + 1;
     var to = parseInt(count) + totalgridlength;
     var where = from + ' and ' + to;
@@ -611,7 +505,7 @@ function product_next() {
             }
 
             html = html + "</div>";
-            SetLS("images_oldcount", to);
+            SetLS('images_oldcount', to);
             document.getElementById("prdtsectionimges").innerHTML = html;
             $.mobile.loading("hide");
             $("#loading_pdt").hide();
@@ -622,7 +516,7 @@ function product_next() {
 //This function is used for handling swipe previous function
 
 function product_previous() {
-    var count = GetLS("images_oldcount");
+    var count = GetLS('images_oldcount');
     var from = parseInt(count) - totalgridlength - (totalgridlength - 1);
     var to = parseInt(count) - totalgridlength;
     var where = from + ' and ' + to;
@@ -697,7 +591,7 @@ function product_previous() {
                 }
 
                 html = html + "</div>";
-                SetLS("images_oldcount", to);
+                SetLS('images_oldcount', to);
                 document.getElementById("prdtsectionimges").innerHTML = html;
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
@@ -710,10 +604,10 @@ function product_previous() {
 
 function product_search() {
     GlobalItemsList.length = 0;
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "sections") {
-        SetLS("page", c_page + ",sections");
+    if (result[result.length - 1] != 'sections') {
+        SetLS('page', c_page + ",sections");
     }
     var from_count = 1;
     var to_count = TotalProductCount;
@@ -725,8 +619,8 @@ function product_search() {
 
         return false;
     }
-    SetLS("breadcrumb", "search");
-    SetLS("LS_SearchText", searchtext);
+    SetLS('breadcrumb', 'search');
+    SetLS('LS_SearchText', searchtext);
     $("#loading_pdt").show();
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -807,14 +701,14 @@ function product_search() {
 
                     });
 
-                    SetLS("product_count", to_count);
-                    SetLS("IsNewFilterAttributes", "Yes");
-                    SetLS("SearchType", "PROD1");
+                    SetLS('product_count', to_count);
+                    SetLS('IsNewFilterAttributes','Yes');
+                    SetLS('SearchType', 'PROD1');
                     writetologfile("User searched for product " + searchtext + ".It has results.", 3);
-                    loadsectionproductscontents("Yes");
+                    loadsectionproductscontents('Yes');
                 }
                 else {
-                    SetLS("IsNewFilterAttributes", "Yes");
+                    SetLS('IsNewFilterAttributes', 'Yes');
                     loadsecondproductservice();
 
                 }
@@ -828,19 +722,19 @@ function product_search() {
 
 
     });
-    SetLS("F_Categorycode","");
-    SetLS("F_Groupcode","");
-    SetLS("F_Sectioncode","");
+    SetLS('F_Categorycode','');
+    SetLS('F_Groupcode','');
+    SetLS('F_Sectioncode','');
 }
 
 // Function for products serach on all the products
 
 function loadsecondproductservice() {
     GlobalItemsList.length = 0;
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "sections") {
-        SetLS("page", c_page + ",sections");
+    if (result[result.length - 1] != 'sections') {
+        SetLS('page', c_page + ",sections");
     }
 
     var searchtext = $("#txtpdtsrch").val().trim();
@@ -868,7 +762,7 @@ function loadsecondproductservice() {
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Loading Products...</h2></span>"
 
     });
-    SetLS("showmoreproducts", "search");
+    SetLS('showmoreproducts', 'search');
     var branch_id = GetLS('default_branchcode');
 
     var from_count = 1;
@@ -928,8 +822,8 @@ function loadsecondproductservice() {
 
                     });
 
-                    SetLS("product_count", to_count);
-                    SetLS("SearchType", "PROD2");
+                    SetLS('product_count', to_count);
+                    SetLS('SearchType', 'PROD2');
                     loadsectionproductscontents("Yes");
                 }
 
@@ -985,12 +879,12 @@ function clearfilters() {
 }
 function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
     description = description.replace(/_/g, " ");
-    SetLS("breadlist1", description);
-    SetLS("F_HSCODE", HSCODE);
-    var c_page = GetLS("page");
+    SetLS('breadlist1', description);
+    SetLS('F_HSCODE', HSCODE);
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "filter") {
-        SetLS("page", c_page + ",filter");
+        SetLS('page', c_page + ",filter");
     }
 
     $("#list1products").html("");
@@ -1059,8 +953,8 @@ function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
                     else
                     {
 
-                        SetLS("breadlist2", "");
-                        SetLS("breadlist3", "");
+                        SetLS('breadlist2', '');
+                        SetLS('breadlist3', '');
                         html = html + "<div onclick=\"pdtimgkitchendivdisplay('" + SECTIONCODE + "','','','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION;
@@ -1127,28 +1021,28 @@ function pdtimgkitchendivdisplaynew1back() {
     $(".breadcrumstylefilter").hide();
     $("#default_div").show();
 
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
 
 
 }
 function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
     newDESCRIPTION = newDESCRIPTION.replace(/_/g, " ");
-    SetLS("breadlist2", newDESCRIPTION);
-    var c_page = GetLS("page");
+    SetLS('breadlist2', newDESCRIPTION);
+    var c_page = GetLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "filter2") {
-        SetLS("page", c_page + ",filter2");
+    if (result[result.length - 1] != 'filter2') {
+        SetLS('page', c_page + ",filter2");
     }
 
-    $("#list2products").html("");
+    $("#list2products").html('');
     $("#loading_pdt").show();
     $.mobile.loading("show",
     {
@@ -1213,7 +1107,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
                     }
                     else {
 
-                        SetLS("breadlist3", "");
+                        SetLS('breadlist3', '');
                         html = html + "<div onclick=\"pdtimgkitchendivdisplay('" + sectioncode + "','" + GROUPCODE + "','','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION;
@@ -1229,7 +1123,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
                 });
                 html = html + " </ul>";
                 $("#list2products").html(html);
-                SetLS("IsNewFilterAttributes", "Yes");
+                SetLS('IsNewFilterAttributes', 'Yes');
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
@@ -1241,7 +1135,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
                 //  html = html + "  <div style='text-align:left;margin-left:20px' onclick='pdtimgkitchendivdisplaynew1back()'>   <img src='images/save_button.png' /></div>";
                 html = html + " <div><No Groups Found</div>";
                 $("#list2products").html(html);
-                SetLS("IsNewFilterAttributes", "Yes");
+                SetLS('IsNewFilterAttributes', 'Yes');
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
@@ -1265,7 +1159,7 @@ function pdtimgkitchendivdisplaynew2back() {
     $("#prdtsectionimges").hide();
     $("#sectiondiv").hide();
     $(".srchdivimg").hide();
-    $("#sectionpath").html("<span>" + GetLS("breadlist1") + "</span>")
+    $("#sectionpath").html("<span>" + GetLS('breadlist1') + "</span>")
     $("#navigationdiv").hide();
     $("#list1products").show();
     $("#list2products").hide();
@@ -1274,25 +1168,25 @@ function pdtimgkitchendivdisplaynew2back() {
     $("#breadcrumstyle").hide();
     $(".breadcrumstylefilter").hide();
     $("#default_div").show();
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
 }
 
 
 function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     var DESCRIPTIONlast = DESCRIPTIONlast.replace(/_/g, ' ');
-    SetLS("breadlist3", DESCRIPTIONlast);
-    var c_page = GetLS("page");
+    SetLS('breadlist3', DESCRIPTIONlast);
+    var c_page = GetLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "filter3") {
-        SetLS("page", c_page + ",filter3");
+    if (result[result.length - 1] !== 'filter3') {
+        SetLS('page', c_page + ",filter3");
     }
 
     $("#list3products").html("");
@@ -1361,19 +1255,17 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
 
                 });
                 html = html + "</div>";
-                $("#list3products").html(html);
-                SetLS("IsNewFilterAttributes", "Yes");
+                $("#list3products").html(html);               
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
             else {
 
                 $("#list3products").html(html);
-                SetLS("IsNewFilterAttributes", "Yes");
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
-
+            SetLS('IsNewFilterAttributes', 'Yes');
         }, error: function (data, errorThrown) {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -1405,14 +1297,14 @@ function pdtimgkitchendivdisplaynew3back() {
     $("#backbuttongrid").hide();
     $(".breadcrumstyle").show();
     $(".breadcrumstylefilter").hide();
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
 }
 

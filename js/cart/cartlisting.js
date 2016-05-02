@@ -18,12 +18,12 @@ var isuserlogged = GetLS('Isuserlogged');
 
 var UserName = GetLS('UserName');
 if (UserName == null) { UserName = ""; }
-var Isvalid = "";
+var Isvalid = '';
 if (isuserlogged == 'yes') {
-    Isvalid = "Y";
+    Isvalid = 'Y';
 }
 else {
-    Isvalid = "N";
+    Isvalid = 'N';
 }
 
 
@@ -32,7 +32,7 @@ else {
 function cartpageload() {
 
     $("#loading_pdt").show();
-    SetLS("ShippingMethod", "S");
+    SetLS('ShippingMethod', "S");
     SetLS('ShipViaDescription', "UPS");
 
     $.mobile.loading("show", {
@@ -44,11 +44,12 @@ function cartpageload() {
 
     });
 
-    if (GetLS("ShippingMethod") != "" || GetLS("ShippingMethod") != null) {
-        $("#ddshippment1").val(GetLS("ShippingMethod"));
+    var shippingMethod = GetLS('ShippingMethod');
+    if (shippingMethod != "" || shippingMethod != null) {
+        $("#ddshippment1").val(shippingMethod);
     }
     else {
-        $("#ddshippment1").val(GetLS("0"));
+        $("#ddshippment1").val(0);
     }
     settax();
     loadshippingaddress();
@@ -293,7 +294,7 @@ function loadcartitems() {
                             var Tax = Estimatedtotal * (parseFloat(pricetax) / 100);
                             var Pricewithtax = GrandTotal + Tax;
 
-                            SetLS("Totalcartweight", TotalWeight);
+                            SetLS('Totalcartweight', TotalWeight);
 
                             //Assinging the values to global variables
 
@@ -536,10 +537,10 @@ function loadmenu_cart(pageno)
 
 
 function addressbook() {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "addressbook") {
-        SetLS("page", c_page + ",addressbook");
+        SetLS('page', c_page + ",addressbook");
     }
     $('.addressbook').show();
     $('.white_contentlistnewpdt').hide();
@@ -548,14 +549,14 @@ function addressbook() {
 }
 function addressbookcls() {
 
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
     $('.addressbook').hide();
     $('#fade').hide();
@@ -719,13 +720,13 @@ function settax()
 
 
 function estimateshipping() {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "estimateshipping") {
-        SetLS("page", c_page + ",estimateshipping");
+    if (result[result.length - 1] !== 'estimateshipping') {
+        SetLS('page', c_page + ",estimateshipping");
     }
 
-    var TotalCartWeight = GetLS("Totalcartweight");
+    var TotalCartWeight = GetLS('Totalcartweight');
     if (TotalCartWeight <= 0) {
         TotalCartWeight = 1;
     }
@@ -850,9 +851,9 @@ function estimateshipping() {
 
 function branchcodenumberset() 
 {
-    SetLS("branchcodenumber", $("#ddbranch").val());
+    SetLS('branchcodenumber', $("#ddbranch").val());
 
-    if (GetLS("ShippingMethod") == "P") {
+    if (GetLS('ShippingMethod') == "P") {
         loadnewpickupAddress($("#ddbranch").val());
     }
 }
@@ -911,16 +912,16 @@ function loadnearestbranch() {
 
 
     var PreferredType = "";
-    var MethodofShippment = GetLS("ShippingMethod");
+    var MethodofShippment = GetLS('ShippingMethod');
 
-    if (MethodofShippment == "O") {
-        PreferredType = "type1";
+    if (MethodofShippment === "O") {
+        PreferredType = 'type1';
     }
-    else if (MethodofShippment == "P") {
-        PreferredType = "type3";
+    else if (MethodofShippment === "P") {
+        PreferredType = 'type3';
     }
-    else if (MethodofShippment == "S") {
-        PreferredType = "type5";
+    else if (MethodofShippment === "S") {
+        PreferredType = 'type5';
     }
 
     $.ajax({
@@ -1049,10 +1050,10 @@ function findnearestLocations(lat1, lon1)
             $("#shipping_popup").show();
             $("#submitpopup").hide();
             ChangedValues_Latest.sort(SortByName);
-            SetLS("branchcodenumber", ChangedValues_Latest[0][0]);
+            SetLS('branchcodenumber', ChangedValues_Latest[0][0]);
             $("#ddbranch").val(ChangedValues_Latest[0][0]); //select the nearest branch
 
-            if (GetLS("ShippingMethod") == "P") 
+            if (GetLS('ShippingMethod') === 'P') 
             {
                 var addsplit = ChangedValues_Latest[0][3].split("@");
                 $("#div_address1").html(addsplit[0]);
@@ -1061,13 +1062,11 @@ function findnearestLocations(lat1, lon1)
             }
             else 
             {
+                var nearestBranchAddress1 = GetLS('NearestBranchAddress1');
+                var branchtxt = '';
 
-                var branchtxt = "";
-                if (GetLS('NearestBranchAddress1') == null || GetLS('NearestBranchAddress1') == "") {
-                    branchtxt = "";
-                }
-                else {
-                    branchtxt = GetLS('NearestBranchAddress1');
+                if (nearestBranchAddress1 !== null || nearestBranchAddress1 !== "") {
+                    branchtxt = nearestBranchAddress1;
                 }
 
                 var addsplit = branchtxt.split("@");
@@ -1091,7 +1090,7 @@ function SortByName(a, b) {
 
 function getshippinginfo() {
     var OrderMethodOfShipment = $("#ddshippment1").val();
-    SetLS("ShippingMethod", OrderMethodOfShipment);
+    SetLS('ShippingMethod', OrderMethodOfShipment);
     var branch_id = GetLS('default_branchcode');
     if (OrderMethodOfShipment == "O") {
         shippingcharges = 0;
@@ -1140,14 +1139,14 @@ function getshippinginfo() {
 
 
 function estomatepopupclose() {
-    var c_page = GetLS("page");
+    var c_page = GetLS('page');
     var result = c_page.split(",");
     if (result.length == 1) {
         var new_page = c_page.replace(result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     } else {
         var new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS("page", new_page);
+        SetLS('page', new_page);
     }
     $("#shipping_popup").hide();
     $("#fade").hide();
@@ -1210,7 +1209,7 @@ function Estimate() {
     }
 
 
-    var TotalCartWeight = GetLS("Totalcartweight");
+    var TotalCartWeight = GetLS('Totalcartweight');
     if (TotalCartWeight <= 0) {
         TotalCartWeight = 1;
     }

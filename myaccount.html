@@ -34,17 +34,19 @@
      
         $(document).ready(function () 
         {
-            if (GetLS("encryptedkey") == null || GetLS("encryptedkey") == "") {
+            var encryptedKey = GetLS('encryptedkey');
+            if (encryptedKey === null || encryptedKey === "") {
                 location.href = "products.html";
             }
          
             
-            var isuserlogged = GetLS('Isuserlogged');
-            if (isuserlogged == 'yes') {
+            var isUserLogged = GetLS('Isuserlogged');
+            if (isUserLogged === 'yes') {
                 $("#lblmyaccount").show();
                 $("#lblaccount").show();
                 $("#imgaccount").show();
                 $("#div_edit").show();
+                $(".exitbtn").show();
 
             }
             else {
@@ -52,31 +54,24 @@
                 $("#lblaccount").hide();
                 $("#imgaccount").hide();
                 $("#div_edit").hide();
-            }
-            if (GetLS("Isuserlogged") == 'yes') {
-                $(".exitbtn").show();
-            }
-            else {
                 $(".exitbtn").hide();
             }
             accountpage_load();
         });
 
-        //document.addEventListener("online", onOnline, false);
-        //document.addEventListener("offline", onOffline, false);
         document.addEventListener("deviceready", onDeviceReady, false);
 
         function onDeviceReady() {
-            document.addEventListener("backbutton", function (e) {
-                var c_page = GetLS("page");
+            document.addEventListener('backbutton', function (e) {
+                var c_page = GetLS('page');
                 var result = c_page.split(",");
                 changepage(result[result.length - 1]);
                 if (result.length == 1) {
                     var new_page = c_page.replace(result[result.length - 1], "");
-                    SetLS("page", new_page);
+                    SetLS('page', new_page);
                 } else {
                     var new_page = c_page.replace(',' + result[result.length - 1], "");
-                    SetLS("page", new_page);
+                    SetLS('page', new_page);
                 }
             });
         }

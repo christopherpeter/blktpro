@@ -39,8 +39,8 @@
 
             });
         });
-
-        if (GetLS("encryptedkey") == null || GetLS("encryptedkey") == "") {
+        var encryptedKey = GetLS('encryptedkey');
+        if (encryptedKey == null || encryptedKey == "") {
             location.href = "products.html";
         }
 
@@ -48,17 +48,16 @@
 
         function onDeviceReady() {
             document.addEventListener("backbutton", function (e) {
-                var c_page = GetLS("page");
+                var c_page = GetLS('page');
                 var result = c_page.split(",");
                 changepage(result[result.length - 1]);
                 if (result.length == 1) {
-                    //var new_page = c_page.replace(result[result.length - 1], "");
-                    //SetLS("page", new_page);
-                    SetLS("page", "index");
+  
+                    SetLS('page', 'index');
                 }
                 else {
                     var new_page = c_page.replace(',' + result[result.length - 1], "");
-                    SetLS("page", new_page);
+                    SetLS('page', new_page);
                 }
             });
         }
@@ -77,7 +76,7 @@
             }, errorCB);
 
 
-            if (GetLS("Isuserlogged") == 'yes') {
+            if (GetLS('Isuserlogged') === 'yes') {
                 $(".exitbtn").show();
             }
             else {
