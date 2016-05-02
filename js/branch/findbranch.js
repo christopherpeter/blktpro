@@ -71,18 +71,18 @@ function loadallbranches_tolocalDB()
                     var Longitude = item.Longitude;
                     var Address = item.Address;
                     var PhoneNumber = item.PhoneNumber;
-                    var Faxnumber = "";
-                    var ManagerName = "";
-                    var Email = "";
+                    var Faxnumber = '', ManagerName = '', Email='';
+
 
                     if (BranchCode == defaultbranchcode) 
                     {
-                        if (GetLS("default_branchcode") == "" || GetLS("default_branchcode") == null) 
+                        var default_brancdCode= GetLS('default_branchcode');
+                        if (default_brancdCode == "" || default_brancdCode == null)
                         {
-                            SetLS("default_branchcode", BranchCode);
-                            SetLS("default_branchname", BranchName);
-                            SetLS("default_branchcode1", BranchCode);
-                            SetLS("default_branchname1", BranchName);
+                            SetLS('default_branchcode', BranchCode);
+                            SetLS('default_branchname', BranchName);
+                            SetLS('default_branchcode1', BranchCode);
+                            SetLS('default_branchname1', BranchName);
                         }
                     }
 
@@ -125,10 +125,10 @@ function create_locationarray()
 
             var get_gpslocation = GetLS('get_gpslocation');
 
-            if (get_gpslocation == 'yes') {
+            if (get_gpslocation === 'yes') {
                 loadGPS_locations();
             }
-            else if (get_gpslocation == 'notfound') {
+            else if (get_gpslocation === 'notfound') {
 
                 mapinitialize();
             }
