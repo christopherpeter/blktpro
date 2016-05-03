@@ -59,7 +59,7 @@ function setencryptedkey() {
             var DeviceEncrptedKey = json.DeviceEncrptedKey;
             var AlphanumericToken = json.AlphanumericToken;
 
-            if (DeviceEncrptedKey != "" && DeviceEncrptedKey != null) {
+            if (DeviceEncrptedKey !== "" && DeviceEncrptedKey !== null) {
 
                 setLS('encryptedkey', DeviceEncrptedKey);
                 setCookie("AlphanumericToken", AlphanumericToken);
@@ -533,14 +533,14 @@ function droptable()
         tx.executeSql('DROP TABLE IF EXISTS  kdcartitems');
         tx.executeSql('DROP TABLE IF EXISTS  sectioninfo');
 
-        window.location.href = 'index.html';
+        window.location.href = 'products.html';
     });
 }
 
 function loadmenu(pageno) {
     var isuserlogged = getLS('Isuserlogged');
     var username = "";
-    if(getLS('UserName') != null)
+    if(getLS('UserName') !== null)
     {
         username = getLS('UserName');
     }

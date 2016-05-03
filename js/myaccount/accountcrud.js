@@ -6,24 +6,31 @@ License:Tychons solutions
 
 //Globalvalues for the JS
 
-var AccessTokenKey = getLS('AccessTokenKey');
-if (AccessTokenKey == null) { AccessTokenKey = ""; }
-var CustomerNumber = getLS('CustomerNumber');
-if (CustomerNumber == null) { CustomerNumber = ""; }
-var user_ID = getLS('UserID');
-if (user_ID == null) { user_ID = ""; }
-var UserProfile = getLS('UserProfile');
-if (UserProfile == null) { UserProfile = ""; }
-var isuserlogged = getLS('Isuserlogged');
-var UserName = getLS('UserName');
-if (UserName == null) { UserName = ""; }
-
-var Isvalid = "";
-if (isuserlogged == 'yes') {
-    Isvalid = "Y";
+AccessTokenKey = getLS('AccessTokenKey');
+if (AccessTokenKey === null) {
+    AccessTokenKey = "";
 }
-else {
-    Isvalid = "N";
+CustomerNumber = getLS('CustomerNumber');
+if (CustomerNumber === null) {
+    CustomerNumber = "";
+}
+user_ID = getLS('UserID');
+if (user_ID === null) {
+    user_ID = "";
+}
+UserProfile = getLS('UserProfile');
+if (UserProfile === null) {
+    UserProfile = "";
+}
+isuserlogged = getLS('Isuserlogged');
+UserName = getLS('UserName');
+if (UserName === null) {
+
+    UserName = "";
+}
+Isvalid = 'N';
+if (isuserlogged === 'yes') {
+    Isvalid = "Y";
 }
 
 
@@ -85,7 +92,7 @@ function accountpage_load() {
                 var CustomerShippingState = getLS('CustomerShippingState');
 
 
-                if (Statecode == CustomerShippingState) {
+                if (Statecode === CustomerShippingState) {
                     html = html + "<option value='" + Statecode + "' selected>" + Statename + "</option>";
                 }
                 else {
@@ -105,7 +112,7 @@ function accountpage_load() {
                 var BranchName = ss.BranchName;
                 var BranchCode = ss.BranchCode;
                 var id = ss.id;
-                if (branch_id == BranchCode) {
+                if (branch_id === BranchCode) {
                     html = html + "<option value='" + BranchCode + "' selected>" + BranchName + "</option>";
                 }
                 else {
@@ -200,7 +207,7 @@ function loadallbranches_tolocalDB_account() {
                     var Email = "";
 
 
-                    if (BranchCode == defaultbranchcode)
+                    if (BranchCode === defaultbranchcode)
                     {
                         var defaultBranchCode = getLS('default_branchcode');
                         if (defaultBranchCode === "" || defaultBranchCode === null) {
@@ -230,20 +237,14 @@ function loadallbranches_tolocalDB_account() {
 
 function submitfeedback()
 {
-    if (isuserlogged == 'yes')
+    if (isuserlogged === 'yes')
     {
-        var appname = "";
-        if (orderedbyname == "BTP") {
-            appname = "TP";
-        }
-        else {
-            appname = "KD";
-        }
+        var appname = "TP";
 
         var feedback = $("#txtfeedback").val();
 
         var re = /^[ A-Za-z0-9'.,-]*$/
-        if (feedback == "" || feedback == null) {
+        if (feedback === "" || feedback === null) {
 
             navigator.notification.alert('Please enter valid feedback.', null, 'Account Feedback', 'OK');
 
@@ -272,7 +273,7 @@ function submitfeedback()
                     var $Name = $xml.find('return');
                     var resultJSON = $Name.text();
                     var json = $.parseJSON(resultJSON);
-                    if (json.IsUpdated == "True") {
+                    if (json.IsUpdated === "True") {
 
                         navigator.notification.alert('Thanks.Your Feedback has been submitted.!', null, 'Account Feedback', 'OK');
                     }
@@ -283,7 +284,7 @@ function submitfeedback()
 
                     }
                 },
-                error: function (data, errorThrown) {
+                error: function () {
                     navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
 
@@ -330,19 +331,19 @@ function savebranch() {
     var zipcodeval = /[^\s\da-z\-]/i;
     var name = /^[A-Za-z]*$/;
 
-    if (address1 == "") {
+    if (address1 === "") {
         $("#txtaddress").focus();
 
         navigator.notification.alert('Please enter your address.', null, 'Alert', 'OK');
         return false;
     }
-    else if (addresscity == "") {
+    else if (addresscity === "") {
         $("#txtcity").focus();
 
         navigator.notification.alert('Please enter your city.', null, 'Alert', 'OK');
         return false;
     }
-    else if (addresszip == "") {
+    else if (addresszip === "") {
         $("#txtpincode").focus();
 
         navigator.notification.alert('Please enter your zipcode.', null, 'Alert', 'OK');
@@ -355,13 +356,13 @@ function savebranch() {
         return false;
     }
 
-    else if (document.getElementById("txtpincode").value.length != 5) {
+    else if (document.getElementById("txtpincode").value.length !== 5) {
         $("#txtpincode").focus();
         navigator.notification.alert('Please enter 5 digit zipcode.', null, 'Alert', 'OK');
 
         return false;
     }
-    else if (phonenumber == "") {
+    else if (phonenumber === "") {
         $("#txtphonenumber").focus();
         navigator.notification.alert('Please Enter Your Phone Number.', null, 'Alert', 'OK');
 
@@ -400,7 +401,7 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
     var CustomerTelephonePrefixNumber = Fullphonenumber[1];
     var CustomerTelephoneSuffixNumber = Fullphonenumber[2];
 
-    if (isuserlogged == 'yes')
+    if (isuserlogged === 'yes')
     {
         var UserProfile = getLS('UserProfile');
         var CustomerNumber = getLS('CustomerNumber');
@@ -428,7 +429,7 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
 
                 var resultJSON = $Name.text();
                 var json = $.parseJSON(resultJSON);
-                if (json.IsUpdated == 'True')
+                if (json.IsUpdated === 'True')
                 {
                     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
                     showproduct.transaction(function showitemsbyid(tx)
@@ -603,7 +604,7 @@ $(function () {
 function addressbook() {
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "accpopup") {
+    if (result[result.length - 1] !== "accpopup") {
         setLS('page', c_page + ",accpopup");
     }
     saveaddress();
@@ -620,7 +621,7 @@ function loadmenu_account(pageno)
     html = html + '<div class="innerpopup">';
     html = html + '<div class="empty">';
     html = html + '</div>';
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === 'yes') {
         html = html + '<div class="popdiv" onclick="findaccount(' + pageno + ')">';
         html = html + '<table class="tableclass" style="border: none;width:100%">';
         html = html + '<tr style="width: 220px; text-align: left">';

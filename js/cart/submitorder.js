@@ -6,23 +6,37 @@ License:Tychons solutions
 
 //Globalvalues for the JS
 
-var AccessTokenKey = getLS('AccessTokenKey');
-if (AccessTokenKey == null) { AccessTokenKey = ""; }
-var CustomerNumber = getLS('CustomerNumber');
-if (CustomerNumber == null) { CustomerNumber = ""; }
-var user_ID = getLS('UserID');
-if (user_ID == null) { user_ID = ""; }
-var UserProfile = getLS('UserProfile');
-if (UserProfile == null) { UserProfile = ""; }
-var isuserlogged = getLS('Isuserlogged');
-var UserName = getLS('UserName');
-if (UserName == null) { UserName = ""; }
-var Isvalid = "";
-if (isuserlogged == 'yes') {
-    Isvalid = "Y";
+AccessTokenKey = getLS('AccessTokenKey');
+if (AccessTokenKey === null)
+{
+    AccessTokenKey = "";
 }
-else {
-    Isvalid = "N";
+CustomerNumber = getLS('CustomerNumber');
+if (CustomerNumber === null)
+{
+    CustomerNumber = "";
+}
+user_ID = getLS('UserID');
+if (user_ID === null)
+{
+    user_ID = "";
+}
+UserProfile = getLS('UserProfile');
+if (UserProfile === null)
+{
+    UserProfile = "";
+}
+isuserlogged = getLS('Isuserlogged');
+UserName = getLS('UserName');
+if (UserName === null)
+{
+
+    UserName = "";
+}
+Isvalid = 'N';
+if (isuserlogged === 'yes')
+{
+    Isvalid = "Y";
 }
 
 
@@ -34,7 +48,7 @@ function submitcart() {
     var JobName = "";
     var OrderChargeorCashCode = $("#ddorder").val();
 
-    if (OrderChargeorCashCode == "0")
+    if (OrderChargeorCashCode === "0")
     {
         navigator.notification.alert('Please select the mode of payment!', null, 'Order Alert', 'OK');
         return false;
@@ -42,7 +56,7 @@ function submitcart() {
 
     var OrderMethodOfShipment = $("#ddshippment1").val();
     var shipfrombranchnumber = 0;
-    if (OrderMethodOfShipment == "P") {
+    if (OrderMethodOfShipment === "P") {
         shipfrombranchnumber = getLS('branchcodenumber');
 
     }
@@ -71,7 +85,7 @@ function submitcart() {
     var Order = "O";
     var ShipToAddressFlag = "Y";
     var TaxableFlag = '';
-    if (pricetax != 0 && pricetax != null) {
+    if (pricetax !== 0 && pricetax !== null) {
         TaxableFlag = 'Y';
     }
     else
@@ -79,7 +93,7 @@ function submitcart() {
          TaxableFlag = 'N';
     }
     var salesmanid = "";
-    if (getLS('salesmanid') != "" && getLS('salesmanid') != null) {
+    if (getLS('salesmanid') !== "" && getLS('salesmanid') !== null) {
         salesmanid = getLS('salesmanid');
     }
     else {
@@ -161,7 +175,7 @@ function submitcart() {
                     var OrderStatusCode = "O";
 
 
-                    if (i != res.rows.length - 1) {
+                    if (i !== res.rows.length - 1) {
 
                         param2 = param2 + '{'
 
@@ -237,28 +251,28 @@ function sendsummitorder(param1, param2)
     if (ShippingMethod !== 'P') 
     {
 
-        if (getLS('Toaddress') == null || getLS('Toaddress') == "") {
+        if (getLS('Toaddress') === null || getLS('Toaddress') === "") {
             street = "";
         }
         else {
             street = getLS('Toaddress');
         }
 
-        if (getLS('Tocity') == null || getLS('Tocity') == "") {
+        if (getLS('Tocity') === null || getLS('Tocity') === "") {
             city = "";
         }
         else {
             city = getLS('Tocity');
         }
       
-        if (getLS('Tostate') == null || getLS('Tostate') == "") {
+        if (getLS('Tostate') === null || getLS('Tostate') === "") {
             state = "";
         }
         else {
             state = getLS('Tostate');
         }
 
-        if (getLS('Tozip') == null || getLS('Tozip') == "") {
+        if (getLS('Tozip') === null || getLS('Tozip') === "") {
             postcode = "";
         }
         else {
@@ -290,7 +304,7 @@ function sendsummitorder(param1, param2)
 
     var isuserlogged = getLS('Isuserlogged');
     var UserProfile = getLS('UserProfile');
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === 'yes') {
         $.ajax({
             type: "GET",
             crossDomain: true,
@@ -314,7 +328,7 @@ function sendsummitorder(param1, param2)
                 var resultJSON = $Name.text();
                 var json = $.parseJSON(resultJSON);
                 var ordernumber = json.OrderNumber;
-                if (json.Inserted == "Success")
+                if (json.Inserted === "Success")
                 {
 
                     navigator.notification.alert('Thank you, Your order request has been successfully submitted.The order number is ' + ordernumber + '. Your order may be viewed under "My Account - Order History".', null, 'Order Information', 'OK');
@@ -406,7 +420,7 @@ function submitpopup() {
                     output = output + ': $' + Estimatedtotal.toFixed(2);
                     output = output + '</td>';
                     output = output + '</tr>';
-                    if (pricetax != 0 && pricetax != "") {
+                    if (pricetax !== 0 && pricetax !== "") {
                         output = output + '<tr>';
                         output = output + '<td>';
                         output = output + 'Estimated Tax (' + pricetax + '%)';
@@ -426,7 +440,7 @@ function submitpopup() {
                         output = output + '</td>';
                         output = output + '</tr>';
                     }
-                    if (getLS('ShippingMethod') != "O" && getLS('ShippingMethod') != "P") {
+                    if (getLS('ShippingMethod') !== "O" && getLS('ShippingMethod') !== "P") {
                         output = output + '<tr>';
                         output = output + '<td>';
                         output = output + 'Estimated Shipping';
@@ -465,10 +479,10 @@ function submitpopup() {
 
     var OrderMethodOfShipment = $("#ddshippment1").val();
 
-    if (OrderMethodOfShipment == "D") {
+    if (OrderMethodOfShipment === "D") {
         var c_page = getLS('page');
         var result = c_page.split(",");
-        if (result[result.length - 1] != "submitpopup") {
+        if (result[result.length - 1] !== "submitpopup") {
             setLS('page', c_page + ",submitpopup");
         }
 
@@ -477,10 +491,10 @@ function submitpopup() {
         $("#submitpopup").show();
 
     }
-    else if (OrderMethodOfShipment == "O") {
+    else if (OrderMethodOfShipment === "O") {
         var c_page = getLS('page');
         var result = c_page.split(",");
-        if (result[result.length - 1] != "submitpopup") {
+        if (result[result.length - 1] !== "submitpopup") {
             setLS('page', c_page + ",submitpopup");
         }
 
@@ -489,17 +503,17 @@ function submitpopup() {
         $("#submitpopup").show();
 
     }
-    else if (OrderMethodOfShipment == "P") {
+    else if (OrderMethodOfShipment === "P") {
         var pickupbranch = $("#ddpickupbranch").val();
 
-        if (pickupbranch == 0) {
+        if (pickupbranch === 0) {
             navigator.notification.alert('Please select your Pickup branch..!', null, 'Alert', 'OK');
             return false;
         }
         
         var c_page = getLS('page');
         var result = c_page.split(",");
-        if (result[result.length - 1] != "submitpopup") {
+        if (result[result.length - 1] !== "submitpopup") {
             setLS('page', c_page + ",submitpopup");
         }
         $("#shipping_popup").hide();
@@ -507,10 +521,10 @@ function submitpopup() {
         $("#submitpopup").show();
 
     }
-    else if (OrderMethodOfShipment == "S") {
+    else if (OrderMethodOfShipment === "S") {
         var serviceOption = $("#ddserviceoption").val();
 
-        if (serviceOption == 0) {
+        if (serviceOption === 0) {
             navigator.notification.alert('Please select UPS Shipping Service..!', null, 'Alert', 'OK');
             return false;
         }
@@ -518,7 +532,7 @@ function submitpopup() {
         
         var c_page = getLS('page');
         var result = c_page.split(",");
-        if (result[result.length - 1] != "submitpopup") {
+        if (result[result.length - 1] !== "submitpopup") {
             setLS('page', c_page + ",submitpopup");
         }
         $("#shipping_popup").hide();
@@ -531,11 +545,11 @@ function submitpopup() {
 
 function onConfirmCancelOrder(buttonIndex) 
 {
-    if (buttonIndex == 1) 
+    if (buttonIndex === 1) 
     {
         var c_page = getLS('page');
         var result = c_page.split(","), new_page;
-        if (result.length == 1) {
+        if (result.length === 1) {
             new_page = c_page.replace(result[result.length - 1], "");
             setLS('page', new_page);
         } else {

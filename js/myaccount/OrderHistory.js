@@ -5,29 +5,37 @@ License:Tychons solutions
 */
 
 //Globalvalues for the JS
-var AccessTokenKey = getLS('AccessTokenKey');
-if (AccessTokenKey == null) { AccessTokenKey = ""; }
-var CustomerNumber = getLS('CustomerNumber');
-if (CustomerNumber == null) { CustomerNumber = ""; }
-var user_ID = getLS('UserID');
-if (user_ID == null) { user_ID = ""; }
-var UserProfile = getLS('UserProfile');
-if (UserProfile == null) { UserProfile = ""; }
-var isuserlogged = getLS('Isuserlogged');
-var UserName = getLS('UserName');
-if (UserName == null) { UserName = ""; }
-var Isvalid = "";
-if (isuserlogged == 'yes') {
-    Isvalid = "Y";
+AccessTokenKey = getLS('AccessTokenKey');
+if (AccessTokenKey === null) {
+    AccessTokenKey = "";
 }
-else {
-    Isvalid = "N";
+CustomerNumber = getLS('CustomerNumber');
+if (CustomerNumber === null) {
+    CustomerNumber = "";
+}
+user_ID = getLS('UserID');
+if (user_ID === null) {
+    user_ID = "";
+}
+UserProfile = getLS('UserProfile');
+if (UserProfile === null) {
+    UserProfile = "";
+}
+isuserlogged = getLS('Isuserlogged');
+UserName = getLS('UserName');
+if (UserName === null) {
+
+    UserName = "";
+}
+Isvalid = 'N';
+if (isuserlogged === 'yes') {
+    Isvalid = "Y";
 }
 
 
 function Loadorderhistory() 
 {
-    if (isuserlogged == 'yes') 
+    if (isuserlogged === 'yes') 
     {
             $.ajax({
                 type: "GET",
@@ -76,9 +84,9 @@ function Loadorderhistory()
                             output = output + 'Order Date : ' + OrderDate;
                             output = output + '</td>';
                             output = output + '</tr>';
-                            if (OrderStatusCode != "O" && OrderStatusCode != "" && OrderStatusCode != null) 
+                            if (OrderStatusCode !== "O" && OrderStatusCode !== "" && OrderStatusCode !== null) 
                             {
-                                if (ShippedDate != '0/0/00'  && ShippedDate !="" && ShippedDate != null) 
+                                if (ShippedDate !== '0/0/00'  && ShippedDate !=="" && ShippedDate !== null) 
                                 {
                                     output = output + '<tr>';
                                     output = output + '<td>';
