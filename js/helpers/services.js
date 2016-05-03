@@ -70,7 +70,7 @@ var imagepath = "https://www.blackmancommercialaccounts.com/Categories/";  //Cen
 var productimagepath = "https://www.blackmancommercialaccounts.com/productimages/"; //Product image path
 
 var TotalProductCount = 10;
-var ToNextCount = parseInt(TotalProductCount,10) - 1;
+var ToNextCount = parseInt(TotalProductCount, 10) - 1;
 
 
 //Global Variables
@@ -82,8 +82,7 @@ var defaultbranchname = "BLACKMAN - WAREHOUSE";
 var SecretPhrase = getCookie("AlphanumericToken");
 var AccessTokenKey, CustomerNumber, user_ID, UserProfile, isuserlogged, UserName, Isvalid;
 
-function getCookie(cname) 
-{
+function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
@@ -96,8 +95,7 @@ function getCookie(cname)
 
 //Function To set Localstorage
 
-function setLS(Key, Value)
-{
+function setLS(Key, Value) {
     //var EncryptedValue = CryptoJS.AES.encrypt(Value.toString(), SecretPhrase);
     localStorage.setItem(Key, Value);
 }

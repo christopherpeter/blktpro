@@ -36,8 +36,7 @@ if (isuserlogged === 'yes') {
 //Function to load section code to the table sectionifo
 
 
-function ChangeUserBranch()
-{
+function ChangeUserBranch() {
     findbranch(2);
 }
 
@@ -133,7 +132,7 @@ function loadsectionfilter() {
 
                         var query = 'INSERT INTO sectioninfo (HSCODE,SECTION,DESCRIPTION,GROUPCOUNT)'
                                      + 'VALUES (?,?,?,?)';
-                        tx.executeSql(query, [HSCODE,SECTION, DESCRIPTION, GROUPCOUNT]);
+                        tx.executeSql(query, [HSCODE, SECTION, DESCRIPTION, GROUPCOUNT]);
 
                     });
                     setLS('cat_oldcount', '0');
@@ -177,19 +176,19 @@ function CheckAspectRatio(imageid) {
     var widthRatio = parseFloat(imgwidth / Width).toFixed(2);
     var heightRatio = parseFloat(imgheight / Height).toFixed(2);
     var ratio = Math.max(widthRatio, heightRatio);
-    var newWidth = parseInt(imgwidth / ratio,10);
-    var newHeight = parseInt(imgheight / ratio,10);
+    var newWidth = parseInt(imgwidth / ratio, 10);
+    var newHeight = parseInt(imgheight / ratio, 10);
 
     if (imgheight > divheight) {
-        $("#" + imageid).css("margin-top", parseInt((Height - newHeight) / 2,10) + "px");
-        $("#" + imageid).css("margin-left", parseInt((Width - newWidth) / 2,10) + "px");
+        $("#" + imageid).css("margin-top", parseInt((Height - newHeight) / 2, 10) + "px");
+        $("#" + imageid).css("margin-left", parseInt((Width - newWidth) / 2, 10) + "px");
     }
     else {
-        $("#" + imageid).css("margin-top", parseInt((divheight - newHeight) / 2,10) + "px");
+        $("#" + imageid).css("margin-top", parseInt((divheight - newHeight) / 2, 10) + "px");
     }
 
-    $("#" + imageid).css("width", parseInt(newWidth,10) + "px");
-    $("#" + imageid).css("height", parseInt(newHeight - 2,10) + "px");
+    $("#" + imageid).css("width", parseInt(newWidth, 10) + "px");
+    $("#" + imageid).css("height", parseInt(newHeight - 2, 10) + "px");
 
 }
 
@@ -366,8 +365,7 @@ function loadsectionimages() {
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
     showitems.transaction(function showitemsbybranch(tx) {
         var html = "";
-        tx.executeSql('SELECT * FROM sectioninfo', [], function itembranchsucce(tx, results)
-        {
+        tx.executeSql('SELECT * FROM sectioninfo', [], function itembranchsucce(tx, results) {
             setLS('TotalSections', results.rows.length);
         });
         tx.executeSql('SELECT * FROM sectioninfo WHERE id between 1 and ' + totalgridlength, [], function itembranchsucces(txx, res) {
@@ -416,7 +414,7 @@ function loadsectionimages() {
                 }
                 else {
                     html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
-                    
+
                     if (SECTIONCODE === "FILTERS") {
                         html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                     }
@@ -446,8 +444,8 @@ function loadsectionimages() {
 function product_next() {
 
     var count = getLS('images_oldcount');
-    var from = parseInt(count,10) + 1;
-    var to = parseInt(count,10) + totalgridlength;
+    var from = parseInt(count, 10) + 1;
+    var to = parseInt(count, 10) + totalgridlength;
     var where = from + ' and ' + to;
 
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
@@ -530,8 +528,8 @@ function product_next() {
 
 function product_previous() {
     var count = getLS('images_oldcount');
-    var from = parseInt(count,10) - totalgridlength - (totalgridlength - 1);
-    var to = parseInt(count,10) - totalgridlength;
+    var from = parseInt(count, 10) - totalgridlength - (totalgridlength - 1);
+    var to = parseInt(count, 10) - totalgridlength;
     var where = from + ' and ' + to;
 
     if (to > 0) {
@@ -667,8 +665,7 @@ function product_search() {
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
-            dbinsert.transaction(function branchdetails(tx)
-            {
+            dbinsert.transaction(function branchdetails(tx) {
                 tx.executeSql('DROP TABLE IF EXISTS  iteminfo');
                 tx.executeSql('CREATE TABLE IF NOT EXISTS iteminfo (id INTEGER PRIMARY KEY AUTOINCREMENT,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK)');
                 var xmlString;
@@ -715,7 +712,7 @@ function product_search() {
                     });
 
                     setLS('product_count', to_count);
-                    setLS('IsNewFilterAttributes','Yes');
+                    setLS('IsNewFilterAttributes', 'Yes');
                     setLS('SearchType', 'PROD1');
                     writetologfile("User searched for product " + searchtext + ".It has results.", 3);
                     loadsectionproductscontents('Yes');
@@ -735,9 +732,9 @@ function product_search() {
 
 
     });
-    setLS('F_Categorycode','');
-    setLS('F_Groupcode','');
-    setLS('F_Sectioncode','');
+    setLS('F_Categorycode', '');
+    setLS('F_Groupcode', '');
+    setLS('F_Sectioncode', '');
 }
 
 // Function for products serach on all the products
@@ -890,7 +887,7 @@ function clearfilters() {
     var message = "Cleared All filters";
     writetologfile(message, 5);
 }
-function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
+function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
     description = description.replace(/_/g, " ");
     setLS('breadlist1', description);
     setLS('F_HSCODE', HSCODE);
@@ -914,7 +911,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
 
     $.ajax({
         type: "GET",
-        crossDomain: true,      
+        crossDomain: true,
         url: NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + Sectioncode + "&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
@@ -950,18 +947,16 @@ function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
                     var DESCRIPTION = item.DESCRIPTION;
                     var GROUPCOUNT = item.GROUPCOUNT;
 
-                    var DESCRIPTION1 = DESCRIPTION.replace(/ /g, '_').replace(/'/g,'');
-                        
+                    var DESCRIPTION1 = DESCRIPTION.replace(/ /g, '_').replace(/'/g, '');
+
                     //html = html + " <li  onclick=\"pdtimgkitchendivdisplaynew2('" + SECTIONCODE + "','" + DESCRIPTION1 + "','" + description + "')\">" + DESCRIPTION + " (" + GROUPCOUNT + ")</li>";
                     html = html + '<div>';
-                    if (GROUPCOUNT > 0 && SECTIONCODE !== "" && SECTIONCODE !== null)
-                    {
+                    if (GROUPCOUNT > 0 && SECTIONCODE !== "" && SECTIONCODE !== null) {
                         html = html + "<div onclick=\"pdtimgkitchendivdisplaynew2('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION + '(' + GROUPCOUNT + ')';
                     }
-                    else
-                    {
+                    else {
 
                         setLS('breadlist2', '');
                         setLS('breadlist3', '');
@@ -969,7 +964,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION;
                     }
-                   
+
                     html = html + '<img src="images/ListRightArrow.png" style="float: right; width: 25px;margin-top: 4px;" /></div>';
                     html = html + '</div>';
                     html = html + '</div>';
@@ -1018,7 +1013,7 @@ function pdtimgkitchendivdisplaynew1back() {
     $(".cleardivivfilter").hide();
     $("#filterselctiondiv").hide();
     $("#loaditems123").hide();
-    
+
     $("#prdtsectionimges").show();
     $("#sectiondiv").show();
     $(".searchdiv").show();
@@ -1043,7 +1038,7 @@ function pdtimgkitchendivdisplaynew1back() {
 
 
 }
-function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
+function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
     newDESCRIPTION = newDESCRIPTION.replace(/_/g, " ");
     setLS('breadlist2', newDESCRIPTION);
     var c_page = getLS('page');
@@ -1067,7 +1062,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-       // url: groupcodeURL + "?SCode=" + sectioncode + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+        // url: groupcodeURL + "?SCode=" + sectioncode + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
         url: NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + sectioncode + "&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
@@ -1105,7 +1100,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
                     var DESCRIPTION = item.DESCRIPTION;
                     var CATAGORYCOUNT = item.CATAGORYCOUNTs;
 
-                    var DESCRIPTION1 = DESCRIPTION.replace(/ /g, '_').replace(/'/g,'');;
+                    var DESCRIPTION1 = DESCRIPTION.replace(/ /g, '_').replace(/'/g, '');;
 
                     //html = html + " <li onclick=\"productlistingfinal('" + sectioncode + "','" + GROUPCODE + "','" + DESCRIPTION1 + "','" + newDESCRIPTION + "','" + descriptioncat + "')\">" + DESCRIPTION + " (" + CATAGORYCOUNT + ")</li>";
                     html = html + '<div>';
@@ -1234,7 +1229,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
             var output = $.parseJSON(finalresult);
             var list = output.BMCCategoryDetails;
 
-           
+
             if (output.BMCCategoryDetails.length > 0) // Check the count of Cateogory available
             {
                 var html = "";
@@ -1247,8 +1242,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
 
 
                 html = html + " <ul style='color:#304589;font-size:13px;font-weight:bold;width:100%;line-height:35PX;padding:0px;margin-top: 1px;'>";
-                $.each(list, function (i, item)
-                {
+                $.each(list, function (i, item) {
                     var CATEGORYCODE = item.CATEGORYCODE;
                     var DESCRIPTION = item.DESCRIPTION;
                     DESCRIPTION = DESCRIPTION.replace(/'/g, "");
@@ -1264,7 +1258,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
 
                 });
                 html = html + "</div>";
-                $("#list3products").html(html);               
+                $("#list3products").html(html);
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
@@ -1348,7 +1342,7 @@ function breadcrumlist3() {
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
     $("#filterselctiondiv").hide();
-    
+
     $("#loaditems123").hide();
     $("#filterdiv").show();
     pdtimgkitchendivdisplaynew3back();

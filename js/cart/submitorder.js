@@ -7,35 +7,30 @@ License:Tychons solutions
 //Globalvalues for the JS
 
 AccessTokenKey = getLS('AccessTokenKey');
-if (AccessTokenKey === null)
-{
+if (AccessTokenKey === null) {
     AccessTokenKey = "";
 }
 CustomerNumber = getLS('CustomerNumber');
-if (CustomerNumber === null)
-{
+if (CustomerNumber === null) {
     CustomerNumber = "";
 }
 user_ID = getLS('UserID');
-if (user_ID === null)
-{
+if (user_ID === null) {
     user_ID = "";
 }
 UserProfile = getLS('UserProfile');
-if (UserProfile === null)
-{
+if (UserProfile === null) {
     UserProfile = "";
 }
+
 isuserlogged = getLS('Isuserlogged');
 UserName = getLS('UserName');
-if (UserName === null)
-{
+if (UserName === null) {
 
     UserName = "";
 }
 Isvalid = 'N';
-if (isuserlogged === 'yes')
-{
+if (isuserlogged === 'yes') {
     Isvalid = "Y";
 }
 
@@ -48,8 +43,7 @@ function submitcart() {
     var JobName = "";
     var OrderChargeorCashCode = $("#ddorder").val();
 
-    if (OrderChargeorCashCode === "0")
-    {
+    if (OrderChargeorCashCode === "0") {
         navigator.notification.alert('Please select the mode of payment!', null, 'Order Alert', 'OK');
         return false;
     }
@@ -64,7 +58,7 @@ function submitcart() {
         shipfrombranchnumber = 100;
     }
 
-    $("#submitpopup").hide(); 
+    $("#submitpopup").hide();
 
     $("#fade2").show();
 
@@ -88,9 +82,8 @@ function submitcart() {
     if (pricetax !== 0 && pricetax !== null) {
         TaxableFlag = 'Y';
     }
-    else
-    {
-         TaxableFlag = 'N';
+    else {
+        TaxableFlag = 'N';
     }
     var salesmanid = "";
     if (getLS('salesmanid') !== "" && getLS('salesmanid') !== null) {
@@ -147,7 +140,7 @@ function submitcart() {
 
 
     var query1 = "select selectedbranch,RequiredQuantity,ItemUnitPriceAmount,OurProductNumber,OurItemNumber,ItemStockingUnitOfMeasure from cartitems"; //For trade professional
-   
+
 
 
 
@@ -160,7 +153,7 @@ function submitcart() {
                 for (var i = 0; i < res.rows.length; i++) {
 
                     var ss = res.rows.item(i);
-                    var LineItemSequenceNumber = parseInt(i + 1,10);
+                    var LineItemSequenceNumber = parseInt(i + 1, 10);
                     var OurProductNumber = ss.OurProductNumber;
                     var OurItemNumber = ss.OurItemNumber;
                     var ItemPricingUnitofMeasure = ss.ItemStockingUnitOfMeasure; //doubt
@@ -231,15 +224,14 @@ function submitcart() {
                 param2 = param2 + ']}'
             }
 
-           
+
             sendsummitorder(param1, param2);
         });
     });
 }
 
 
-function sendsummitorder(param1, param2)
-{
+function sendsummitorder(param1, param2) {
 
     //-------------------------------------------
     //Forming New Parameter
@@ -248,8 +240,7 @@ function sendsummitorder(param1, param2)
     var name = UserName;
     var street = ""; var city = ""; var state = ""; var postcode = "";
 
-    if (ShippingMethod !== 'P') 
-    {
+    if (ShippingMethod !== 'P') {
 
         if (getLS('Toaddress') === null || getLS('Toaddress') === "") {
             street = "";
@@ -264,7 +255,7 @@ function sendsummitorder(param1, param2)
         else {
             city = getLS('Tocity');
         }
-      
+
         if (getLS('Tostate') === null || getLS('Tostate') === "") {
             state = "";
         }
@@ -280,9 +271,8 @@ function sendsummitorder(param1, param2)
         }
 
     }
-    else 
-    {
-        name = ""; ; street = ""; city = ""; state = ""; postcode = "";
+    else {
+        name = "";; street = ""; city = ""; state = ""; postcode = "";
     }
 
     var param3 = "";
@@ -328,15 +318,13 @@ function sendsummitorder(param1, param2)
                 var resultJSON = $Name.text();
                 var json = $.parseJSON(resultJSON);
                 var ordernumber = json.OrderNumber;
-                if (json.Inserted === "Success")
-                {
+                if (json.Inserted === "Success") {
 
                     navigator.notification.alert('Thank you, Your order request has been successfully submitted.The order number is ' + ordernumber + '. Your order may be viewed under "My Account - Order History".', null, 'Order Information', 'OK');
-                    var query = "DROP TABLE IF EXISTS  cartitems";                    
-  
+                    var query = "DROP TABLE IF EXISTS  cartitems";
+
                     var create = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-                    create.transaction(function createTableDB(tx)
-                    {
+                    create.transaction(function createTableDB(tx) {
                         tx.executeSql(query);
 
                     });
@@ -348,25 +336,23 @@ function sendsummitorder(param1, param2)
                     writetologfile("User has submitted an order.[Orderno:" + ordernumber + "]", 7);
 
                 }
-                else
-                {
-             
+                else {
+
                     navigator.notification.alert('Order Submission Failed! Please try again.', null, 'Order Failed', 'OK');
                     $("#fade2").hide();
                     $.mobile.loading("hide");
                     document.getElementById('submitpopup').style.display = 'none';
                     $("#fade").hide();
                     writetologfile("User has submitted an order.[Failed]", 3);
-                   
+
                 }
 
             },
-            error: function (data, errorThrown)
-            {
+            error: function (data, errorThrown) {
                 navigator.notification.alert('Unable to connect server.Please try again later.', null, 'Connection Failed', 'OK');
                 $("#fade2").hide();
                 $.mobile.loading("hide");
-                $("#submitpopup").show(); 
+                $("#submitpopup").show();
                 document.getElementById('submitpopup').style.display = 'none';
                 $("#fade").hide();
             }
@@ -384,9 +370,8 @@ function submitpopup() {
 
         var output = "";
         var query3 = "SELECT sum(TotalPrice) as Estimatedtotal,sum(Totalweight) as FullTotalweight FROM cartitems";
-        
-        tx.executeSql(query3, [], function successitem(txx, result)
-        {
+
+        tx.executeSql(query3, [], function successitem(txx, result) {
 
             if (result.rows.length > 0) {
                 for (var i = 0; i < result.rows.length; i++) {
@@ -510,7 +495,7 @@ function submitpopup() {
             navigator.notification.alert('Please select your Pickup branch..!', null, 'Alert', 'OK');
             return false;
         }
-        
+
         var c_page = getLS('page');
         var result = c_page.split(",");
         if (result[result.length - 1] !== "submitpopup") {
@@ -529,7 +514,7 @@ function submitpopup() {
             return false;
         }
 
-        
+
         var c_page = getLS('page');
         var result = c_page.split(",");
         if (result[result.length - 1] !== "submitpopup") {
@@ -543,10 +528,8 @@ function submitpopup() {
 
 }
 
-function onConfirmCancelOrder(buttonIndex) 
-{
-    if (buttonIndex === 1) 
-    {
+function onConfirmCancelOrder(buttonIndex) {
+    if (buttonIndex === 1) {
         var c_page = getLS('page');
         var result = c_page.split(","), new_page;
         if (result.length === 1) {
@@ -562,9 +545,8 @@ function onConfirmCancelOrder(buttonIndex)
     }
 }
 
-function submitclose() 
-{
+function submitclose() {
 
     navigator.notification.confirm('Are you sure want to cancel your order submission?', onConfirmCancelOrder, 'Logout', ['Yes', 'No']);
-    
+
 }

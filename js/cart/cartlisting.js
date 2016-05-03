@@ -156,8 +156,7 @@ var Totalitems;
 function loadcartitems() {
 
     var cartread = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
-    cartread.transaction(function carinsertdetails(tx)
-    {
+    cartread.transaction(function carinsertdetails(tx) {
         var query1 = "CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)";
         var query2 = "select PRODUCTIMAGE,id,OurItemNumber,AVAILABLEQUNTY,ItemOrProductDescription,ItemUnitPriceAmount,RequiredQuantity,TotalPrice from cartitems";
 
@@ -287,18 +286,18 @@ function loadcartitems() {
             //Code for Cart footer calculation
             if (cartitemscount > 0) {
                 var output = "";
-                
-                 var query3 = "SELECT sum(TotalPrice) as Estimatedtotal,sum(Totalweight) as FullTotalweight FROM cartitems";
-               
+
+                var query3 = "SELECT sum(TotalPrice) as Estimatedtotal,sum(Totalweight) as FullTotalweight FROM cartitems";
+
 
                 tx.executeSql(query3, [], function successitem(txx, result) {
                     if (result.rows.length > 0) {
                         for (var i = 0; i < result.rows.length; i++) {
-                            
+
                             var ss = result.rows.item(i);
                             var Estimatedtotal = ss.Estimatedtotal;
                             var TotalWeight = ss.FullTotalweight;
-                            var GrandTotal = Estimatedtotal + parseInt(shippingcharges,10);
+                            var GrandTotal = Estimatedtotal + parseInt(shippingcharges, 10);
                             var Tax = Estimatedtotal * (parseFloat(pricetax) / 100);
                             var Pricewithtax = GrandTotal + Tax;
 
@@ -326,7 +325,7 @@ function loadcartitems() {
                             output = output + ' $' + Estimatedtotal.toFixed(2);
                             output = output + '</td>';
                             output = output + '</tr>';
-                            if (pricetax !== 0 && pricetax !=="") {
+                            if (pricetax !== 0 && pricetax !== "") {
                                 output = output + '<tr>';
                                 output = output + '<td style="width:125px">';
                                 output = output + 'Estimated Tax (' + pricetax + '%):';
@@ -359,7 +358,7 @@ function loadcartitems() {
                             output = output + '</td>';
                             output = output + '<td style="width: 15%; text-align: right;">';
                             output = output + '<table style="width: 100%">';
-                  
+
                             output = output + '<tr>';
                             output = output + '<td>';
                             output = output + '<td onclick="estimateshipping();" style="width: 100%; text-align: center; cursor: pointer">';
@@ -385,19 +384,16 @@ function loadcartitems() {
 
 //Function to remove item from the cart
 var globalcart_id = "";
-function removecartitem(id) 
-{
+function removecartitem(id) {
     globalcart_id = id;
     navigator.notification.confirm('Are you sure want to remove this product from cart?', onConfirmRemoveCart, 'Cart', ['Yes', 'No']);
 
 
 }
 
-function onConfirmRemoveCart(buttonIndex) 
-{
+function onConfirmRemoveCart(buttonIndex) {
     var id = globalcart_id;
-    if (buttonIndex === 1) 
-    {
+    if (buttonIndex === 1) {
         $("#loading_pdt").show();
 
         $.mobile.loading("show", {
@@ -411,8 +407,7 @@ function onConfirmRemoveCart(buttonIndex)
 
 
         var cartread = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
-        cartread.transaction(function carinsertdetails(tx)
-        {
+        cartread.transaction(function carinsertdetails(tx) {
 
             var query5 = "select ItemOrProductDescription from cartitems where id=" + id;
 
@@ -444,8 +439,7 @@ $(function () {
     })
 });
 
-function loadmenu_cart(pageno)
-{
+function loadmenu_cart(pageno) {
     UserName = getLS('UserName');
     var html = "";
     html = html + '<div class="innerpopup">';
@@ -484,7 +478,7 @@ function loadmenu_cart(pageno)
         html = html + '</div>';
         html = html + '<hr />';
     }
-      
+
     html = html + '<div class="popdiv" onclick="product(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
@@ -498,7 +492,7 @@ function loadmenu_cart(pageno)
     html = html + '</table>';
     html = html + '</div>';
     html = html + '<hr />';
-    
+
 
     html = html + '<div class="popdiv" onclick="findbranch(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
@@ -577,8 +571,7 @@ var global_itemid = "";
 var global_value = "";
 
 
-function handleChange_ADDTOCART(input, initialvalue) 
-{
+function handleChange_ADDTOCART(input, initialvalue) {
     var id = $(input).attr('id');
     var value = input.value;
     global_value = value;
@@ -587,8 +580,8 @@ function handleChange_ADDTOCART(input, initialvalue)
     var aval = quantity[1]; // Available quantity
     var itemid = quantity[0]; //Product id
     global_itemid = itemid;
-    if (value === "" || value === null || parseInt(value,10) <= 0) {
-       
+    if (value === "" || value === null || parseInt(value, 10) <= 0) {
+
         navigator.notification.alert('Enter valid quantity.', null, 'Alert', 'OK');
         $("#" + id).focus();
         input.value = temp_value;
@@ -600,26 +593,24 @@ function handleChange_ADDTOCART(input, initialvalue)
         input.value = temp_value;
         return false;
     }
-    else if (parseInt(value,10) > parseInt(aval,10)) {
+    else if (parseInt(value, 10) > parseInt(aval, 10)) {
         navigator.notification.alert('The quantity entered is not available currently.\nTotal quantity available in stock is ' + quantity[1] + '.', null, 'Alert', 'OK');
-         $("#" + id).focus();
+        $("#" + id).focus();
         //input.value = quantity[1];
         input.value = temp_value;
         return false;
     }
     navigator.notification.confirm('Are you sure want to modify the quantity?', onConfirmModifyCart, 'Cart', ['Yes', 'No']);
-   
+
 }
 
 
-function onConfirmModifyCart(buttonIndex) 
-{
+function onConfirmModifyCart(buttonIndex) {
     // Show the loader
     var value = global_value;
     var itemid = global_itemid; //Product id
 
-    if (buttonIndex === 1) 
-    {
+    if (buttonIndex === 1) {
         $("#loading_pdt").show();
 
         $.mobile.loading("show", {
@@ -631,8 +622,7 @@ function onConfirmModifyCart(buttonIndex)
 
         });
         var cartread1 = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
-        cartread1.transaction(function carinsertdetails(tx)
-        {
+        cartread1.transaction(function carinsertdetails(tx) {
             var query4 = "select Totalweight,InventoryItemWeight,ItemOrProductDescription,ItemUnitPriceAmount  FROM cartitems where id=" + itemid;
 
             tx.executeSql(query4, [], function successitem(txx, result) {
@@ -648,7 +638,7 @@ function onConfirmModifyCart(buttonIndex)
                 var Totalprice = value * OurListUnitPriceCompany1.toFixed(2);
                 var totalweight = parseFloat(InventoryItemWeight) * value;
 
-                var query5 = "update cartitems set RequiredQuantity=?,Totalprice=?, Totalweight=? where id=?";               
+                var query5 = "update cartitems set RequiredQuantity=?,Totalprice=?, Totalweight=? where id=?";
 
                 tx.executeSql(query5, [value, Totalprice, totalweight, itemid]);
 
@@ -661,8 +651,7 @@ function onConfirmModifyCart(buttonIndex)
 }
 
 
-function settax()
-{
+function settax() {
     if (isuserlogged === 'yes') {
         var zipcode = getLS('Zipcode');
         $.ajax({
@@ -698,7 +687,7 @@ function settax()
                             writetologfile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
                         }
                         else {
-                            
+
                             pricetax = 0; //binding user zipcode -tax
                             writetologfile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
                         }
@@ -711,7 +700,7 @@ function settax()
                 }
 
             }, error: function (data, errorThrown) {
-              
+
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -738,8 +727,8 @@ function estimateshipping() {
     if (TotalCartWeight <= 0) {
         TotalCartWeight = 1;
     }
-    
-    
+
+
 
     var html = "";
     html = html + '<div id="fade1" style="display:none" class="black_overlay">';
@@ -785,10 +774,10 @@ function estimateshipping() {
         html = html + '<select id="ddserviceoption" onchange="Estimate()" style="width:90%;">';
         html = html + '<option value="0">Select</option>';
         html = html + '<option value="03">UPS Ground</option>';
-       // html = html + '<option value="12">UPS 3 Day Select</option>';
-       // html = html + '<option value="02">UPS 2nd Day Air</option>';
-       // html = html + '<option value="13">UPS Next Day Air Saver</option>';
-       // html = html + '<option value="01">UPS Next Day Air</option>';
+        // html = html + '<option value="12">UPS 3 Day Select</option>';
+        // html = html + '<option value="02">UPS 2nd Day Air</option>';
+        // html = html + '<option value="13">UPS Next Day Air Saver</option>';
+        // html = html + '<option value="01">UPS Next Day Air</option>';
         html = html + '</select>';
     }
     html = html + '<p id="shipadddr" class="tabcontent1" style="margin-left: 0">';
@@ -812,8 +801,7 @@ function estimateshipping() {
 
         tx.executeSql('select UserName,CustomerShippingAddress1,CustomerShippingCity,CustomerShippingState,CustomerMainShippingZipCode from userinfo', [], function successitem(txx, res) {
             var address1, addresscity, addressstate, addresszip, username;
-            for (var i = 0; i < res.rows.length; i++)
-            {
+            for (var i = 0; i < res.rows.length; i++) {
                 var ss = res.rows.item(i);
                 address1 = ss.CustomerShippingAddress1;
                 addresscity = ss.CustomerShippingCity;
@@ -841,7 +829,7 @@ function estimateshipping() {
     // $("#shipping_popup").show();
 
     $("#ddbranch").html("<option value='O'>Please Wait</option>");
-     /* New code */
+    /* New code */
     $("#fade1").show();
 
     $.mobile.loading("show", {
@@ -856,8 +844,7 @@ function estimateshipping() {
     $("#fade").show();
 }
 
-function branchcodenumberset() 
-{
+function branchcodenumberset() {
     setLS('branchcodenumber', $("#ddbranch").val());
 
     if (getLS('ShippingMethod') === "P") {
@@ -897,8 +884,7 @@ function loadnewpickupAddress(branchno) {
             var list = output.BRANCHLIST;
             var ouput_string;
 
-            $.each(list, function (i, ss) 
-            {
+            $.each(list, function (i, ss) {
                 $("#div_address1").html(ss.BRANCHSHIPPINGADDRESS1 + ss.BRANCHSHIPPINGADDRESS2 + ss.BRANCHSHIPPINGADDRESS3);
                 $("#div_address2").html(ss.BRANCHSHIPPINGCITY + "," + ss.BRANCHSHIPPINGSTATE + "-" + ss.BRANCHMAINSHIPPINGZIPCODE);
 
@@ -988,8 +974,7 @@ function loadnearestbranch() {
 
 var ChangedValues_Latest = [];
 
-function loadtodropdown() 
-{
+function loadtodropdown() {
     var branchtxt = "";
     if (getLS('NearestBranchAddress') === null || getLS('NearestBranchAddress') === "") {
         branchtxt = "";
@@ -1001,8 +986,7 @@ function loadtodropdown()
     var lat1 = "", lon1 = "", lat, lng;
 
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'address': branchtxt }, function (results, status) 
-    {
+    geocoder.geocode({ 'address': branchtxt }, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
             lat = results[0].geometry.location.lat();
             lng = results[0].geometry.location.lng();
@@ -1017,8 +1001,7 @@ function loadtodropdown()
 
 }
 
-function findnearestLocations(lat1, lon1) 
-{
+function findnearestLocations(lat1, lon1) {
     var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024); /* opening local database */
     dbinsert.transaction(function branchdetails(tx) {
         tx.executeSql('select id,BranchName,Latitude,Longitude,BranchCode,Address from branchmatrix', [], function successitem(txx, res) {
@@ -1059,15 +1042,13 @@ function findnearestLocations(lat1, lon1)
             setLS('branchcodenumber', ChangedValues_Latest[0][0]);
             $("#ddbranch").val(ChangedValues_Latest[0][0]); //select the nearest branch
 
-            if (getLS('ShippingMethod') === 'P') 
-            {
+            if (getLS('ShippingMethod') === 'P') {
                 var addsplit = ChangedValues_Latest[0][3].split("@");
                 $("#div_address1").html(addsplit[0]);
                 $("#div_address2").html(addsplit[1]);
                 $("#shipadddr").html("Pick up branch address :");
             }
-            else 
-            {
+            else {
                 var nearestBranchAddress1 = getLS('NearestBranchAddress1');
                 var branchtxt = '';
 
@@ -1083,7 +1064,7 @@ function findnearestLocations(lat1, lon1)
             }
         });
     }, errorCB);
-    
+
     $("#fade1").hide();
     $.mobile.loading("hide");
 }
@@ -1211,7 +1192,7 @@ function Estimate() {
                 setLS('ShipViaDescription', "United Parcel Service - NextDayAir");
                 break;
 
-        } 
+        }
     }
 
 
@@ -1268,7 +1249,7 @@ function Estimate() {
 
             var resultJSON = $Name.text();
             var resultJ = resultJSON.replace(/\\/g, '');
-      
+
             var res1 = resultJ.replace(']"', "]");
             var res1 = res1.replace(']"', "]");
 

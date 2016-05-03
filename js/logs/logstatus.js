@@ -4,8 +4,7 @@ Creaded on:12/09/2014 1PM
 License:Tychons solutions
 */
 
-function writetologfile(message,pageno) 
-{
+function writetologfile(message, pageno) {
 
     var IMEI = getLS('IMEI');
     var UUID = getLS('UUID');
@@ -135,5 +134,5 @@ function writetologfile(message,pageno)
             $.mobile.loading("hide");
         }
     });
-   
+
 }

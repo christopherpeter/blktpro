@@ -6,26 +6,22 @@ License:Tychons solutions
 
 // Find branch pageload function
 
-function onbodyload() 
-{
+function onbodyload() {
     var encryptedKey = getLS('encryptedkey');
 
-    if(encryptedKey === null)
-    {
-       setencryptedkey();
+    if (encryptedKey === null) {
+        setencryptedkey();
     }
-    else 
-    {
-       loadallbranches_tolocalDB(); // function to save all the branches details to localDB
+    else {
+        loadallbranches_tolocalDB(); // function to save all the branches details to localDB
     }
-   
+
 }
 
 //Read all the branches information and inserting it to the Localsqllite table
 
-function loadallbranches_tolocalDB() 
-{
-    
+function loadallbranches_tolocalDB() {
+
     document.getElementById('loading').style.display = 'block';
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -72,14 +68,12 @@ function loadallbranches_tolocalDB()
                     var Longitude = item.Longitude;
                     var Address = item.Address;
                     var PhoneNumber = item.PhoneNumber;
-                    var Faxnumber = '', ManagerName = '', Email='';
+                    var Faxnumber = '', ManagerName = '', Email = '';
 
 
-                    if (BranchCode === defaultbranchcode) 
-                    {
+                    if (BranchCode === defaultbranchcode) {
                         var defaultBranchCode = getLS('default_branchcode');
-                        if (defaultBranchCode === "" || defaultBranchCode === null)
-                        {
+                        if (defaultBranchCode === "" || defaultBranchCode === null) {
                             setLS('default_branchcode', BranchCode);
                             setLS('default_branchname', BranchName);
                             setLS('default_branchcode1', BranchCode);
@@ -95,12 +89,11 @@ function loadallbranches_tolocalDB()
                 });
                 create_locationarray();
             }, errorCB);
-        }, error: function() 
-        {
+        }, error: function () {
             $("#loading").hide();
             $.mobile.loading("hide");
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Internet Failure', 'OK');
-            
+
         }
 
     });
@@ -110,8 +103,7 @@ function loadallbranches_tolocalDB()
 
 var locations = [];
 
-function create_locationarray() 
-{
+function create_locationarray() {
     var Getbranches = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
     Getbranches.transaction(function getallbranches(tx) {
         tx.executeSql('select * from branchinfo', [], function branchsucces(txx, res) {
@@ -146,8 +138,8 @@ function create_locationarray()
 
                 }
                 else {
-                    
-                     navigator.notification.alert('GPS not supported', null, 'Alert', 'OK');
+
+                    navigator.notification.alert('GPS not supported', null, 'Alert', 'OK');
                 }
             }
         });
@@ -156,8 +148,7 @@ function create_locationarray()
 
 //Success function called after successful retrieval of userlocation using GPS
 
-function success(position) 
-{
+function success(position) {
     // Store the GPS lattitude and Longitude location in the Local Storage
 
     setLS('GPS_lat', position.coords.latitude.toFixed(6));
@@ -173,12 +164,10 @@ function success(position)
 
 //error function called after error in Getting GPS Locations
 
-function error(error) 
-{
+function error(error) {
     var message = "";
     // Check for known errors
-    switch (error.code) 
-    {
+    switch (error.code) {
         case error.PERMISSION_DENIED:
             message = "This website does not have permission to use " +
                       "the Geolocation API";
@@ -193,8 +182,7 @@ function error(error)
             writetologfile(message, 3);
             break;
     }
-    if (message == "") 
-    {
+    if (message == "") {
         var strErrorCode = error.code.toString();
         message = "Your current location couldn't be determined.Kindly check if the location services are enabled in settings.";
         writetologfile(message, 3);
@@ -207,8 +195,7 @@ function error(error)
 
 var changedValues = [];
 
-function mapinitialize() 
-{
+function mapinitialize() {
 
     setLS('Default', 3);
     setLS('Showroom', 'all');  //old branch place
@@ -221,53 +208,47 @@ function mapinitialize()
         });
     var infowindow = new google.maps.InfoWindow();
     var marker, i;
-    for (i = 0; i < locations.length; i++) 
-    {
+    for (i = 0; i < locations.length; i++) {
 
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
             map: map,
             icon: 'images/marker.png'
         });
-        google.maps.event.addListener(marker, 'click', (function (marker, i) 
-        {
-            return function () 
-            {
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
                 clickmarker(i);
 
             }
         })(marker, i));
 
-        google.maps.event.addListener(map, "tilesloaded", function () 
-        {
+        google.maps.event.addListener(map, "tilesloaded", function () {
             document.getElementById('loading').style.display = 'none';
             $.mobile.loading("hide");
         });
     }
-    if (getLS('textboxval') !== "" && getLS('textboxval') !== null) 
-    {
+    if (getLS('textboxval') !== "" && getLS('textboxval') !== null) {
         $("#txtsearch_branch").val(getLS('textboxval'));
         localStorage.removeItem('textboxval');
         localStorage.removeItem('Showroom');
         search_branch();
     }
-    
+
 }
 
 // Function to handle search branch
 
-function search_branch() 
-{
+function search_branch() {
     var branchtxt = document.getElementById('txtsearch_branch').value;
     if (branchtxt !== "") {
         setLS('Showroom', 'none');
         writetologfile("User Branch Search :" + branchtxt, 3);
     }
     else {
-         navigator.notification.alert('Please enter your address.', null, 'Alert', 'OK');
-     }
+        navigator.notification.alert('Please enter your address.', null, 'Alert', 'OK');
+    }
 
-   // changedValues.length = 0;
+    // changedValues.length = 0;
     changedValues.splice(0, changedValues.length)
     // Code to get Latitude and Longitude positions of user searched text
 
@@ -288,8 +269,7 @@ function search_branch()
             setLS('Source_lat', lat1);
             setLS('Source_lon', lon1);
 
-            for (var i = 0; i < locations.length; i++)
-            {
+            for (var i = 0; i < locations.length; i++) {
                 var lat2 = locations[i][1];
                 var lon2 = locations[i][2];
 
@@ -323,8 +303,7 @@ function search_branch()
 
 
         }
-        else 
-        {
+        else {
             //alert('No nearest branches found!.Showing all the branches.');
             navigator.notification.alert('No nearest branches found!.Showing all the branches.', null, 'Alert', 'OK');
             var map = new google.maps.Map(document.getElementById('map_canvas'),
@@ -365,46 +344,38 @@ function search_branch()
 }
 
 
-function sortfunc(a, b) 
-{
+function sortfunc(a, b) {
     return a[3] - b[3];
 }
 
 //Funation for loading only branches near to user locations
 
-function search_mapinitialize(load) 
-{
-    if (changedValues.length !== 0) 
-    {
-        
-        if (changedValues[0][3] <= 0.1) 
-        {
+function search_mapinitialize(load) {
+    if (changedValues.length !== 0) {
+
+        if (changedValues[0][3] <= 0.1) {
             loadmap2(load);
         }
-        else 
-        {
+        else {
             loadmap1(load);
         }
     }
     else {
 
-       //navigator.notification.alert('No nearest branches found!.Showing all the branches.', null, 'Alert', 'OK');
-       setLS('get_gpslocation', 'notfound');
-       mapinitialize();
+        //navigator.notification.alert('No nearest branches found!.Showing all the branches.', null, 'Alert', 'OK');
+        setLS('get_gpslocation', 'notfound');
+        mapinitialize();
     }
 
 }
 
-function loadmap1(load) 
-{
+function loadmap1(load) {
     var lat1;
     var lon1;
-    if (load == 1) 
-    {
+    if (load == 1) {
 
 
-        if (getLS('GPS_lat') !== null) 
-        {
+        if (getLS('GPS_lat') !== null) {
             lat1 = getLS('GPS_lat');
         }
         if (getLS('GPS_lon') !== null) {
@@ -442,7 +413,7 @@ function loadmap1(load)
             infowindow.setContent(contentStringCal);
             infowindow.open(map, this);
         }
-        //otherwise trigger mouseover to open the infowindow
+            //otherwise trigger mouseover to open the infowindow
         else {
             google.maps.event.trigger(marker, 'mouseover');
         }
@@ -475,16 +446,13 @@ function loadmap1(load)
                 map: map,
                 icon: 'images/marker.png'
             });
-            google.maps.event.addListener(marker, 'click', (function (marker, i) 
-            {
-                return function () 
-                {
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
                     clickmarker1(i);
                 }
             })(marker, i));
 
-            google.maps.event.addListener(map, "tilesloaded", function () 
-            {
+            google.maps.event.addListener(map, "tilesloaded", function () {
                 document.getElementById('loading').style.display = 'none';
                 $.mobile.loading("hide");
             });
@@ -494,12 +462,10 @@ function loadmap1(load)
 }
 
 
-function loadmap2(load) 
-{
+function loadmap2(load) {
     var lat1;
     var lon1;
-    if (load == 1) 
-    {
+    if (load == 1) {
         if (getLS('GPS_lat') !== null) {
             lat1 = getLS('GPS_lat');
         }
@@ -509,8 +475,7 @@ function loadmap2(load)
 
         setLS('map_number', 2);
     }
-    else if (load == 2) 
-    {
+    else if (load == 2) {
         lat1 = getLS('Source_lat');
         lon1 = getLS('Source_lon');
         setLS('map_number', 1);
@@ -539,7 +504,7 @@ function loadmap2(load)
             infowindow.setContent(contentStringCal);
             infowindow.open(map, this);
         }
-        //otherwise trigger mouseover to open the infowindow
+            //otherwise trigger mouseover to open the infowindow
         else {
             google.maps.event.trigger(marker, 'mouseover');
         }
@@ -552,10 +517,8 @@ function loadmap2(load)
     google.maps.event.addListener(infowindow, 'closeclick', function () {
         infowindow.setContent('');
     });
-    for (i = 0; i < changedValues.length; i++) 
-    {
-        if (i == 0) 
-        {
+    for (i = 0; i < changedValues.length; i++) {
+        if (i == 0) {
 
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(changedValues[i][1], changedValues[i][2]),
@@ -577,8 +540,7 @@ function loadmap2(load)
                 icon: 'images/marker.png'
             });
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                return function () 
-                {
+                return function () {
                     clickmarker1(i);
                 }
             })(marker, i));
@@ -593,8 +555,7 @@ function loadmap2(load)
 
 //Function: when user clicks branck ballon in the map
 
-function clickmarker(i) 
-{
+function clickmarker(i) {
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
@@ -651,7 +612,7 @@ function clickmarker(i)
     html = html + '</td>';
     html = html + '</tr>';
     html = html + '</table>';
-    html = html + '</div>';   
+    html = html + '</div>';
     html = html + '<div class="popdiv">';
     html = html + '<table class="tableclass">';
     html = html + '<tr class="trpop">';
@@ -676,7 +637,7 @@ function clickmarker(i)
     html = html + '</tr>';
     html = html + '</tr>';
     html = html + '</table>';
-    html = html + '</div>';   
+    html = html + '</div>';
     html = html + '</div>';
 
     document.getElementById("light").innerHTML = html;
@@ -688,8 +649,7 @@ function clickmarker(i)
 }
 
 var branchNameNew, branchIdNew;
-function checkinventorynew(branch_id, id) 
-{
+function checkinventorynew(branch_id, id) {
     branchNameNew = locations[id][0];
     branchIdNew = locations[id][3];
 
@@ -698,8 +658,7 @@ function checkinventorynew(branch_id, id)
     checkinventory(branchIdNew);
 }
 
-function checkinventorysearch(branch_id, id) 
-{
+function checkinventorysearch(branch_id, id) {
     branchNameNew = changedValues[id][0];
     branchIdNew = changedValues[id][10];
 
@@ -712,8 +671,7 @@ function checkinventorysearch(branch_id, id)
 
 //Function: when user clicks branck ballon in the map
 
-function clickmarker1(i) 
-{
+function clickmarker1(i) {
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
@@ -798,7 +756,7 @@ function clickmarker1(i)
     html = html + '</tr>';
     html = html + '</table>';
     html = html + '</div>';
-    
+
     html = html + '<div class="popdiv">';
     html = html + '<table class="tableclass">';
     html = html + '<tr class="trpop">';
@@ -836,18 +794,16 @@ function clickmarker1(i)
 
 //Function: when user clicks branck ballon in the map
 
-function clickmarker2(i) 
-{
+function clickmarker2(i) {
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] !== "clickmarker") 
-    {
+    if (result[result.length - 1] !== "clickmarker") {
         setLS('page', c_page + ",clickmarker");
     }
-  
+
     var mapno = getLS('map_number');
 
     var branch_name = changedValues[i][0];
@@ -911,7 +867,7 @@ function clickmarker2(i)
     html = html + '</table>';
     html = html + '</div>';
 
-  
+
     html = html + '<div class="popdiv">';
     html = html + '<table class="tableclass">';
     html = html + '<tr class="trpop">';
@@ -937,8 +893,8 @@ function clickmarker2(i)
     html = html + '</tr>';
     html = html + '</table>';
     html = html + '</div>';
-    
-   
+
+
     html = html + '</div>';
     document.getElementById('fade').style.display = 'block';
     document.getElementById("light").innerHTML = html;
@@ -950,8 +906,7 @@ function clickmarker2(i)
 }
 
 
-function toggle_visibilityclose() 
-{
+function toggle_visibilityclose() {
     $("body").addClass('globalbodyclass');
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
@@ -973,8 +928,7 @@ function mapdirection(mode) {
 }
 
 
-window.onresize = function () 
-{
+window.onresize = function () {
 
     if (getLS('Default') === 3) {
         mapinitialize();
@@ -989,8 +943,7 @@ window.onresize = function ()
 
 
 
-function getdirections(g, maptype, load) 
-{
+function getdirections(g, maptype, load) {
     $("#mapbody").removeClass('mapbody');
     var c_page = getLS('page');
     var result = c_page.split(",");
@@ -1069,12 +1022,10 @@ function getdirections(g, maptype, load)
     };
 
     directionsService.route(request, function (response, status) {
-        if (status === google.maps.DirectionsStatus.OK) 
-        {
-           directionsDisplay.setDirections(response);
+        if (status === google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
         }
-       else
-        {
+        else {
             navigator.notification.alert('No Routes Found', null, 'Branch Direction', 'OK');
             $("#text_results").html("<p style='text-align:center;color:red;margin-top: 30%;'>No Routes Found</p>");
             $("#text_results").show();
@@ -1089,8 +1040,7 @@ function getdirections(g, maptype, load)
 
 //Function for mapping filter branches to the map
 
-function loadGPS_locations() 
-{
+function loadGPS_locations() {
     setLS('Showroom', 'none');  //old branch place
     changedValues.length = 0;
 
@@ -1107,8 +1057,7 @@ function loadGPS_locations()
 
     setLS('Default', 2);
 
-    for (i = 0; i < locations.length; i++) 
-    {
+    for (i = 0; i < locations.length; i++) {
         var lat2 = locations[i][1];
         var lon2 = locations[i][2];
 

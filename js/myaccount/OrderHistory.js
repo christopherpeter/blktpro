@@ -33,178 +33,167 @@ if (isuserlogged === 'yes') {
 }
 
 
-function Loadorderhistory() 
-{
-    if (isuserlogged === 'yes') 
-    {
-            $.ajax({
-                type: "GET",
-                crossDomain: true,
-                url: orderhistory1URL + "CustNumber=" + CustomerNumber + "&ordercode=O&StartIndex=1&EndIndex=10&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
-                dataType: "xml",
-                success: function (xmlData) {
+function Loadorderhistory() {
+    if (isuserlogged === 'yes') {
+        $.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: orderhistory1URL + "CustNumber=" + CustomerNumber + "&ordercode=O&StartIndex=1&EndIndex=10&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            dataType: "xml",
+            success: function (xmlData) {
 
-                    var xmlString;
-                    if (window.ActiveXObject) {
-                        xmlString = xmlData.xml;
-                    }
-                    else {
-                        xmlString = (new XMLSerializer()).serializeToString(xmlData);
-                    }
+                var xmlString;
+                if (window.ActiveXObject) {
+                    xmlString = xmlData.xml;
+                }
+                else {
+                    xmlString = (new XMLSerializer()).serializeToString(xmlData);
+                }
 
-                    var xmlDoc = $.parseXML(xmlString);
+                var xmlDoc = $.parseXML(xmlString);
 
-                    var $xml = $(xmlDoc);
-                    var $Name = $xml.find('return');
+                var $xml = $(xmlDoc);
+                var $Name = $xml.find('return');
 
-                    var resultJSON = $Name.text();
-                    var finalresult = "{" + resultJSON + "}";
-                    var output = $.parseJSON(finalresult);
-                    var list = output.BMCOrders;
+                var resultJSON = $Name.text();
+                var finalresult = "{" + resultJSON + "}";
+                var output = $.parseJSON(finalresult);
+                var list = output.BMCOrders;
 
-                    if (output.BMCOrders.length > 0) {
-                        var output = "";
-                        $.each(list, function (i, item) {
-                            var OrderNumber = item.OrderNumber;
-                            var OrderDate = item.OrderDate;
-                            var ShippedDate = item.ShippedDate;
-                            var CountOfLineItems = item.CountOfLineItems;
-                            var OrderStatusCode = item.OrderStatusCode;
-                            var TotalInvoiceAmount = item.TotalInvoiceAmount;
+                if (output.BMCOrders.length > 0) {
+                    var output = "";
+                    $.each(list, function (i, item) {
+                        var OrderNumber = item.OrderNumber;
+                        var OrderDate = item.OrderDate;
+                        var ShippedDate = item.ShippedDate;
+                        var CountOfLineItems = item.CountOfLineItems;
+                        var OrderStatusCode = item.OrderStatusCode;
+                        var TotalInvoiceAmount = item.TotalInvoiceAmount;
 
-                            output = output + '<div id="div' + OrderNumber + '" style="background: none repeat scroll 0 0 #fff; margin-left: 5px;';
-                            output = output + 'margin-top: 5px; border-bottom: 1px solid #ccc; width: 99%;">';
-                            output = output + '<div>';
-                            output = output + '<table style="width: 100%">';
-                            output = output + '<tr>';
-                            output = output + '<td style="width: 52%">';
-                            output = output + '<table>';
-                            output = output + '<tr>';
-                            output = output + '<td>';
-                            output = output + 'Order Date : ' + OrderDate;
+                        output = output + '<div id="div' + OrderNumber + '" style="background: none repeat scroll 0 0 #fff; margin-left: 5px;';
+                        output = output + 'margin-top: 5px; border-bottom: 1px solid #ccc; width: 99%;">';
+                        output = output + '<div>';
+                        output = output + '<table style="width: 100%">';
+                        output = output + '<tr>';
+                        output = output + '<td style="width: 52%">';
+                        output = output + '<table>';
+                        output = output + '<tr>';
+                        output = output + '<td>';
+                        output = output + 'Order Date : ' + OrderDate;
+                        output = output + '</td>';
+                        output = output + '</tr>';
+                        if (OrderStatusCode !== "O" && OrderStatusCode !== "" && OrderStatusCode !== null) {
+                            if (ShippedDate !== "0/0/00" && ShippedDate !== "" && ShippedDate !== null) {
+                                output = output + '<tr>';
+                                output = output + '<td>';
+                                output = output + 'Shipped Date : ' + ShippedDate;
+                                output = output + '</td>';
+                                output = output + '</tr>';
+                            }
+                        }
+                        output = output + '<tr>';
+                        output = output + '<td>';
+                        output = output + 'Order # : ' + OrderNumber;
+                        output = output + '</td>';
+                        output = output + '</tr>';
+                        output = output + '</table>';
+                        output = output + '</td>';
+                        if (OrderStatusCode == "O" || OrderStatusCode == "" || OrderStatusCode == null) {
+                            output = output + '<td style="width: 24%;">';
+                            output = output + '<img src="images/blue.png" style="width: 15px; height: 15px; padding: 1px" />';
+                            output = output + '<label class="tickclass" style="vertical-align: top;">Open</label>';
                             output = output + '</td>';
-                            output = output + '</tr>';
-                            if (OrderStatusCode !== "O" && OrderStatusCode !== "" && OrderStatusCode !== null) 
-                            {
-                                if (ShippedDate !== '0/0/00'  && ShippedDate !=="" && ShippedDate !== null) 
-                                {
-                                    output = output + '<tr>';
-                                    output = output + '<td>';
-                                    output = output + 'Shipped Date : ' + ShippedDate;
-                                    output = output + '</td>';
-                                    output = output + '</tr>';
-                                }
-                            }
-                            output = output + '<tr>';
-                            output = output + '<td>';
-                            output = output + 'Order # : ' + OrderNumber;
+                        }
+                        else if (OrderStatusCode == "I") {
+                            output = output + '<td style="width: 24%;">';
+                            output = output + '<img src="images/green.png" style="width: 15px; height: 15px; padding: 1px" /><label';
+                            output = output + 'class="tickclass" style="vertical-align: top;">Invoiced</label>';
                             output = output + '</td>';
-                            output = output + '</tr>';
-                            output = output + '</table>';
+                        }
+                        else if (OrderStatusCode == "R") {
+                            output = output + '<td style="width: 24%;">';
+                            output = output + '<img src="images/green.png" style="width: 15px; height: 15px; padding: 1px" /><label';
+                            output = output + 'class="tickclass" style="vertical-align: top;">Reviewed</label>';
                             output = output + '</td>';
-                            if (OrderStatusCode == "O" || OrderStatusCode == "" || OrderStatusCode == null) 
-                            {
-                                output = output + '<td style="width: 24%;">';
-                                output = output + '<img src="images/blue.png" style="width: 15px; height: 15px; padding: 1px" />';
-                                output = output + '<label class="tickclass" style="vertical-align: top;">Open</label>';
-                                output = output + '</td>';
-                            }
-                            else if (OrderStatusCode == "I") 
-                            {
-                                output = output + '<td style="width: 24%;">';
-                                output = output + '<img src="images/green.png" style="width: 15px; height: 15px; padding: 1px" /><label';
-                                output = output + 'class="tickclass" style="vertical-align: top;">Invoiced</label>';
-                                output = output + '</td>';
-                            }
-                            else if (OrderStatusCode == "R") {
-                                output = output + '<td style="width: 24%;">';
-                                output = output + '<img src="images/green.png" style="width: 15px; height: 15px; padding: 1px" /><label';
-                                output = output + 'class="tickclass" style="vertical-align: top;">Reviewed</label>';
-                                output = output + '</td>';
-                            }
-                            else if (OrderStatusCode == "P") {
-                                output = output + '<td style="width: 24%;">';
-                                output = output + '<img src="images/brown.png" style="width: 15px; height: 15px; padding: 1px" /><label';
-                                output = output + 'class="tickclass" style="vertical-align: top;">Priced</label>';
-                                output = output + '</td>';
-                            }
-                            else if (OrderStatusCode == "C") {
-                                output = output + '<td style="width: 24%;">';
-                                output = output + '<img src="images/yellow.png" style="width: 15px; height: 15px; padding: 1px" /><label';
-                                output = output + 'class="tickclass" style="vertical-align: top;">Changed</label>';
-                                output = output + '</td>';
-                            }
-                            else if (OrderStatusCode == "K") {
-                                output = output + '<td style="width: 24%;">';
-                                output = output + '<img src="images/orange.png" style="width: 15px; height: 15px; padding: 1px" /><label';
-                                output = output + 'class="tickclass" style="vertical-align: top;">Reserved</label>';
-                                output = output + '</td>';
-                            }
-                            else if (OrderStatusCode == "N") {
-                                output = output + '<td style="width: 24%;">';
-                                output = output + '<img src="images/red.png" style="width: 15px; height: 15px; padding: 1px" /><label';
-                                output = output + 'class="tickclass" style="vertical-align: top;" >Pending</label>';
-                                output = output + '</td>';
-                            }
-                            output = output + '<td style="width: 19%;">';
-                            output = output + '<div onclick=showinnerdiv("' + OrderNumber + '") class="itemselect1">';
-                            output = output + '<label>';
-                            if (CountOfLineItems > 1)
-                            {
-                                output = output + CountOfLineItems + ' items</label><br />';
-                            }
-                            else
-                            {
-                                output = output + CountOfLineItems + ' item</label><br />';
-                            }
-                            output = output + '<label>';
-                            output = output + '$' + TotalInvoiceAmount + '</label>';
-                            output = output + '</div>';
+                        }
+                        else if (OrderStatusCode == "P") {
+                            output = output + '<td style="width: 24%;">';
+                            output = output + '<img src="images/brown.png" style="width: 15px; height: 15px; padding: 1px" /><label';
+                            output = output + 'class="tickclass" style="vertical-align: top;">Priced</label>';
                             output = output + '</td>';
-                            output = output + '</tr>';
-                            output = output + '</table>';
-                            output = output + '<div id="innerdiv' + OrderNumber + '" style="display: none; width: 100%;" >';  //innerdiv
-                            output = output + '<div style="text-align: center;"> <img src="images/276.GIF" /></div>';
-                            output = output + '</div>';
-                            output = output + '</div>';
-                            output = output + '</div>';
+                        }
+                        else if (OrderStatusCode == "C") {
+                            output = output + '<td style="width: 24%;">';
+                            output = output + '<img src="images/yellow.png" style="width: 15px; height: 15px; padding: 1px" /><label';
+                            output = output + 'class="tickclass" style="vertical-align: top;">Changed</label>';
+                            output = output + '</td>';
+                        }
+                        else if (OrderStatusCode == "K") {
+                            output = output + '<td style="width: 24%;">';
+                            output = output + '<img src="images/orange.png" style="width: 15px; height: 15px; padding: 1px" /><label';
+                            output = output + 'class="tickclass" style="vertical-align: top;">Reserved</label>';
+                            output = output + '</td>';
+                        }
+                        else if (OrderStatusCode == "N") {
+                            output = output + '<td style="width: 24%;">';
+                            output = output + '<img src="images/red.png" style="width: 15px; height: 15px; padding: 1px" /><label';
+                            output = output + 'class="tickclass" style="vertical-align: top;" >Pending</label>';
+                            output = output + '</td>';
+                        }
+                        output = output + '<td style="width: 19%;">';
+                        output = output + '<div onclick=showinnerdiv("' + OrderNumber + '") class="itemselect1">';
+                        output = output + '<label>';
+                        if (CountOfLineItems > 1) {
+                            output = output + CountOfLineItems + ' items</label><br />';
+                        }
+                        else {
+                            output = output + CountOfLineItems + ' item</label><br />';
+                        }
+                        output = output + '<label>';
+                        output = output + '$' + TotalInvoiceAmount + '</label>';
+                        output = output + '</div>';
+                        output = output + '</td>';
+                        output = output + '</tr>';
+                        output = output + '</table>';
+                        output = output + '<div id="innerdiv' + OrderNumber + '" style="display: none; width: 100%;" >';  //innerdiv
+                        output = output + '<div style="text-align: center;"> <img src="images/276.GIF" /></div>';
+                        output = output + '</div>';
+                        output = output + '</div>';
+                        output = output + '</div>';
 
-                        });
+                    });
 
-                        $("#orderclick").html(output);
-                        $("#loading_pdt").hide();
-                        $.mobile.loading("hide");
-                    }
-                    else 
-                    {
-                        $("#orderclick").html("<div style='text-align: center;padding: 31px;background-color: #fff;color:red'><span>No Orders Found</span></div>");
-                        $("#loading_pdt").hide();
-                        $.mobile.loading("hide");
-                    }
-
-
-                },
-                error: function (data, errorThrown) {
-                    
-
+                    $("#orderclick").html(output);
                     $("#loading_pdt").hide();
                     $.mobile.loading("hide");
-                    navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-
                 }
-            });
+                else {
+                    $("#orderclick").html("<div style='text-align: center;padding: 31px;background-color: #fff;color:red'><span>No Orders Found</span></div>");
+                    $("#loading_pdt").hide();
+                    $.mobile.loading("hide");
+                }
+
+
+            },
+            error: function (data, errorThrown) {
+
+
+                $("#loading_pdt").hide();
+                $.mobile.loading("hide");
+                navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
+
+            }
+        });
     }
-    else 
-    {
-        
+    else {
+
         $("#orderclick").html("<div style='text-align: center;padding: 31px;background-color: #fff;'><span style='color:red'>Please log in to see your order history</span></div>");
         $("#loading_pdt").hide();
         $.mobile.loading("hide");
     }
 }
 
-function showinnerdiv(OrderNumber)
-{
+function showinnerdiv(OrderNumber) {
 
     $.ajax({
         type: "GET",
@@ -239,7 +228,7 @@ function showinnerdiv(OrderNumber)
                     var ProductName = item.PRODUCTNAME;
                     var PRODUCTIMAGE = item.PRODUCTIMAGE;
 
-                  
+
                     outputHtml += '<tr>';
                     outputHtml += '<td>';
                     outputHtml += '<table class="tablecart">';
@@ -301,15 +290,13 @@ function showinnerdiv(OrderNumber)
             $.mobile.loading("hide");
         }
     });
-  
-  
-  $("#innerdiv"+OrderNumber).slideToggle();
+
+
+    $("#innerdiv" + OrderNumber).slideToggle();
 }
 
-function invoiceclick()
-{
-    if (isuserlogged == 'yes')
-    {
+function invoiceclick() {
+    if (isuserlogged == 'yes') {
         $("#loading_pdt").show();
 
         $.mobile.loading("show", {
@@ -325,15 +312,12 @@ function invoiceclick()
             type: "GET",
             crossDomain: true,
             url: CurrentBalanceURL + "Cmpynbr=&Division=&Region=&Brnbr=&Custnbr=" + CustomerNumber + "&CustCRRep=",
-            success: function (xmlData)
-            {
+            success: function (xmlData) {
                 var xmlString;
-                if (window.ActiveXObject)
-                {
+                if (window.ActiveXObject) {
                     xmlString = xmlData.xml;
                 }
-                else
-                {
+                else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
                 var namespace = 'http://tyc.com';
@@ -345,10 +329,8 @@ function invoiceclick()
                 var outputresult = $.parseJSON(finalresult);
                 var list = outputresult.RESULTS;
 
-                if (outputresult.RESULTS.length > 0)
-                {
-                    $.each(list, function (i, item)
-                    {
+                if (outputresult.RESULTS.length > 0) {
+                    $.each(list, function (i, item) {
                         switch (i) {
                             case 0:
                                 if (item.Current == "" || item.Current == null || item.Current == 0 || item.Current == '0') {
@@ -425,16 +407,14 @@ function invoiceclick()
                     $.mobile.loading("hide");
 
                 }
-                else
-                {
+                else {
                     $("#invoiceclick").html("<div style='text-align: center;padding-top: 10%;background-color: #fff;color: red;font-size: 14px;'><span>No balances found.</span></div>");
                     $("#cur_footer").hide();
                     $("#loading_pdt").hide();
                     $.mobile.loading("hide");
                 }
             },
-            error: function (data, errorThrown)
-            {
+            error: function (data, errorThrown) {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
@@ -448,8 +428,7 @@ function invoiceclick()
         $('#lblorderhis').css("background", "#304589");
         $('#lblinvoice').css("background", "#838FB8");
     }
-    else 
-    {
+    else {
         // For Guest User
         $("#invoiceclick").html("<div style='text-align: center;padding: 31px;background-color: #fff;'><span style='color:red'>Please log in to see your current balance</span></div>");
         $('#orderclick').hide();
@@ -457,13 +436,12 @@ function invoiceclick()
         $('#invoiceclick').show();
         $('#lblorderhis').css("background", "#304589");
         $('#lblinvoice').css("background", "#838FB8");
-    
+
     }
 
 }
 
-function tableinvoice(invoiceno)
-{
+function tableinvoice(invoiceno) {
     $.ajax({
         type: "GET",
         crossDomain: true,

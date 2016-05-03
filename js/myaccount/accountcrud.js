@@ -56,13 +56,10 @@ function accountpage_load() {
     $("#ddshippment").val(ShippingMethod);
 
     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-    showproduct.transaction(function showitemsbyid(tx)
-    {
-        tx.executeSql('select CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CustomerShippingAddress1,CustomerShippingCity,CustomerShippingState,CustomerMainShippingZipCode from userinfo', [], function successitem(txx, res)
-        {
+    showproduct.transaction(function showitemsbyid(tx) {
+        tx.executeSql('select CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CustomerShippingAddress1,CustomerShippingCity,CustomerShippingState,CustomerMainShippingZipCode from userinfo', [], function successitem(txx, res) {
             var address1, addresscity, addressstate, addresszip, CustomerTelephoneAreaCode, CustomerTelephonePrefixNumber, CustomerTelephoneSuffixNumber;
-            for (var i = 0; i < res.rows.length; i++)
-            {
+            for (var i = 0; i < res.rows.length; i++) {
                 var ss = res.rows.item(i);
                 address1 = ss.CustomerShippingAddress1;
                 addresscity = ss.CustomerShippingCity;
@@ -164,8 +161,8 @@ function accountpage_load() {
     Loadorderhistory();
 }
 function loadallbranches_tolocalDB_account() {
- 
-       $.ajax({
+
+    $.ajax({
         type: "GET",
         crossDomain: true,
         url: branchURL,
@@ -207,11 +204,10 @@ function loadallbranches_tolocalDB_account() {
                     var Email = "";
 
 
-                    if (BranchCode === defaultbranchcode)
-                    {
+                    if (BranchCode === defaultbranchcode) {
                         var defaultBranchCode = getLS('default_branchcode');
                         if (defaultBranchCode === "" || defaultBranchCode === null) {
-                            
+
                             setLS('default_branchcode', BranchCode);
                             setLS('default_branchname', BranchName);
                             setLS('default_branchcode1', BranchCode);
@@ -225,20 +221,17 @@ function loadallbranches_tolocalDB_account() {
                     tx.executeSql(qry, [BranchName, BranchCode, Latitude, Longitude, Address, PhoneNumber, Faxnumber, ManagerName, Email]);
 
                 });
-                
+
             }, errorCB);
-        }, error: function (data, errorThrown)
-        {
+        }, error: function (data, errorThrown) {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Internet Failure', 'OK');
         }
 
     });
 }
 
-function submitfeedback()
-{
-    if (isuserlogged === 'yes')
-    {
+function submitfeedback() {
+    if (isuserlogged === 'yes') {
         var appname = "TP";
 
         var feedback = $("#txtfeedback").val();
@@ -401,8 +394,7 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
     var CustomerTelephonePrefixNumber = Fullphonenumber[1];
     var CustomerTelephoneSuffixNumber = Fullphonenumber[2];
 
-    if (isuserlogged === 'yes')
-    {
+    if (isuserlogged === 'yes') {
         var UserProfile = getLS('UserProfile');
         var CustomerNumber = getLS('CustomerNumber');
         $.ajax({
@@ -410,15 +402,12 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
             crossDomain: true,
             url: shippingaddressURL + "CustNum=" + CustomerNumber + "&ShippingAddress1=" + address1 + "&ShippingAddress2=&ShippingAddress3=&ShippingCity=" + addresscity + "&ShippingState=" + addressstate + "&ShippingZip=" + addresszip + "&AreaCode=" + CustomerTelephoneAreaCode + "&TelePrefix=" + CustomerTelephonePrefixNumber + "&TeleSuffix=" + CustomerTelephoneSuffixNumber + "&prefMethdOfShip=" + shippement + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
             dataType: "xml",
-            success: function (xmlData)
-            {
+            success: function (xmlData) {
                 var xmlString;
-                if (window.ActiveXObject)
-                {
+                if (window.ActiveXObject) {
                     xmlString = xmlData.xml;
                 }
-                else
-                {
+                else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
 
@@ -429,11 +418,9 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
 
                 var resultJSON = $Name.text();
                 var json = $.parseJSON(resultJSON);
-                if (json.IsUpdated === 'True')
-                {
+                if (json.IsUpdated === 'True') {
                     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-                    showproduct.transaction(function showitemsbyid(tx)
-                    {
+                    showproduct.transaction(function showitemsbyid(tx) {
                         var query = "update userinfo set CustomerTelephoneAreaCode=" + CustomerTelephoneAreaCode + ",CustomerTelephonePrefixNumber=" + CustomerTelephonePrefixNumber + ",CustomerTelephoneSuffixNumber=" + CustomerTelephoneSuffixNumber + ", CustomerShippingAddress1='" + address1 + "', CustomerShippingCity='" + addresscity + "', CustomerShippingState='" + addressstate + "', CustomerMainShippingZipCode='" + addresszip + "' where CustomerNumber=" + CustomerNumber;
                         tx.executeSql(query);
                         setLS('CustomerShippingState', addressstate);
@@ -452,8 +439,7 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
                     }, errorCB);
 
                 }
-                else
-                {
+                else {
                     writetologfile("Error in updating user shipping details", 3);
                     navigator.notification.alert('User Information Is Not Updated!', null, 'Account', 'OK');
                     $.mobile.loading("hide");
@@ -615,8 +601,7 @@ function addressbook() {
 }
 
 
-function loadmenu_account(pageno)
-{
+function loadmenu_account(pageno) {
     var html = "";
     html = html + '<div class="innerpopup">';
     html = html + '<div class="empty">';
@@ -654,7 +639,7 @@ function loadmenu_account(pageno)
         html = html + '</div>';
         html = html + '<hr />';
     }
-    
+
     html = html + '<div class="popdiv" onclick="product(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
@@ -668,7 +653,7 @@ function loadmenu_account(pageno)
     html = html + '</table>';
     html = html + '</div>';
     html = html + '<hr />';
-    
+
 
     html = html + '<div class="popdiv" onclick="findbranch(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';

@@ -7,16 +7,13 @@ function maxLengthCheck(object) {
     if (object.value.length > object.maxLength)
         object.value = object.value.slice(0, object.maxLength)
 }
-function ConvertNameToUpperCase(Textbox)
-{
-    if (Textbox == "username")
-    {
+function ConvertNameToUpperCase(Textbox) {
+    if (Textbox == "username") {
         var Username = $("#txtuser").val().trim();
         var ConvertToUppercase = Username.toUpperCase();
         $("#txtuser").val(ConvertToUppercase);
     }
-    else
-    {
+    else {
         var Password = $("#txtpwd").val().trim();
         var ConvertToUppercase = Password.toUpperCase();
         $("#txtpwd").val(ConvertToUppercase);
@@ -81,8 +78,7 @@ function setencryptedkey() {
 
 // function to store value to cookie
 
-function setCookie(cname, cvalue) 
-{
+function setCookie(cname, cvalue) {
     var d = new Date();
     d.setTime(d.getTime() + (5000 * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
@@ -91,8 +87,7 @@ function setCookie(cname, cvalue)
 
 //Function to delete all the cookies
 
-function deleteCookies() 
-{
+function deleteCookies() {
     document.cookie = "AlphanumericToken" + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
 }
 
@@ -110,65 +105,63 @@ function deleteAllCookies() {
 }
 
 
-function loadstatedetails() 
-{
-   var create = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-   create.transaction(function createTableDB(tx) 
-   {
-       tx.executeSql('DROP TABLE IF EXISTS states');
-       tx.executeSql('CREATE TABLE IF NOT EXISTS states (id INTEGER PRIMARY KEY AUTOINCREMENT,Statename,Statecode)');
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Alabama', 'AL')"); 
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Alaska', 'AK')"); 
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Arizona', 'AZ')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Arkansas', 'AR')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('California', 'CA')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Colorado', 'CO')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Connecticut', 'CT')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('District of Columbia', 'DC')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Delaware', 'DE')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Florida', 'FL')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Georgia', 'GA')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Hawaii', 'HI')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Iowa', 'IA')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Idaho', 'ID')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Illinois', 'IL')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Indiana', 'IN')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Kansas', 'KS')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Kentucky', 'KY')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Louisiana', 'LA')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Massachusetts', 'MA')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Maryland', 'MD')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Maine', 'ME')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Michigan', 'MI')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Minnesota', 'MN')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Missouri', 'MO')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Mississippi', 'MS')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Montana', 'MT')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('North Carolina', 'NC')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('North Dakota', 'ND')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Nebraska', 'NE')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('New Hampshire', 'NH')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('New Jersey', 'NJ')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('New Mexico', 'NM')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Nevada', 'NV')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('New York', 'NY')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Ohio', 'OH')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Oklahoma', 'OK')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Oregon', 'OR')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Pennsylvania', 'PA')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Rhode Island', 'RI')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('South Carolina', 'SC')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('South Dakota', 'SD')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Tennessee', 'TN')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Texas', 'TX')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Utah', 'UT')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Virginia', 'VA')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Vermont', 'VT')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Washington', 'WA')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Wisconsin', 'WI')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('West Virginia', 'WV')");
-       tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Wyoming', 'WY')");
-   });
+function loadstatedetails() {
+    var create = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
+    create.transaction(function createTableDB(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS states');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS states (id INTEGER PRIMARY KEY AUTOINCREMENT,Statename,Statecode)');
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Alabama', 'AL')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Alaska', 'AK')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Arizona', 'AZ')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Arkansas', 'AR')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('California', 'CA')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Colorado', 'CO')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Connecticut', 'CT')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('District of Columbia', 'DC')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Delaware', 'DE')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Florida', 'FL')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Georgia', 'GA')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Hawaii', 'HI')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Iowa', 'IA')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Idaho', 'ID')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Illinois', 'IL')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Indiana', 'IN')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Kansas', 'KS')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Kentucky', 'KY')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Louisiana', 'LA')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Massachusetts', 'MA')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Maryland', 'MD')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Maine', 'ME')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Michigan', 'MI')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Minnesota', 'MN')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Missouri', 'MO')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Mississippi', 'MS')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Montana', 'MT')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('North Carolina', 'NC')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('North Dakota', 'ND')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Nebraska', 'NE')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('New Hampshire', 'NH')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('New Jersey', 'NJ')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('New Mexico', 'NM')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Nevada', 'NV')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('New York', 'NY')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Ohio', 'OH')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Oklahoma', 'OK')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Oregon', 'OR')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Pennsylvania', 'PA')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Rhode Island', 'RI')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('South Carolina', 'SC')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('South Dakota', 'SD')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Tennessee', 'TN')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Texas', 'TX')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Utah', 'UT')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Virginia', 'VA')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Vermont', 'VT')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Washington', 'WA')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Wisconsin', 'WI')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('West Virginia', 'WV')");
+        tx.executeSql("INSERT INTO states (Statename,Statecode) VALUES ('Wyoming', 'WY')");
+    });
 }
 
 $(function () {
@@ -183,22 +176,19 @@ $(function () {
 
 
 
-function show_showrooms()
-{
-  
+function show_showrooms() {
+
     $("#mapbody").addClass('mapbody');
     if ($(window).height() > 800) {
         $("#white_contentlistnew1").css("height", "650px");
-        
+
     }
-    else 
-    {
+    else {
         $("#white_contentlistnew1").css("min-height", "340px");
     }
 
     var showRoom = getLS('Showroom'), html;
-    if (showRoom == 'all')
-    {
+    if (showRoom == 'all') {
         html = "<div class='empty'></div>";
         html = html + "<div style='background: #fff;'>"; //1
         html = html + "<div style='border-bottom: 1px solid #CCCCCC; height: 25px;margin-top: 25px;'>"; //2
@@ -234,10 +224,10 @@ function show_showrooms()
             html = html + "</td>";
             html = html + " </tr>";
             html = html + "</table>";
-            html = html + "</td>";           
+            html = html + "</td>";
             html = html + " <td style='width: 30px'>";
             html = html + "<span><a onclick=checkinventorynew('" + locations[f][3] + "','" + f + "')><img src='images/checkinventory.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a></span>";
-            html = html + "</td>";       
+            html = html + "</td>";
             html = html + " </tr>";
             html = html + "</table>";
             html = html + "</div>";
@@ -297,12 +287,12 @@ function show_showrooms()
             html = html + "</td>";
             html = html + " </tr>";
             html = html + "</table>";
-            html = html + "</td>";           
-            
+            html = html + "</td>";
+
             html = html + " <td style='width:15%;'>";
             html = html + "<span><a onclick=checkinventorysearch('" + changedValues[k][10] + "','" + k + "')><img src='images/checkinventory.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a><a onclick='getdirections(" + k + ",1,1);'><img src='images/getdirections1.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a></span>";
-            html = html + "</td>";            
-            
+            html = html + "</td>";
+
             html = html + " </tr>";
             html = html + "</table>";
             html = html + "</div>";
@@ -321,13 +311,11 @@ function show_showrooms()
     }
 }
 
-function findbranch(page) 
-{
-   // clearfilters();
+function findbranch(page) {
+    // clearfilters();
     var c_page = getLS('page');
     var result = c_page.split(",");
-    switch (page) 
-    { 
+    switch (page) {
         case 1:
 
             if (result[result.length - 1] !== 'index');
@@ -341,17 +329,17 @@ function findbranch(page)
             {
                 setLS('page', c_page + ",products");
             }
-           
+
             break;
         case 3:
- 
+
             if (result[result.length - 1] !== 'cart');
             {
                 setLS('page', c_page + ",cart");
             }
             break;
         case 4:
-            
+
             if (result[result.length - 1] !== 'account');
             {
                 setLS('page', c_page + ",account");
@@ -360,24 +348,20 @@ function findbranch(page)
     }
 
     window.location.href = 'index.html';
-      
+
 }
-function toggle_visibilityclose1() 
-{
+function toggle_visibilityclose1() {
     document.getElementById('white_contentlistnew1').style.display = 'none';
     $("#fade").hide();
 }
-function listbox() 
-{
+function listbox() {
     document.getElementById('lightlist').style.display = 'block';
 }
 
-function product(page) 
-{
+function product(page) {
     var c_page = getLS('page');
     var result = c_page.split(",");
-    switch (page)
-    {
+    switch (page) {
         case 1:
             if (result[result.length - 1] !== 'index');
             {
@@ -385,7 +369,7 @@ function product(page)
             }
             break;
         case 2:
-           
+
             if (result[result.length - 1] !== 'products');
             {
                 setLS('page', c_page + ",products");
@@ -408,16 +392,15 @@ function product(page)
     }
 
     window.location.href = 'products.html';
-    
+
 }
 
-function findcart(page) 
-{
+function findcart(page) {
     var c_page = getLS('page');
     var result = c_page.split(",");
     switch (page) {
         case 1:
-   
+
             if (result[result.length - 1] !== 'index');
             {
                 setLS('page', c_page + ",home");
@@ -449,8 +432,7 @@ function findcart(page)
     window.location.href = 'cart.html';
 }
 
-function findaccount(page) 
-{
+function findaccount(page) {
     var c_page = getLS('page');
     var result = c_page.split(",");
     switch (page) {
@@ -484,11 +466,10 @@ function findaccount(page)
             break;
     }
     window.location.href = 'myaccount.html';
-   
+
 }
 
-function toggle_directionclose() 
-{
+function toggle_directionclose() {
     $("body").addClass('globalbodyclass');
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
@@ -499,19 +480,17 @@ function toggle_directionclose()
         new_page = c_page.replace(',' + result[result.length - 1], "");
         setLS('page', new_page);
     }
-    
+
     document.getElementById('lightdirection').style.display = 'none';
     document.getElementById('fade').style.display = 'none';
 }
-function popuphide() 
-{
+function popuphide() {
     document.getElementById('lightdirection').style.display = 'none';
     document.getElementById('light').style.display = 'none';
     document.getElementById('white_contentlistnew1').style.display = 'none';
 }
 
-function index1()
-{
+function index1() {
     document.getElementById('login_inner1').style.display = 'none';
     document.getElementById('loading').style.display = 'block';
     setTimeout(function () {
@@ -521,11 +500,9 @@ function index1()
 
 }
 
-function droptable() 
-{
+function droptable() {
     var create = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-    create.transaction(function createTableDB(tx) 
-    {
+    create.transaction(function createTableDB(tx) {
         tx.executeSql('DROP TABLE IF EXISTS userinfo');
         tx.executeSql('DROP TABLE IF EXISTS  branchinfo');
         tx.executeSql('DROP TABLE IF EXISTS  iteminfo');
@@ -540,8 +517,7 @@ function droptable()
 function loadmenu(pageno) {
     var isuserlogged = getLS('Isuserlogged');
     var username = "";
-    if(getLS('UserName') !== null)
-    {
+    if (getLS('UserName') !== null) {
         username = getLS('UserName');
     }
     var html = "";
@@ -581,7 +557,7 @@ function loadmenu(pageno) {
         html = html + '</div>';
         html = html + '<hr />';
     }
-      
+
     html = html + '<div class="popdiv"  onclick="product(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
@@ -595,7 +571,7 @@ function loadmenu(pageno) {
     html = html + '</table>';
     html = html + '</div>';
     html = html + '<hr />';
-    
+
 
     html = html + '<div class="popdiv" onclick="findbranch(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
@@ -610,39 +586,38 @@ function loadmenu(pageno) {
     html = html + '</table>';
     html = html + '</div>';
     html = html + '<hr />';
-    
-        html = html + '<div class="popdiv" onclick="findcart(' + pageno + ')">';
-        html = html + '<table class="tableclass" style="border: none;">';
-        html = html + '<tr style="width: 220px; text-align: left">';
-        html = html + '<td style="width: 35px">';
-        html = html + '<img src="images/cart.png" style="width: 32px; height: 32px" />';
-        html = html + '</td>';
-        html = html + '<td>';
-        html = html + '<span class="p-menu" >Cart</span>';
-        html = html + '</td>';
-        html = html + '</tr>';
-        html = html + '</table>';
-        html = html + '</div>';
-        html = html + '<hr />';
-        html = html + '<div class="popdiv" style="height:48px"  onclick="findaccount(' + pageno + ')">';
-        html = html + '<table class="tableclass" style="border: none;">';
-        html = html + '<tr style="width: 220px; text-align: left">';
-        html = html + '<td style="width: 35px">';
-        html = html + '<img src="images/myaccount.png" style="width: 32px; height: 32px" />';
-        html = html + '</td>';
-        html = html + '<td>';
-        html = html + '<span class="p-menu" >My Account</span>';
-        html = html + '</td>';
-        html = html + '</tr>';
-        html = html + '</table>';
-        html = html + '</div>';
-        html = html + '</div>';
+
+    html = html + '<div class="popdiv" onclick="findcart(' + pageno + ')">';
+    html = html + '<table class="tableclass" style="border: none;">';
+    html = html + '<tr style="width: 220px; text-align: left">';
+    html = html + '<td style="width: 35px">';
+    html = html + '<img src="images/cart.png" style="width: 32px; height: 32px" />';
+    html = html + '</td>';
+    html = html + '<td>';
+    html = html + '<span class="p-menu" >Cart</span>';
+    html = html + '</td>';
+    html = html + '</tr>';
+    html = html + '</table>';
+    html = html + '</div>';
+    html = html + '<hr />';
+    html = html + '<div class="popdiv" style="height:48px"  onclick="findaccount(' + pageno + ')">';
+    html = html + '<table class="tableclass" style="border: none;">';
+    html = html + '<tr style="width: 220px; text-align: left">';
+    html = html + '<td style="width: 35px">';
+    html = html + '<img src="images/myaccount.png" style="width: 32px; height: 32px" />';
+    html = html + '</td>';
+    html = html + '<td>';
+    html = html + '<span class="p-menu" >My Account</span>';
+    html = html + '</td>';
+    html = html + '</tr>';
+    html = html + '</table>';
+    html = html + '</div>';
+    html = html + '</div>';
 
 
     $("#white_contentlistnew").html(html);
 }
 
-function home(pageno) 
-{
-   window.location.href = 'index.html';
+function home(pageno) {
+    window.location.href = 'index.html';
 }

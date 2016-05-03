@@ -41,8 +41,7 @@ function filterselection1() {
     if (result[result.length - 1] !== "FilterPopUp") {
         setLS('page', c_page + ",FilterPopUp");
     }
-    if (getLS('IsNewFilterAttributes')=== 'Yes')
-    {
+    if (getLS('IsNewFilterAttributes') === 'Yes') {
         GlobalFilterArray.length = 0;
         $.mobile.loading("show",
         {
@@ -55,21 +54,19 @@ function filterselection1() {
         });
         $("#loading_pdt").show();
 
-        
+
         var ServiceURL = "";
 
         var showMoreProducts = getLS('showmoreproducts');
 
-        if (showMoreProducts === 'filter' || showMoreProducts === 'filterproducts')
-        {
+        if (showMoreProducts === 'filter' || showMoreProducts === 'filterproducts') {
             var fSectionCode = getLS('F_Sectioncode');
             var fGroupCode = getLS('F_Groupcode');
             var fCategoryCode = getLS('F_Categorycode');
 
             ServiceURL = FilterOptionsURL + 'sectionId=' + fSectionCode + '&HEADSECID=&groupId=' + fGroupCode + '&categoryId=' + fCategoryCode + '&splib=' + splib + '&tablelib=' + tablelib;
         }
-        else
-        {
+        else {
             var searchType = getLS('SearchType');
             var searchText = getLS('LS_SearchText');
             ServiceURL = NewFilterAttributesURL + 'SEARCHTYPE=' + searchType + '&SEARCHTXT=' + searchText.toUpperCase() + '&BRANCHCODE=' + branch_id + '&deviceencryptedkey=' + encryptedkey + '&splib=' + splib + '&tablelib=' + tablelib;
@@ -100,17 +97,14 @@ function filterselection1() {
                 if (showMoreProducts === 'filter') {
                     list = outputresult.BMCItemFilter;
                 }
-                else
-                {
+                else {
                     list = outputresult.BMCAttributes;
                 }
 
 
                 var output = '';
-                if (list.length > 0)
-                {
-                    $.each(list, function (i, item)
-                    {
+                if (list.length > 0) {
+                    $.each(list, function (i, item) {
                         var AttributeNames = item.AttributeNames.split(",");
                         if (AttributeNames.length - 1 > 0) {
                             for (var m = 0; m <= AttributeNames.length - 1; m++) {
@@ -149,7 +143,7 @@ function filterselection1() {
                     $("#loading_pdt").hide();
                     $(".pdtloadlistdiv").hide();
                     $(".tableproducts1filter").show();
-                    $(".cleardivivfilter").show();                   
+                    $(".cleardivivfilter").show();
                 }
 
                 setLS('IsNewFilterAttributes', 'No');
@@ -165,8 +159,7 @@ function filterselection1() {
             }
         });
     }
-    else
-    {
+    else {
         $("#filterselctiondiv").show();
         $.mobile.loading("hide");
         $("#loading_pdt").hide();
@@ -177,8 +170,7 @@ function filterselection1() {
 }
 
 function Filterdiv(Divid) {
-    if ($("#filterdiv_" + Divid.replace(/ /g, "").replace(/\//g, "_") + ":empty").length)
-    {
+    if ($("#filterdiv_" + Divid.replace(/ /g, "").replace(/\//g, "_") + ":empty").length) {
         //Empty div
         $.mobile.loading("show",
        {
@@ -230,7 +222,7 @@ function Filterdiv(Divid) {
                     $.each(list, function (i, item) {
                         var ATTRIBUTEVALUE = item.ATTRIBUTEVALUE;
                         output = output + '<li>';
-                        output = output + '<input class="' + Divid.replace(/ /g, "").replace(/\//g, "_")  + ' Clearallfilters" type="checkbox" value="' + ATTRIBUTEVALUE + '" style="width: 5%;" />';
+                        output = output + '<input class="' + Divid.replace(/ /g, "").replace(/\//g, "_") + ' Clearallfilters" type="checkbox" value="' + ATTRIBUTEVALUE + '" style="width: 5%;" />';
                         output = output + '<a href="" style="color: #808080;width: 75%; font-weight: bold; text-decoration: none;vertical-align:top">';
                         output = output + ATTRIBUTEVALUE;
                         output = output + '</a>';
@@ -274,12 +266,11 @@ function Filterdiv(Divid) {
             }
         });
     }
-    else
-    {
-       //Div is Non-empty
+    else {
+        //Div is Non-empty
         Divid = Divid.replace(/ /g, "").replace(/\//g, "_");
         var img = $("#Filterhead_" + Divid).children().children().attr('src');
-       
+
         if (img === "css/images/filterplus.png") {
             $("#Filterhead_" + Divid).children().children().attr("src", "css/images/filterminus.png");
             $("#filterdiv_" + Divid).slideToggle();
@@ -300,7 +291,7 @@ function filterbackbtn() {
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
     var c_page = getLS('page');
-    var result = c_page.split(","),new_page;
+    var result = c_page.split(","), new_page;
     if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
@@ -309,14 +300,12 @@ function filterbackbtn() {
         setLS('page', new_page);
     }
     var valuefilter = getLS('showmoreproducts');
-   
-    if (valuefilter === "search")
-    {
+
+    if (valuefilter === "search") {
         //pdtimgkitchendivdisplaynew1back()
         //alert();
     }
-    else
-    {
+    else {
         pdtimgkitchendivdisplay(getLS('F_Sectioncode'), getLS('F_Groupcode'), getLS('F_Categorycode'), getLS('breadlist1'));
     }
 }
@@ -327,7 +316,7 @@ var AttributeValue = "";
 function SubmitFilterProducts() {
     AttributeName = "";
     AttributeValue = "";
-  
+
     for (var i = 0; i <= GlobalFilterArray.length - 1; i++) {
 
         $('input:checkbox.' + GlobalFilterArray[i].replace(/ /g, "").replace(/\//g, "_")).each(function () {
@@ -353,29 +342,27 @@ function SubmitFilterProducts() {
 
     if (AttributeName !== "" || AttributeValue !== "") {
 
-        GetProductsBasedOnFilter(AttributeName, AttributeValue,1,10);
+        GetProductsBasedOnFilter(AttributeName, AttributeValue, 1, 10);
     }
     else {
         navigator.notification.alert('No Filters Applied..!', null, 'Alert', 'OK');
     }
 }
 
-function ClearAllCheckedFilter()
-{
+function ClearAllCheckedFilter() {
     $('.Clearallfilters').attr('checked', false); // Unchecks i
 }
 
-function GetProductsBasedOnFilter(AttributeName, AttributeValue,FromCount,ToCount)
-{
- $.mobile.loading("show",
- {
-     text: "Please Wait...",
-     textVisible: true,
-     theme: "a",
-     textonly: true,
-     html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
+function GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCount) {
+    $.mobile.loading("show",
+    {
+        text: "Please Wait...",
+        textVisible: true,
+        theme: "a",
+        textonly: true,
+        html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
- });
+    });
     $("#loading_pdt").show();
 
     var branch_code = getLS('default_branchcode');
@@ -400,8 +387,7 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue,FromCount,ToCoun
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
             dbinsert.transaction(function branchdetails(tx) {
 
-                if (FromCount === 1)
-                {
+                if (FromCount === 1) {
                     tx.executeSql('DROP TABLE IF EXISTS  iteminfo');
                 }
                 tx.executeSql('CREATE TABLE IF NOT EXISTS iteminfo (id INTEGER PRIMARY KEY AUTOINCREMENT,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK)');
