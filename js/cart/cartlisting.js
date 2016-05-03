@@ -15,9 +15,9 @@ CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber === null) {
     CustomerNumber = "";
 }
-user_ID = getLS('UserID');
-if (user_ID === null) {
-    user_ID = "";
+userID = getLS('UserID');
+if (userID === null) {
+    userID = "";
 }
 UserProfile = getLS('UserProfile');
 if (UserProfile === null) {
@@ -67,7 +67,7 @@ function cartpageload() {
 
 function loadshippingaddress() {
     var output = "";
-    var temp_output = "";
+    var tempOutput = "";
     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
     showproduct.transaction(function showitemsbyid(tx) {
         tx.executeSql('select CustomerShippingAddress1,CustomerShippingCity,CustomerShippingState,CustomerMainShippingZipCode from userinfo', [], function successitem(txx, res) {
@@ -83,7 +83,7 @@ function loadshippingaddress() {
             output = output + 'border-radius: 10px; margin-top: 0px" onclick="addressbookcls()" /></div>';
             output = output + '</div>';
             output = output + '</div>';
-            temp_output = output;
+            tempOutput = output;
             for (var i = 0; i < res.rows.length; i++) {
                 var ss = res.rows.item(i);
                 var address1 = ss.CustomerShippingAddress1;
@@ -126,7 +126,7 @@ function loadshippingaddress() {
                 output = output + '</div>';
             }
 
-            if (temp_output === output) {
+            if (tempOutput === output) {
                 output = output + '<div style="margin-top: 5px;padding: 5px;">';
                 output = output + '<p style="text-align:center">';
                 output = output + 'No Details Found';
@@ -163,7 +163,7 @@ function loadcartitems() {
         tx.executeSql(query1);
         tx.executeSql(query2, [], function successitem(txx, res) {
             var html = "<div style='margin-top:138px'>";
-            var cartitemscount = 0;
+            var cartitemscount = 0, totalcartitems;
 
             if (res.rows.length > 0) {
                 cartitemscount = res.rows.length;
@@ -256,10 +256,10 @@ function loadcartitems() {
                 Totalitems = res.rows.length;
 
                 if (res.rows.length === 1) {
-                    var totalcartitems = "Cart- " + res.rows.length + " item";
+                    totalcartitems = "Cart- " + res.rows.length + " item";
                 }
                 else {
-                    var totalcartitems = "Cart- " + res.rows.length + " items";
+                    totalcartitems = "Cart- " + res.rows.length + " items";
                 }
                 $("#div_cartitems").html(html);
                 $("#lbltotalitems").html(totalcartitems);
@@ -276,7 +276,7 @@ function loadcartitems() {
                 html = html + '</table>';
                 html = html + '</div></div>';
                 Totalitems = 0;
-                var totalcartitems = "Cart- 0 items";
+                totalcartitems = "Cart- 0 items";
                 $("#div_cartfooter").html("");
             }
 
@@ -416,7 +416,7 @@ function onConfirmRemoveCart(buttonIndex) {
                     var ss = res.rows.item(i);
                     var ItemOrProductDescription = ss.ItemOrProductDescription;
                 }
-                writetologfile(" User has deleted item " + ItemOrProductDescription + " from the cart", 7);
+                writeToLogFile(" User has deleted item " + ItemOrProductDescription + " from the cart", 7);
             });
             var query6 = "DELETE FROM cartitems where id=?";
 
@@ -494,7 +494,7 @@ function loadmenu_cart(pageno) {
     html = html + '<hr />';
 
 
-    html = html + '<div class="popdiv" onclick="findbranch(' + pageno + ')">';
+    html = html + '<div class="popdiv" onclick="findBranch(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
     html = html + '<td style="width: 35px">';
@@ -538,7 +538,7 @@ function loadmenu_cart(pageno) {
 }
 
 
-function addressbook() {
+function addressBook() {
     var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] !== "addressbook") {
@@ -642,7 +642,7 @@ function onConfirmModifyCart(buttonIndex) {
 
                 tx.executeSql(query5, [value, Totalprice, totalweight, itemid]);
 
-                writetologfile(" User has modified the item " + ItemOrProductDescription + " in the cart.", 7);
+                writeToLogFile(" User has modified the item " + ItemOrProductDescription + " in the cart.", 7);
 
             });
 
@@ -684,22 +684,22 @@ function settax() {
                         if (TaxPercentage !== "" && TaxPercentage !== null) {
                             pricetax = TaxPercentage; //binding user zipcode -tax
 
-                            writetologfile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
+                            writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
                         }
                         else {
 
                             pricetax = 0; //binding user zipcode -tax
-                            writetologfile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
+                            writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
                         }
 
                     });
                 }
                 else {
                     pricetax = 0; //binding user zipcode -tax
-                    writetologfile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
+                    writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
                 }
 
-            }, error: function (data, errorThrown) {
+            }, error: function () {
 
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
@@ -891,7 +891,7 @@ function loadnewpickupAddress(branchno) {
             });
 
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             $("#servererror").show();
             $('html,body').animate({ scrollTop: 0 }, 800);
         }
@@ -961,7 +961,7 @@ function loadnearestbranch() {
                 loadtodropdown();
             }, errorCB);
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             document.getElementById("ddbranch").innerHTML = "";
             $("#servererror").show();
             $("#shipping_popup").show();
@@ -1281,13 +1281,13 @@ function Estimate() {
                     $("#shipping_popup").show();
                     $("#shipcharge").html("Estimated Shipping Charge : $<span id='shipchargeval'></span>");
                     $("#shipchargeval").text(shippingcharges);
-                    writetologfile("Shipping Charge is $" + amount, 11);
+                    writeToLogFile("Shipping Charge is $" + amount, 11);
                 }
                 //loadcartitems();
             });
 
         },
-        error: function (data, errorThrown) {
+        error: function () {
             $("#ddserviceoption").val(0);
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#shipping_popup").show();

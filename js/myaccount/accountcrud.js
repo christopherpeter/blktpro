@@ -14,9 +14,9 @@ CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber === null) {
     CustomerNumber = "";
 }
-user_ID = getLS('UserID');
-if (user_ID === null) {
-    user_ID = "";
+userID = getLS('UserID');
+if (userID === null) {
+    userID = "";
 }
 UserProfile = getLS('UserProfile');
 if (UserProfile === null) {
@@ -34,7 +34,7 @@ if (isuserlogged === 'yes') {
 }
 
 
-function accountpage_load() {
+function accountPageLoad() {
 
     $("#loading_pdt").show();
 
@@ -160,7 +160,7 @@ function accountpage_load() {
 
     Loadorderhistory();
 }
-function loadallbranches_tolocalDB_account() {
+function loadalBranchesToLocaldbAccount() {
 
     $.ajax({
         type: "GET",
@@ -223,14 +223,14 @@ function loadallbranches_tolocalDB_account() {
                 });
 
             }, errorCB);
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Internet Failure', 'OK');
         }
 
     });
 }
 
-function submitfeedback() {
+function submitfeedBack() {
     if (isuserlogged === 'yes') {
         var appname = "TP";
 
@@ -284,7 +284,7 @@ function submitfeedback() {
                     $("#edit_fade").hide();
                     $.mobile.loading("hide");
                     $("#loading_pdt").hide();
-                    writetologfile("Error in updating user shipping details", 3);
+                    writeToLogFile("Error in updating user shipping details", 3);
                 }
             });
         }
@@ -304,7 +304,7 @@ function submitfeedback() {
 }
 
 
-function savebranch() {
+function saveBranch() {
 
     var branch_code = $("#branch_list").val();
     var branch_name = $("#branch_list option:selected").text();
@@ -368,7 +368,7 @@ function savebranch() {
         return false;
     }
     else {
-        updateshippingaddress(address1, addresscity, addressstate, addresszip, phonenumber, shippement);
+        updateShippingAddress(address1, addresscity, addressstate, addresszip, phonenumber, shippement);
     }
 
 
@@ -376,7 +376,7 @@ function savebranch() {
 
 // Function to update this valid details to the server
 
-function updateshippingaddress(address1, addresscity, addressstate, addresszip, phonenumber, shippement) {
+function updateShippingAddress(address1, addresscity, addressstate, addresszip, phonenumber, shippement) {
     $("#edit_fade").show();
 
     $.mobile.loading("show", {
@@ -435,12 +435,12 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
                         $("#loading_pdt").hide();
                         $("#edit_fade").hide();
                         $('#fade').hide();
-                        writetologfile("User has updated his shipping details", 8);
+                        writeToLogFile("User has updated his shipping details", 8);
                     }, errorCB);
 
                 }
                 else {
-                    writetologfile("Error in updating user shipping details", 3);
+                    writeToLogFile("Error in updating user shipping details", 3);
                     navigator.notification.alert('User Information Is Not Updated!', null, 'Account', 'OK');
                     $.mobile.loading("hide");
                     $("#loading_pdt").hide();
@@ -448,14 +448,14 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
                     $("#edit_fade").hide();
                 }
             },
-            error: function (data, errorThrown) {
+            error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
 
                 $("#edit_fade").hide();
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
-                writetologfile("Error in updating user shipping details", 3);
+                writeToLogFile("Error in updating user shipping details", 3);
             }
         });
 
@@ -463,27 +463,27 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
     }
 
 }
-function tableinvoice1() {
+function tableInvoice1() {
     $('.tableinvoice1').slideToggle();
     $('.tableinvoice2').hide();
     $('.tableinvoice3').hide();
 }
-function tableinvoice2() {
+function tableInvoice2() {
     $('.tableinvoice2').slideToggle();
     $('.tableinvoice1').hide();
     $('.tableinvoice3').hide();
 }
-function tableinvoice3() {
+function tableInvoice3() {
     $('.tableinvoice3').slideToggle();
     $('.tableinvoice1').hide();
     $('.tableinvoice2').hide();
 }
-function feedback() {
+function feedBack() {
     $('.contact').hide();
     $('.feedbk').hide();
     $('.feedbk1').show();
 }
-function feedbackrtn() {
+function feedBackRtn() {
     $('.contact').hide();
     $('.contact1').show();
     $('.feedbk').show();
@@ -584,24 +584,24 @@ $(function () {
     $('#locationfinder').click(function () {
 
         $('.white_contentlistnewpdt').toggle();
-        loadmenu_account(4);
+        loadMenuAccount(4);
     })
 });
-function addressbook() {
+function addressBook() {
     var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] !== "accpopup") {
         setLS('page', c_page + ",accpopup");
     }
     saveaddress();
-    feedbackrtn();
+    feedBackRtn();
     $('#fade').show();
     $('.addressbook').toggle();
     $('.white_contentlistnewpdt').hide();
 }
 
 
-function loadmenu_account(pageno) {
+function loadMenuAccount(pageno) {
     var html = "";
     html = html + '<div class="innerpopup">';
     html = html + '<div class="empty">';
@@ -655,7 +655,7 @@ function loadmenu_account(pageno) {
     html = html + '<hr />';
 
 
-    html = html + '<div class="popdiv" onclick="findbranch(' + pageno + ')">';
+    html = html + '<div class="popdiv" onclick="findBranch(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
     html = html + '<td style="width: 35px">';

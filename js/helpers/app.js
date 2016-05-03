@@ -1,4 +1,4 @@
-﻿/*
+﻿/*setencryptedkey
 This javascript files is only for general functions
 Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
@@ -21,7 +21,7 @@ function ConvertNameToUpperCase(Textbox) {
 
 }
 
-function setencryptedkey() {
+function setEncryptedKey() {
 
     $("#fade").show();
 
@@ -68,7 +68,7 @@ function setencryptedkey() {
             }
 
         },
-        error: function (data, errorThrown) {
+        error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
             $("#fade").hide();
@@ -309,7 +309,7 @@ function showShowRooms() {
     }
 }
 
-function findbranch(page) {
+function findBranch(page) {
     // clearfilters();
     var c_page = getLS('page');
     var result = c_page.split(",");
@@ -571,7 +571,7 @@ function loadmenu(pageno) {
     html = html + '<hr />';
 
 
-    html = html + '<div class="popdiv" onclick="findbranch(' + pageno + ')">';
+    html = html + '<div class="popdiv" onclick="findBranch(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
     html = html + '<td style="width: 35px">';

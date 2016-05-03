@@ -80,7 +80,7 @@ var shippingcharges = 0;
 var defaultbranchcode = "100";
 var defaultbranchname = "BLACKMAN - WAREHOUSE";
 var SecretPhrase = getCookie("AlphanumericToken");
-var AccessTokenKey, CustomerNumber, user_ID, UserProfile, isuserlogged, UserName, Isvalid;
+var AccessTokenKey, CustomerNumber, userID, UserProfile, isuserlogged, UserName, Isvalid;
 
 function getCookie(cname) {
     var name = cname + "=";

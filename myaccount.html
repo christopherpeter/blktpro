@@ -56,7 +56,7 @@
                 $("#div_edit").hide();
                 $(".exitbtn").hide();
             }
-            accountpage_load();
+            accountPageLoad();
         });
 
         document.addEventListener("deviceready", onDeviceReady, false);
@@ -277,7 +277,7 @@
             <div style="font-weight: bold; color: #304589; margin-left: 4px;">
                 Shipping Address :
                 <div style="float: right; margin-right: 5px; cursor: pointer; font-weight: normal">
-                    <a href="javascript:void(0)" onclick="savebranch();">
+                    <a href="javascript:void(0)" onclick="saveBranch();">
                         <img style="cursor: pointer; height: 17px; margin-top: 5px; width: 48px;" src="images/save_button.png" /></a></div>
             </div>
             <div id="ramkumar">
@@ -334,9 +334,9 @@
         <div class="feedbkcondiv">
             <table>
                 <tr>
-                    <td class="feedbk" style="font-weight: bold; color: #304589; cursor: pointer" onclick="feedback()">
+                    <td class="feedbk" style="font-weight: bold; color: #304589; cursor: pointer" onclick="feedBack()">
                         <img style="height: 22px; margin-top: -2px; vertical-align: middle; width: 22px;"
-                            src="images/plus_img.png" onclick="feedback()" />
+                            src="images/plus_img.png" onclick="feedBack()" />
                         App Feedback
                     </td>
                     <td class="feedbk1"  style="font-weight: bold; color: #304589; cursor: pointer; display: none">
@@ -344,7 +344,7 @@
                             src="images/minus_img.png"  />
                         <span onclick="feedbackrtn()">Feedback</span> 
                         <textarea id="txtfeedback" style="width: 98%; height: 100px"></textarea>
-                        <img src="images/send.jpg" onclick="submitfeedback()" style="float: right; margin-top: 3px; width: 70px; height: 25px;" />
+                        <img src="images/send.jpg" onclick="submitFeedBack()" style="float: right; margin-top: 3px; width: 70px; height: 25px;" />
                     </td>
                 </tr>
             </table>

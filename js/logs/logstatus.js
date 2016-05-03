@@ -4,7 +4,7 @@ Creaded on:12/09/2014 1PM
 License:Tychons solutions
 */
 
-function writetologfile(message, pageno) {
+function writeToLogFile(message, pageno) {
 
     var IMEI = getLS('IMEI');
     var UUID = getLS('UUID');
@@ -85,7 +85,7 @@ function writetologfile(message, pageno) {
                     break;
 
                 case 8:
-                    accountpage_load();
+                    accountPageLoad();
                     break;
 
                 case 9:
@@ -128,7 +128,7 @@ function writetologfile(message, pageno) {
             }
 
         },
-        error: function (data, errorThrown) {
+        error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loading_pdt").hide();
             $.mobile.loading("hide");

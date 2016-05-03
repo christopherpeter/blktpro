@@ -10,7 +10,7 @@ function onbodyload() {
     var encryptedKey = getLS('encryptedkey');
 
     if (encryptedKey === null) {
-        setencryptedkey();
+        setEncryptedKey();
     }
     else {
         loadallbranches_tolocalDB(); // function to save all the branches details to localDB
@@ -155,7 +155,7 @@ function success(position) {
     setLS('GPS_lon', position.coords.longitude.toFixed(6));
 
     var message = "User GPS Latitude Position : " + position.coords.latitude + ", Longitude Position:" + position.coords.longitude;
-    writetologfile(message, 3);
+    writeToLogFile(message, 3);
     setLS('Default', 2);
     setLS('get_gpslocation', 'yes');
     setLS('Showroom', 'none');  //old branch place
@@ -171,21 +171,21 @@ function error(error) {
         case error.PERMISSION_DENIED:
             message = "This website does not have permission to use " +
                       "the Geolocation API";
-            writetologfile(message, 3);
+            writeToLogFile(message, 3);
             break;
         case error.POSITION_UNAVAILABLE:
             message = "Your current location couldn't be determined.Kindly check if the location services are enabled in settings.";
-            writetologfile(message, 3);
+            writeToLogFile(message, 3);
             break;
         case error.PERMISSION_DENIED_TIMEOUT:
             message = "Your current location couldn't be determined.Kindly check if the location services are enabled in settings.";
-            writetologfile(message, 3);
+            writeToLogFile(message, 3);
             break;
     }
     if (message === "") {
-        var strErrorCode = error.code.toString();
+        //var strErrorCode = error.code.toString();
         message = "Your current location couldn't be determined.Kindly check if the location services are enabled in settings.";
-        writetologfile(message, 3);
+        writeToLogFile(message, 3);
     }
     navigator.notification.alert(message, null, 'Alert', 'OK');
     mapinitialize();
@@ -242,7 +242,7 @@ function search_branch() {
     var branchtxt = document.getElementById('txtsearch_branch').value;
     if (branchtxt !== "") {
         setLS('Showroom', 'none');
-        writetologfile("User Branch Search :" + branchtxt, 3);
+        writeToLogFile("User Branch Search :" + branchtxt, 3);
     }
     else {
         navigator.notification.alert('Please enter your address.', null, 'Alert', 'OK');

@@ -14,9 +14,9 @@ CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber === null) {
     CustomerNumber = "";
 }
-user_ID = getLS('UserID');
-if (user_ID === null) {
-    user_ID = "";
+userID = getLS('UserID');
+if (userID === null) {
+    userID = "";
 }
 UserProfile = getLS('UserProfile');
 if (UserProfile === null) {
@@ -148,7 +148,7 @@ function filterselection1() {
 
                 setLS('IsNewFilterAttributes', 'No');
 
-            }, error: function (data, errorThrown) {
+            }, error: function () {
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -257,7 +257,7 @@ function Filterdiv(Divid) {
 
                 }
 
-            }, error: function (data, errorThrown) {
+            }, error: function () {
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -436,7 +436,7 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCo
                 loadsectionproductscontents("Yes");
 
             }, errorCB);
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
             $("#loading_pdt").hide();

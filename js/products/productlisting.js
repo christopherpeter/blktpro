@@ -13,9 +13,9 @@ CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber === null) {
     CustomerNumber = "";
 }
-user_ID = getLS('UserID');
-if (user_ID === null) {
-    user_ID = "";
+userID = getLS('UserID');
+if (userID === null) {
+    userID = "";
 }
 UserProfile = getLS('UserProfile');
 if (UserProfile === null) {
@@ -37,7 +37,7 @@ $(document).ready(function () {
     setLS('viewimg', 'no');   //added on 1/12/2014
     $("#viewoff").click(function () {
         var message = "View Image turned ON";
-        writetologfile(message, 3);
+        writeToLogFile(message, 3);
         $('#viewoff').show();
         setLS('viewimg', 'no');
         if ($(".pdtimgkitchendivdisplay1").css('display') !== "none") {
@@ -51,7 +51,7 @@ $(document).ready(function () {
         $('#viewoff').show();
         $('#viewon').hide();
         var message = "View Image turned OFF";
-        writetologfile(message, 3);
+        writeToLogFile(message, 3);
 
         if ($(".pdtimgkitchendivdisplay1").css('display') !== "none") {
             loadsectionproductscontents("Yes");
@@ -61,9 +61,7 @@ $(document).ready(function () {
         }
     });
 });
-function backpage() {
-    window.location.href = "products.html";
-}
+
 function backpage1() {
 
     var c_page = getLS('page');
@@ -311,7 +309,7 @@ function pdtdesc(itemid) {
                 $("#loading_pdt").hide();
             }
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
             $("#loading_pdt").hide();
@@ -340,7 +338,7 @@ function product_pageload() {
     var encryptedkey = getLS('encryptedkey');
 
     if (encryptedkey === null) {
-        setencryptedkey();
+        setEncryptedKey();
     }
     else {
 
@@ -556,7 +554,7 @@ function checkinventory(branch_id) {
         setLS('default_branchcode', getBranchCode);
         setLS('Current_branch', getBranchCode);
         setLS('default_branchname', getBranchName);
-        writetologfile("Checked inventory-Branch Name: " + getBranchName, 1);
+        writeToLogFile("Checked inventory-Branch Name: " + getBranchName, 1);
     }
     else {
         var c_page = getLS('page');
@@ -708,7 +706,7 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode) {
                 loadsectionproductscontents('Yes');
 
             }, errorCB);
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
             $("#loading_pdt").hide();
@@ -954,8 +952,8 @@ function ShowUserPrices() {
     if (AccessTokenKey === null) { AccessTokenKey = ""; }
     CustomerNumber = getLS('CustomerNumber');
     if (CustomerNumber === null) { CustomerNumber = ""; }
-    user_ID = getLS('UserID');
-    if (user_ID === null) { user_ID = ""; }
+    userID = getLS('UserID');
+    if (userID === null) { userID = ""; }
     UserProfile = getLS('UserProfile');
     if (UserProfile === null) { UserProfile = ""; }
     isuserlogged = getLS('Isuserlogged');
@@ -1004,7 +1002,7 @@ function ShowUserPrices() {
 
             }
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             $("#unabletoconnectserver").show();
             $('html,body').animate({ scrollTop: 0 }, 800);
         }
@@ -1143,7 +1141,7 @@ function loadmoreproducts() {
                     setLS('product_count', to_count);
                     loadsectionproductscontents('Yes');
                 }, errorCB);
-            }, error: function (data, errorThrown) {
+            }, error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
@@ -1249,7 +1247,7 @@ function loadmoreproducts() {
                     }
 
                 }, errorCB);
-            }, error: function (data, errorThrown) {
+            }, error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
@@ -1337,7 +1335,7 @@ function loadmoreprodutsbyusingsecondservice() {
                 loadsectionproductscontents('Yes');
 
             }, errorCB);
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
             $("#loading_pdt").hide();
@@ -1409,7 +1407,7 @@ function loaddefaultbranchdetails() {
     var BranchName1 = getLS('default_branchname1');
     $("#current_branch").html(BranchName1);
     var message = "User selected default branch";
-    writetologfile(message, 10);
+    writeToLogFile(message, 10);
 }
 
 
@@ -1492,7 +1490,7 @@ function addtocart(page, ItemNumber, textboxid) {
 
                             var qry = 'INSERT INTO cartitems (Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
                             tx.executeSql(qry, [ItemNumber, OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, OurListUnitPriceCompany, BRANCH, STOCK, quantity, Totalprice, totalweight, selectedbranch]);
-                            writetologfile("Quantity:" + quantity + "," + ItemOrProductDescription + message, 9);
+                            writeToLogFile("Quantity:" + quantity + "," + ItemOrProductDescription + message, 9);
                         }
                     });
                 }
@@ -1568,7 +1566,7 @@ function loadmenu_product(pageno) {
     html = html + '</table>';
     html = html + '</div>';
     html = html + '<hr />';
-    html = html + '<div class="popdiv" onclick="findbranch(' + pageno + ')">';
+    html = html + '<div class="popdiv" onclick="findBranch(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
     html = html + '<td style="width: 35px">';
@@ -1689,7 +1687,7 @@ function inventoryaddtocart(ItemNumber) {
                                     var qry = 'INSERT INTO cartitems (Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
                                     tx.executeSql(qry, [ItemNumber, OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, aval, OurListUnitPriceCompany, BRANCH, STOCK, quantity, Totalprice, totalweight, branch]);
-                                    writetologfile("Quantity:" + quantity + "," + ItemOrProductDescription + message, 9);
+                                    writeToLogFile("Quantity:" + quantity + "," + ItemOrProductDescription + message, 9);
                                 }
                             }
                         });
@@ -1800,7 +1798,7 @@ function checkinventoryfun(ItemNumber) {
             }
 
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
@@ -2094,7 +2092,7 @@ function Specification(itemno) {
             }
 
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
             $("#loading_pdt").hide();

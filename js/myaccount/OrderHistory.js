@@ -13,9 +13,9 @@ CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber === null) {
     CustomerNumber = "";
 }
-user_ID = getLS('UserID');
-if (user_ID === null) {
-    user_ID = "";
+userID = getLS('UserID');
+if (userID === null) {
+    userID = "";
 }
 UserProfile = getLS('UserProfile');
 if (UserProfile === null) {
@@ -175,7 +175,7 @@ function Loadorderhistory() {
 
 
             },
-            error: function (data, errorThrown) {
+            error: function () {
 
 
                 $("#loading_pdt").hide();
@@ -284,7 +284,7 @@ function showinnerdiv(OrderNumber) {
             }
 
         },
-        error: function (data, errorThrown) {
+        error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loading_pdt").hide();
             $.mobile.loading("hide");
@@ -414,7 +414,7 @@ function invoiceclick() {
                     $.mobile.loading("hide");
                 }
             },
-            error: function (data, errorThrown) {
+            error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
@@ -535,7 +535,7 @@ function tableinvoice(invoiceno) {
                 $('#tableinvoice_' + invoiceno).html("<div style='color: red;text-align: center;padding: 0px 0px 10px 3px;'>No items found</div>");
             }
         },
-        error: function (data, errorThrown) {
+        error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loading_pdt").hide();
             $.mobile.loading("hide");

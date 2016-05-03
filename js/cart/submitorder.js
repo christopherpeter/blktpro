@@ -14,9 +14,9 @@ CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber === null) {
     CustomerNumber = "";
 }
-user_ID = getLS('UserID');
-if (user_ID === null) {
-    user_ID = "";
+userID = getLS('UserID');
+if (userID === null) {
+    userID = "";
 }
 UserProfile = getLS('UserProfile');
 if (UserProfile === null) {
@@ -333,7 +333,7 @@ function sendsummitorder(param1, param2) {
                     $.mobile.loading("hide");
                     document.getElementById('submitpopup').style.display = 'none';
                     $("#fade").hide();
-                    writetologfile("User has submitted an order.[Orderno:" + ordernumber + "]", 7);
+                    writeToLogFile("User has submitted an order.[Orderno:" + ordernumber + "]", 7);
 
                 }
                 else {
@@ -343,12 +343,12 @@ function sendsummitorder(param1, param2) {
                     $.mobile.loading("hide");
                     document.getElementById('submitpopup').style.display = 'none';
                     $("#fade").hide();
-                    writetologfile("User has submitted an order.[Failed]", 3);
+                    writeToLogFile("User has submitted an order.[Failed]", 3);
 
                 }
 
             },
-            error: function (data, errorThrown) {
+            error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later.', null, 'Connection Failed', 'OK');
                 $("#fade2").hide();
                 $.mobile.loading("hide");

@@ -207,16 +207,16 @@ function submitButton(page) {
                                 setLS('default_branchcode', getbranchcode);
                                 setLS('Current_branch', getbranchcode);
                                 setLS('default_branchname', getbranchname);
-                                writetologfile("User Logged in", 1);
+                                writeToLogFile("User Logged in", 1);
                             }
                             else {
-                                writetologfile("User Logged in", 2);
+                                writeToLogFile("User Logged in", 2);
                             }
                         }
                         else if (page === 2) {
                             setLS('Isuserlogged', 'yes');
                             isuserlogged = 'yes'; //global variable;
-                            user_ID = getLS('UserID');
+                            userID = getLS('UserID');
                             UserID = getLS('UserID');
                             UserProfile = getLS('UserProfile');
                             isuserlogged = getLS('Isuserlogged');
@@ -243,7 +243,7 @@ function submitButton(page) {
                 }
             }, errorCB);
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loading_pdt").hide();
             $.mobile.loading("hide");
@@ -294,9 +294,9 @@ function onConfirmExit(buttonIndex) {
                 success: function (xmlData) {
                     document.cookie = "AlphanumericToken" + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
                     localStorage.clear();
-                    writetologfile("User Logged out", 4);
+                    writeToLogFile("User Logged out", 4);
 
-                }, error: function (data, errorThrown) {
+                }, error: function () {
                     navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                     $("#loading_pdt").hide();
                     $.mobile.loading("hide");

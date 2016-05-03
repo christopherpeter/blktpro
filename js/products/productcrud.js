@@ -13,9 +13,9 @@ CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber === null) {
     CustomerNumber = "";
 }
-user_ID = getLS('UserID');
-if (user_ID === null) {
-    user_ID = "";
+userID = getLS('UserID');
+if (userID === null) {
+    userID = "";
 }
 UserProfile = getLS('UserProfile');
 if (UserProfile === null) {
@@ -37,7 +37,7 @@ if (isuserlogged === 'yes') {
 
 
 function ChangeUserBranch() {
-    findbranch(2);
+    findBranch(2);
 }
 
 function loadsectionfilter() {
@@ -87,7 +87,7 @@ function loadsectionfilter() {
                     loadsections();
                 }, errorCB);
 
-            }, error: function (data, errorThrown) {
+            }, error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
                 $.mobile.loading("hide");
@@ -139,7 +139,7 @@ function loadsectionfilter() {
                     loadsections();
                 }, errorCB);
 
-            }, error: function (data, errorThrown) {
+            }, error: function () {
 
                 //navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                 //alert('Unable to connect server.Please try again later!');
@@ -158,40 +158,6 @@ function loadsections() {
     loadsectionimages();
 }
 
-function CheckAspectRatio(imageid) {
-
-    var image = document.getElementById(imageid);
-    var imgwidth = image.width;
-    var imgheight = image.height;
-    var divwidth = $(".mainpagepdt").width();
-    var divheight = $(".mainpagepdt").height();
-    var Width, Height;
-    Width = divwidth; //retrieve current window width
-    if (imgheight > divheight) {
-        Height = divheight; //retrieve current window height
-    }
-    else {
-        Height = imgheight;
-    }
-    var widthRatio = parseFloat(imgwidth / Width).toFixed(2);
-    var heightRatio = parseFloat(imgheight / Height).toFixed(2);
-    var ratio = Math.max(widthRatio, heightRatio);
-    var newWidth = parseInt(imgwidth / ratio, 10);
-    var newHeight = parseInt(imgheight / ratio, 10);
-
-    if (imgheight > divheight) {
-        $("#" + imageid).css("margin-top", parseInt((Height - newHeight) / 2, 10) + "px");
-        $("#" + imageid).css("margin-left", parseInt((Width - newWidth) / 2, 10) + "px");
-    }
-    else {
-        $("#" + imageid).css("margin-top", parseInt((divheight - newHeight) / 2, 10) + "px");
-    }
-
-    $("#" + imageid).css("width", parseInt(newWidth, 10) + "px");
-    $("#" + imageid).css("height", parseInt(newHeight - 2, 10) + "px");
-
-}
-
 // This function will fire when a section has no sub groups in it
 
 function filterkitchenproduts(sectioncode) {
@@ -205,7 +171,7 @@ function filterkitchenproduts(sectioncode) {
     });
     $("#loading_pdt").show();
     setLS('showmoreproducts', 'filter');
-    writetologfile("Filter Search=Section:" + getLS('Filter_sectionname'), 3);
+    writeToLogFile("Filter Search=Section:" + getLS('Filter_sectionname'), 3);
     pdtimgkitchendivdisplay1(sectioncode, "", "");
 }
 
@@ -292,7 +258,7 @@ function filterkitchensub(sectioncode, groupcode, x) {
                 filterkitchensub_products(sectioncode, groupcode);
             }
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
@@ -315,7 +281,7 @@ function filterkitchensub_products(sectioncode, groupcode) {
     });
     $("#loading_pdt").show();
     setLS('showmoreproducts', 'filter');
-    writetologfile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname'), 3);
+    writeToLogFile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname'), 3);
     pdtimgkitchendivdisplay1(sectioncode, groupcode, "");
 }
 
@@ -337,7 +303,7 @@ function displayfilterproducts(sectioncode, groupcode, categorycode, x) {
 
     setLS('showmoreproducts', 'filter');
     setLS('filterbackbutton', 'filter');
-    writetologfile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname') + "Category:" + getLS('Filter_categoryname'), 3);
+    writeToLogFile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname') + "Category:" + getLS('Filter_categoryname'), 3);
     pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode);
 
 }
@@ -714,7 +680,7 @@ function product_search() {
                     setLS('product_count', to_count);
                     setLS('IsNewFilterAttributes', 'Yes');
                     setLS('SearchType', 'PROD1');
-                    writetologfile("User searched for product " + searchtext + ".It has results.", 3);
+                    writeToLogFile("User searched for product " + searchtext + ".It has results.", 3);
                     loadsectionproductscontents('Yes');
                 }
                 else {
@@ -723,7 +689,7 @@ function product_search() {
 
                 }
             }, errorCB);
-        }, error: function (data, errorThrown) {
+        }, error: function () {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
@@ -838,11 +804,11 @@ function loadsecondproductservice() {
                 }
 
                 else {
-                    writetologfile("User searched for product " + searchtext + ".It has no results.", 3);
+                    writeToLogFile("User searched for product " + searchtext + ".It has no results.", 3);
                     loadsectionproductscontents("Yes");
                 }
             }, errorCB);
-        }, error: function (data, errorThrown) {
+        }, error: function () {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
@@ -885,7 +851,7 @@ function clearfilters() {
     localStorage.removeItem('Filter_groupname');
     localStorage.removeItem('Filter_categoryname');
     var message = "Cleared All filters";
-    writetologfile(message, 5);
+    writeToLogFile(message, 5);
 }
 function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
     description = description.replace(/_/g, " ");
@@ -990,7 +956,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                 $.mobile.loading("hide");
             }
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loading_pdt").hide();
@@ -1145,7 +1111,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
                 $.mobile.loading("hide");
             }
 
-        }, error: function (data, errorThrown) {
+        }, error: function () {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loading_pdt").hide();
@@ -1269,7 +1235,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
                 $.mobile.loading("hide");
             }
             setLS('IsNewFilterAttributes', 'Yes');
-        }, error: function (data, errorThrown) {
+        }, error: function () {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loading_pdt").hide();
