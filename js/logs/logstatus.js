@@ -10,27 +10,27 @@ function writetologfile(message, pageno) {
     var UUID = getLS('UUID');
 
     CustomerNumber = getLS('CustomerNumber');
-    if (CustomerNumber == null) { CustomerNumber = ""; }
+    if (CustomerNumber === null) { CustomerNumber = ""; }
     UserProfile = getLS('UserProfile');
-    if (UserProfile == null) { UserProfile = ""; }
+    if (UserProfile === null) { UserProfile = ""; }
 
-    if (IMEI == 'undefined' || IMEI == "" || IMEI == null) {
+    if (IMEI === 'undefined' || IMEI === "" || IMEI === null) {
         IMEI = "N/A"
     }
 
-    if (UUID == 'undefined' || UUID == "" || UUID == null) {
+    if (UUID === 'undefined' || UUID === "" || UUID === null) {
         UUID = "N/A"
     }
 
-    if (UserProfile == 'undefined' || UserProfile == "" || UserProfile == null) {
+    if (UserProfile === 'undefined' || UserProfile === "" || UserProfile === null) {
         UserProfile = ""
     }
 
-    if (CustomerNumber == 'undefined' || CustomerNumber == "" || CustomerNumber == null) {
+    if (CustomerNumber === 'undefined' || CustomerNumber === "" || CustomerNumber === null) {
         CustomerNumber = "0"
     }
 
-    if (UserProfile == 'undefined' || UserProfile == "" || UserProfile == null) {
+    if (UserProfile === 'undefined' || UserProfile === "" || UserProfile === null) {
         UserProfile = ""
     }
 

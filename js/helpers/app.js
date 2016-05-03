@@ -8,7 +8,7 @@ function maxLengthCheck(object) {
         object.value = object.value.slice(0, object.maxLength)
 }
 function ConvertNameToUpperCase(Textbox) {
-    if (Textbox == "username") {
+    if (Textbox === "username") {
         var Username = $("#txtuser").val().trim();
         var ConvertToUppercase = Username.toUpperCase();
         $("#txtuser").val(ConvertToUppercase);
@@ -176,7 +176,7 @@ $(function () {
 
 
 
-function show_showrooms() {
+function showShowRooms() {
 
     $("#mapbody").addClass('mapbody');
     if ($(window).height() > 800) {
@@ -188,7 +188,7 @@ function show_showrooms() {
     }
 
     var showRoom = getLS('Showroom'), html;
-    if (showRoom == 'all') {
+    if (showRoom === 'all') {
         html = "<div class='empty'></div>";
         html = html + "<div style='background: #fff;'>"; //1
         html = html + "<div style='border-bottom: 1px solid #CCCCCC; height: 25px;margin-top: 25px;'>"; //2
@@ -253,8 +253,6 @@ function show_showrooms() {
         html = html + "List of Branches</p>";
         html = html + "</div>";
         html = html + "<div class='innerpopup' style='font-size:12px'>";
-
-
 
         for (var k = 0; k < changedValues.length; k++) {
 
@@ -473,7 +471,7 @@ function toggle_directionclose() {
     $("body").addClass('globalbodyclass');
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -524,7 +522,7 @@ function loadmenu(pageno) {
     html = html + '<div class="innerpopup">';
     html = html + '<div class="empty">';
     html = html + '</div>';
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === 'yes') {
         html = html + '<div class="popdiv" onclick="findaccount(' + pageno + ')">';
         html = html + '<table class="tableclass" style="border: none;">';
         html = html + '<tr style="width: 220px; text-align: left">';

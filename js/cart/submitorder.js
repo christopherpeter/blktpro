@@ -43,14 +43,14 @@ function submitcart() {
     var JobName = "";
     var OrderChargeorCashCode = $("#ddorder").val();
 
-    if (OrderChargeorCashCode === "0") {
+    if (OrderChargeorCashCode === '0') {
         navigator.notification.alert('Please select the mode of payment!', null, 'Order Alert', 'OK');
         return false;
     }
 
     var OrderMethodOfShipment = $("#ddshippment1").val();
     var shipfrombranchnumber = 0;
-    if (OrderMethodOfShipment === "P") {
+    if (OrderMethodOfShipment === 'P') {
         shipfrombranchnumber = getLS('branchcodenumber');
 
     }

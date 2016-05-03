@@ -66,7 +66,7 @@
                 var c_page = getLS('page');
                 var result = c_page.split(","), new_page;
                 changepage(result[result.length - 1]);
-                if (result.length == 1) {
+                if (result.length === 1) {
                     new_page = c_page.replace(result[result.length - 1], "");
                     setLS('page', new_page);
                 } else {

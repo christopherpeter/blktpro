@@ -32,7 +32,7 @@
         $(document).ready(function () {
             $('input').keypress(function (e) {
                 var code = (e.keyCode ? e.keyCode : e.which);
-                if ((code == 13) || (code == 10)) {
+                if ((code === 13) || (code === 10)) {
                     search_branch();
                 }
 
@@ -40,7 +40,7 @@
         });
 
         var encryptedKey = getLS('encryptedkey');
-        if (encryptedKey == null || encryptedKey == "") {
+        if (encryptedKey === null || encryptedKey === "") {
             location.href = "products.html";
         }
 
@@ -51,7 +51,7 @@
                 var c_page = getLS('page');
                 var result = c_page.split(",");
                 changepage(result[result.length - 1]);
-                if (result.length == 1)
+                if (result.length === 1)
                 {
                     setLS('page', "index");
                 }
@@ -155,7 +155,7 @@
                     <img src="images/search3.png" class="imagesearch" alt="" /></a>
             </div>
             <div class="searchdiv">
-                <img id="locationfinder123" onclick="show_showrooms()" src="images/list-alt.png"
+                <img id="locationfinder123" onclick="showShowRooms()" src="images/list-alt.png"
                     class="imagesearch" alt="ShowRooms" /></div>
         </div>
         <div class="clear">

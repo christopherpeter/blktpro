@@ -182,7 +182,7 @@ function error(error) {
             writetologfile(message, 3);
             break;
     }
-    if (message == "") {
+    if (message === "") {
         var strErrorCode = error.code.toString();
         message = "Your current location couldn't be determined.Kindly check if the location services are enabled in settings.";
         writetologfile(message, 3);
@@ -254,7 +254,7 @@ function search_branch() {
 
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': branchtxt }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
+        if (status === google.maps.GeocoderStatus.OK) {
             lat = results[0].geometry.location.lat();
             lng = results[0].geometry.location.lng();
 
@@ -372,7 +372,7 @@ function search_mapinitialize(load) {
 function loadmap1(load) {
     var lat1;
     var lon1;
-    if (load == 1) {
+    if (load === 1) {
 
 
         if (getLS('GPS_lat') !== null) {
@@ -384,7 +384,7 @@ function loadmap1(load) {
 
         setLS('map_number', 2);
     }
-    else if (load == 2) {
+    else if (load === 2) {
         lat1 = getLS('Source_lat');
         lon1 = getLS('Source_lon');
         setLS('map_number', 1);
@@ -465,7 +465,7 @@ function loadmap1(load) {
 function loadmap2(load) {
     var lat1;
     var lon1;
-    if (load == 1) {
+    if (load === 1) {
         if (getLS('GPS_lat') !== null) {
             lat1 = getLS('GPS_lat');
         }
@@ -475,7 +475,7 @@ function loadmap2(load) {
 
         setLS('map_number', 2);
     }
-    else if (load == 2) {
+    else if (load === 2) {
         lat1 = getLS('Source_lat');
         lon1 = getLS('Source_lon');
         setLS('map_number', 1);
@@ -500,7 +500,7 @@ function loadmap2(load) {
         icon: 'images/green-dot.png'
     });
     google.maps.event.addListener(marker, 'mouseover', function () {
-        if (contentStringCal != infowindow.getContent()) {
+        if (contentStringCal !== infowindow.getContent()) {
             infowindow.setContent(contentStringCal);
             infowindow.open(map, this);
         }
@@ -518,7 +518,7 @@ function loadmap2(load) {
         infowindow.setContent('');
     });
     for (i = 0; i < changedValues.length; i++) {
-        if (i == 0) {
+        if (i === 0) {
 
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(changedValues[i][1], changedValues[i][2]),

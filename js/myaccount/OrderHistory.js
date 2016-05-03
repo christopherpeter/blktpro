@@ -98,43 +98,43 @@ function Loadorderhistory() {
                         output = output + '</tr>';
                         output = output + '</table>';
                         output = output + '</td>';
-                        if (OrderStatusCode == "O" || OrderStatusCode == "" || OrderStatusCode == null) {
+                        if (OrderStatusCode === "O" || OrderStatusCode === "" || OrderStatusCode === null) {
                             output = output + '<td style="width: 24%;">';
                             output = output + '<img src="images/blue.png" style="width: 15px; height: 15px; padding: 1px" />';
                             output = output + '<label class="tickclass" style="vertical-align: top;">Open</label>';
                             output = output + '</td>';
                         }
-                        else if (OrderStatusCode == "I") {
+                        else if (OrderStatusCode === "I") {
                             output = output + '<td style="width: 24%;">';
                             output = output + '<img src="images/green.png" style="width: 15px; height: 15px; padding: 1px" /><label';
                             output = output + 'class="tickclass" style="vertical-align: top;">Invoiced</label>';
                             output = output + '</td>';
                         }
-                        else if (OrderStatusCode == "R") {
+                        else if (OrderStatusCode === "R") {
                             output = output + '<td style="width: 24%;">';
                             output = output + '<img src="images/green.png" style="width: 15px; height: 15px; padding: 1px" /><label';
                             output = output + 'class="tickclass" style="vertical-align: top;">Reviewed</label>';
                             output = output + '</td>';
                         }
-                        else if (OrderStatusCode == "P") {
+                        else if (OrderStatusCode === "P") {
                             output = output + '<td style="width: 24%;">';
                             output = output + '<img src="images/brown.png" style="width: 15px; height: 15px; padding: 1px" /><label';
                             output = output + 'class="tickclass" style="vertical-align: top;">Priced</label>';
                             output = output + '</td>';
                         }
-                        else if (OrderStatusCode == "C") {
+                        else if (OrderStatusCode === "C") {
                             output = output + '<td style="width: 24%;">';
                             output = output + '<img src="images/yellow.png" style="width: 15px; height: 15px; padding: 1px" /><label';
                             output = output + 'class="tickclass" style="vertical-align: top;">Changed</label>';
                             output = output + '</td>';
                         }
-                        else if (OrderStatusCode == "K") {
+                        else if (OrderStatusCode === "K") {
                             output = output + '<td style="width: 24%;">';
                             output = output + '<img src="images/orange.png" style="width: 15px; height: 15px; padding: 1px" /><label';
                             output = output + 'class="tickclass" style="vertical-align: top;">Reserved</label>';
                             output = output + '</td>';
                         }
-                        else if (OrderStatusCode == "N") {
+                        else if (OrderStatusCode === "N") {
                             output = output + '<td style="width: 24%;">';
                             output = output + '<img src="images/red.png" style="width: 15px; height: 15px; padding: 1px" /><label';
                             output = output + 'class="tickclass" style="vertical-align: top;" >Pending</label>';
@@ -296,7 +296,7 @@ function showinnerdiv(OrderNumber) {
 }
 
 function invoiceclick() {
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === "yes") {
         $("#loading_pdt").show();
 
         $.mobile.loading("show", {
@@ -316,7 +316,7 @@ function invoiceclick() {
                 var xmlString;
                 if (window.ActiveXObject) {
                     xmlString = xmlData.xml;
-                }
+                } === 
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
@@ -333,7 +333,7 @@ function invoiceclick() {
                     $.each(list, function (i, item) {
                         switch (i) {
                             case 0:
-                                if (item.Current == "" || item.Current == null || item.Current == 0 || item.Current == '0') {
+                                if (item.Current === "" || item.Current === null || item.Current === 0 || item.Current === '0') {
                                     item.Current = '0.00';
                                 }
 
@@ -341,35 +341,35 @@ function invoiceclick() {
                                 break;
 
                             case 1:
-                                if (item.ThirtyDays == "" || item.ThirtyDays == null || item.ThirtyDays == 0 || item.ThirtyDays == '0') {
+                                if (item.ThirtyDays === "" || item.ThirtyDays === null || item.ThirtyDays === 0 || item.ThirtyDays === '0') {
                                     item.ThirtyDays = '0.00';
                                 }
                                 $("#30_Span").text("$" + item.ThirtyDays);
                                 break;
 
                             case 2:
-                                if (item.SixtyDays == "" || item.SixtyDays == null || item.SixtyDays == 0 || item.SixtyDays == '0') {
+                                if (item.SixtyDays === "" || item.SixtyDays === null || item.SixtyDays === 0 || item.SixtyDays === '0') {
                                     item.SixtyDays = '0.00';
                                 }
                                 $("#60_Span").text("$" + item.SixtyDays);
                                 break;
 
                             case 3:
-                                if (item.NinetyDays == "" || item.NinetyDays == null || item.NinetyDays == 0 || item.NinetyDays == '0') {
+                                if (item.NinetyDays === "" || item.NinetyDays === null || item.NinetyDays === 0 || item.NinetyDays === '0') {
                                     item.NinetyDays = '0.00';
                                 }
                                 $("#90_Span").text("$" + item.NinetyDays);
                                 break;
 
                             case 4:
-                                if (item.TotalDue == "" || item.TotalDue == null || item.TotalDue == 0 || item.TotalDue == '0') {
+                                if (item.TotalDue === "" || item.TotalDue === null || item.TotalDue === 0 || item.TotalDue === '0') {
                                     item.TotalDue = '0.00';
                                 }
                                 $("#Total_Span").text("$" + item.TotalDue);
                                 break;
 
                             case 5:
-                                if (item.MTDPurchases == "" || item.MTDPurchases == null || item.MTDPurchases == 0 || item.MTDPurchases == '0') {
+                                if (item.MTDPurchases === "" || item.MTDPurchases === null || item.MTDPurchases === 0 || item.MTDPurchases === '0') {
                                     item.MTDPurchases = '0.00';
                                 }
                                 $("#MTD_Span").text("$" + item.MTDPurchases);
@@ -377,7 +377,7 @@ function invoiceclick() {
 
                             case 6:
 
-                                if (item.FutureDue == "" || item.FutureDue == null || item.FutureDue == 0 || item.FutureDue == '0') {
+                                if (item.FutureDue === "" || item.FutureDue === null || item.FutureDue === 0 || item.FutureDue === '0') {
                                     item.FutureDue = '0.00';
                                 }
                                 $("#FutureDue_Span").text("$" + item.FutureDue);
@@ -385,7 +385,7 @@ function invoiceclick() {
 
                             case 7:
 
-                                if (item.TotalOwed == "" || item.TotalOwed == null || item.TotalOwed == 0 || item.TotalOwed == '0') {
+                                if (item.TotalOwed === "" || item.TotalOwed === null || item.TotalOwed === 0 || item.TotalOwed === '0') {
                                     item.TotalOwed = '0.00';
                                 }
                                 $("#TotalOwed_Span").text("$" + item.TotalOwed);
@@ -393,7 +393,7 @@ function invoiceclick() {
 
                             case 8:
 
-                                if (item.AverageDaysToPay == "" || item.AverageDaysToPay == null || item.AverageDaysToPay == 0 || item.AverageDaysToPay == '0') {
+                                if (item.AverageDaysToPay === "" || item.AverageDaysToPay === null || item.AverageDaysToPay === 0 || item.AverageDaysToPay === '0') {
                                     item.AverageDaysToPay = '0';
                                 }
                                 $("#AvgDays_Span").text(item.AverageDaysToPay);

@@ -5,14 +5,14 @@ License:Tychons solutions
 */
 
 function onConfirmExit(buttonIndex) {
-    if (buttonIndex == 1) {
+    if (buttonIndex === 1) {
         navigator.app.exitApp();
     }
 
 }
 
 function onConfirmlogout(buttonIndex) {
-    if (buttonIndex == 1) {
+    if (buttonIndex === 1) {
         localStorage.clear();
         droptable();
         window.location.href = 'index.html';
@@ -31,7 +31,7 @@ function changepage(page) {
 
             var isuserlogged = getLS('Isuserlogged');
             //alert(isuserlogged);
-            if (isuserlogged == 'yes') {
+            if (isuserlogged === 'yes') {
                 navigator.notification.confirm('Are you sure want to logout?', onConfirmlogout, 'Logout', ['Yes', 'No']);
             }
             else {

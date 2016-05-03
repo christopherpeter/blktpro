@@ -8,7 +8,7 @@ function backtoindexpage() {
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     changepage(result[result.length - 1]);
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -36,7 +36,7 @@ function login() {
         setLS('page', 'newlogin');
     }
     var isuserlogged = getLS('Isuserlogged');
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === 'yes') {
         var result = c_page.split(",");
         if (result[result.length - 1] !== 'home');
         {
@@ -59,7 +59,7 @@ function submitButton(page) {
     var numbers = /^[0-9]+$/;
 
     var branch_code = getLS('Current_branch');
-    if (accountno == "") {
+    if (accountno === "") {
 
         navigator.notification.alert('Please enter account no.', null, 'Authentication', 'OK');
         return false;
@@ -71,12 +71,12 @@ function submitButton(page) {
         $("#txtaccno").val('');
         return false;
     }
-    else if (username == "") {
+    else if (username === "") {
 
         navigator.notification.alert('Please Enter Username.', null, 'Authentication', 'OK');
         return false;
     }
-    else if (password == "") {
+    else if (password === "") {
 
         navigator.notification.alert('Please enter password.', null, 'Authentication', 'OK');
         return false;
@@ -193,11 +193,11 @@ function submitButton(page) {
 
                     var defaultbranchname = getLS('default_branchname');
                     var defaultbranchcode = getLS('default_branchcode');
-                    if (IsValid == 'True') {
+                    if (IsValid === 'True') {
                         var qry = 'INSERT INTO userinfo (CompanyNumber,CustomerNumber,UserName,UserProfile,UserPhoneAreaCode,UserPhonePrefix,UserPhoneSuffix,UserFaxAreaCode,UserFaxPrefix,UserFaxSuffix,UserEMail,MethodOfShipment,OrderStatusCode,BranchNumber,ShipfromBranchNumber,CheckStockStatus,LastAccessMonth,DayOfLastAccess,YearLastAccessed,LastAccessTime,LastUpdateMonth,LastUpdateDay,LastUpdateYear,ShippedShipCode,OurTruckShipCode,PickupShipCode,UserIDOfMaintenance,CustomerMailingAddress1,CustomerMailingAddress2,CustomerMailingAddress3,CustomerShippingAddress1,CustomerShippingAddress2,CustomerShippingAddress3,CustomerMailingCity,CustomerShippingCity,CustomerMailingState,CustomerShippingState,CustomerMainMailingZipCode,CustomerMainShippingZipCode,CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CreditHoldFlag,DeliveryChargeFlag,ContractInEffectFlag,CreditLimitAmount,CustTaxExemptionNumber,CustTaxExemptFlag,CustStatementPrintCode,GSTTaxExemptCode,AverageDaysToPay,PreferredMethodOfShipment,ShipCode,ShipCodeLockFlag,PickingSeq)'
                       + 'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
                         tx.executeSql(qry, [CompanyNumber, CustomerNumber, UserName, UserProfile, UserPhoneAreaCode, UserPhonePrefix, UserPhoneSuffix, UserFaxAreaCode, UserFaxPrefix, UserFaxSuffix, UserEMail, MethodOfShipment, OrderStatusCode, BranchNumber, ShipfromBranchNumber, CheckStockStatus, LastAccessMonth, DayOfLastAccess, YearLastAccessed, LastAccessTime, LastUpdateMonth, LastUpdateDay, LastUpdateYear, ShippedShipCode, OurTruckShipCode, PickupShipCode, UserIDOfMaintenance, CustomerMailingAddress1, CustomerMailingAddress2, CustomerMailingAddress3, CustomerShippingAddress1, CustomerShippingAddress2, CustomerShippingAddress3, CustomerMailingCity, CustomerShippingCity, CustomerMailingState, CustomerShippingState, CustomerMainMailingZipCode, CustomerMainShippingZipCode, CustomerTelephoneAreaCode, CustomerTelephonePrefixNumber, CustomerTelephoneSuffixNumber, CreditHoldFlag, DeliveryChargeFlag, ContractInEffectFlag, CreditLimitAmount, CustTaxExemptionNumber, CustTaxExemptFlag, CustStatementPrintCode, GSTTaxExemptCode, AverageDaysToPay, PreferredMethodOfShipment, ShipCode, ShipCodeLockFlag, PickingSeq]);
-                        if (page == 1) {
+                        if (page === 1) {
                             setLS('Isuserlogged', 'yes');
                             var getbranchname = getLS('default_branchname2');
                             var getbranchcode = getLS('default_branchcode2');
@@ -213,7 +213,7 @@ function submitButton(page) {
                                 writetologfile("User Logged in", 2);
                             }
                         }
-                        else if (page == 2) {
+                        else if (page === 2) {
                             setLS('Isuserlogged', 'yes');
                             isuserlogged = 'yes'; //global variable;
                             user_ID = getLS('UserID');
@@ -270,9 +270,9 @@ function exit() {
 }
 
 function onConfirmExit(buttonIndex) {
-    if (buttonIndex == 1) {
+    if (buttonIndex === 1) {
         var isuserlogged = getLS('Isuserlogged');
-        if (isuserlogged == 'yes') {
+        if (isuserlogged === 'yes') {
             var AccessTokenKey = getLS('AccessTokenKey');
             $("#loading_pdt").show();
             $.mobile.loading("show",

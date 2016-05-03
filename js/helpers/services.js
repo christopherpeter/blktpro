@@ -87,7 +87,7 @@ function getCookie(cname) {
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1);
+        while (c.charAt(0) === ' ') c = c.substring(1);
         if (c.indexOf(name) !== -1) return c.substring(name.length, c.length);
     }
     return "";
@@ -103,7 +103,7 @@ function setLS(Key, Value) {
 //Function To get Localstorage value
 
 function getLS(Key) {
-    if (localStorage.getItem(Key) == null || localStorage.getItem(Key) == "") {
+    if (localStorage.getItem(Key) === null || localStorage.getItem(Key) === "") {
         return null;
     }
     else {
@@ -124,7 +124,7 @@ function removeLS(Key) {
 var encryptedkey = getLS('encryptedkey');
 
 var AccessTokenKey = "";
-if (getLS('AccessTokenKey') == null || getLS('AccessTokenKey') == "") {
+if (getLS('AccessTokenKey') === null || getLS('AccessTokenKey') === "") {
     AccessTokenKey = "";
 }
 else {

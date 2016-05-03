@@ -46,7 +46,7 @@
             }
 
             var view = getLS('viewimg');
-            if (view == null) {
+            if (view === null) {
                 setLS('viewimg', 'no');
             }
             filter();
@@ -54,13 +54,13 @@
 
             $('input').keypress(function (e) {
                 var code = (e.keyCode ? e.keyCode : e.which);
-                if ((code == 13) || (code == 10)) {
+                if ((code === 13) || (code === 10)) {
 
-                    if ($('#loginpopup').css('display') == 'block') {
+                    if ($('#loginpopup').css('display') === 'block') {
 
                         submitlogin(); //Login funtion form submit
                     }
-                    else if ($('#loginpopup').css('display') == 'none') {
+                    else if ($('#loginpopup').css('display') === 'none') {
 
                         product_search(); // Product Search form submit
                     }
@@ -89,7 +89,7 @@
                 var c_page = getLS('page');
                 var result = c_page.split(","), new_page;
                 changepage(result[result.length - 1]);
-                if (result.length == 1) {
+                if (result.length === 1) {
                     new_page = c_page.replace(result[result.length - 1], "");
                     setLS('page', new_page);
                 } else {
@@ -173,23 +173,23 @@
             $("#prdtsectionimges").swipe(
 					{
 					    swipe: function (event, direction) {
-					        if (direction == 'left') {
+					        if (direction === 'left') {
 					            var limit_count = getLS('images_oldcount');
 					            var total_count = getLS('TotalSections');
 					            if (parseInt(limit_count) < total_count) {
 					                product_next();
 					            }
 					        }
-					        else if (direction == 'right') {
+					        else if (direction === 'right') {
 					            var limit_count = getLS('images_oldcount');
-					            if (parseInt(limit_count) != 12) {
+					            if (parseInt(limit_count) !== 12) {
 					                product_previous();
 					            }
 
 					        }
 					    },
 					    swipeStatus: function (event, phase) {
-					        if (phase == "cancel") {
+					        if (phase === "cancel") {
 					            //alert("You didnt swipe far enough ");
 					        }
 					    },
