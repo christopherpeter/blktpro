@@ -8,7 +8,7 @@ function backtoindexpage()
 {
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    changepage(result[result.length-1]);
+    changepage(result[result.length - 1]);
     if (result.length == 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
@@ -23,7 +23,7 @@ function login()
 {
     var c_page = getLS('page');
 
-    if (c_page != null ) 
+    if (c_page !== null ) 
     {
         if (c_page.indexOf(',') > -1) {
             var result = c_page.split(",");
@@ -43,7 +43,7 @@ function login()
     if (isuserlogged == 'yes') 
     {
         var result = c_page.split(",");
-        if (result[result.length - 1] != 'home');
+        if (result[result.length - 1] !== 'home');
         {
             setLS('page', c_page + ",home");
         }
@@ -125,7 +125,7 @@ function submitButton(page)
                     var IsValid = obj.IsValid;
                     var CompanyNumber = obj.CompanyNumber;
 
-                    if (CompanyNumber != '' && CompanyNumber != 'undefined') {
+                    if (CompanyNumber !== '' && CompanyNumber !== 'undefined') {
                         var CompanyNumber = obj.CompanyNumber;
                         var CustomerNumber = obj.CustomerNumber;
                         var UserName = obj.UserName;
@@ -210,7 +210,7 @@ function submitButton(page)
                                 var getbranchname = getLS('default_branchname2');
                                 var getbranchcode = getLS('default_branchcode2');
 
-                                if (getbranchcode != null && getbranchcode != "") {
+                                if (getbranchcode !== null && getbranchcode !== "") {
 
                                     setLS('default_branchcode', getbranchcode);
                                     setLS('Current_branch', getbranchcode);
@@ -229,8 +229,8 @@ function submitButton(page)
                                 user_ID = getLS('UserID');
                                 UserID = getLS('UserID');
                                 UserProfile = getLS('UserProfile');
-                                isuserlogged = getLS('Isuserlogged');
-                                customerno = getLS('CustomerNumber');
+                                isuserlogged = getLS('Isuserlogged');                                
+                                CustomerNumber = getLS('CustomerNumber');
                                 UserName = getLS('UserName');
 
                                 $(".exitbtn").show();
@@ -277,8 +277,8 @@ function errorCB() {
 
 function exit() 
 {
-   navigator.notification.confirm('Are you sure want to logout?', onConfirmExit, 'Logout', ['Yes', 'No']);
-   //onConfirmExit(1); // development
+   //navigator.notification.confirm('Are you sure want to logout?', onConfirmExit, 'Logout', ['Yes', 'No']);
+   onConfirmExit(1); // development
 }
 
 function onConfirmExit(buttonIndex) 

@@ -6,24 +6,32 @@ License:Tychons solutions
 
 //Globalvalues for the JS
 
-var AccessTokenKey = getLS('AccessTokenKey');
-if (AccessTokenKey == null) { AccessTokenKey = ""; }
-var CustomerNumber = getLS('CustomerNumber');
-if (CustomerNumber == null) { CustomerNumber = ""; }
-var user_ID = getLS('UserID');
-if (user_ID == null) { user_ID = ""; }
-var UserProfile = getLS('UserProfile');
-if (UserProfile == null) { UserProfile = ""; }
-var isuserlogged = getLS('Isuserlogged');
 
-var UserName = getLS('UserName');
-if (UserName == null) { UserName = ""; }
-var Isvalid = '';
-if (isuserlogged == 'yes') {
-    Isvalid = 'Y';
+AccessTokenKey = getLS('AccessTokenKey');
+if (AccessTokenKey === null) {
+    AccessTokenKey = "";
 }
-else {
-    Isvalid = 'N';
+CustomerNumber = getLS('CustomerNumber');
+if (CustomerNumber === null) {
+    CustomerNumber = "";
+}
+user_ID = getLS('UserID');
+if (user_ID === null) {
+    user_ID = "";
+}
+UserProfile = getLS('UserProfile');
+if (UserProfile === null) {
+    UserProfile = "";
+}
+isuserlogged = getLS('Isuserlogged');
+UserName = getLS('UserName');
+if (UserName === null) {
+
+    UserName = "";
+}
+Isvalid = 'N';
+if (isuserlogged === 'yes') {
+    Isvalid = "Y";
 }
 
 
@@ -45,7 +53,7 @@ function cartpageload() {
     });
 
     var shippingMethod = getLS('ShippingMethod');
-    if (shippingMethod != '' || shippingMethod != null) {
+    if (shippingMethod !== '' || shippingMethod !== null) {
         $('#ddshippment1').val(shippingMethod);
     }
     else {
@@ -118,7 +126,7 @@ function loadshippingaddress() {
                 output = output + '</div>';
             }
 
-            if (temp_output == output) {
+            if (temp_output === output) {
                 output = output + '<div style="margin-top: 5px;padding: 5px;">';
                 output = output + '<p style="text-align:center">';
                 output = output + 'No Details Found';
@@ -211,7 +219,7 @@ function loadcartitems() {
                     html = html + '<td class="available">';
                     html = html + '<img src="images/yestick.png" style="width: 20px; height: 20px; vertical-align: bottom;';
                     html = html + 'margin-right: 2px" /><label>Available</label><label style="margin-left: 10px">Taxable:</label>';
-                    if (pricetax != 0 && pricetax != "") {
+                    if (pricetax !== 0 && pricetax !== "") {
                         html = html + '<label class="itemselecttax">';
                         html = html + 'Yes</label>';
                     }
@@ -248,7 +256,7 @@ function loadcartitems() {
 
                 Totalitems = res.rows.length;
 
-                if (res.rows.length == 1) {
+                if (res.rows.length === 1) {
                     var totalcartitems = "Cart- " + res.rows.length + " item";
                 }
                 else {
@@ -318,7 +326,7 @@ function loadcartitems() {
                             output = output + ' $' + Estimatedtotal.toFixed(2);
                             output = output + '</td>';
                             output = output + '</tr>';
-                            if (pricetax != 0 && pricetax != "") {
+                            if (pricetax !== 0 && pricetax !=="") {
                                 output = output + '<tr>';
                                 output = output + '<td style="width:125px">';
                                 output = output + 'Estimated Tax (' + pricetax + '%):';
@@ -388,7 +396,7 @@ function removecartitem(id)
 function onConfirmRemoveCart(buttonIndex) 
 {
     var id = globalcart_id;
-    if (buttonIndex == 1) 
+    if (buttonIndex === 1) 
     {
         $("#loading_pdt").show();
 
@@ -443,7 +451,7 @@ function loadmenu_cart(pageno)
     html = html + '<div class="innerpopup">';
     html = html + '<div class="empty">';
     html = html + '</div>';
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === 'yes') {
         html = html + '<div class="popdiv" onclick="findaccount(' + pageno + ')">';
         html = html + '<table class="tableclass" style="border: none;width:100%">';
         html = html + '<tr style="width: 220px; text-align: left">';
@@ -539,7 +547,7 @@ function loadmenu_cart(pageno)
 function addressbook() {
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "addressbook") {
+    if (result[result.length - 1] !== "addressbook") {
         setLS('page', c_page + ",addressbook");
     }
     $('.addressbook').show();
@@ -551,7 +559,7 @@ function addressbookcls() {
 
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -579,14 +587,14 @@ function handleChange_ADDTOCART(input, initialvalue)
     var aval = quantity[1]; // Available quantity
     var itemid = quantity[0]; //Product id
     global_itemid = itemid;
-    if (value == "" || value == null || parseInt(value,10) <= 0) {
+    if (value === "" || value === null || parseInt(value,10) <= 0) {
        
         navigator.notification.alert('Enter valid quantity.', null, 'Alert', 'OK');
         $("#" + id).focus();
         input.value = temp_value;
         return false;
     }
-    else if (isNaN(value) == true) {
+    else if (isNaN(value) === true) {
         navigator.notification.alert('Enter only numeric values.', null, 'Alert', 'OK');
         $("#" + id).focus();
         input.value = temp_value;
@@ -610,7 +618,7 @@ function onConfirmModifyCart(buttonIndex)
     var value = global_value;
     var itemid = global_itemid; //Product id
 
-    if (buttonIndex == 1) 
+    if (buttonIndex === 1) 
     {
         $("#loading_pdt").show();
 
@@ -655,7 +663,7 @@ function onConfirmModifyCart(buttonIndex)
 
 function settax()
 {
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === 'yes') {
         var zipcode = getLS('Zipcode');
         $.ajax({
             type: "GET",
@@ -684,7 +692,7 @@ function settax()
                 if (output.BMCTaxRate.length > 0) {
                     $.each(list, function (i, item) {
                         var TaxPercentage = item.TaxPercentage;
-                        if (TaxPercentage != "" && TaxPercentage != null) {
+                        if (TaxPercentage !== "" && TaxPercentage !== null) {
                             pricetax = TaxPercentage; //binding user zipcode -tax
 
                             writetologfile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
@@ -852,7 +860,7 @@ function branchcodenumberset()
 {
     setLS('branchcodenumber', $("#ddbranch").val());
 
-    if (getLS('ShippingMethod') == "P") {
+    if (getLS('ShippingMethod') === "P") {
         loadnewpickupAddress($("#ddbranch").val());
     }
 }
@@ -983,7 +991,7 @@ var ChangedValues_Latest = [];
 function loadtodropdown() 
 {
     var branchtxt = "";
-    if (getLS('NearestBranchAddress') == null || getLS('NearestBranchAddress') == "") {
+    if (getLS('NearestBranchAddress') === null || getLS('NearestBranchAddress') === "") {
         branchtxt = "";
     }
     else {
@@ -995,7 +1003,7 @@ function loadtodropdown()
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': branchtxt }, function (results, status) 
     {
-        if (status == google.maps.GeocoderStatus.OK) {
+        if (status === google.maps.GeocoderStatus.OK) {
             lat = results[0].geometry.location.lat();
             lng = results[0].geometry.location.lng();
             var output = lat + "@" + lng;
@@ -1035,7 +1043,7 @@ function findnearestLocations(lat1, lon1)
                 dist = Math.acos(dist);
                 dist = dist * 180 / Math.PI;
                 dist = dist * 60 * 1.1515;
-                if (unit == "K") { dist = dist * 1.609344 }
+                if (unit === "K") { dist = dist * 1.609344 }
 
                 var distance_in_KM = (dist / 1.6).toFixed(2);
                 if (distance_in_KM <= 100) {
@@ -1139,7 +1147,7 @@ function getshippinginfo() {
 function estomatepopupclose() {
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -1172,7 +1180,7 @@ function Estimate() {
     var fromcity = "BAYPORT";
 
     //Shipvia Description
-    if (ServiceOptioncode != 0) {
+    if (ServiceOptioncode !== 0) {
 
         switch (ServiceOptioncode) {
             case "308":
@@ -1212,7 +1220,7 @@ function Estimate() {
         TotalCartWeight = 1;
     }
 
-    if (ServiceOptioncode == 0) {
+    if (ServiceOptioncode === 0) {
         navigator.notification.alert('Please Select UPS Service Code!', null, 'Alert', 'OK');
         $("#uploadimage").hide();
         return false;

@@ -6,25 +6,39 @@ License:Tychons solutions
 
 //Globalvalues for the JS
 
-var AccessTokenKey = getLS('AccessTokenKey');
-var customerno = getLS('CustomerNumber');
-var user_ID = getLS('UserID');
-var UserProfile = getLS('UserProfile');
-var isuserlogged = getLS('Isuserlogged');
-var Isvalid = "";
+AccessTokenKey = getLS('AccessTokenKey');
+if (AccessTokenKey === null) {
+    AccessTokenKey = "";
+}
+CustomerNumber = getLS('CustomerNumber');
+if (CustomerNumber === null) {
+    CustomerNumber = "";
+}
+user_ID = getLS('UserID');
+if (user_ID === null) {
+    user_ID = "";
+}
+UserProfile = getLS('UserProfile');
+if (UserProfile === null) {
+    UserProfile = "";
+}
+isuserlogged = getLS('Isuserlogged');
+UserName = getLS('UserName');
+if (UserName === null) {
+    UserName = "";
+}
+Isvalid = 'N';
 if (isuserlogged === 'yes') {
-    Isvalid = 'Y';
+    Isvalid = "Y";
 }
-else {
-    Isvalid = 'N';
-}
+
 
 var branch_id = getLS('default_branchcode');
 function filterselection1() {
 
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "FilterPopUp") {
+    if (result[result.length - 1] !== "FilterPopUp") {
         setLS('page', c_page + ",FilterPopUp");
     }
     if (getLS('IsNewFilterAttributes')=== 'Yes')
@@ -180,7 +194,7 @@ function Filterdiv(Divid) {
 
         var ServiceURL = "";
 
-        if (getLS('showmoreproducts') == 'filter') {
+        if (getLS('showmoreproducts') === 'filter') {
             ServiceURL = FilterValueURL + "sectionId=" + getLS("F_Sectioncode") + "&HEADSECID=&groupId=" + getLS("F_Groupcode") + "&categoryId=" + getLS("F_Categorycode") + "&attributeName=" + Divid + "&userId=&deviceencryptedkey=" + getLS('encryptedkey') + "&accesstoken=&splib=" + splib + "&tablelib=" + tablelib;
         }
         else {
@@ -230,11 +244,11 @@ function Filterdiv(Divid) {
                     $("#filterdiv_" + Divid).html(output);
                     var img = $("#Filterhead_" + Divid).children().children().attr('src');
 
-                    if (img == "css/images/filterplus.png") {
+                    if (img === "css/images/filterplus.png") {
                         $("#Filterhead_" + Divid).children().children().attr("src", "css/images/filterminus.png");
                         $("#filterdiv_" + Divid).slideToggle();
                     }
-                    if (img == "css/images/filterminus.png") {
+                    if (img === "css/images/filterminus.png") {
                         $("#Filterhead_" + Divid).children().children().attr("src", "css/images/filterplus.png");
                         $("#filterdiv_" + Divid).slideToggle();
 
@@ -266,11 +280,11 @@ function Filterdiv(Divid) {
         Divid = Divid.replace(/ /g, "").replace(/\//g, "_");
         var img = $("#Filterhead_" + Divid).children().children().attr('src');
        
-        if (img == "css/images/filterplus.png") {
+        if (img === "css/images/filterplus.png") {
             $("#Filterhead_" + Divid).children().children().attr("src", "css/images/filterminus.png");
             $("#filterdiv_" + Divid).slideToggle();
         }
-        if (img == "css/images/filterminus.png") {
+        if (img === "css/images/filterminus.png") {
             $("#Filterhead_" + Divid).children().children().attr("src", "css/images/filterplus.png");
             $("#filterdiv_" + Divid).slideToggle();
 
@@ -287,7 +301,7 @@ function filterbackbtn() {
     $(".cleardivivfilter").hide();
     var c_page = getLS('page');
     var result = c_page.split(","),new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -296,7 +310,7 @@ function filterbackbtn() {
     }
     var valuefilter = getLS('showmoreproducts');
    
-    if (valuefilter == "search")
+    if (valuefilter === "search")
     {
         //pdtimgkitchendivdisplaynew1back()
         //alert();
@@ -318,15 +332,15 @@ function SubmitFilterProducts() {
 
         $('input:checkbox.' + GlobalFilterArray[i].replace(/ /g, "").replace(/\//g, "_")).each(function () {
             var ThisVal = (this.checked ? $(this).val() : "");
-            if (ThisVal != "" && ThisVal != null) {
-                if (AttributeName.length != 0) {
+            if (ThisVal !== "" && ThisVal !== null) {
+                if (AttributeName.length !== 0) {
                     AttributeName = AttributeName + "," + GlobalFilterArray[i];
                 }
                 else {
                     AttributeName = GlobalFilterArray[i];
                 }
 
-                if (AttributeValue.length != 0) {
+                if (AttributeValue.length !== 0) {
                     AttributeValue = AttributeValue + "," + ThisVal;
                 }
                 else {
@@ -337,7 +351,7 @@ function SubmitFilterProducts() {
         });
     }
 
-    if (AttributeName != "" || AttributeValue != "") {
+    if (AttributeName !== "" || AttributeValue !== "") {
 
         GetProductsBasedOnFilter(AttributeName, AttributeValue,1,10);
     }
@@ -368,7 +382,7 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue,FromCount,ToCoun
 
     var ServiceURL = "";
 
-    if (getLS('showmoreproducts') == 'filter') {
+    if (getLS('showmoreproducts') === 'filter') {
         ServiceURL = FilterProductsURL + "SectionCode=" + getLS('F_Sectioncode') + "&HEADSECID=&GroupCode=" + getLS('F_Groupcode') + "&CategoryCode=" + getLS('F_Categorycode') + "&AttrName=" + AttributeName + "&AttrValue=" + AttributeValue + "&StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&brchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib;
     }
     else {
@@ -386,7 +400,7 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue,FromCount,ToCoun
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
             dbinsert.transaction(function branchdetails(tx) {
 
-                if (FromCount == 1)
+                if (FromCount === 1)
                 {
                     tx.executeSql('DROP TABLE IF EXISTS  iteminfo');
                 }
@@ -421,7 +435,7 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue,FromCount,ToCoun
                         var BRANCH = item.BRANCH;
                         var STOCK = item.STOCK;
 
-                        if (ItemUnitPriceAmount == 0 || ItemUnitPriceAmount == "0" || ItemUnitPriceAmount == "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount == "CNF") {
+                        if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                             ItemUnitPriceAmount = "0";
                         }
 

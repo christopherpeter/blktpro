@@ -5,18 +5,31 @@ License:Tychons solutions
 */
 
 //Globalvalues for the JS
-
-var AccessTokenKey = getLS('AccessTokenKey');
-var customerno = getLS('CustomerNumber');
-var user_ID = getLS('UserID');
-var UserProfile = getLS('UserProfile');
-var isuserlogged = getLS('Isuserlogged');
-var Isvalid = "";
-if (isuserlogged == 'yes') {
-    Isvalid = "Y";
+AccessTokenKey = getLS('AccessTokenKey');
+if (AccessTokenKey === null) {
+    AccessTokenKey = "";
 }
-else {
-    Isvalid = "N";
+CustomerNumber = getLS('CustomerNumber');
+if (CustomerNumber === null) {
+    CustomerNumber = "";
+}
+user_ID = getLS('UserID');
+if (user_ID === null) {
+    user_ID = "";
+}
+UserProfile = getLS('UserProfile');
+if (UserProfile === null) {
+    UserProfile = "";
+}
+isuserlogged = getLS('Isuserlogged');
+UserName = getLS('UserName');
+if (UserName === null) {
+
+    UserName = "";
+}
+Isvalid = 'N';
+if (isuserlogged === 'yes') {
+    Isvalid = "Y";
 }
 
 
@@ -32,7 +45,7 @@ function loadsectionfilter() {
 
     var view = getLS('viewimg');
 
-    if (view == 'yes') {
+    if (view === 'yes') {
 
         $.ajax({
             type: "GET",
@@ -202,7 +215,7 @@ function filterkitchenproduts(sectioncode) {
 function filterkitchensub(sectioncode, groupcode, x) {
     var divdisplaystatus1 = $("#kitchensubdiv" + sectioncode + groupcode).css('display');
 
-    if (divdisplaystatus1 == "none") {
+    if (divdisplaystatus1 === "none") {
         $(".filterkitchensubimgdown" + sectioncode + groupcode).show();
         $(".filterkitchensubimg" + sectioncode + groupcode).hide();
 
@@ -366,12 +379,12 @@ function loadsectionimages() {
                 var SECTIONCODE = ss.SECTION;
                 var DESCRIPTION = ss.DESCRIPTION;
                 var HSCODE = ss.HSCODE;
-                if (count % 3 == 0) {
+                if (count % 3 === 0) {
                     if (Count = 0) {
                         //html = html + "<tr class='trclasspdt'>";
                         html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
 
-                        if (SECTIONCODE == "FILTERS") {
+                        if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror=\"imgError(this);\" src='" + imagepath + HSCODE + ".jpg' style='width:27%;' onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\"  />";
                         }
                         else {
@@ -388,7 +401,7 @@ function loadsectionimages() {
                         html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
 
 
-                        if (SECTIONCODE == "FILTERS") {
+                        if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
                         else {
@@ -403,8 +416,8 @@ function loadsectionimages() {
                 }
                 else {
                     html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
-
-                    if (SECTIONCODE == "FILTERS") {
+                    
+                    if (SECTIONCODE === "FILTERS") {
                         html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                     }
                     else {
@@ -451,12 +464,12 @@ function product_next() {
                 var HSCODE = ss.HSCODE;
                 var DESCRIPTION = ss.DESCRIPTION;
 
-                if (count % 3 == 0) {
+                if (count % 3 === 0) {
                     if (Count = 0) {
                         //html = html + "<tr class='trclasspdt'>";
                         html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
 
-                        if (SECTIONCODE == "FILTERS") {
+                        if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
                         else {
@@ -471,7 +484,7 @@ function product_next() {
                         //html = html + "</tr>";
                         //html = html + "<tr class='trclasspdt'>";
                         html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
-                        if (SECTIONCODE == "FILTERS") {
+                        if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
                         else {
@@ -488,7 +501,7 @@ function product_next() {
                 else {
                     html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
 
-                    if (SECTIONCODE == "FILTERS") {
+                    if (SECTIONCODE === "FILTERS") {
                         html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                     }
                     else {
@@ -536,12 +549,12 @@ function product_previous() {
                     var HSCODE = ss.HSCODE;
                     var DESCRIPTION = ss.DESCRIPTION;
 
-                    if (count % 3 == 0) {
+                    if (count % 3 === 0) {
                         if (Count = 0) {
                             //html = html + "<tr class='trclasspdt'>";
                             html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
 
-                            if (SECTIONCODE == "FILTERS") {
+                            if (SECTIONCODE === "FILTERS") {
                                 html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%;'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                             }
                             else {
@@ -559,7 +572,7 @@ function product_previous() {
                             html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
 
 
-                            if (SECTIONCODE == "FILTERS") {
+                            if (SECTIONCODE === "FILTERS") {
                                 html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                             }
                             else {
@@ -575,7 +588,7 @@ function product_previous() {
                     else {
                         html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
 
-                        if (SECTIONCODE == "FILTERS") {
+                        if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
                         else {
@@ -606,14 +619,14 @@ function product_search() {
     GlobalItemsList.length = 0;
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != 'sections') {
+    if (result[result.length - 1] !== 'sections') {
         setLS('page', c_page + ",sections");
     }
     var from_count = 1;
     var to_count = TotalProductCount;
 
     var searchtext = $("#txtpdtsrch").val().trim();
-    if (searchtext == "" || searchtext == null) {
+    if (searchtext === "" || searchtext === null) {
 
         navigator.notification.alert('Please Enter Product Name.', null, 'Alert', 'OK');
 
@@ -637,7 +650,7 @@ function product_search() {
     var result = "";
     for (var i = 0; i < searchtext.length; i++) {
 
-        if (i == searchtext.length - 1) {
+        if (i === searchtext.length - 1) {
             result = result + searchtext[i];
         }
         else {
@@ -691,7 +704,7 @@ function product_search() {
                         var BRANCH = item.BRANCH;
                         var STOCK = item.STOCK;
 
-                        if (ItemUnitPriceAmount == 0 || ItemUnitPriceAmount == "0" || ItemUnitPriceAmount == "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount == "CNF") {
+                        if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                             ItemUnitPriceAmount = "0";
                         }
 
@@ -733,7 +746,7 @@ function loadsecondproductservice() {
     GlobalItemsList.length = 0;
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != 'sections') {
+    if (result[result.length - 1] !== 'sections') {
         setLS('page', c_page + ",sections");
     }
 
@@ -743,7 +756,7 @@ function loadsecondproductservice() {
     var result = "";
     for (var i = 0; i < searchtext.length; i++) {
 
-        if (i == searchtext.length - 1) {
+        if (i === searchtext.length - 1) {
             result = result + searchtext[i];
         }
         else {
@@ -812,7 +825,7 @@ function loadsecondproductservice() {
                         var BRANCH = item.BRANCH;
                         var STOCK = item.STOCK;
 
-                        if (ItemUnitPriceAmount == 0 || ItemUnitPriceAmount == "0" || ItemUnitPriceAmount == "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount == "CNF") {
+                        if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                             ItemUnitPriceAmount = "0";
                         }
 
@@ -883,7 +896,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
     setLS('F_HSCODE', HSCODE);
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "filter") {
+    if (result[result.length - 1] !== "filter") {
         setLS('page', c_page + ",filter");
     }
 
@@ -941,7 +954,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
                         
                     //html = html + " <li  onclick=\"pdtimgkitchendivdisplaynew2('" + SECTIONCODE + "','" + DESCRIPTION1 + "','" + description + "')\">" + DESCRIPTION + " (" + GROUPCOUNT + ")</li>";
                     html = html + '<div>';
-                    if (GROUPCOUNT > 0 && SECTIONCODE != "" && SECTIONCODE != null)
+                    if (GROUPCOUNT > 0 && SECTIONCODE !== "" && SECTIONCODE !== null)
                     {
                         html = html + "<div onclick=\"pdtimgkitchendivdisplaynew2('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
@@ -1020,7 +1033,7 @@ function pdtimgkitchendivdisplaynew1back() {
 
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -1035,7 +1048,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
     setLS('breadlist2', newDESCRIPTION);
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != 'filter2') {
+    if (result[result.length - 1] !== 'filter2') {
         setLS('page', c_page + ",filter2");
     }
 
@@ -1097,7 +1110,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
                     //html = html + " <li onclick=\"productlistingfinal('" + sectioncode + "','" + GROUPCODE + "','" + DESCRIPTION1 + "','" + newDESCRIPTION + "','" + descriptioncat + "')\">" + DESCRIPTION + " (" + CATAGORYCOUNT + ")</li>";
                     html = html + '<div>';
 
-                    if (CATAGORYCOUNT > 0 && GROUPCODE != "" && GROUPCODE != null) {
+                    if (CATAGORYCOUNT > 0 && GROUPCODE !== "" && GROUPCODE !== null) {
                         html = html + "<div onclick=\"productlistingfinal('" + HSCODE + "','" + sectioncode + "','" + GROUPCODE + "','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION + '(' + CATAGORYCOUNT + ')';
@@ -1167,7 +1180,7 @@ function pdtimgkitchendivdisplaynew2back() {
     $("#default_div").show();
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -1293,7 +1306,7 @@ function pdtimgkitchendivdisplaynew3back() {
     $(".breadcrumstylefilter").hide();
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {

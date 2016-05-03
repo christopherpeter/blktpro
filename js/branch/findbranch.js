@@ -244,7 +244,7 @@ function mapinitialize()
             $.mobile.loading("hide");
         });
     }
-    if (getLS('textboxval') != "" && getLS('textboxval') != null) 
+    if (getLS('textboxval') !== "" && getLS('textboxval') !== null) 
     {
         $("#txtsearch_branch").val(getLS('textboxval'));
         localStorage.removeItem('textboxval');
@@ -259,7 +259,7 @@ function mapinitialize()
 function search_branch() 
 {
     var branchtxt = document.getElementById('txtsearch_branch').value;
-    if (branchtxt != "") {
+    if (branchtxt !== "") {
         setLS('Showroom', 'none');
         writetologfile("User Branch Search :" + branchtxt, 3);
     }
@@ -374,7 +374,7 @@ function sortfunc(a, b)
 
 function search_mapinitialize(load) 
 {
-    if (changedValues.length != 0) 
+    if (changedValues.length !== 0) 
     {
         
         if (changedValues[0][3] <= 0.1) 
@@ -403,11 +403,11 @@ function loadmap1(load)
     {
 
 
-        if (getLS('GPS_lat') != null) 
+        if (getLS('GPS_lat') !== null) 
         {
             lat1 = getLS('GPS_lat');
         }
-        if (getLS('GPS_lon') != null) {
+        if (getLS('GPS_lon') !== null) {
             lon1 = getLS('GPS_lon');
         }
 
@@ -438,7 +438,7 @@ function loadmap1(load)
         icon: 'images/green-dot.png'
     });
     google.maps.event.addListener(marker, 'mouseover', function () {
-        if (contentStringCal != infowindow.getContent()) {
+        if (contentStringCal !== infowindow.getContent()) {
             infowindow.setContent(contentStringCal);
             infowindow.open(map, this);
         }
@@ -500,10 +500,10 @@ function loadmap2(load)
     var lon1;
     if (load == 1) 
     {
-        if (getLS('GPS_lat') != null) {
+        if (getLS('GPS_lat') !== null) {
             lat1 = getLS('GPS_lat');
         }
-        if (getLS('GPS_lon') != null) {
+        if (getLS('GPS_lon') !== null) {
             lon1 = getLS('GPS_lon');
         }
 
@@ -600,7 +600,7 @@ function clickmarker(i)
     $("#mapbody").removeClass('mapbody');
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "clickmarker") {
+    if (result[result.length - 1] !== "clickmarker") {
         setLS('page', c_page + ",clickmarker");
     }
 
@@ -719,7 +719,7 @@ function clickmarker1(i)
     $("#mapbody").removeClass('mapbody');
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "clickmarker") {
+    if (result[result.length - 1] !== "clickmarker") {
         setLS('page', c_page + ",clickmarker");
     }
 
@@ -843,7 +843,7 @@ function clickmarker2(i)
     $("#mapbody").removeClass('mapbody');
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "clickmarker") 
+    if (result[result.length - 1] !== "clickmarker") 
     {
         setLS('page', c_page + ",clickmarker");
     }
@@ -994,7 +994,7 @@ function getdirections(g, maptype, load)
     $("#mapbody").removeClass('mapbody');
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "getdirections") {
+    if (result[result.length - 1] !== "getdirections") {
         setLS('page', c_page + ",getdirections");
     }
 
@@ -1006,11 +1006,11 @@ function getdirections(g, maptype, load)
     }
     else if (load === 2) {
 
-        if (getLS('GPS_lat') != null) {
+        if (getLS('GPS_lat') !== null) {
             Source_lat = getLS('GPS_lat');
         }
 
-        if (getLS('GPS_lon') != null) {
+        if (getLS('GPS_lon') !== null) {
             Source_lon = getLS('GPS_lon');
         }
 
@@ -1096,11 +1096,11 @@ function loadGPS_locations()
 
     var lat1, lon1;
 
-    if (getLS('GPS_lat') != null) {
+    if (getLS('GPS_lat') !== null) {
         lat1 = getLS('GPS_lat');
     }
 
-    if (getLS('GPS_lon') != null) {
+    if (getLS('GPS_lon') !== null) {
         lon1 = getLS('GPS_lon');
     }
 

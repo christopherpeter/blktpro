@@ -5,29 +5,31 @@ License:Tychons solutions
 */
 
 //Globalvalues for the JS
-
-var AccessTokenKey = getLS('AccessTokenKey');
-if (AccessTokenKey == null) { AccessTokenKey = ""; }
-
-var CustomerNumber = getLS('CustomerNumber');
-if (CustomerNumber == null) { CustomerNumber = ""; }
-
-var user_ID = getLS('UserID');
-if (user_ID == null) { user_ID = ""; }
-
-var UserProfile = getLS('UserProfile');
-if (UserProfile == null) { UserProfile = ""; }
-
-var isuserlogged = getLS('Isuserlogged');
-var UserName = getLS('UserName');
-
-if (UserName == null) { UserName = ""; }
-var Isvalid = "";
-if (isuserlogged == 'yes') {
-    Isvalid = "Y";
+AccessTokenKey = getLS('AccessTokenKey');
+if (AccessTokenKey === null) {
+    AccessTokenKey = "";
 }
-else {
-    Isvalid = "N";
+CustomerNumber = getLS('CustomerNumber');
+if (CustomerNumber === null) {
+    CustomerNumber = "";
+}
+user_ID = getLS('UserID');
+if (user_ID === null) {
+    user_ID = "";
+}
+UserProfile = getLS('UserProfile');
+if (UserProfile === null) {
+    UserProfile = "";
+}
+isuserlogged = getLS('Isuserlogged');
+UserName = getLS('UserName');
+if (UserName === null) {
+
+    UserName = "";
+}
+Isvalid = 'N';
+if (isuserlogged === 'yes') {
+    Isvalid = "Y";
 }
 
 
@@ -40,7 +42,7 @@ $(document).ready(function ()
         writetologfile(message, 3);
         $('#viewoff').show();
         setLS('viewimg', 'no');
-        if ($(".pdtimgkitchendivdisplay1").css('display') != "none") {
+        if ($(".pdtimgkitchendivdisplay1").css('display') !== "none") {
             loadsectionproductscontents("Yes");
 
         } else {
@@ -53,7 +55,7 @@ $(document).ready(function ()
         var message = "View Image turned OFF";
         writetologfile(message, 3);
 
-        if ($(".pdtimgkitchendivdisplay1").css('display') != "none") {
+        if ($(".pdtimgkitchendivdisplay1").css('display') !== "none") {
             loadsectionproductscontents("Yes");
 
         } else {
@@ -68,7 +70,7 @@ function backpage1() {
     
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -85,7 +87,7 @@ function backpage1() {
 function terms_condition() {
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "terms") {
+    if (result[result.length - 1] !== "terms") {
         setLS('page', c_page + ",terms");
     }
 
@@ -95,7 +97,7 @@ function terms_condition() {
 function terms_conditioncls() {
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -126,7 +128,7 @@ function pdtdesc(itemid) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: productScanURL + "itemno=" + itemid + "&branchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: productScanURL + "itemno=" + itemid + "&branchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             try {
@@ -214,8 +216,8 @@ function pdtdesc(itemid) {
                         html = html + '<b>' + ItemOrProductDescription + '</b>';
                         html = html + '</label>';
                         html = html + '<br>';
-                        if (isuserlogged == 'yes' && AVAILABLEQUNTY != '0' && AVAILABLEQUNTY != "") {
-                            if (ItemUnitPriceAmount != "" && ItemUnitPriceAmount != "0" && ItemUnitPriceAmount != 'CNF' && ItemUnitPriceAmount != 0) {
+                        if (isuserlogged === 'yes' && AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== "") {
+                            if (ItemUnitPriceAmount !== "" && ItemUnitPriceAmount !== "0" && ItemUnitPriceAmount !== 'CNF' && ItemUnitPriceAmount !== 0) {
 
                                 html = html + '<div style="width: 95%;"><label style="font-weight: bold;color: #304589; margin-left: -2px;">';
                                 html = html + '<b>Price : $' + parseFloat(ItemUnitPriceAmount).toFixed(2) + '/each</b></label></div>';
@@ -251,7 +253,7 @@ function pdtdesc(itemid) {
                             var regex = /[a-zA-Z]/;
                             var count = 0;
                             for (var m = 0; m < description.length; m++) {
-                                if (description[m] != "" && description[m] != null && regex.test(description[m])) {
+                                if (description[m] !== "" && description[m] !== null && regex.test(description[m])) {
                                     desc = desc + '<li>';
                                     desc = desc + '<p style="padding:5px">' + description[m] + '.</p>';
                                     desc = desc + '</li>';
@@ -259,7 +261,7 @@ function pdtdesc(itemid) {
                                 }
                             }
                             desc = desc + '</ul>';
-                            if (count == 0) {
+                            if (count === 0) {
                                 desc = '<div style="border:1px solid #ccc;"><div style="min-height:70px;text-align:center;color:red;margin-top: 50px">No Description Available</div>';
                             }
                         }
@@ -322,7 +324,7 @@ function pdtdesc(itemid) {
 function loginclose() {
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -340,7 +342,7 @@ function product_pageload()
 {
     var encryptedkey = getLS('encryptedkey');
 
-    if (encryptedkey == null) {
+    if (encryptedkey === null) {
         setencryptedkey(); 
     }
     else {
@@ -389,7 +391,7 @@ function submitlogin() {
     var numbers = /^[0-9]+$/;
 
     var branch_code = getLS('Current_branch');
-    if (accountno == "") {
+    if (accountno === "") {
 
         navigator.notification.alert('Please enter account no.', null, 'Authentication', 'OK');
         return false;
@@ -401,12 +403,12 @@ function submitlogin() {
         $("#txtaccno").val('');
         return false;
     }
-  else if (username == "") {
+  else if (username === "") {
       navigator.notification.alert('Please enter username.', null, 'Authentication', 'OK');
     
         return false;
     }
-    else if (password == "") {
+    else if (password === "") {
        
         navigator.notification.alert('Please enter password.', null, 'Authentication', 'OK');
         return false;
@@ -509,7 +511,7 @@ function backcategory() {
 
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -552,7 +554,7 @@ $(function () {
 
 function checkinventory(branch_id) {
 
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === 'yes') {
         var getBranchName = getLS('default_branchname2');
         var getBranchCode = getLS('default_branchcode2');
 
@@ -564,7 +566,7 @@ function checkinventory(branch_id) {
     else {
         var c_page = getLS('page');
         var result = c_page.split(",");
-        if (result[result.length - 1] != 'newlogin') {
+        if (result[result.length - 1] !== 'newlogin') {
             setLS('page', c_page + ",newlogin");
         }
 
@@ -590,8 +592,9 @@ function pdtimgkitchendivdisplay(sec, group, cate, id) {
 function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode) 
 {
     $("#filternavigation").show();
-    var from_count = 1;
-    var to_count = TotalProductCount;
+    var from_count, to_count, path, filterbackbutton, c_page, result, linkimage, branch_code, sectionname, groupname, sectname, categoryname, sectionname1;
+    from_count = 1;
+    to_count = TotalProductCount;
 
     setLS('F_Sectioncode', sectioncode);
     setLS('F_Groupcode', groupcode);
@@ -600,48 +603,47 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode)
     localStorage.removeItem('breadcrumb');
     setLS('currentview', getLS('viewimg'));
     myFuncCalls = 0;
-    var filterbackbutton = getLS('filterbackbutton');
+    filterbackbutton = getLS('filterbackbutton');
     $("#txtpdtsrch").val("");
-    var c_page = getLS('page');
-    var result = c_page.split(",");
-    if (filterbackbutton == 'filter') {
+    c_page = getLS('page');
+    result = c_page.split(",");
+    if (filterbackbutton === 'filter') {
        
-        if (result[result.length - 1] !== 'filterselection') {
+        if (result[result.length - 1] !== "filterselection") {
             setLS('page', c_page + ",filterselection");
         }
     }
     else {
 
-        if (result[result.length - 1] != "filterresult") {
+        if (result[result.length - 1] !== "filterresult") {
             setLS('page', c_page + ",filterresult");
         }
     }
   
     setLS('filterbackbutton', 'none');
     setLS('showmoreproducts', 'filter');
-    var branch_code = getLS('default_branchcode');
-    var sectionname = getLS('Filter_sectionname');
-    var groupname = getLS('Filter_groupname');
-    var categoryname = getLS('Filter_categoryname');
-    var sectionname1 = getLS('F_HSCODE');
+    branch_code = getLS('default_branchcode');
+    sectionname = getLS('Filter_sectionname');
+    groupname = getLS('Filter_groupname');
+    categoryname = getLS('Filter_categoryname');
+    sectionname1 = getLS('F_HSCODE');
+    sectname = "";
 
-    var sectname = "";
-
-    if (sectionname1 != "" && sectionname1 != null && sectionname1 != 'null') {
+    if (sectionname1 !== "" && sectionname1 !== null && sectionname1 !== 'null') {
         sectname = sectionname1;
     }
     else {
         sectname = "";
     }
 
-    var linkimage = '<img src="images/next.png" class="linkimgpath">';
+    linkimage = '<img src="images/next.png" class="linkimgpath">';
 
-    var path = "<span>" + sectionname + "</span>";
-    if (groupname != null && groupname != 'null') {
+    path = "<span>" + sectionname + "</span>";
+    if (groupname !== null && groupname !== 'null') {
         path = path + linkimage + "<span>" + groupname + "</span>";
     }
 
-    if (categoryname != null && categoryname != 'null') {
+    if (categoryname !== null && categoryname !== 'null') {
         path = path + linkimage + "<span>" + categoryname + "</span>";
     }
 
@@ -661,7 +663,7 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode)
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode + "&GroupCode=" + groupcode + "&CategoryCode=" + categorycode + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+        url: filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode + "&GroupCode=" + groupcode + "&CategoryCode=" + categorycode + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -700,7 +702,7 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode)
                         var BRANCH = item.BRANCH;
                         var STOCK = item.STOCK;
                         GlobalItemsList.push(OurItemNumber);
-                        if (ItemUnitPriceAmount == 0 || ItemUnitPriceAmount == "0" || ItemUnitPriceAmount == "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount == "CNF") {
+                        if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                             ItemUnitPriceAmount = "0";
                         }
 
@@ -748,13 +750,13 @@ function loadsectionproductscontents(FirstLoad)
 
     htmltext = htmltext + '<div id="mybackbuttoncustom" style="text-align:left;float:left" onclick="pdoductpagereload()">   <img src="images/arrow_previous.png" /></div>';
     htmltext = htmltext + '<div id="notsearch"  style="margin-top: 8px;font-weight:bold;color:#304589;font-size:10px" >';
-    if (breadlist1 != "") {
+    if (breadlist1 !== "") {
         htmltext = htmltext + '<span id="breadlist1" style="font-size:10px" onclick="breadcrumlist1()">' + breadlist1 + '</span><img src="images/next.png" style="width:9px" class="nxtimgclass" />';
     }
-    if (breadlist2 != "") {
+    if (breadlist2 !== "") {
         htmltext = htmltext + '<span id="breadlist2" style="font-size:10px" onclick="breadcrumlist2()">' + breadlist2 + '</span><img src="images/next.png" style="width:9px" class="nxtimgclass" />';
     }
-    if (breadlist3 != "") {
+    if (breadlist3 !== "") {
         htmltext = htmltext + '<span id="breadlist3" style="font-size:10px" onclick="breadcrumlist3()">' + breadlist3 + '</span><img src="images/next.png" style="width:9px" class="nxtimgclass" />';
     }
     htmltext = htmltext + '<span id="breadlistlast" style="font-size:10px" onclick="breadcrumlist4()"> ' + breadlast + '</span></div>';
@@ -771,7 +773,7 @@ function loadsectionproductscontents(FirstLoad)
     if (getLS('breadcrumb') === 'search') 
     {
         var searchtext = $("#txtpdtsrch").val().trim();
-        if (searchtext == "" || searchtext == null) {
+        if (searchtext === "" || searchtext === null) {
             navigator.notification.alert('Please enter product name.', null, 'Alert', 'OK');
             
             return false;
@@ -823,11 +825,11 @@ function loadsectionproductscontents(FirstLoad)
                         html = html + '<td  class="pdtimg lineheight" style="border-right:none;vertical-align:top;width:70%;border:none;font-size: 14px;"><table><tr><td><label><b class="positionleftalign">' + itemname + '</b></label><br />';
                         html = html + '<label style="float:left;width:100%">Item # ' + OurItemNumber + '</label>';
                         html = html + '<br />';
-                        if (isuserlogged == 'yes')
+                        if (isuserlogged === 'yes')
                         {
-                            if (AVAILABLEQUNTY != '0' && AVAILABLEQUNTY != "" && STOCK != "N")
+                            if (AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== "" && STOCK !== "N")
                             {
-                                if (OurListUnitPriceCompany != "" && OurListUnitPriceCompany != "0" && OurListUnitPriceCompany != 'CNF' && OurListUnitPriceCompany != 0)
+                                if (OurListUnitPriceCompany !== "" && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0)
                                 {
                                     html = html + '<label id="lblship"  style="color:green;font-size: 13px">Ready To Ship</label>';
                                 }
@@ -835,10 +837,10 @@ function loadsectionproductscontents(FirstLoad)
                             else
                             {
 
-                                if (OurListUnitPriceCompany != "" && AVAILABLEQUNTY >= 0 && OurListUnitPriceCompany != "0" && OurListUnitPriceCompany != 'CNF' && OurListUnitPriceCompany != 0)
+                                if (OurListUnitPriceCompany !== "" && AVAILABLEQUNTY >= 0 && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0)
                                 {
                                     var branch_id = getLS('default_branchcode');
-                                    if (branch_id != 100)
+                                    if (branch_id !== 100)
                                     {
                                         html = html + '<label id="lblship" style="color:Red;font-size: 13px">Out Of Stock [Available In WareHouse]</label>';
                                     }
@@ -853,11 +855,11 @@ function loadsectionproductscontents(FirstLoad)
 
                         html = html + '</td></tr>';
 
-                        if (isuserlogged == 'yes' && AVAILABLEQUNTY != '0' && AVAILABLEQUNTY != "")
+                        if (isuserlogged === 'yes' && AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== "")
                         {
                             var textboxid = 'Idnumber' + i + '-' + AVAILABLEQUNTY + '';
 
-                            if (OurListUnitPriceCompany != "" && OurListUnitPriceCompany != "0" && OurListUnitPriceCompany != 'CNF' && OurListUnitPriceCompany != 0)
+                            if (OurListUnitPriceCompany !== "" && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0)
                             {
   
                                 html = html + '</table> ';
@@ -885,7 +887,7 @@ function loadsectionproductscontents(FirstLoad)
 
 
                         }
-                        else if (isuserlogged == 'yes')
+                        else if (isuserlogged === 'yes')
                         {
 
                             html = html + '</table> ';
@@ -926,9 +928,9 @@ function loadsectionproductscontents(FirstLoad)
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
 
-                if (isuserlogged == "yes")
+                if (isuserlogged === "yes")
                 {
-                    if (FirstLoad == "Yes")
+                    if (FirstLoad === "Yes")
                     {
                         ShowUserPrices();
                     }
@@ -961,7 +963,7 @@ function loadsectionproductscontents(FirstLoad)
     $("#default_div").hide();
     $(".pdtimgkitchendivdisplay1").css('margin-top', '0px');
 
-    if (isuserlogged == 'yes')
+    if (isuserlogged === 'yes')
     {
         $(".hide").show();
         $(".signinbtn").hide();
@@ -976,13 +978,27 @@ function loadsectionproductscontents(FirstLoad)
 var GlobalItemsList = [];
 function ShowUserPrices()
 {
-   
+
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-    
+    //Update the global variable values
+    AccessTokenKey = getLS('AccessTokenKey');
+    if (AccessTokenKey === null) { AccessTokenKey = ""; }
+    CustomerNumber = getLS('CustomerNumber');
+    if (CustomerNumber === null) { CustomerNumber = ""; }
+    user_ID = getLS('UserID');
+    if (user_ID === null) { user_ID = ""; }
+    UserProfile = getLS('UserProfile');
+    if (UserProfile === null) { UserProfile = ""; }
+    isuserlogged = getLS('Isuserlogged');
+    UserName = getLS('UserName');
+    if (UserName === null) { UserName = ""; }
+    Isvalid = 'N';
+    if (isuserlogged === 'yes') { Isvalid = "Y"; }
+
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: PriceServiceURL + 'cusno=' + customerno + '&itemno=' + GlobalItemsList.join(","),
+            url: PriceServiceURL + 'cusno=' + CustomerNumber + '&itemno=' + GlobalItemsList.join(","),
             dataType: "xml",
             success: function (xmlData) {
                 var xmlString;
@@ -1032,7 +1048,7 @@ function ShowUserPrices()
 
 function getNodeText(xmlNode) {
     if (!xmlNode) return '';
-    if (typeof (xmlNode.textContent) != "undefined") return xmlNode.textContent;
+    if (typeof (xmlNode.textContent) !== "undefined") return xmlNode.textContent;
     return xmlNode.firstChild.nodeValue;
 }
 
@@ -1040,7 +1056,7 @@ function imgErrortest(image) {
     myFuncCalls++;
     var count = getLS('testcount');
   
-    if (2 * count == myFuncCalls) {
+    if (2 * count === myFuncCalls) {
 
 
         html = "";
@@ -1060,7 +1076,7 @@ function imgErrortest(image) {
 function loadmoreproducts() {
     GlobalItemsList.length = 0;
     var AccessTokenKey = "";
-    if (getLS('AccessTokenKey') == null || getLS('AccessTokenKey') == "") {
+    if (getLS('AccessTokenKey') === null || getLS('AccessTokenKey') === "") {
         AccessTokenKey = "";
     }
     else {
@@ -1068,7 +1084,7 @@ function loadmoreproducts() {
     }
     var product_count, from_count, to_count;
     var showmoreproducts = getLS('showmoreproducts');
-    if (showmoreproducts == 'filter')
+    if (showmoreproducts === 'filter')
     {
 
         $("#loading_pdt").show();
@@ -1086,7 +1102,7 @@ function loadmoreproducts() {
         var GroupCode = getLS('F_Groupcode');
         var CategoryCode = getLS('F_Categorycode'), sectioncode1, GroupCode1, CategoryCode1;
 
-        if (sectioncode != null && sectioncode != "" && sectioncode != 'null') {
+        if (sectioncode !== null && sectioncode !== "" && sectioncode !== 'null') {
             sectioncode1 = sectioncode;
             GroupCode1 = GroupCode;
             CategoryCode1 = CategoryCode;
@@ -1102,7 +1118,7 @@ function loadmoreproducts() {
 
         var sectionname1 = getLS('F_HSCODE');
         var sectname = "";
-        if (sectionname1 != "" && sectionname1 != null && sectionname1 != 'null') {
+        if (sectionname1 !== "" && sectionname1 !== null && sectionname1 !== 'null') {
             sectname = sectionname1;
         }
         else {
@@ -1112,7 +1128,7 @@ function loadmoreproducts() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode1 + "&GroupCode=" + GroupCode1 + "&CategoryCode=" + CategoryCode1 + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode1 + "&GroupCode=" + GroupCode1 + "&CategoryCode=" + CategoryCode1 + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
             dataType: "xml",
             success: function (xmlData) {
                 var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1152,7 +1168,7 @@ function loadmoreproducts() {
 
                             GlobalItemsList.push(OurItemNumber);
 
-                            if (ItemUnitPriceAmount == 0 || ItemUnitPriceAmount == "0" || ItemUnitPriceAmount == "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount == "CNF") {
+                            if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount === "CNF") {
                                 ItemUnitPriceAmount = "0";
                             }
                             var qry = 'INSERT INTO iteminfo (OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK) VALUES (?,?,?,?,?,?,?,?,?,?)';
@@ -1170,7 +1186,7 @@ function loadmoreproducts() {
             }
         });
     }
-    else if (showmoreproducts == 'filterproducts')
+    else if (showmoreproducts === 'filterproducts')
     {
         product_count = getLS('product_count');
         FromCount = parseInt(product_count,10) + 1;
@@ -1200,7 +1216,7 @@ function loadmoreproducts() {
         var result = "";
         for (var i = 0; i < searchtext.length; i++) {
 
-            if (i == searchtext.length - 1) {
+            if (i === searchtext.length - 1) {
                 result = result + searchtext[i];
             }
             else {
@@ -1213,8 +1229,8 @@ function loadmoreproducts() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            //url: productsearchURL1 + "BranchCode=" + branch_id + "&Isvalid=" + Isvalid + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&Product=" + searchtext + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
-            url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+            //url: productsearchURL1 + "BranchCode=" + branch_id + "&Isvalid=" + Isvalid + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&Product=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
             dataType: "xml",
             success: function (xmlData) {
                 var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1254,7 +1270,7 @@ function loadmoreproducts() {
                             var BRANCH = item.BRANCH;
                             var STOCK = item.STOCK;
 
-                            if (ItemUnitPriceAmount == 0 || ItemUnitPriceAmount == "0" || ItemUnitPriceAmount == "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount == "CNF") {
+                            if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount === "CNF") {
                                 ItemUnitPriceAmount = "0";
                             }
                             var qry = 'INSERT INTO iteminfo (OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK) VALUES (?,?,?,?,?,?,?,?,?,?)';
@@ -1294,7 +1310,7 @@ function loadmoreprodutsbyusingsecondservice() {
     var result = "";
     for (var i = 0; i < searchtext.length; i++) {
 
-        if (i == searchtext.length - 1) {
+        if (i === searchtext.length - 1) {
             result = result + searchtext[i];
         }
         else {
@@ -1307,7 +1323,7 @@ function loadmoreprodutsbyusingsecondservice() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),     
+        url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),     
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1345,7 +1361,7 @@ function loadmoreprodutsbyusingsecondservice() {
                         var BRANCH = item.BRANCH;
                         var STOCK = item.STOCK;
 
-                        if (ItemUnitPriceAmount == 0 || ItemUnitPriceAmount == "0" || ItemUnitPriceAmount == "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount == "CNF") {
+                        if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount == null || ItemUnitPriceAmount === "CNF") {
                             ItemUnitPriceAmount = "0";
                         }
                         var qry = 'INSERT INTO iteminfo (OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK) VALUES (?,?,?,?,?,?,?,?,?,?)';
@@ -1449,7 +1465,7 @@ function addtocart(page, ItemNumber, textboxid) {
 
     var selectedbranch = "";
 
-    if (page == 1 || page == 2) {
+    if (page === 1 || page === 2) {
         selectedbranch = getLS('default_branchcode');
     }
 
@@ -1460,15 +1476,15 @@ function addtocart(page, ItemNumber, textboxid) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)');
         tx.executeSql('select OurItemNumber from cartitems where OurItemNumber=?', [ItemNumber], function successitem(txx, results)
         {
-            if (results.rows.length == 0)
+            if (results.rows.length === 0)
             {
-                if (quantity == "" || quantity == null || parseInt(quantity, 10) <= 0)
+                if (quantity === "" || quantity === null || parseInt(quantity, 10) <= 0)
                 {
                     navigator.notification.alert('Enter valid quantity!', null, 'Alert', 'OK');
                       $("#" + textboxid).focus();
                     return false;
                 }
-                else if (isNaN(quantity) == true)
+                else if (isNaN(quantity) === true)
                 {
                     navigator.notification.alert('Enter only numeric values!', null, 'Alert', 'OK');
                       $("#" + textboxid).focus();
@@ -1512,7 +1528,7 @@ function addtocart(page, ItemNumber, textboxid) {
                             var ReplacementCostUnitPriceCompany = "";
                             var totalweight = parseFloat(InventoryItemWeight) * quantity;
 
-                            if (RepairReplacementCoverage == 0)
+                            if (RepairReplacementCoverage === 0)
                             {
                                 ReplacementCostUnitPriceCompany = 0;
                             }
@@ -1553,7 +1569,7 @@ function loadmenu_product(pageno) {
     html = html + '<div class="innerpopup">';
     html = html + '<div class="empty">';
     html = html + '</div>';
-    if (isuserlogged == 'yes') {
+    if (isuserlogged === 'yes') {
         html = html + '<div class="popdiv" onclick="findaccount(' + pageno + ')">';
         html = html + '<table class="tableclass" style="border: none;width:100%">';
         html = html + '<tr style="width: 220px; text-align: left">';
@@ -1650,7 +1666,7 @@ function inventoryaddtocart(ItemNumber) {
     var branch = split_data[0];
     var aval = split_data[1];
     var message = " added to cart";
-    if (split_data[1] != 0 && split_data[1] >= 0) {
+    if (split_data[1] !== 0 && split_data[1] >= 0) {
         var carinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
         carinsert.transaction(function carinsertdetails(tx)
         {
@@ -1660,14 +1676,14 @@ function inventoryaddtocart(ItemNumber) {
 
             tx.executeSql(query1);
             tx.executeSql(query2, [], function successitem(txx, results) {
-                if (results.rows.length == 0) {
+                if (results.rows.length === 0) {
 
-                    if (quantity == "" || quantity == null || parseInt(quantity,10) <= 0) {
+                    if (quantity === "" || quantity === null || parseInt(quantity,10) <= 0) {
                         navigator.notification.alert('Enter valid quantity!', null, 'Alert', 'OK');
                          $("#txtinventory").focus();
                         return false;
                     }
-                    else if (isNaN(quantity) == true) {
+                    else if (isNaN(quantity) === true) {
                         navigator.notification.alert('Enter only numeric values!', null, 'Alert', 'OK');
                          $("#txtinventory").focus();
                         return false;
@@ -1712,7 +1728,7 @@ function inventoryaddtocart(ItemNumber) {
                                     var ReplacementCostUnitPriceCompany = "";
                                     var totalweight = parseFloat(InventoryItemWeight) * quantity;
 
-                                    if (RepairReplacementCoverage == 0) {
+                                    if (RepairReplacementCoverage === 0) {
                                         ReplacementCostUnitPriceCompany = 0;
                                     }
 
@@ -1756,7 +1772,7 @@ function checkinventoryfun(ItemNumber) {
 
     var c_page = getLS('page');
     var result = c_page.split(",");
-    if (result[result.length - 1] != "checkinventory") {
+    if (result[result.length - 1] !== "checkinventory") {
         setLS('page', c_page + ",checkinventory");
     }
 
@@ -1797,8 +1813,8 @@ function checkinventoryfun(ItemNumber) {
                     var BRANCHNAME = item.BRANCHNAME;
                     var AVAILQUANTITY = item.Quantity;
 
-                    if (BRANCHNUMBER == defaultbranchcode) {
-                        if (AVAILQUANTITY != 0 && AVAILQUANTITY != "" && AVAILQUANTITY != null) {
+                    if (BRANCHNUMBER === defaultbranchcode) {
+                        if (AVAILQUANTITY !== 0 && AVAILQUANTITY !== "" && AVAILQUANTITY !== null) {
                             output = output + '<tr><td><input type="radio" id="radio_' + i + '" checked name="branches" style="width:13px;left:15px !important" value="' + BRANCHNUMBER + '_' + AVAILQUANTITY + '"/></td><td style="width:180px"><label onclick="selectradio(' + i + ')" style="margin-right:10px;float:left;line-height:25px;margin-left:2px;">' + BRANCHNAME + '</label></td><td><b style="color:green">- ' + AVAILQUANTITY + ' Item(s)</b></td></tr>';
                         }
                         else {
@@ -1807,7 +1823,7 @@ function checkinventoryfun(ItemNumber) {
                     }
                     else {
 
-                        if (AVAILQUANTITY != 0 && AVAILQUANTITY != "" && AVAILQUANTITY != null) {
+                        if (AVAILQUANTITY !== 0 && AVAILQUANTITY !== "" && AVAILQUANTITY !== null) {
                             output = output + '<tr><td><input type="radio" id="radio_' + i + '"  name="branches" style="width:13px;left:15px !important" value="' + BRANCHNUMBER + '_' + AVAILQUANTITY + '"/></td><td style="width:180px"><label onclick="selectradio(' + i + ')" style="margin-right:10px;float:left;line-height:25px;margin-left: 2px;">' + BRANCHNAME + '</label></td><td><b style="color:green">- ' + AVAILQUANTITY + ' Item(s)</b></td></tr>';
                         }
                         else {
@@ -1850,7 +1866,7 @@ function checkinventoryfun(ItemNumber) {
 
 function keypressInventory(e)
 {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
         $('#txtinventory').blur(); //remove the focus from the textbox,that will automatically close the device keypad.
     }
 }
@@ -1859,7 +1875,7 @@ function checkinventoryfuncls()
     
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {
@@ -2098,10 +2114,10 @@ function Specification(itemno) {
                             for (var a = 0; a < attributeslabel.length; a++) 
                             {
 
-                                if (attributesvalue[a] != "" && attributesvalue[a] != null && regex.test(attributesvalue[a])) 
+                                if (attributesvalue[a] !== "" && attributesvalue[a] !== null && regex.test(attributesvalue[a])) 
                                 {
 
-                                    if (a % 2 == 0) 
+                                    if (a % 2 === 0) 
                                     {
                                         attrib = attrib + '<tr>';
                                         attrib = attrib + '<td><b>' + attributeslabel[a] + '</b></td>  <td><span>' + attributesvalue[a] + '</span></td>';
@@ -2120,13 +2136,6 @@ function Specification(itemno) {
                             }
 
                             attrib = attrib + '</table>';
-
-                            if (count == 0) 
-                            {
-                               // attrib = attrib + '<div style="min-height:70px;text-align:center;color:red;margin-top: 50px">No Specifications Available</div>';
-                            }
-
-
                         }
                         else 
                         {
@@ -2184,7 +2193,7 @@ function pdoductpagereload() {
 
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
-    if (result.length == 1) {
+    if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
         setLS('page', new_page);
     } else {

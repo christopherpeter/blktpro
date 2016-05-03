@@ -6,29 +6,14 @@ License:Tychons solutions
 
 function writetologfile(message,pageno) 
 {
-   
-    var isuserlogged = getLS('Isuserlogged');
+
     var IMEI = getLS('IMEI');
     var UUID = getLS('UUID');
 
-    var CustomerNumber = "";
-
-    if (getLS('CustomerNumber') != null) {
-        CustomerNumber = getLS('CustomerNumber');
-    }
-    else {
-        CustomerNumber = "";
-    }
-
-    var UserProfile = "";
-
-    if (getLS('UserProfile') == null) {
-        UserProfile = "";
-    }
-    else {
-        UserProfile = getLS('UserProfile');
-    }
-
+    CustomerNumber = getLS('CustomerNumber');
+    if (CustomerNumber == null) { CustomerNumber = ""; }
+    UserProfile = getLS('UserProfile');
+    if (UserProfile == null) { UserProfile = ""; }
 
     if (IMEI == 'undefined' || IMEI == "" || IMEI == null) {
         IMEI = "N/A"
