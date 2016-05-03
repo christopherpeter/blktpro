@@ -887,7 +887,7 @@ function loadsectionproductscontents(FirstLoad) {
                 if (res.rows.length >= limit) //show or hide loadmorebutton
                 {
 
-                    html = html + '<div style="width:100%;text-align:center;padding: 10px 0px 10px 0px;">';
+                    html = html + '<div style="width:100%;text-align:center;padding: 10px 0 10px 0;">';
                     html = html + '<a href="javascript:void(0)" onclick="loadmoreproducts()"><img src="images/show_more.png" style="width:165px;height:30px; margin-bottom:-3px;"/><a>';
                     html = html + '</div>';
                 }

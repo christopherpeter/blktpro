@@ -280,7 +280,7 @@ function showinnerdiv(OrderNumber) {
             }
             else {
 
-                $("#innerdiv" + OrderNumber).html("<div style='color: red;text-align: center;padding: 0px 0px 10px 3px;'>No items found</div>");
+                $("#innerdiv" + OrderNumber).html("<div style='color: red;text-align: center;padding: 0 0 10px 3px;'>No items found</div>");
             }
 
         },
@@ -527,12 +527,12 @@ function tableinvoice(invoiceno) {
                     //$('#tableinvoice_' + orderno).slideToggle();
                 }
                 else {
-                    $('#tableinvoice_' + invoiceno).html("<div style='color: red;text-align: center;padding: 0px 0px 10px 3px;'>No items found</div>");
+                    $('#tableinvoice_' + invoiceno).html("<div style='color: red;text-align: center;padding: 0 0 10px 3px;'>No items found</div>");
                 }
             }
             catch (e) {
-                //$('#tableinvoice_' + invoiceno).html("<div style='color: red;text-align: center;padding: 0px 0px 10px 3px;'>" + e + "</div>");
-                $('#tableinvoice_' + invoiceno).html("<div style='color: red;text-align: center;padding: 0px 0px 10px 3px;'>No items found</div>");
+                //$('#tableinvoice_' + invoiceno).html("<div style='color: red;text-align: center;padding: 0 0 10px 3px;'>" + e + "</div>");
+                $('#tableinvoice_' + invoiceno).html("<div style='color: red;text-align: center;padding: 0 0 10px 3px;'>No items found</div>");
             }
         },
         error: function () {

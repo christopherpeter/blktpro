@@ -5242,7 +5242,7 @@ spaces.hsla.to = function ( rgba ) {
 		h = ( 60 * ( r - g ) / diff ) + 240;
 	}
 
-	// chroma (diff) == 0 means greyscale which, by definition, saturation = 0%
+	// chroma (diff) == 0 means greyscale which, by definition, saturation = 0
 	// otherwise, saturation is based on the ratio of chroma (diff) to lightness (add)
 	if ( diff === 0 ) {
 		s = 0;
@@ -7897,7 +7897,7 @@ $.extend(Datepicker.prototype, {
 			this.uuid += 1;
 			id = "dp" + this.uuid;
 			this._dialogInput = $("<input type='text' id='" + id +
-				"' style='position: absolute; top: -100px; width: 0px;'/>");
+				"' style='position: absolute; top: -100px; width: 0;'/>");
 			this._dialogInput.keydown(this._doKeyDown);
 			$("body").append(this._dialogInput);
 			inst = this._dialogInst = this._newInst(this._dialogInput, false);

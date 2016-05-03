@@ -137,13 +137,13 @@ function accountPageLoad() {
 
                 branchdata = BranchName;
 
-                data = data + '<div style="margin-left: 0px; ">';
+                data = data + '<div style="margin-left: 0; ">';
                 data = data + BranchName;
                 data = data + '</div>';
-                data = data + '<div style="margin-left: 0px; font-size: 14px; font-weight: normal">';
+                data = data + '<div style="margin-left: 0; font-size: 14px; font-weight: normal">';
                 data = data + Address;
                 data = data + '</div>';
-                data = data + '<div style="margin-left: 0px; font-size: 14px; font-weight: normal">';
+                data = data + '<div style="margin-left: 0; font-size: 14px; font-weight: normal">';
                 data = data + '<a style="text-decoration: none; color: #304589" href="Tel: ' + PhoneNumber + '">' + PhoneNumber;
                 data = data + '<img style="height: 13px; margin-top: -2px; vertical-align: middle; width: 13px; margin-left: 10px" src="images/phone.png" />';
                 data = data + '</a></div>';

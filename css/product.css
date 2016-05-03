@@ -1,7 +1,7 @@
 ﻿body
 {
     font-family: calibri,Helvetica;
-    margin: -16px 0px 0 0px;
+    margin: -16px 0 0 0;
 }
     .popupheight { height: 262px; overflow-x: hidden; overflow-y: scroll; }
 .productimagesizedisplay {width:50%;padding:5% }
@@ -299,8 +299,8 @@ hr
 {
     display: none;
     position: fixed;
-    top: 0%;
-    left: 0%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: gray;
@@ -313,8 +313,8 @@ hr
 {
     display: none;
     position: fixed;
-    top: 0%;
-    left: 0%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: gray;
@@ -326,7 +326,7 @@ hr
 .cartimg
 {
     vertical-align: top;
-    margin-top: 0px;
+    margin-top: 0;
     width: 30%;
     cursor: pointer;
 }
@@ -357,7 +357,7 @@ width:100%;
 .pdtimgdivdisplay
 {
     width: 100%;
-    margin-left: 0%;
+    margin-left: 0;
 }
 .pdtimgkitchendivdisplay1
 {
@@ -433,11 +433,11 @@ width:100%;
 .pdtimg
 {
      width: 30%;
-    height: 0%;
+    height: 0;
 }
 .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
     width: 100%;
     margin-left: 1%;
 }
@@ -561,7 +561,7 @@ width:100%;
     position: absolute;
     top: 50px;
     width: 100%;
-    left: 0%;
+    left: 0;
     border-bottom: 1px solid #ccc;
 }
 .white_contentlistnew
@@ -573,7 +573,7 @@ width:100%;
 }
 .white_contentlistnew1
 {
-    left: 0%;
+    left: 0;
     position: relative;
     top: -534px;
     width: 23%;
@@ -709,7 +709,7 @@ tableclass1
 }
 .empty
 {
-    height: 0px;
+    height: 0;
 }
 .tabcontent
 {
@@ -794,7 +794,7 @@ tableclass1
 }
 .login_inner1
 {
-    border-radius: 0px;
+    border-radius: 0;
     margin: 110px auto;
     width: 25%;
 }
@@ -812,7 +812,7 @@ tableclass1
 }
 .forgot_span
 {
-    margin: 0 10px 0 0px;
+    margin: 0 10px 0 0;
 }
 .leftdivalign
 {
@@ -951,7 +951,7 @@ tableclass1
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 45%;
     }
@@ -986,7 +986,7 @@ tableclass1
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -499px;
         width: 32%;
@@ -1023,7 +1023,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
           width: 30%;
     }
     .imgpdt
@@ -1049,7 +1049,7 @@ tableclass1
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 31%;
     }
     .arrow1
@@ -1268,7 +1268,7 @@ tableclass1
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 45%;
     }
@@ -1303,7 +1303,7 @@ tableclass1
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -1177px;
         width: 32%;
@@ -1340,7 +1340,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
            width: 30%;
     }
     .imgpdt
@@ -1527,7 +1527,7 @@ tableclass1
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: -1%;
     }
@@ -1599,7 +1599,7 @@ tableclass1
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 300px auto;
         width: 45%;
     }
@@ -1634,7 +1634,7 @@ tableclass1
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -1177px;
         width: 34%;
@@ -1671,7 +1671,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
          width: 30%;
     }
     .imgpdt
@@ -1721,7 +1721,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 30%;
     }
     .loginpopup
@@ -1846,7 +1846,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 30%;
     }
     .tableproducts1
@@ -1886,7 +1886,7 @@ width:100%;
 
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 45px;
     }
@@ -1894,7 +1894,7 @@ width:100%;
     .pdtimgdivdisplay
     {
         float: left;
-        width: 0%;
+        width: 0;
     }
 
     .filter
@@ -1943,7 +1943,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 200px auto;
         width: 52%;
     }
@@ -1981,7 +1981,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -924px;
         width: 37%;
@@ -2017,7 +2017,7 @@ width:100%;
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
          width: 30%;
     }
     .imgpdt
@@ -2179,7 +2179,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 30%;
     }
     .tableproducts1
@@ -2219,7 +2219,7 @@ width:100%;
 
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 100%;
     }
@@ -2227,7 +2227,7 @@ width:100%;
     .pdtimgdivdisplay
     {
         float: left;
-        width: 0%;
+        width: 0;
     }
 
     .filter
@@ -2276,7 +2276,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 200px auto;
         width: 52%;
     }
@@ -2314,7 +2314,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -924px;
         width: 37%;
@@ -2350,7 +2350,7 @@ width:100%;
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
             width: 30%;
     }
     .imgpdt
@@ -2529,7 +2529,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 72%;
     }
@@ -2741,7 +2741,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 50px auto;
         width: 70%;
     }
@@ -2778,7 +2778,7 @@ width:100%;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -2820,7 +2820,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -400px;
         width: 50%;
@@ -3059,7 +3059,7 @@ width:100%;
 
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3135,11 +3135,11 @@ width:100%;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -539px;
         width: 85%;
@@ -3151,7 +3151,7 @@ width:100%;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0px;
+        margin-left: 0;
         text-align: center;
         width: 100%;
     }
@@ -3223,7 +3223,7 @@ width:100%;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 1%;
     }
@@ -3243,7 +3243,7 @@ width:100%;
     .cartimg
     {
         vertical-align: top;
-        margin-top: 0%;
+        margin-top: 0;
         width: 38%;
         cursor: pointer;
     }
@@ -3311,8 +3311,8 @@ width:100%;
     {
         display: none;
         position: fixed;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 808px;
         background-color: gray;
@@ -3423,7 +3423,7 @@ width:100%;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 1%;
     }
@@ -3484,7 +3484,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 40px auto;
         width: 85%;
     }
@@ -3510,7 +3510,7 @@ width:100%;
 
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3586,11 +3586,11 @@ width:100%;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -390px;
         width: 85%;
@@ -3602,7 +3602,7 @@ width:100%;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0px;
+        margin-left: 0;
         text-align: center;
         width: 100%;
     }
@@ -3634,7 +3634,7 @@ width:100%;
     .pdtimg
     {
           width: 30%;
-        height: 0%;
+        height: 0;
     }
     .white_contentdirection
     {
@@ -3697,7 +3697,7 @@ width:100%;
     .cartimg
     {
         vertical-align: top;
-        margin-top: 0%;
+        margin-top: 0;
         width: 42%;
         cursor: pointer;
     }
@@ -3771,8 +3771,8 @@ width:100%;
     {
         display: none;
         position: fixed;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 608px;
         background-color: gray;
@@ -3915,7 +3915,7 @@ width:100%;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -4002,14 +4002,14 @@ width:100%;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
     }
     .white_contentlistnew1
     {
         position: relative;
         top: -380px;
         width: 70%;
-        left: 0%;
+        left: 0;
         border: 1px solid #ccc;
     }
     .p-contentlist
@@ -4049,14 +4049,14 @@ width:100%;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 15px;
     }
     .pdtimg
     {
            width: 30%;
-        height: 0%;
+        height: 0;
         font-size: 12px;
     }
     .white_contentdirection
@@ -4095,7 +4095,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 40%;
     }
 
@@ -4195,8 +4195,8 @@ width:100%;
     {
         display: none;
         position: fixed;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 608px;
         background-color: gray;
@@ -4250,7 +4250,7 @@ width:100%;
     }
     .pdtimgdivdisplay
     {
-        margin-left: 0%;
+        margin-left: 0;
         width: 100%;
     }
     .loading-image
@@ -4382,7 +4382,7 @@ width:100%;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -4468,14 +4468,14 @@ width:100%;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
     }
     .white_contentlistnew1
     {
         position: relative;
         top: -380px;
         width: 70%;
-        left: 0%;
+        left: 0;
         border: 1px solid #ccc;
     }
     .p-contentlist
@@ -4515,12 +4515,12 @@ width:100%;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
     }
     .pdtimg
     {
           width: 30%;
-        height: 0%;
+        height: 0;
     }
     .white_contentdirection
     {
@@ -4558,7 +4558,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 40%;
     }
 
@@ -4647,8 +4647,8 @@ width:100%;
     {
         display: none;
         position: fixed;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 608px;
         background-color: gray;

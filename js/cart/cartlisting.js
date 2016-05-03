@@ -74,13 +74,13 @@ function loadshippingaddress() {
 
             output = output + '<div style="width: 96%; background: #304589;margin-top:5px; margin-left: 5px; height: 30px">';
             output = output + '<div style="color: #fff; font-size: 19px !important; font-weight: bold; margin-left: 2px;';
-            output = output + 'margin-top: 0px; text-align: center; width: 100%;">';
+            output = output + 'margin-top: 0; text-align: center; width: 100%;">';
             output = output + '<div style="width: 76%; float: left; margin-left: 30px; margin-top: 3px;">';
             output = output + 'Shipping Details';
             output = output + '</div>';
             output = output + '<div>';
             output = output + '<img src="images/close_square_white.png" style="width: 30px; height: 30px; cursor: pointer;';
-            output = output + 'border-radius: 10px; margin-top: 0px" onclick="addressbookcls()" /></div>';
+            output = output + 'border-radius: 10px; margin-top: 0" onclick="addressbookcls()" /></div>';
             output = output + '</div>';
             output = output + '</div>';
             tempOutput = output;
@@ -733,7 +733,7 @@ function estimateshipping() {
     var html = "";
     html = html + '<div id="fade1" style="display:none" class="black_overlay">';
     html = html + '</div>';
-    html = html + '<div style="color: #fff;background:#304589; height: 35px;font-size: 19px !important; font-weight: bold; margin-top: 0px; text-align: center; width: 100%;">';
+    html = html + '<div style="color: #fff;background:#304589; height: 35px;font-size: 19px !important; font-weight: bold; margin-top: 0; text-align: center; width: 100%;">';
     html = html + '<div style="float: left;margin-left: 10px;margin-top: 5px">';
     html = html + 'My Shipment Information';
     html = html + '</div>';

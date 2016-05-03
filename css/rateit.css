@@ -40,13 +40,13 @@
 .rateit .rateit-hover, .rateit .rateit-selected
 {
     position: absolute;
-    left: 0px;
+    left: 0;
 }
 
 .rateit .rateit-hover-rtl, .rateit .rateit-selected-rtl
 {
     left: auto;
-    right: 0px;
+    right: 0;
 }
 
 .rateit .rateit-hover
