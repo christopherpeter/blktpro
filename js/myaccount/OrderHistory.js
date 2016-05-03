@@ -5,16 +5,16 @@ License:Tychons solutions
 */
 
 //Globalvalues for the JS
-var AccessTokenKey = GetLS('AccessTokenKey');
+var AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey == null) { AccessTokenKey = ""; }
-var CustomerNumber = GetLS('CustomerNumber');
+var CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber == null) { CustomerNumber = ""; }
-var user_ID = GetLS('UserID');
+var user_ID = getLS('UserID');
 if (user_ID == null) { user_ID = ""; }
-var UserProfile = GetLS('UserProfile');
+var UserProfile = getLS('UserProfile');
 if (UserProfile == null) { UserProfile = ""; }
-var isuserlogged = GetLS('Isuserlogged');
-var UserName = GetLS('UserName');
+var isuserlogged = getLS('Isuserlogged');
+var UserName = getLS('UserName');
 if (UserName == null) { UserName = ""; }
 var Isvalid = "";
 if (isuserlogged == 'yes') {

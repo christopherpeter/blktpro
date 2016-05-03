@@ -6,11 +6,11 @@ License:Tychons solutions
 
 //Globalvalues for the JS
 
-var AccessTokenKey = GetLS('AccessTokenKey');
-var customerno = GetLS('CustomerNumber');
-var user_ID = GetLS('UserID');
-var UserProfile = GetLS('UserProfile');
-var isuserlogged = GetLS('Isuserlogged');
+var AccessTokenKey = getLS('AccessTokenKey');
+var customerno = getLS('CustomerNumber');
+var user_ID = getLS('UserID');
+var UserProfile = getLS('UserProfile');
+var isuserlogged = getLS('Isuserlogged');
 var Isvalid = "";
 if (isuserlogged === 'yes') {
     Isvalid = 'Y';
@@ -19,15 +19,15 @@ else {
     Isvalid = 'N';
 }
 
-var branch_id = GetLS('default_branchcode');
+var branch_id = getLS('default_branchcode');
 function filterselection1() {
 
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "FilterPopUp") {
-        SetLS('page', c_page + ",FilterPopUp");
+        setLS('page', c_page + ",FilterPopUp");
     }
-    if (GetLS('IsNewFilterAttributes')=== 'Yes')
+    if (getLS('IsNewFilterAttributes')=== 'Yes')
     {
         GlobalFilterArray.length = 0;
         $.mobile.loading("show",
@@ -44,20 +44,20 @@ function filterselection1() {
         
         var ServiceURL = "";
 
-        var showMoreProducts = GetLS('showmoreproducts');
+        var showMoreProducts = getLS('showmoreproducts');
 
         if (showMoreProducts === 'filter' || showMoreProducts === 'filterproducts')
         {
-            var fSectionCode = GetLS('F_Sectioncode');
-            var fGroupCode = GetLS('F_Groupcode');
-            var fCategoryCode = GetLS('F_Categorycode');
+            var fSectionCode = getLS('F_Sectioncode');
+            var fGroupCode = getLS('F_Groupcode');
+            var fCategoryCode = getLS('F_Categorycode');
 
             ServiceURL = FilterOptionsURL + 'sectionId=' + fSectionCode + '&HEADSECID=&groupId=' + fGroupCode + '&categoryId=' + fCategoryCode + '&splib=' + splib + '&tablelib=' + tablelib;
         }
         else
         {
-            var searchType = GetLS('SearchType');
-            var searchText = GetLS('LS_SearchText');
+            var searchType = getLS('SearchType');
+            var searchText = getLS('LS_SearchText');
             ServiceURL = NewFilterAttributesURL + 'SEARCHTYPE=' + searchType + '&SEARCHTXT=' + searchText.toUpperCase() + '&BRANCHCODE=' + branch_id + '&deviceencryptedkey=' + encryptedkey + '&splib=' + splib + '&tablelib=' + tablelib;
         }
 
@@ -138,7 +138,7 @@ function filterselection1() {
                     $(".cleardivivfilter").show();                   
                 }
 
-                SetLS('IsNewFilterAttributes', 'No');
+                setLS('IsNewFilterAttributes', 'No');
 
             }, error: function (data, errorThrown) {
                 $.mobile.loading("hide");
@@ -180,11 +180,11 @@ function Filterdiv(Divid) {
 
         var ServiceURL = "";
 
-        if (GetLS('showmoreproducts') == 'filter') {
-            ServiceURL = FilterValueURL + "sectionId=" + GetLS("F_Sectioncode") + "&HEADSECID=&groupId=" + GetLS("F_Groupcode") + "&categoryId=" + GetLS("F_Categorycode") + "&attributeName=" + Divid + "&userId=&deviceencryptedkey=" + GetLS('encryptedkey') + "&accesstoken=&splib=" + splib + "&tablelib=" + tablelib;
+        if (getLS('showmoreproducts') == 'filter') {
+            ServiceURL = FilterValueURL + "sectionId=" + getLS("F_Sectioncode") + "&HEADSECID=&groupId=" + getLS("F_Groupcode") + "&categoryId=" + getLS("F_Categorycode") + "&attributeName=" + Divid + "&userId=&deviceencryptedkey=" + getLS('encryptedkey') + "&accesstoken=&splib=" + splib + "&tablelib=" + tablelib;
         }
         else {
-            ServiceURL = NewFilterAttributesVauesURL + "SEARCHTYPE=" + GetLS("SearchType") + "&SEARCHTXT=" + GetLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + Divid + "&BRANCHCODE=" + branch_id + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&TABLELIB=" + tablelib;
+            ServiceURL = NewFilterAttributesVauesURL + "SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + Divid + "&BRANCHCODE=" + branch_id + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&TABLELIB=" + tablelib;
         }
 
 
@@ -285,16 +285,16 @@ function filterbackbtn() {
     $("#filterselctiondiv").hide();
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(","),new_page;
     if (result.length == 1) {
         new_page = c_page.replace(result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     } else {
         new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     }
-    var valuefilter = GetLS('showmoreproducts');
+    var valuefilter = getLS('showmoreproducts');
    
     if (valuefilter == "search")
     {
@@ -303,7 +303,7 @@ function filterbackbtn() {
     }
     else
     {
-        pdtimgkitchendivdisplay(GetLS('F_Sectioncode'), GetLS('F_Groupcode'), GetLS('F_Categorycode'), GetLS('breadlist1'));
+        pdtimgkitchendivdisplay(getLS('F_Sectioncode'), getLS('F_Groupcode'), getLS('F_Categorycode'), getLS('breadlist1'));
     }
 }
 var GlobalFilterArray = [];
@@ -364,15 +364,15 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue,FromCount,ToCoun
  });
     $("#loading_pdt").show();
 
-    var branch_code = GetLS('default_branchcode');
+    var branch_code = getLS('default_branchcode');
 
     var ServiceURL = "";
 
-    if (GetLS('showmoreproducts') == 'filter') {
-        ServiceURL = FilterProductsURL + "SectionCode=" + GetLS('F_Sectioncode') + "&HEADSECID=&GroupCode=" + GetLS('F_Groupcode') + "&CategoryCode=" + GetLS('F_Categorycode') + "&AttrName=" + AttributeName + "&AttrValue=" + AttributeValue + "&StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&brchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib;
+    if (getLS('showmoreproducts') == 'filter') {
+        ServiceURL = FilterProductsURL + "SectionCode=" + getLS('F_Sectioncode') + "&HEADSECID=&GroupCode=" + getLS('F_Groupcode') + "&CategoryCode=" + getLS('F_Categorycode') + "&AttrName=" + AttributeName + "&AttrValue=" + AttributeValue + "&StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&brchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib;
     }
     else {
-        ServiceURL = NewFilterProductsResultsURL + "StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&cusno=" + customerno + "&SEARCHTYPE=" + GetLS("SearchType") + "&SEARCHTXT=" + GetLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + AttributeName.replace(",", "','") + "&ATTRVALUE=" + AttributeValue.replace(",", "','") + "&BRANCHCODE=" + branch_id + "&username=" + UserProfile + "&accesstoken=" + AccessTokenKey + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random();
+        ServiceURL = NewFilterProductsResultsURL + "StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&cusno=" + customerno + "&SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + AttributeName.replace(",", "','") + "&ATTRVALUE=" + AttributeValue.replace(",", "','") + "&BRANCHCODE=" + branch_id + "&username=" + UserProfile + "&accesstoken=" + AccessTokenKey + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random();
     }
 
 
@@ -431,8 +431,8 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue,FromCount,ToCoun
 
                     });
                 }
-                SetLS('product_count', 10);
-                SetLS('showmoreproducts', 'filterproducts');
+                setLS('product_count', 10);
+                setLS('showmoreproducts', 'filterproducts');
                 loadsectionproductscontents("Yes");
 
             }, errorCB);

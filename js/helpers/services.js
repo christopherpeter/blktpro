@@ -96,7 +96,7 @@ function getCookie(cname)
 
 //Function To set Localstorage
 
-function SetLS(Key, Value)
+function setLS(Key, Value)
 {
     //var EncryptedValue = CryptoJS.AES.encrypt(Value.toString(), SecretPhrase);
     localStorage.setItem(Key, Value);
@@ -104,7 +104,7 @@ function SetLS(Key, Value)
 
 //Function To get Localstorage value
 
-function GetLS(Key) {
+function getLS(Key) {
     if (localStorage.getItem(Key) == null || localStorage.getItem(Key) == "") {
         return null;
     }
@@ -118,20 +118,20 @@ function GetLS(Key) {
 
 //Function to remove an item from locat storage
 
-function RemoveLS(Key) {
+function removeLS(Key) {
     localStorage.removeItem(Key);
 }
 
 
-var encryptedkey = GetLS('encryptedkey');
+var encryptedkey = getLS('encryptedkey');
 
 var AccessTokenKey = "";
-if (GetLS('AccessTokenKey') == null || GetLS('AccessTokenKey') == "") {
+if (getLS('AccessTokenKey') == null || getLS('AccessTokenKey') == "") {
     AccessTokenKey = "";
 }
 else {
 
-    AccessTokenKey = GetLS('AccessTokenKey');
+    AccessTokenKey = getLS('AccessTokenKey');
 }
 
 

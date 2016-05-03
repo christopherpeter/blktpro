@@ -6,11 +6,11 @@ License:Tychons solutions
 
 //Globalvalues for the JS
 
-var AccessTokenKey = GetLS('AccessTokenKey');
-var customerno = GetLS('CustomerNumber');
-var user_ID = GetLS('UserID');
-var UserProfile = GetLS('UserProfile');
-var isuserlogged = GetLS('Isuserlogged');
+var AccessTokenKey = getLS('AccessTokenKey');
+var customerno = getLS('CustomerNumber');
+var user_ID = getLS('UserID');
+var UserProfile = getLS('UserProfile');
+var isuserlogged = getLS('Isuserlogged');
 var Isvalid = "";
 if (isuserlogged == 'yes') {
     Isvalid = "Y";
@@ -30,7 +30,7 @@ function ChangeUserBranch()
 
 function loadsectionfilter() {
 
-    var view = GetLS('viewimg');
+    var view = getLS('viewimg');
 
     if (view == 'yes') {
 
@@ -71,7 +71,7 @@ function loadsectionfilter() {
                         tx.executeSql(query, [HSCODE, SECTION, DESCRIPTION, GROUPCOUNT]);
 
                     });
-                    SetLS('cat_oldcount', "0");
+                    setLS('cat_oldcount', "0");
                     loadsections();
                 }, errorCB);
 
@@ -123,7 +123,7 @@ function loadsectionfilter() {
                         tx.executeSql(query, [HSCODE,SECTION, DESCRIPTION, GROUPCOUNT]);
 
                     });
-                    SetLS('cat_oldcount', '0');
+                    setLS('cat_oldcount', '0');
                     loadsections();
                 }, errorCB);
 
@@ -192,8 +192,8 @@ function filterkitchenproduts(sectioncode) {
 
     });
     $("#loading_pdt").show();
-    SetLS('showmoreproducts', 'filter');
-    writetologfile("Filter Search=Section:" + GetLS('Filter_sectionname'), 3);
+    setLS('showmoreproducts', 'filter');
+    writetologfile("Filter Search=Section:" + getLS('Filter_sectionname'), 3);
     pdtimgkitchendivdisplay1(sectioncode, "", "");
 }
 
@@ -221,9 +221,9 @@ function filterkitchensub(sectioncode, groupcode, x) {
 
     });
     $("#loading_pdt").show();
-    SetLS('Filter_groupcode', groupcode);
-    SetLS('Filter_groupname', $(x).text());
-    SetLS('Filter_categoryname', null);
+    setLS('Filter_groupcode', groupcode);
+    setLS('Filter_groupname', $(x).text());
+    setLS('Filter_categoryname', null);
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -302,8 +302,8 @@ function filterkitchensub_products(sectioncode, groupcode) {
 
     });
     $("#loading_pdt").show();
-    SetLS('showmoreproducts', 'filter');
-    writetologfile("Filter Search=Section:" + GetLS('Filter_sectionname') + "Group:" + GetLS('Filter_groupname'), 3);
+    setLS('showmoreproducts', 'filter');
+    writetologfile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname'), 3);
     pdtimgkitchendivdisplay1(sectioncode, groupcode, "");
 }
 
@@ -319,13 +319,13 @@ function displayfilterproducts(sectioncode, groupcode, categorycode, x) {
 
     });
 
-    SetLS('Filter_categorycode', categorycode);
-    SetLS('Filter_categoryname', $(x).text());
+    setLS('Filter_categorycode', categorycode);
+    setLS('Filter_categoryname', $(x).text());
     $("#loading_pdt").show();
 
-    SetLS('showmoreproducts', 'filter');
-    SetLS('filterbackbutton', 'filter');
-    writetologfile("Filter Search=Section:" + GetLS('Filter_sectionname') + "Group:" + GetLS('Filter_groupname') + "Category:" + GetLS('Filter_categoryname'), 3);
+    setLS('showmoreproducts', 'filter');
+    setLS('filterbackbutton', 'filter');
+    writetologfile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname') + "Category:" + getLS('Filter_categoryname'), 3);
     pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode);
 
 }
@@ -355,7 +355,7 @@ function loadsectionimages() {
         var html = "";
         tx.executeSql('SELECT * FROM sectioninfo', [], function itembranchsucce(tx, results)
         {
-            SetLS('TotalSections', results.rows.length);
+            setLS('TotalSections', results.rows.length);
         });
         tx.executeSql('SELECT * FROM sectioninfo WHERE id between 1 and ' + totalgridlength, [], function itembranchsucces(txx, res) {
             var count = 0;
@@ -420,7 +420,7 @@ function loadsectionimages() {
             }
 
             html = html + "</div>";
-            SetLS('images_oldcount', totalgridlength);
+            setLS('images_oldcount', totalgridlength);
             document.getElementById("prdtsectionimges").innerHTML = html;
             $.mobile.loading("hide");
             $("#loading_pdt").hide();
@@ -432,7 +432,7 @@ function loadsectionimages() {
 
 function product_next() {
 
-    var count = GetLS('images_oldcount');
+    var count = getLS('images_oldcount');
     var from = parseInt(count,10) + 1;
     var to = parseInt(count,10) + totalgridlength;
     var where = from + ' and ' + to;
@@ -505,7 +505,7 @@ function product_next() {
             }
 
             html = html + "</div>";
-            SetLS('images_oldcount', to);
+            setLS('images_oldcount', to);
             document.getElementById("prdtsectionimges").innerHTML = html;
             $.mobile.loading("hide");
             $("#loading_pdt").hide();
@@ -516,7 +516,7 @@ function product_next() {
 //This function is used for handling swipe previous function
 
 function product_previous() {
-    var count = GetLS('images_oldcount');
+    var count = getLS('images_oldcount');
     var from = parseInt(count,10) - totalgridlength - (totalgridlength - 1);
     var to = parseInt(count,10) - totalgridlength;
     var where = from + ' and ' + to;
@@ -591,7 +591,7 @@ function product_previous() {
                 }
 
                 html = html + "</div>";
-                SetLS('images_oldcount', to);
+                setLS('images_oldcount', to);
                 document.getElementById("prdtsectionimges").innerHTML = html;
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
@@ -604,10 +604,10 @@ function product_previous() {
 
 function product_search() {
     GlobalItemsList.length = 0;
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != 'sections') {
-        SetLS('page', c_page + ",sections");
+        setLS('page', c_page + ",sections");
     }
     var from_count = 1;
     var to_count = TotalProductCount;
@@ -619,8 +619,8 @@ function product_search() {
 
         return false;
     }
-    SetLS('breadcrumb', 'search');
-    SetLS('LS_SearchText', searchtext);
+    setLS('breadcrumb', 'search');
+    setLS('LS_SearchText', searchtext);
     $("#loading_pdt").show();
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -630,8 +630,8 @@ function product_search() {
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Loading Products...</h2></span>"
 
     });
-    SetLS('showmoreproducts', 'search');
-    var branch_id = GetLS('default_branchcode');
+    setLS('showmoreproducts', 'search');
+    var branch_id = getLS('default_branchcode');
 
     searchtext = searchtext.split(" ");
     var result = "";
@@ -701,14 +701,14 @@ function product_search() {
 
                     });
 
-                    SetLS('product_count', to_count);
-                    SetLS('IsNewFilterAttributes','Yes');
-                    SetLS('SearchType', 'PROD1');
+                    setLS('product_count', to_count);
+                    setLS('IsNewFilterAttributes','Yes');
+                    setLS('SearchType', 'PROD1');
                     writetologfile("User searched for product " + searchtext + ".It has results.", 3);
                     loadsectionproductscontents('Yes');
                 }
                 else {
-                    SetLS('IsNewFilterAttributes', 'Yes');
+                    setLS('IsNewFilterAttributes', 'Yes');
                     loadsecondproductservice();
 
                 }
@@ -722,19 +722,19 @@ function product_search() {
 
 
     });
-    SetLS('F_Categorycode','');
-    SetLS('F_Groupcode','');
-    SetLS('F_Sectioncode','');
+    setLS('F_Categorycode','');
+    setLS('F_Groupcode','');
+    setLS('F_Sectioncode','');
 }
 
 // Function for products serach on all the products
 
 function loadsecondproductservice() {
     GlobalItemsList.length = 0;
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != 'sections') {
-        SetLS('page', c_page + ",sections");
+        setLS('page', c_page + ",sections");
     }
 
     var searchtext = $("#txtpdtsrch").val().trim();
@@ -762,8 +762,8 @@ function loadsecondproductservice() {
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Loading Products...</h2></span>"
 
     });
-    SetLS('showmoreproducts', 'search');
-    var branch_id = GetLS('default_branchcode');
+    setLS('showmoreproducts', 'search');
+    var branch_id = getLS('default_branchcode');
 
     var from_count = 1;
     var to_count = TotalProductCount;
@@ -822,8 +822,8 @@ function loadsecondproductservice() {
 
                     });
 
-                    SetLS('product_count', to_count);
-                    SetLS('SearchType', 'PROD2');
+                    setLS('product_count', to_count);
+                    setLS('SearchType', 'PROD2');
                     loadsectionproductscontents("Yes");
                 }
 
@@ -879,12 +879,12 @@ function clearfilters() {
 }
 function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
     description = description.replace(/_/g, " ");
-    SetLS('breadlist1', description);
-    SetLS('F_HSCODE', HSCODE);
-    var c_page = GetLS('page');
+    setLS('breadlist1', description);
+    setLS('F_HSCODE', HSCODE);
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "filter") {
-        SetLS('page', c_page + ",filter");
+        setLS('page', c_page + ",filter");
     }
 
     $("#list1products").html("");
@@ -950,8 +950,8 @@ function pdtimgkitchendivdisplaynew1(HSCODE,Sectioncode,description) {
                     else
                     {
 
-                        SetLS('breadlist2', '');
-                        SetLS('breadlist3', '');
+                        setLS('breadlist2', '');
+                        setLS('breadlist3', '');
                         html = html + "<div onclick=\"pdtimgkitchendivdisplay('" + SECTIONCODE + "','','','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION;
@@ -1018,25 +1018,25 @@ function pdtimgkitchendivdisplaynew1back() {
     $(".breadcrumstylefilter").hide();
     $("#default_div").show();
 
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     if (result.length == 1) {
         new_page = c_page.replace(result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     } else {
         new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     }
 
 
 }
 function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
     newDESCRIPTION = newDESCRIPTION.replace(/_/g, " ");
-    SetLS('breadlist2', newDESCRIPTION);
-    var c_page = GetLS('page');
+    setLS('breadlist2', newDESCRIPTION);
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != 'filter2') {
-        SetLS('page', c_page + ",filter2");
+        setLS('page', c_page + ",filter2");
     }
 
     $("#list2products").html('');
@@ -1080,7 +1080,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
                 var html = "";
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
                 html = html + '<div style="text-align:left;float:left" onclick="pdtimgkitchendivdisplaynew2back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 4px;font-weight:bold;color:#304589  ;font-size: 10px;float:left" class="sectionpath1" onclick="breadcrumlist2()">';
-                html = html + '' + GetLS('breadlist1') + '</div><div onclick="breadcrumlist2()" style="margin-top: 4px;font-weight:bold;color:#304589  ;font-size: 10px;" class="sectionpath1"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + newDESCRIPTION + '</div>';
+                html = html + '' + getLS('breadlist1') + '</div><div onclick="breadcrumlist2()" style="margin-top: 4px;font-weight:bold;color:#304589  ;font-size: 10px;" class="sectionpath1"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + newDESCRIPTION + '</div>';
                 html = html + ' </div>';
 
 
@@ -1104,7 +1104,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
                     }
                     else {
 
-                        SetLS('breadlist3', '');
+                        setLS('breadlist3', '');
                         html = html + "<div onclick=\"pdtimgkitchendivdisplay('" + sectioncode + "','" + GROUPCODE + "','','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION;
@@ -1120,7 +1120,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
                 });
                 html = html + " </ul>";
                 $("#list2products").html(html);
-                SetLS('IsNewFilterAttributes', 'Yes');
+                setLS('IsNewFilterAttributes', 'Yes');
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
@@ -1132,7 +1132,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE,sectioncode, newDESCRIPTION) {
                 //  html = html + "  <div style='text-align:left;margin-left:20px' onclick='pdtimgkitchendivdisplaynew1back()'>   <img src='images/save_button.png' /></div>";
                 html = html + " <div><No Groups Found</div>";
                 $("#list2products").html(html);
-                SetLS('IsNewFilterAttributes', 'Yes');
+                setLS('IsNewFilterAttributes', 'Yes');
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
@@ -1156,7 +1156,7 @@ function pdtimgkitchendivdisplaynew2back() {
     $("#prdtsectionimges").hide();
     $("#sectiondiv").hide();
     $(".srchdivimg").hide();
-    $("#sectionpath").html("<span>" + GetLS('breadlist1') + "</span>")
+    $("#sectionpath").html("<span>" + getLS('breadlist1') + "</span>")
     $("#navigationdiv").hide();
     $("#list1products").show();
     $("#list2products").hide();
@@ -1165,25 +1165,25 @@ function pdtimgkitchendivdisplaynew2back() {
     $("#breadcrumstyle").hide();
     $(".breadcrumstylefilter").hide();
     $("#default_div").show();
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     if (result.length == 1) {
         new_page = c_page.replace(result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     } else {
         new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     }
 }
 
 
 function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     var DESCRIPTIONlast = DESCRIPTIONlast.replace(/_/g, ' ');
-    SetLS('breadlist3', DESCRIPTIONlast);
-    var c_page = GetLS('page');
+    setLS('breadlist3', DESCRIPTIONlast);
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] !== 'filter3') {
-        SetLS('page', c_page + ",filter3");
+        setLS('page', c_page + ",filter3");
     }
 
     $("#list3products").html("");
@@ -1228,7 +1228,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
 
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
                 html = html + '<div style="text-align:left;float:left" onclick="pdtimgkitchendivdisplaynew3back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 4px;font-weight:bold;color:#304589;  font-size: 10px;line-height:18px;float:left" class="sectionpath1" onclick="breadcrumlist1()">';
-                html = html + '' + GetLS('breadlist1') + '</div><div  style="margin-top: 4px;font-weight:bold;color:#304589;float:left;  font-size: 10px;line-height:18px" class="sectionpath1" onclick="breadcrumlist2()"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + GetLS('breadlist2') + '</div><div  style="margin-top: 4px;font-weight:bold;color:#304589;float:left;  font-size: 10px;line-height:18px" class="sectionpath1" onclick="breadcrumlist3()"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + DESCRIPTIONlast + '</div>';
+                html = html + '' + getLS('breadlist1') + '</div><div  style="margin-top: 4px;font-weight:bold;color:#304589;float:left;  font-size: 10px;line-height:18px" class="sectionpath1" onclick="breadcrumlist2()"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + getLS('breadlist2') + '</div><div  style="margin-top: 4px;font-weight:bold;color:#304589;float:left;  font-size: 10px;line-height:18px" class="sectionpath1" onclick="breadcrumlist3()"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + DESCRIPTIONlast + '</div>';
                 html = html + ' </div>';
 
 
@@ -1261,7 +1261,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
-            SetLS('IsNewFilterAttributes', 'Yes');
+            setLS('IsNewFilterAttributes', 'Yes');
         }, error: function (data, errorThrown) {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -1291,14 +1291,14 @@ function pdtimgkitchendivdisplaynew3back() {
     $("#backbuttongrid").hide();
     $(".breadcrumstyle").show();
     $(".breadcrumstylefilter").hide();
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     if (result.length == 1) {
         new_page = c_page.replace(result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     } else {
         new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     }
 }
 

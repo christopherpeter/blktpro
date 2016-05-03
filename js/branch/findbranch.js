@@ -8,7 +8,7 @@ License:Tychons solutions
 
 function onbodyload() 
 {
-    var encryptedKey = GetLS('encryptedkey');
+    var encryptedKey = getLS('encryptedkey');
 
     if(encryptedKey === null)
     {
@@ -77,13 +77,13 @@ function loadallbranches_tolocalDB()
 
                     if (BranchCode === defaultbranchcode) 
                     {
-                        var defaultBranchCode = GetLS('default_branchcode');
+                        var defaultBranchCode = getLS('default_branchcode');
                         if (defaultBranchCode === "" || defaultBranchCode === null)
                         {
-                            SetLS('default_branchcode', BranchCode);
-                            SetLS('default_branchname', BranchName);
-                            SetLS('default_branchcode1', BranchCode);
-                            SetLS('default_branchname1', BranchName);
+                            setLS('default_branchcode', BranchCode);
+                            setLS('default_branchname', BranchName);
+                            setLS('default_branchcode1', BranchCode);
+                            setLS('default_branchname1', BranchName);
                         }
                     }
 
@@ -124,7 +124,7 @@ function create_locationarray()
                 locations.push(s_array);
             }
 
-            var get_GpsLocation = GetLS('get_gpslocation');
+            var get_GpsLocation = getLS('get_gpslocation');
 
             if (get_GpsLocation === 'yes') {
                 loadGPS_locations();
@@ -160,14 +160,14 @@ function success(position)
 {
     // Store the GPS lattitude and Longitude location in the Local Storage
 
-    SetLS('GPS_lat', position.coords.latitude.toFixed(6));
-    SetLS('GPS_lon', position.coords.longitude.toFixed(6));
+    setLS('GPS_lat', position.coords.latitude.toFixed(6));
+    setLS('GPS_lon', position.coords.longitude.toFixed(6));
 
     var message = "User GPS Latitude Position : " + position.coords.latitude + ", Longitude Position:" + position.coords.longitude;
     writetologfile(message, 3);
-    SetLS('Default', 2);
-    SetLS('get_gpslocation', 'yes');
-    SetLS('Showroom', 'none');  //old branch place
+    setLS('Default', 2);
+    setLS('get_gpslocation', 'yes');
+    setLS('Showroom', 'none');  //old branch place
     loadGPS_locations();
 }
 
@@ -210,8 +210,8 @@ var changedValues = [];
 function mapinitialize() 
 {
 
-    SetLS('Default', 3);
-    SetLS('Showroom', 'all');  //old branch place
+    setLS('Default', 3);
+    setLS('Showroom', 'all');  //old branch place
 
     var map = new google.maps.Map(document.getElementById('map_canvas'),
         {
@@ -244,9 +244,9 @@ function mapinitialize()
             $.mobile.loading("hide");
         });
     }
-    if (GetLS('textboxval') != "" && GetLS('textboxval') != null) 
+    if (getLS('textboxval') != "" && getLS('textboxval') != null) 
     {
-        $("#txtsearch_branch").val(GetLS('textboxval'));
+        $("#txtsearch_branch").val(getLS('textboxval'));
         localStorage.removeItem('textboxval');
         localStorage.removeItem('Showroom');
         search_branch();
@@ -260,7 +260,7 @@ function search_branch()
 {
     var branchtxt = document.getElementById('txtsearch_branch').value;
     if (branchtxt != "") {
-        SetLS('Showroom', 'none');
+        setLS('Showroom', 'none');
         writetologfile("User Branch Search :" + branchtxt, 3);
     }
     else {
@@ -283,12 +283,13 @@ function search_branch()
             var lat1 = res[0];
             var lon1 = res[1];
 
-            SetLS('Default', 1);
-            SetLS('location', branchtxt);
-            SetLS('Source_lat', lat1);
-            SetLS('Source_lon', lon1);
+            setLS('Default', 1);
+            setLS('location', branchtxt);
+            setLS('Source_lat', lat1);
+            setLS('Source_lon', lon1);
 
-            for (var i = 0; i < locations.length; i++) {
+            for (var i = 0; i < locations.length; i++)
+            {
                 var lat2 = locations[i][1];
                 var lon2 = locations[i][2];
 
@@ -314,7 +315,7 @@ function search_branch()
             }
 
             changedValues.sort(sortfunc);
-            SetLS('Showroom', 'none');
+            setLS('Showroom', 'none');
             //Ramkumar0909
 
             search_mapinitialize(2); // Load results to map
@@ -333,20 +334,20 @@ function search_branch()
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
             var infowindow = new google.maps.InfoWindow();
-            var marker, i;
-            for (i = 0; i < locations.length; i++) {
+            var marker, j;
+            for (j = 0; j < locations.length; j++) {
 
                 marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    position: new google.maps.LatLng(locations[j][1], locations[j][2]),
                     map: map,
                     icon: 'images/marker.png'
                 });
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                google.maps.event.addListener(marker, 'click', (function (marker, j) {
                     return function () {
-                        clickmarker(i);
+                        clickmarker(j);
 
                     }
-                })(marker, i));
+                })(marker, j));
 
                 google.maps.event.addListener(map, "tilesloaded", function () {
                     document.getElementById('loading').style.display = 'none';
@@ -388,7 +389,7 @@ function search_mapinitialize(load)
     else {
 
        //navigator.notification.alert('No nearest branches found!.Showing all the branches.', null, 'Alert', 'OK');
-       SetLS('get_gpslocation', 'notfound');
+       setLS('get_gpslocation', 'notfound');
        mapinitialize();
     }
 
@@ -402,20 +403,20 @@ function loadmap1(load)
     {
 
 
-        if (GetLS('GPS_lat') != null) 
+        if (getLS('GPS_lat') != null) 
         {
-            lat1 = GetLS('GPS_lat');
+            lat1 = getLS('GPS_lat');
         }
-        if (GetLS('GPS_lon') != null) {
-            lon1 = GetLS('GPS_lon');
+        if (getLS('GPS_lon') != null) {
+            lon1 = getLS('GPS_lon');
         }
 
-        SetLS('map_number', 2);
+        setLS('map_number', 2);
     }
     else if (load == 2) {
-        lat1 = GetLS('Source_lat');
-        lon1 = GetLS('Source_lon');
-        SetLS('map_number', 1);
+        lat1 = getLS('Source_lat');
+        lon1 = getLS('Source_lon');
+        setLS('map_number', 1);
     }
 
     var map = new google.maps.Map(document.getElementById('map_canvas'),
@@ -499,20 +500,20 @@ function loadmap2(load)
     var lon1;
     if (load == 1) 
     {
-        if (GetLS('GPS_lat') != null) {
-            lat1 = GetLS('GPS_lat');
+        if (getLS('GPS_lat') != null) {
+            lat1 = getLS('GPS_lat');
         }
-        if (GetLS('GPS_lon') != null) {
-            lon1 = GetLS('GPS_lon');
+        if (getLS('GPS_lon') != null) {
+            lon1 = getLS('GPS_lon');
         }
 
-        SetLS('map_number', 2);
+        setLS('map_number', 2);
     }
     else if (load == 2) 
     {
-        lat1 = GetLS('Source_lat');
-        lon1 = GetLS('Source_lon');
-        SetLS('map_number', 1);
+        lat1 = getLS('Source_lat');
+        lon1 = getLS('Source_lon');
+        setLS('map_number', 1);
     }
 
     var map = new google.maps.Map(document.getElementById('map_canvas'),
@@ -597,18 +598,18 @@ function clickmarker(i)
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "clickmarker") {
-        SetLS('page', c_page + ",clickmarker");
+        setLS('page', c_page + ",clickmarker");
     }
 
     var address_split = locations[i][4].split(',');
     var branch_name = locations[i][0];
     var branch_id = locations[i][3];
 
-    SetLS('default_branchname2', branch_name);
-    SetLS('default_branchcode2', branch_id);
+    setLS('default_branchname2', branch_name);
+    setLS('default_branchcode2', branch_id);
 
     var html = '<div style="background: none repeat scroll 0 0 #304589; float: left; height: 32px;width: 100%;color:#fff">';
     html = html + '<div style="width: 88%; float: left">';
@@ -686,26 +687,26 @@ function clickmarker(i)
     document.getElementById('white_contentlistnew1').style.display = 'none';
 }
 
-
+var branchNameNew, branchIdNew;
 function checkinventorynew(branch_id, id) 
 {
-    var branch_name = locations[id][0];
-    var branch_id = locations[id][3];
+    branchNameNew = locations[id][0];
+    branchIdNew = locations[id][3];
 
-    SetLS('default_branchname2', branch_name);
-    SetLS('default_branchcode2', branch_id);
-    checkinventory(branch_id);
+    setLS('default_branchname2', branchNameNew);
+    setLS('default_branchcode2', branchIdNew);
+    checkinventory(branchIdNew);
 }
 
 function checkinventorysearch(branch_id, id) 
 {
-    var branch_name = changedValues[id][0];
-    var branch_id = changedValues[id][10];
+    branchNameNew = changedValues[id][0];
+    branchIdNew = changedValues[id][10];
 
-    SetLS('default_branchname2', branch_name);
-    SetLS('default_branchcode2', branch_id);
+    setLS('default_branchname2', branchNameNew);
+    setLS('default_branchcode2', branchIdNew);
 
-    checkinventory(branch_id);
+    checkinventory(branchIdNew);
 }
 
 
@@ -716,21 +717,21 @@ function clickmarker1(i)
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "clickmarker") {
-        SetLS('page', c_page + ",clickmarker");
+        setLS('page', c_page + ",clickmarker");
     }
 
     var branch_name = changedValues[i][0];
     var branch_id = changedValues[i][10];
 
-    SetLS('default_branchname2', branch_name);
-    SetLS('default_branchcode2', branch_id);
+    setLS('default_branchname2', branch_name);
+    setLS('default_branchcode2', branch_id);
 
 
 
-    var mapno = GetLS('map_number');
+    var mapno = getLS('map_number');
     var address_split = changedValues[i][5].split(',');
 
     var html = '<div style="background: none repeat scroll 0 0 #304589; float: left; height: 32px;width: 100%;color:#fff">';
@@ -840,20 +841,20 @@ function clickmarker2(i)
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "clickmarker") 
     {
-        SetLS('page', c_page + ",clickmarker");
+        setLS('page', c_page + ",clickmarker");
     }
   
-    var mapno = GetLS('map_number');
+    var mapno = getLS('map_number');
 
     var branch_name = changedValues[i][0];
     var branch_id = changedValues[i][10];
 
-    SetLS('default_branchname2', branch_name);
-    SetLS('default_branchcode2', branch_id);
+    setLS('default_branchname2', branch_name);
+    setLS('default_branchcode2', branch_id);
 
 
     var address_split = changedValues[i][5].split(',');
@@ -952,14 +953,14 @@ function clickmarker2(i)
 function toggle_visibilityclose() 
 {
     $("body").addClass('globalbodyclass');
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     if (result.length === 1) {
         new_page = c_page.replace(result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     } else {
         new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     }
 
     $("#light").hide();
@@ -967,7 +968,7 @@ function toggle_visibilityclose()
     // location.reload();
 }
 function mapdirection(mode) {
-    var load = GetLS('Default');
+    var load = getLS('Default');
     getdirections(mapno, mode, load);
 }
 
@@ -975,13 +976,13 @@ function mapdirection(mode) {
 window.onresize = function () 
 {
 
-    if (GetLS('Default') === 3) {
+    if (getLS('Default') === 3) {
         mapinitialize();
     }
-    else if (GetLS('Default') === 1) {
+    else if (getLS('Default') === 1) {
         search_mapinitialize(2);
     }
-    else if (GetLS('Default') === 2) {
+    else if (getLS('Default') === 2) {
         search_mapinitialize(1);
     }
 };
@@ -991,26 +992,26 @@ window.onresize = function ()
 function getdirections(g, maptype, load) 
 {
     $("#mapbody").removeClass('mapbody');
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "getdirections") {
-        SetLS('page', c_page + ",getdirections");
+        setLS('page', c_page + ",getdirections");
     }
 
     var Source_lat;
     var Source_lon;
     if (load === 1) {
-        Source_lat = GetLS('Source_lat');
-        Source_lon = GetLS('Source_lon');
+        Source_lat = getLS('Source_lat');
+        Source_lon = getLS('Source_lon');
     }
     else if (load === 2) {
 
-        if (GetLS('GPS_lat') != null) {
-            Source_lat = GetLS('GPS_lat');
+        if (getLS('GPS_lat') != null) {
+            Source_lat = getLS('GPS_lat');
         }
 
-        if (GetLS('GPS_lon') != null) {
-            Source_lon = GetLS('GPS_lon');
+        if (getLS('GPS_lon') != null) {
+            Source_lon = getLS('GPS_lon');
         }
 
     }
@@ -1018,7 +1019,7 @@ function getdirections(g, maptype, load)
     var destination_lat = changedValues[g][1];
     var destination_lon = changedValues[g][2];
 
-    SetLS('mapno', g);
+    setLS('mapno', g);
 
     var directionDisplay;
     var directionsService = new google.maps.DirectionsService();
@@ -1090,21 +1091,21 @@ function getdirections(g, maptype, load)
 
 function loadGPS_locations() 
 {
-    SetLS('Showroom', 'none');  //old branch place
+    setLS('Showroom', 'none');  //old branch place
     changedValues.length = 0;
 
     var lat1, lon1;
 
-    if (GetLS('GPS_lat') != null) {
-        lat1 = GetLS('GPS_lat');
+    if (getLS('GPS_lat') != null) {
+        lat1 = getLS('GPS_lat');
     }
 
-    if (GetLS('GPS_lon') != null) {
-        lon1 = GetLS('GPS_lon');
+    if (getLS('GPS_lon') != null) {
+        lon1 = getLS('GPS_lon');
     }
 
 
-    SetLS('Default', 2);
+    setLS('Default', 2);
 
     for (i = 0; i < locations.length; i++) 
     {
@@ -1132,7 +1133,7 @@ function loadGPS_locations()
     }
 
     changedValues.sort(sortfunc);
-    SetLS('Showroom', 'none');
+    setLS('Showroom', 'none');
     var html = "<div class='empty'></div>";
     html = html + "<div style='background: #fff;'>";
     html = html + "<div style='border-bottom: 1px solid #CCCCCC; height: 25px;margin-top: 25px;'>";

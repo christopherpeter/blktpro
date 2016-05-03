@@ -6,46 +6,46 @@ License:Tychons solutions
 
 function backtoindexpage() 
 {
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     changepage(result[result.length-1]);
     if (result.length == 1) {
         new_page = c_page.replace(result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     } else {
         new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     }
 } 
 
 
 function login() 
 {
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
 
     if (c_page != null ) 
     {
         if (c_page.indexOf(',') > -1) {
             var result = c_page.split(",");
             if (result[result.length - 1] !== "newlogin") {
-                SetLS('page', c_page + ",newlogin");
+                setLS('page', c_page + ",newlogin");
             }
         }
         else 
         {
-            SetLS('page', 'newlogin');
+            setLS('page', 'newlogin');
         }
     }
     else {
-        SetLS('page', 'newlogin');
+        setLS('page', 'newlogin');
     }
-    var isuserlogged = GetLS('Isuserlogged');
+    var isuserlogged = getLS('Isuserlogged');
     if (isuserlogged == 'yes') 
     {
         var result = c_page.split(",");
         if (result[result.length - 1] != 'home');
         {
-            SetLS('page', c_page + ",home");
+            setLS('page', c_page + ",home");
         }
         window.location.href = 'products.html';
     }
@@ -65,7 +65,7 @@ function submitButton(page)
     var password = $("#txtpwd").val().trim();
     var numbers = /^[0-9]+$/;
     
-    var branch_code = GetLS('Current_branch');
+    var branch_code = getLS('Current_branch');
     if (accountno == "") {
       
         navigator.notification.alert('Please enter account no.', null, 'Authentication', 'OK');
@@ -187,34 +187,34 @@ function submitButton(page)
                         var AccessTokenKey = obj.AccessTokenKey;
 
                         var SALESPERSONID = obj.SALESPERSONID;
-                        SetLS('salesmanid', SALESPERSONID);
+                        setLS('salesmanid', SALESPERSONID);
 
-                        SetLS('AccessTokenKey', AccessTokenKey);
-                        SetLS('UserID', UserIDOfMaintenance);
-                        SetLS('UserProfile', UserProfile);
-                        SetLS('CustomerNumber', CustomerNumber);
-                        SetLS('Zipcode', CustomerMainShippingZipCode);
-                        SetLS('UserName', UserName);
-                        SetLS('CustomerShippingState', CustomerShippingState);
-                        SetLS('ShippingMethod', PreferredMethodOfShipment);
+                        setLS('AccessTokenKey', AccessTokenKey);
+                        setLS('UserID', UserIDOfMaintenance);
+                        setLS('UserProfile', UserProfile);
+                        setLS('CustomerNumber', CustomerNumber);
+                        setLS('Zipcode', CustomerMainShippingZipCode);
+                        setLS('UserName', UserName);
+                        setLS('CustomerShippingState', CustomerShippingState);
+                        setLS('ShippingMethod', PreferredMethodOfShipment);
 
-                        var defaultbranchname = GetLS('default_branchname');
-                        var defaultbranchcode = GetLS('default_branchcode');
+                        var defaultbranchname = getLS('default_branchname');
+                        var defaultbranchcode = getLS('default_branchcode');
                         if (IsValid == 'True') 
                         {
                             var qry = 'INSERT INTO userinfo (CompanyNumber,CustomerNumber,UserName,UserProfile,UserPhoneAreaCode,UserPhonePrefix,UserPhoneSuffix,UserFaxAreaCode,UserFaxPrefix,UserFaxSuffix,UserEMail,MethodOfShipment,OrderStatusCode,BranchNumber,ShipfromBranchNumber,CheckStockStatus,LastAccessMonth,DayOfLastAccess,YearLastAccessed,LastAccessTime,LastUpdateMonth,LastUpdateDay,LastUpdateYear,ShippedShipCode,OurTruckShipCode,PickupShipCode,UserIDOfMaintenance,CustomerMailingAddress1,CustomerMailingAddress2,CustomerMailingAddress3,CustomerShippingAddress1,CustomerShippingAddress2,CustomerShippingAddress3,CustomerMailingCity,CustomerShippingCity,CustomerMailingState,CustomerShippingState,CustomerMainMailingZipCode,CustomerMainShippingZipCode,CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CreditHoldFlag,DeliveryChargeFlag,ContractInEffectFlag,CreditLimitAmount,CustTaxExemptionNumber,CustTaxExemptFlag,CustStatementPrintCode,GSTTaxExemptCode,AverageDaysToPay,PreferredMethodOfShipment,ShipCode,ShipCodeLockFlag,PickingSeq)'
                           + 'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
                             tx.executeSql(qry, [CompanyNumber, CustomerNumber, UserName, UserProfile, UserPhoneAreaCode, UserPhonePrefix, UserPhoneSuffix, UserFaxAreaCode, UserFaxPrefix, UserFaxSuffix, UserEMail, MethodOfShipment, OrderStatusCode, BranchNumber, ShipfromBranchNumber, CheckStockStatus, LastAccessMonth, DayOfLastAccess, YearLastAccessed, LastAccessTime, LastUpdateMonth, LastUpdateDay, LastUpdateYear, ShippedShipCode, OurTruckShipCode, PickupShipCode, UserIDOfMaintenance, CustomerMailingAddress1, CustomerMailingAddress2, CustomerMailingAddress3, CustomerShippingAddress1, CustomerShippingAddress2, CustomerShippingAddress3, CustomerMailingCity, CustomerShippingCity, CustomerMailingState, CustomerShippingState, CustomerMainMailingZipCode, CustomerMainShippingZipCode, CustomerTelephoneAreaCode, CustomerTelephonePrefixNumber, CustomerTelephoneSuffixNumber, CreditHoldFlag, DeliveryChargeFlag, ContractInEffectFlag, CreditLimitAmount, CustTaxExemptionNumber, CustTaxExemptFlag, CustStatementPrintCode, GSTTaxExemptCode, AverageDaysToPay, PreferredMethodOfShipment, ShipCode, ShipCodeLockFlag, PickingSeq]);
                             if (page == 1) {
-                                SetLS('Isuserlogged', 'yes');
-                                var getbranchname = GetLS('default_branchname2');
-                                var getbranchcode = GetLS('default_branchcode2');
+                                setLS('Isuserlogged', 'yes');
+                                var getbranchname = getLS('default_branchname2');
+                                var getbranchcode = getLS('default_branchcode2');
 
                                 if (getbranchcode != null && getbranchcode != "") {
 
-                                    SetLS('default_branchcode', getbranchcode);
-                                    SetLS('Current_branch', getbranchcode);
-                                    SetLS('default_branchname', getbranchname);
+                                    setLS('default_branchcode', getbranchcode);
+                                    setLS('Current_branch', getbranchcode);
+                                    setLS('default_branchname', getbranchname);
                                     writetologfile("User Logged in", 1);
                                 }
                                 else
@@ -224,14 +224,14 @@ function submitButton(page)
                             }
                             else if (page == 2)
                             {
-                                SetLS('Isuserlogged', 'yes');
+                                setLS('Isuserlogged', 'yes');
                                 isuserlogged = 'yes'; //global variable;
-                                user_ID = GetLS('UserID');
-                                UserID = GetLS('UserID');
-                                UserProfile = GetLS('UserProfile');
-                                isuserlogged = GetLS('Isuserlogged');
-                                customerno = GetLS('CustomerNumber');
-                                UserName = GetLS('UserName');
+                                user_ID = getLS('UserID');
+                                UserID = getLS('UserID');
+                                UserProfile = getLS('UserProfile');
+                                isuserlogged = getLS('Isuserlogged');
+                                customerno = getLS('CustomerNumber');
+                                UserName = getLS('UserName');
 
                                 $(".exitbtn").show();
                                 $(".hide").show();
@@ -239,14 +239,14 @@ function submitButton(page)
                                 $(".signinbtn").hide();
                                 $("#fade").hide();
                                 $("#fadelogin").hide();
-                                var sectioncode = GetLS('SEC_CODE');
-                                pdtimgkitchendivdisplay1(GetLS('F_Sectioncode'), GetLS('F_Groupcode'), GetLS('F_Categorycode'));
+                                var sectioncode = getLS('SEC_CODE');
+                                pdtimgkitchendivdisplay1(getLS('F_Sectioncode'), getLS('F_Groupcode'), getLS('F_Categorycode'));
                             }
                         }
                         else
                         {
                             navigator.notification.alert('Invalid Username Or Password.', null, 'Authentication', 'OK');
-                            SetLS('Isuserlogged', 'No');
+                            setLS('Isuserlogged', 'No');
                             $("#loading_pdt").hide();
                             $.mobile.loading("hide");
                             $("#fadelogin").hide();
@@ -285,10 +285,10 @@ function onConfirmExit(buttonIndex)
 {
     if (buttonIndex == 1) 
     {
-        var isuserlogged = GetLS('Isuserlogged');
+        var isuserlogged = getLS('Isuserlogged');
         if (isuserlogged == 'yes') 
         {
-            var AccessTokenKey = GetLS('AccessTokenKey');
+            var AccessTokenKey = getLS('AccessTokenKey');
             $("#loading_pdt").show();
             $.mobile.loading("show", 
             {

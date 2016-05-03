@@ -37,11 +37,11 @@
         $(document).ready(function () {
 
 
-            var encryptedKey = GetLS('encryptedkey');
+            var encryptedKey = getLS('encryptedkey');
             if (encryptedKey == null || encryptedKey == "") {
                 location.href = "products.html";
             }
-            if (GetLS('Isuserlogged') === 'yes') {
+            if (getLS('Isuserlogged') === 'yes') {
                 $(".exitbtn").show();
             }
             else {
@@ -53,15 +53,15 @@
         function onDeviceReady() 
         {
             document.addEventListener("backbutton", function (e) {
-                var c_page = GetLS('page');
+                var c_page = getLS('page');
                 var result = c_page.split(","), new_page;
                 changepage(result[result.length - 1]);
                 if (result.length == 1) {
                     new_page = c_page.replace(result[result.length - 1], "");
-                    SetLS('page', new_page);
+                    setLS('page', new_page);
                 } else {
                     new_page = c_page.replace(',' + result[result.length - 1], "");
-                    SetLS('page', new_page);
+                    setLS('page', new_page);
                 }
             });
         }

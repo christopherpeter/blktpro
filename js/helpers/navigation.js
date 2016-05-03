@@ -29,7 +29,7 @@ function changepage(page) {
 
         case 'index':
 
-            var isuserlogged = GetLS('Isuserlogged');
+            var isuserlogged = getLS('Isuserlogged');
             //alert(isuserlogged);
             if (isuserlogged == 'yes')
             {

@@ -7,14 +7,14 @@ License:Tychons solutions
 function writetologfile(message,pageno) 
 {
    
-    var isuserlogged = GetLS('Isuserlogged');
-    var IMEI = GetLS('IMEI');
-    var UUID = GetLS('UUID');
+    var isuserlogged = getLS('Isuserlogged');
+    var IMEI = getLS('IMEI');
+    var UUID = getLS('UUID');
 
     var CustomerNumber = "";
 
-    if (GetLS('CustomerNumber') != null) {
-        CustomerNumber = GetLS('CustomerNumber');
+    if (getLS('CustomerNumber') != null) {
+        CustomerNumber = getLS('CustomerNumber');
     }
     else {
         CustomerNumber = "";
@@ -22,11 +22,11 @@ function writetologfile(message,pageno)
 
     var UserProfile = "";
 
-    if (GetLS('UserProfile') == null) {
+    if (getLS('UserProfile') == null) {
         UserProfile = "";
     }
     else {
-        UserProfile = GetLS('UserProfile');
+        UserProfile = getLS('UserProfile');
     }
 
 

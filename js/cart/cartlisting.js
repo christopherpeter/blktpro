@@ -6,17 +6,17 @@ License:Tychons solutions
 
 //Globalvalues for the JS
 
-var AccessTokenKey = GetLS('AccessTokenKey');
+var AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey == null) { AccessTokenKey = ""; }
-var CustomerNumber = GetLS('CustomerNumber');
+var CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber == null) { CustomerNumber = ""; }
-var user_ID = GetLS('UserID');
+var user_ID = getLS('UserID');
 if (user_ID == null) { user_ID = ""; }
-var UserProfile = GetLS('UserProfile');
+var UserProfile = getLS('UserProfile');
 if (UserProfile == null) { UserProfile = ""; }
-var isuserlogged = GetLS('Isuserlogged');
+var isuserlogged = getLS('Isuserlogged');
 
-var UserName = GetLS('UserName');
+var UserName = getLS('UserName');
 if (UserName == null) { UserName = ""; }
 var Isvalid = '';
 if (isuserlogged == 'yes') {
@@ -32,8 +32,8 @@ else {
 function cartpageload() {
 
     $("#loading_pdt").show();
-    SetLS('ShippingMethod', "S");
-    SetLS('ShipViaDescription', "UPS");
+    setLS('ShippingMethod', "S");
+    setLS('ShipViaDescription', "UPS");
 
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -44,7 +44,7 @@ function cartpageload() {
 
     });
 
-    var shippingMethod = GetLS('ShippingMethod');
+    var shippingMethod = getLS('ShippingMethod');
     if (shippingMethod != '' || shippingMethod != null) {
         $('#ddshippment1').val(shippingMethod);
     }
@@ -294,7 +294,7 @@ function loadcartitems() {
                             var Tax = Estimatedtotal * (parseFloat(pricetax) / 100);
                             var Pricewithtax = GrandTotal + Tax;
 
-                            SetLS('Totalcartweight', TotalWeight);
+                            setLS('Totalcartweight', TotalWeight);
 
                             //Assinging the values to global variables
 
@@ -438,7 +438,7 @@ $(function () {
 
 function loadmenu_cart(pageno)
 {
-    UserName = GetLS('UserName');
+    UserName = getLS('UserName');
     var html = "";
     html = html + '<div class="innerpopup">';
     html = html + '<div class="empty">';
@@ -537,10 +537,10 @@ function loadmenu_cart(pageno)
 
 
 function addressbook() {
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "addressbook") {
-        SetLS('page', c_page + ",addressbook");
+        setLS('page', c_page + ",addressbook");
     }
     $('.addressbook').show();
     $('.white_contentlistnewpdt').hide();
@@ -549,14 +549,14 @@ function addressbook() {
 }
 function addressbookcls() {
 
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     if (result.length == 1) {
         new_page = c_page.replace(result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     } else {
         new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     }
     $('.addressbook').hide();
     $('#fade').hide();
@@ -656,7 +656,7 @@ function onConfirmModifyCart(buttonIndex)
 function settax()
 {
     if (isuserlogged == 'yes') {
-        var zipcode = GetLS('Zipcode');
+        var zipcode = getLS('Zipcode');
         $.ajax({
             type: "GET",
             crossDomain: true,
@@ -720,13 +720,13 @@ function settax()
 
 
 function estimateshipping() {
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] !== 'estimateshipping') {
-        SetLS('page', c_page + ",estimateshipping");
+        setLS('page', c_page + ",estimateshipping");
     }
 
-    var TotalCartWeight = GetLS('Totalcartweight');
+    var TotalCartWeight = getLS('Totalcartweight');
     if (TotalCartWeight <= 0) {
         TotalCartWeight = 1;
     }
@@ -813,14 +813,14 @@ function estimateshipping() {
                 addresszip = ss.CustomerMainShippingZipCode;
                 username = ss.UserName;
 
-                SetLS('Toaddress', address1);
-                SetLS('Tocity', addresscity);
-                SetLS('Tostate', addressstate);
-                SetLS('Tozip', addresszip);
-                SetLS('UserName', username);
+                setLS('Toaddress', address1);
+                setLS('Tocity', addresscity);
+                setLS('Tostate', addressstate);
+                setLS('Tozip', addresszip);
+                setLS('UserName', username);
 
-                SetLS('NearestBranchAddress', address1 + "," + addresscity + "," + addressstate + "-" + addresszip);
-                SetLS('NearestBranchAddress1', address1 + "@" + addresscity + "," + addressstate + "-" + addresszip);
+                setLS('NearestBranchAddress', address1 + "," + addresscity + "," + addressstate + "-" + addresszip);
+                setLS('NearestBranchAddress1', address1 + "@" + addresscity + "," + addressstate + "-" + addresszip);
             }
 
             $("#div_address1").html(address1);
@@ -850,9 +850,9 @@ function estimateshipping() {
 
 function branchcodenumberset() 
 {
-    SetLS('branchcodenumber', $("#ddbranch").val());
+    setLS('branchcodenumber', $("#ddbranch").val());
 
-    if (GetLS('ShippingMethod') == "P") {
+    if (getLS('ShippingMethod') == "P") {
         loadnewpickupAddress($("#ddbranch").val());
     }
 }
@@ -860,7 +860,7 @@ function branchcodenumberset()
 
 function loadnewpickupAddress(branchno) {
 
-    var encryptedkey = GetLS('encryptedkey');
+    var encryptedkey = getLS('encryptedkey');
 
 
     $.ajax({
@@ -911,7 +911,7 @@ function loadnearestbranch() {
 
 
     var PreferredType = "";
-    var MethodofShippment = GetLS('ShippingMethod');
+    var MethodofShippment = getLS('ShippingMethod');
 
     if (MethodofShippment === "O") {
         PreferredType = 'type1';
@@ -983,11 +983,11 @@ var ChangedValues_Latest = [];
 function loadtodropdown() 
 {
     var branchtxt = "";
-    if (GetLS('NearestBranchAddress') == null || GetLS('NearestBranchAddress') == "") {
+    if (getLS('NearestBranchAddress') == null || getLS('NearestBranchAddress') == "") {
         branchtxt = "";
     }
     else {
-        branchtxt = GetLS('NearestBranchAddress');
+        branchtxt = getLS('NearestBranchAddress');
     }
 
     var lat1 = "", lon1 = "", lat, lng;
@@ -1048,10 +1048,10 @@ function findnearestLocations(lat1, lon1)
             $("#shipping_popup").show();
             $("#submitpopup").hide();
             ChangedValues_Latest.sort(SortByName);
-            SetLS('branchcodenumber', ChangedValues_Latest[0][0]);
+            setLS('branchcodenumber', ChangedValues_Latest[0][0]);
             $("#ddbranch").val(ChangedValues_Latest[0][0]); //select the nearest branch
 
-            if (GetLS('ShippingMethod') === 'P') 
+            if (getLS('ShippingMethod') === 'P') 
             {
                 var addsplit = ChangedValues_Latest[0][3].split("@");
                 $("#div_address1").html(addsplit[0]);
@@ -1060,7 +1060,7 @@ function findnearestLocations(lat1, lon1)
             }
             else 
             {
-                var nearestBranchAddress1 = GetLS('NearestBranchAddress1');
+                var nearestBranchAddress1 = getLS('NearestBranchAddress1');
                 var branchtxt = '';
 
                 if (nearestBranchAddress1 !== null || nearestBranchAddress1 !== "") {
@@ -1088,8 +1088,8 @@ function SortByName(a, b) {
 
 function getshippinginfo() {
     var OrderMethodOfShipment = $("#ddshippment1").val();
-    SetLS('ShippingMethod', OrderMethodOfShipment);
-    var branch_id = GetLS('default_branchcode');
+    setLS('ShippingMethod', OrderMethodOfShipment);
+    var branch_id = getLS('default_branchcode');
     if (OrderMethodOfShipment === "O") {
         shippingcharges = 0;
         $("#frmbranch").html("Buy from branch :</br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
@@ -1101,7 +1101,7 @@ function getshippinginfo() {
         $("#shipadddr").show();
         $("#frmbranch").show();
         $("#shipcharge").hide();
-        SetLS('ShipViaDescription', "Our Truck");
+        setLS('ShipViaDescription', "Our Truck");
     }
     else if (OrderMethodOfShipment === "P") {
         shippingcharges = 0;
@@ -1114,7 +1114,7 @@ function getshippinginfo() {
         $("#shipadddr").show();
         $("#frmbranch").show();
         $("#shipcharge").hide();
-        SetLS('ShipViaDescription', "Pick Up");
+        setLS('ShipViaDescription', "Pick Up");
 
     }
     else if (OrderMethodOfShipment === "S") {
@@ -1129,7 +1129,7 @@ function getshippinginfo() {
         $("#shipadddr").show();
         $("#frmbranch").show();
         $("#shipcharge").hide();
-        SetLS('ShipViaDescription', "UPS");
+        setLS('ShipViaDescription', "UPS");
 
     }
     loadnearestbranch(); //BranchMatrix Depends on shipping method
@@ -1137,14 +1137,14 @@ function getshippinginfo() {
 
 
 function estomatepopupclose() {
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     if (result.length == 1) {
         new_page = c_page.replace(result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     } else {
         new_page = c_page.replace(',' + result[result.length - 1], "");
-        SetLS('page', new_page);
+        setLS('page', new_page);
     }
     $("#shipping_popup").hide();
     $("#fade").hide();
@@ -1155,15 +1155,15 @@ function Estimate() {
 
     var BillOptionCode = "10";
 
-    var Toaddress1 = GetLS('Toaddress');
+    var Toaddress1 = getLS('Toaddress');
     var address_split = Toaddress1.split(" ");
     var Toaddress = address_split[0] + ',' + address_split[1] + ',' + address_split[2];
 
 
-    var Tocity = GetLS('Tocity');
-    var Tostate = GetLS('CustomerShippingState');
-    var Tozip = GetLS('Tozip');
-    var Payshipname = GetLS('UserID');
+    var Tocity = getLS('Tocity');
+    var Tostate = getLS('CustomerShippingState');
+    var Tozip = getLS('Tozip');
+    var Payshipname = getLS('UserID');
 
 
     var FromAddress1 = "900,SYLVAN,AVE";
@@ -1176,38 +1176,38 @@ function Estimate() {
 
         switch (ServiceOptioncode) {
             case "308":
-                SetLS('ShipViaDescription', "UPS Freight - LTL");
+                setLS('ShipViaDescription', "UPS Freight - LTL");
                 break;
             case "309":
-                SetLS('ShipViaDescription', "UPS Freight LTL - Guaranteed");
+                setLS('ShipViaDescription', "UPS Freight LTL - Guaranteed");
                 break;
             case "334":
-                SetLS('ShipViaDescription', "UPS Freight LTL - Guaranteed A.M");
+                setLS('ShipViaDescription', "UPS Freight LTL - Guaranteed A.M");
                 break;
             case "14":
-                SetLS('ShipViaDescription', "United Parcel Service - Next Day Air Early AM");
+                setLS('ShipViaDescription', "United Parcel Service - Next Day Air Early AM");
                 break;
             case "03":
-                SetLS('ShipViaDescription', "United Parcel Service - Ground");
+                setLS('ShipViaDescription', "United Parcel Service - Ground");
                 break;
             case "12":
-                SetLS('ShipViaDescription', "United Parcel Service - 3 Day Select");
+                setLS('ShipViaDescription', "United Parcel Service - 3 Day Select");
                 break;
             case "02":
-                SetLS('ShipViaDescription', "United Parcel Service - 2nd Day Air");
+                setLS('ShipViaDescription', "United Parcel Service - 2nd Day Air");
                 break;
             case "13":
-                SetLS('ShipViaDescription', "United Parcel Service - Next Day Air Saver");
+                setLS('ShipViaDescription', "United Parcel Service - Next Day Air Saver");
                 break;
             case "01":
-                SetLS('ShipViaDescription', "United Parcel Service - NextDayAir");
+                setLS('ShipViaDescription', "United Parcel Service - NextDayAir");
                 break;
 
         } 
     }
 
 
-    var TotalCartWeight = GetLS('Totalcartweight');
+    var TotalCartWeight = getLS('Totalcartweight');
     if (TotalCartWeight <= 0) {
         TotalCartWeight = 1;
     }

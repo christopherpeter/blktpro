@@ -6,16 +6,16 @@ License:Tychons solutions
 
 //Globalvalues for the JS
 
-var AccessTokenKey = GetLS('AccessTokenKey');
+var AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey == null) { AccessTokenKey = ""; }
-var CustomerNumber = GetLS('CustomerNumber');
+var CustomerNumber = getLS('CustomerNumber');
 if (CustomerNumber == null) { CustomerNumber = ""; }
-var user_ID = GetLS('UserID');
+var user_ID = getLS('UserID');
 if (user_ID == null) { user_ID = ""; }
-var UserProfile = GetLS('UserProfile');
+var UserProfile = getLS('UserProfile');
 if (UserProfile == null) { UserProfile = ""; }
-var isuserlogged = GetLS('Isuserlogged');
-var UserName = GetLS('UserName');
+var isuserlogged = getLS('Isuserlogged');
+var UserName = getLS('UserName');
 if (UserName == null) { UserName = ""; }
 
 var Isvalid = "";
@@ -43,9 +43,9 @@ function accountpage_load() {
     $("#lblusername").html(UserName);
     $("#lblCustomerNumber").html(CustomerNumber);
 
-    var branch_id = GetLS('default_branchcode');
+    var branch_id = getLS('default_branchcode');
 
-    var ShippingMethod = GetLS('ShippingMethod');
+    var ShippingMethod = getLS('ShippingMethod');
     $("#ddshippment").val(ShippingMethod);
 
     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
@@ -82,7 +82,7 @@ function accountpage_load() {
                 var ss = res.rows.item(i);
                 var Statename = ss.Statename;
                 var Statecode = ss.Statecode;
-                var CustomerShippingState = GetLS('CustomerShippingState');
+                var CustomerShippingState = getLS('CustomerShippingState');
 
 
                 if (Statecode == CustomerShippingState) {
@@ -118,7 +118,7 @@ function accountpage_load() {
 
         });
 
-        var branch_code = "'" + GetLS('default_branchcode') + "'";
+        var branch_code = "'" + getLS('default_branchcode') + "'";
 
         tx.executeSql('select id,Address,BranchName,BranchCode,email,PhoneNumber from branchinfo where BranchCode=' + branch_code, [], function successitem(txx, res) {
             var data = "";
@@ -202,13 +202,13 @@ function loadallbranches_tolocalDB_account() {
 
                     if (BranchCode == defaultbranchcode)
                     {
-                        var defaultBranchCode = GetLS('default_branchcode');
+                        var defaultBranchCode = getLS('default_branchcode');
                         if (defaultBranchCode === "" || defaultBranchCode === null) {
                             
-                            SetLS('default_branchcode', BranchCode);
-                            SetLS('default_branchname', BranchName);
-                            SetLS('default_branchcode1', BranchCode);
-                            SetLS('default_branchname1', BranchName);
+                            setLS('default_branchcode', BranchCode);
+                            setLS('default_branchname', BranchName);
+                            setLS('default_branchcode1', BranchCode);
+                            setLS('default_branchname1', BranchName);
                         }
                     }
 
@@ -250,8 +250,8 @@ function submitfeedback()
             return false;
         }
         else if (re.test(feedback)) {
-            var encryptedkey = GetLS('encryptedkey');
-            var UserProfile = GetLS('UserProfile');
+            var encryptedkey = getLS('encryptedkey');
+            var UserProfile = getLS('UserProfile');
 
             $.ajax({
                 type: "GET",
@@ -315,10 +315,10 @@ function savebranch() {
     var branch_code = $("#branch_list").val();
     var branch_name = $("#branch_list option:selected").text();
 
-    SetLS('default_branchcode', branch_code);
-    SetLS('default_branchname', branch_name);
-    SetLS('default_branchcode1', branch_code);
-    SetLS('default_branchname1', branch_name);
+    setLS('default_branchcode', branch_code);
+    setLS('default_branchname', branch_name);
+    setLS('default_branchcode1', branch_code);
+    setLS('default_branchname1', branch_name);
 
     var address1 = $("#txtaddress").val();
     var addresscity = $("#txtcity").val();
@@ -402,8 +402,8 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
 
     if (isuserlogged == 'yes')
     {
-        var UserProfile = GetLS('UserProfile');
-        var CustomerNumber = GetLS('CustomerNumber');
+        var UserProfile = getLS('UserProfile');
+        var CustomerNumber = getLS('CustomerNumber');
         $.ajax({
             type: "GET",
             crossDomain: true,
@@ -435,11 +435,11 @@ function updateshippingaddress(address1, addresscity, addressstate, addresszip, 
                     {
                         var query = "update userinfo set CustomerTelephoneAreaCode=" + CustomerTelephoneAreaCode + ",CustomerTelephonePrefixNumber=" + CustomerTelephonePrefixNumber + ",CustomerTelephoneSuffixNumber=" + CustomerTelephoneSuffixNumber + ", CustomerShippingAddress1='" + address1 + "', CustomerShippingCity='" + addresscity + "', CustomerShippingState='" + addressstate + "', CustomerMainShippingZipCode='" + addresszip + "' where CustomerNumber=" + CustomerNumber;
                         tx.executeSql(query);
-                        SetLS('CustomerShippingState', addressstate);
-                        SetLS('Toaddress', address1);
-                        SetLS('Tocity', addresscity);
-                        SetLS('Tostate', addressstate);
-                        SetLS('Tozip', addresszip);
+                        setLS('CustomerShippingState', addressstate);
+                        setLS('Toaddress', address1);
+                        setLS('Tocity', addresscity);
+                        setLS('Tostate', addressstate);
+                        setLS('Tozip', addresszip);
 
                         $('.addressbook').hide();
                         navigator.notification.alert('User Information Updated!', null, 'Account', 'OK');
@@ -601,10 +601,10 @@ $(function () {
     })
 });
 function addressbook() {
-    var c_page = GetLS('page');
+    var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] != "accpopup") {
-        SetLS('page', c_page + ",accpopup");
+        setLS('page', c_page + ",accpopup");
     }
     saveaddress();
     feedbackrtn();
