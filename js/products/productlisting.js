@@ -1866,7 +1866,6 @@ function Specification(itemno) {
                 var attributeslabel = [];
                 var attributesvalue = [];
                 if (output.BMCAttributes.length > 0) {
-                    var html = "";
                     $.each(list, function (i, item) {
                         //Attributes Label
 

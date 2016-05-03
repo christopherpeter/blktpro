@@ -20,10 +20,11 @@ function backtoindexpage() {
 
 function login() {
     var c_page = getLS('page');
-
+    var result = c_page.split(",");
+    var isuserlogged = getLS('Isuserlogged');
     if (c_page !== null) {
         if (c_page.indexOf(',') > -1) {
-            var result = c_page.split(",");
+           
             if (result[result.length - 1] !== "newlogin") {
                 setLS('page', c_page + ",newlogin");
             }
@@ -35,9 +36,8 @@ function login() {
     else {
         setLS('page', 'newlogin');
     }
-    var isuserlogged = getLS('Isuserlogged');
+    
     if (isuserlogged === 'yes') {
-        var result = c_page.split(",");
         if (result[result.length - 1] !== 'home');
         {
             setLS('page', c_page + ",home");
@@ -119,7 +119,7 @@ function submitButton(page) {
                 var CompanyNumber = obj.CompanyNumber;
 
                 if (CompanyNumber !== '' && CompanyNumber !== 'undefined') {
-                    var CompanyNumber = obj.CompanyNumber;
+     
                     var CustomerNumber = obj.CustomerNumber;
                     var UserName = obj.UserName;
                     var UserProfile = obj.UserProfile;

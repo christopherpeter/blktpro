@@ -1041,9 +1041,9 @@ function findnearestLocations(lat1, lon1) {
             ChangedValues_Latest.sort(SortByName);
             setLS('branchcodenumber', ChangedValues_Latest[0][0]);
             $("#ddbranch").val(ChangedValues_Latest[0][0]); //select the nearest branch
-
+            var addsplit;
             if (getLS('ShippingMethod') === 'P') {
-                var addsplit = ChangedValues_Latest[0][3].split("@");
+                addsplit = ChangedValues_Latest[0][3].split("@");
                 $("#div_address1").html(addsplit[0]);
                 $("#div_address2").html(addsplit[1]);
                 $("#shipadddr").html("Pick up branch address :");
@@ -1056,7 +1056,7 @@ function findnearestLocations(lat1, lon1) {
                     branchtxt = nearestBranchAddress1;
                 }
 
-                var addsplit = branchtxt.split("@");
+                addsplit = branchtxt.split("@");
 
                 $("#div_address1").html(addsplit[0]);
                 $("#div_address2").html(addsplit[1]);
@@ -1251,17 +1251,17 @@ function Estimate() {
             var resultJ = resultJSON.replace(/\\/g, '');
 
             var res1 = resultJ.replace(']"', "]");
-            var res1 = res1.replace(']"', "]");
+            res1 = res1.replace(']"', "]");
 
             var res2 = res1.replace('"[', "[");
-            var res2 = res2.replace('"[', "[");
+            res2 = res2.replace('"[', "[");
 
-            var output = $.parseJSON(res2);
+            var output = $.parseJSON(res2), list;
             if (TotalCartWeight >= 96) {
-                var list = output.GetShippingChargesResult;
+                list = output.GetShippingChargesResult;
             }
             else {
-                var list = output.GetShippingCharges2Result;
+                list = output.GetShippingCharges2Result;
             }
             $.each(list, function (i, item) {
                 var shipcharge = item.ShippingCharges;

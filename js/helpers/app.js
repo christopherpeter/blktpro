@@ -7,15 +7,17 @@ function maxLengthCheck(object) {
     if (object.value.length > object.maxLength)
         object.value = object.value.slice(0, object.maxLength)
 }
-function ConvertNameToUpperCase(Textbox) {
+function ConvertNameToUpperCase(Textbox)
+{
+    var ConvertToUppercase, Username, Password;
     if (Textbox === "username") {
-        var Username = $("#txtuser").val().trim();
-        var ConvertToUppercase = Username.toUpperCase();
+        Username = $("#txtuser").val().trim();
+        ConvertToUppercase = Username.toUpperCase();
         $("#txtuser").val(ConvertToUppercase);
     }
     else {
-        var Password = $("#txtpwd").val().trim();
-        var ConvertToUppercase = Password.toUpperCase();
+        Password = $("#txtpwd").val().trim();
+        ConvertToUppercase = Password.toUpperCase();
         $("#txtpwd").val(ConvertToUppercase);
     }
 
@@ -187,7 +189,7 @@ function showShowRooms() {
         $("#white_contentlistnew1").css("min-height", "340px");
     }
 
-    var showRoom = getLS('Showroom'), html;
+    var showRoom = getLS('Showroom'), html, address_split;
     if (showRoom === 'all') {
         html = "<div class='empty'></div>";
         html = html + "<div style='background: #fff;'>"; //1
@@ -198,7 +200,7 @@ function showShowRooms() {
         html = html + "<div class='innerpopup' style='font-size:12px'>";
         for (var f = 0; f < locations.length; f++) {
 
-            var address_split = locations[f][4].split(',');
+            address_split = locations[f][4].split(',');
 
 
             html = html + "<div class='popdiv'>";
@@ -256,7 +258,7 @@ function showShowRooms() {
 
         for (var k = 0; k < changedValues.length; k++) {
 
-            var address_split = changedValues[k][5].split(',');
+            address_split = changedValues[k][5].split(',');
 
 
             html = html + "<div class='popdiv'>";

@@ -123,7 +123,6 @@ function removeLS(Key) {
 
 var encryptedkey = getLS('encryptedkey');
 
-var AccessTokenKey = "";
 if (getLS('AccessTokenKey') === null || getLS('AccessTokenKey') === "") {
     AccessTokenKey = "";
 }

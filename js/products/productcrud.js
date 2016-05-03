@@ -582,8 +582,8 @@ function product_previous() {
 function product_search() {
     GlobalItemsList.length = 0;
     var c_page = getLS('page');
-    var result = c_page.split(",");
-    if (result[result.length - 1] !== 'sections') {
+    var Pageresult = c_page.split(",");
+    if (Pageresult[Pageresult.length - 1] !== 'sections') {
         setLS('page', c_page + ",sections");
     }
     var from_count = 1;

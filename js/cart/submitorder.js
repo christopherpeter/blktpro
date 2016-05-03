@@ -463,10 +463,10 @@ function submitpopup() {
 
 
     var OrderMethodOfShipment = $("#ddshippment1").val();
-
+    var c_page = getLS('page');
+    var result = c_page.split(",");
     if (OrderMethodOfShipment === "D") {
-        var c_page = getLS('page');
-        var result = c_page.split(",");
+
         if (result[result.length - 1] !== "submitpopup") {
             setLS('page', c_page + ",submitpopup");
         }
@@ -477,8 +477,7 @@ function submitpopup() {
 
     }
     else if (OrderMethodOfShipment === "O") {
-        var c_page = getLS('page');
-        var result = c_page.split(",");
+
         if (result[result.length - 1] !== "submitpopup") {
             setLS('page', c_page + ",submitpopup");
         }
@@ -490,14 +489,11 @@ function submitpopup() {
     }
     else if (OrderMethodOfShipment === "P") {
         var pickupbranch = $("#ddpickupbranch").val();
-
         if (pickupbranch === 0) {
             navigator.notification.alert('Please select your Pickup branch..!', null, 'Alert', 'OK');
             return false;
         }
 
-        var c_page = getLS('page');
-        var result = c_page.split(",");
         if (result[result.length - 1] !== "submitpopup") {
             setLS('page', c_page + ",submitpopup");
         }
@@ -514,9 +510,6 @@ function submitpopup() {
             return false;
         }
 
-
-        var c_page = getLS('page');
-        var result = c_page.split(",");
         if (result[result.length - 1] !== "submitpopup") {
             setLS('page', c_page + ",submitpopup");
         }
