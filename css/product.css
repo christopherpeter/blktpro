@@ -108,6 +108,7 @@ select
 {
     background: #3A9805;
     border: 1px solid #ccc;
+    box-sizing: border-box;
     color: #fff;
     width: 60px;
     text-align: center;
@@ -118,6 +119,7 @@ select
 {
     background: #304589;
     border: 1px solid #ccc;
+    box-sizing: border-box;
     color: #fff;
     width: 45px;
     text-align: center;
@@ -127,6 +129,7 @@ select
 {
     background: #3A9805;
     border: 1px solid #ccc;
+    box-sizing: border-box;
     color: #fff;
     width: 60px;
     text-align: center;
@@ -136,6 +139,7 @@ select
 {
     background: #ccc;
     border: 1px solid #ccc;
+    box-sizing: border-box;
     color: #fff;
     width: 60px;
     text-align: center;
@@ -145,6 +149,7 @@ select
 {
     background: #C6270D;
     border: 1px solid #ccc;
+    box-sizing: border-box;
     color: #fff;
     width: 60px;
     text-align: center;
@@ -154,6 +159,7 @@ select
 {
     background: #ccc;
     border: 1px solid #ccc;
+    box-sizing: border-box;
     color: #fff;
     width: 60px;
     text-align: center;
@@ -163,6 +169,7 @@ select
 {
     background: #304589;
     border: 1px solid #ccc;
+    box-sizing: border-box;
     color: #fff;
     width: 57px;
     text-align: center;
@@ -172,6 +179,7 @@ select
 {
     background: #ccc;
     border: 1px solid #ccc;
+    box-sizing: border-box;
     color: #fff;
     width: 57px;
     text-align: center;
@@ -256,6 +264,7 @@ select
     height: 100px;
     cursor: pointer;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .contentdiv
 {
@@ -272,6 +281,7 @@ hr
     height: 1px;
     border: 0;
     border-top: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .widthtd
 {
@@ -280,6 +290,7 @@ hr
 .addressbook
 {
     border: 1px solid #ccc;
+    box-sizing: border-box;
     left: 37%;
     position: absolute;
     top: 34%;
@@ -290,6 +301,7 @@ hr
 {
     border: 1px solid #ccc;
     left: 0;
+    box-sizing: border-box;
     position: absolute;
     top: 23%;
     width: 100%;
@@ -347,6 +359,7 @@ hr
 width:100%;
     cursor: pointer;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .mapviewalign
 {
@@ -426,6 +439,7 @@ width:100%;
     width: 450px;
     padding: 5px;
     border: 1px solid #CCC;
+    box-sizing: border-box;
     background-color: #fff;
     z-index: 1002;
     overflow-x: hidden;
@@ -444,7 +458,7 @@ width:100%;
 .tableproducts1
 {
     border: 1px solid #ccc;
-
+    box-sizing: border-box;
     margin-top: 0;
 
 }
@@ -524,6 +538,7 @@ width:100%;
     left: 39%;
     padding: 5px;
     border: 1px solid #CCC;
+    box-sizing: border-box;
     background-color: #fff;
     z-index: 1002;
     overflow-x: hidden;
@@ -532,6 +547,7 @@ width:100%;
 {
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
+    box-sizing: border-box;
     display: none;
     left: 77%;
     overflow-x: hidden;
@@ -546,6 +562,7 @@ width:100%;
 {
     background-color: #FFFFFF;
     border: none;
+    box-sizing: border-box;
     display: none;
     left: 1%;
     overflow-x: hidden;
@@ -578,6 +595,7 @@ width:100%;
     top: -534px;
     width: 23%;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .terms_condition
 {
@@ -596,6 +614,7 @@ width:100%;
     width: 50%;
     padding: 5px;
     border: 1px solid #CCC;
+    box-sizing: border-box;
     background-color: #1a2856;
     z-index: 1002;
     overflow-x: hidden;
@@ -789,6 +808,7 @@ tableclass1
 {
     border: 2px solid #CCC;
     border-radius: 10px;
+    box-sizing: border-box;
     margin: 110px auto;
     width: 45%;
 }
@@ -872,6 +892,7 @@ tableclass1
     .addressbook
     {
         border: 1px solid #ccc;
+        box-sizing: border-box;
         left: 37%;
         position: absolute;
         top: 16%;
@@ -895,7 +916,7 @@ tableclass1
     .tableproducts1
     {
         border: 1px solid #ccc;
-   
+        box-sizing: border-box;
         margin-top: 0;
       
     }
@@ -945,6 +966,7 @@ tableclass1
     .login_inner
     {
         border: 2px solid #ccc;
+        box-sizing: border-box;
         border-radius: 10px;
         margin: 60px auto;
         width: 45%;
@@ -974,6 +996,7 @@ tableclass1
     .white_contentlist
     {
         background-color: #FFFFFF;
+        box-sizing: border-box;
         border: 1px solid #CCCCCC;
         display: none;
         left: 68%;
@@ -991,6 +1014,7 @@ tableclass1
         top: -499px;
         width: 32%;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
 
     .p-contentlist
@@ -1028,9 +1052,10 @@ tableclass1
     }
     .imgpdt
     {
-  width:100%;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
 
     .white_content
@@ -1042,6 +1067,7 @@ tableclass1
         padding: 5px;
         border: 1px solid #CCC;
         background-color: #fff;
+        box-sizing: border-box;
         z-index: 1002;
         overflow-x: hidden;
     }
@@ -1147,6 +1173,7 @@ tableclass1
         border: 1px solid #ccc;
         left: 33%;
         position: absolute;
+        box-sizing: border-box;
         top: 7%;
         width: 32%;
         z-index: 1002;
@@ -1172,7 +1199,7 @@ tableclass1
     .tableproducts1
     {
         border: 1px solid #ccc;
-    
+         box-sizing: border-box;
         margin-top: 0;
      
     }
@@ -1262,6 +1289,7 @@ tableclass1
     .login_inner
     {
         border: 2px solid #ccc;
+        box-sizing: border-box;
         border-radius: 10px;
         margin: 60px auto;
         width: 45%;
@@ -1292,6 +1320,7 @@ tableclass1
     {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
+        box-sizing: border-box;
         display: none;
         left: 68%;
         overflow-x: hidden;
@@ -1308,6 +1337,7 @@ tableclass1
         top: -1177px;
         width: 32%;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
 
     .p-contentlist
@@ -1348,11 +1378,13 @@ tableclass1
      width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .white_contentdirection
     {
         background-color: #fff;
         border: 1px solid #ccc;
+        box-sizing: border-box;
         display: none;
         left: 25%;
         overflow-x: hidden;
@@ -1371,6 +1403,7 @@ tableclass1
         left: 10%;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -1481,6 +1514,7 @@ tableclass1
         border: 1px solid #ccc;
         left: 30%;
         position: absolute;
+        box-sizing: border-box;
         top: 7%;
         width: 40%;
         z-index: 1002;
@@ -1501,7 +1535,7 @@ tableclass1
     .tableproducts1
     {
         border: 1px solid #ccc;
-   
+   box-sizing: border-box;
         margin-top: 0;
    
     }
@@ -1593,6 +1627,7 @@ tableclass1
     .login_inner
     {
         border: 2px solid #ccc;
+        box-sizing: border-box;
         border-radius: 10px;
         margin: 60px auto;
         width: 45%;
@@ -1624,6 +1659,7 @@ tableclass1
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
+        box-sizing: border-box;
         left: 68%;
         overflow-x: hidden;
         padding: 5px;
@@ -1638,6 +1674,7 @@ tableclass1
         position: relative;
         top: -1177px;
         width: 34%;
+        box-sizing: border-box;
         border: 1px solid #ccc;
     }
 
@@ -1679,11 +1716,13 @@ tableclass1
 width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .white_contentdirection
     {
         background-color: #fff;
         border: 1px solid #ccc;
+        box-sizing: border-box;
         display: none;
         left: 25%;
         overflow-x: hidden;
@@ -1698,6 +1737,7 @@ width:100%;
     {
         background-color: #fff;
         border: 1px solid #ccc;
+        box-sizing: border-box;
         display: none;
         left: 32%;
         overflow-x: hidden;
@@ -1728,6 +1768,7 @@ width:100%;
     {
         background-color: #ffffff;
         border: none;
+        box-sizing: border-box;
         display: none;
         left: 1%;
         overflow-x: hidden;
@@ -1824,6 +1865,7 @@ width:100%;
     {
         border: 1px solid #ccc;
         left: 29%;
+        box-sizing: border-box;
         position: absolute;
         top: 9%;
         width: 40%;
@@ -1852,7 +1894,7 @@ width:100%;
     .tableproducts1
     {
         border: 1px solid #ccc;
-       
+       box-sizing: border-box;
         margin-top: 0;
       
     }
@@ -1938,6 +1980,7 @@ width:100%;
     {
         border: 2px solid #ccc;
         border-radius: 10px;
+        box-sizing: border-box;
         margin: 75px auto;
         width: 52%;
     }
@@ -1970,6 +2013,7 @@ width:100%;
     {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
+        box-sizing: border-box;
         display: none;
         left: 64%;
         overflow-x: hidden;
@@ -1984,6 +2028,7 @@ width:100%;
         left: 0;
         position: relative;
         top: -924px;
+        box-sizing: border-box;
         width: 37%;
         border: 1px solid #ccc;
     }
@@ -2025,6 +2070,7 @@ width:100%;
     width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .white_contentdirection
     {
@@ -2033,6 +2079,7 @@ width:100%;
         display: none;
         left: 20%;
         overflow-x: hidden;
+        box-sizing: border-box;
         padding: 5px;
         position: absolute;
         top: 11%;
@@ -2044,6 +2091,7 @@ width:100%;
     {
         background-color: #fff;
         border: 1px solid #ccc;
+        box-sizing: border-box;
         display: none;
         left: 32%;
         overflow-x: hidden;
@@ -2060,6 +2108,7 @@ width:100%;
     {
         background-color: #ffffff;
         border: none;
+        box-sizing: border-box;
         display: none;
         left: 1%;
         overflow-x: hidden;
@@ -2157,6 +2206,7 @@ width:100%;
     {
         border: 1px solid #ccc;
         left: 29%;
+        box-sizing: border-box;
         position: absolute;
         top: 9%;
         width: 40%;
@@ -2185,7 +2235,7 @@ width:100%;
     .tableproducts1
     {
         border: 1px solid #ccc;
-   
+   box-sizing: border-box;
         margin-top: 0;
        
     }
@@ -2272,6 +2322,7 @@ width:100%;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 75px auto;
+        box-sizing: border-box;
         width: 52%;
     }
     .login_inner1
@@ -2303,6 +2354,7 @@ width:100%;
     {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
+        box-sizing: border-box;
         display: none;
         left: 64%;
         overflow-x: hidden;
@@ -2319,6 +2371,7 @@ width:100%;
         top: -924px;
         width: 37%;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .p-contentlist
     {
@@ -2358,6 +2411,7 @@ width:100%;
      width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .white_contentdirection
     {
@@ -2367,6 +2421,7 @@ width:100%;
         left: 20%;
         overflow-x: hidden;
         padding: 5px;
+        box-sizing: border-box;
         position: absolute;
         top: 11%;
         width: 400px;
@@ -2382,6 +2437,7 @@ width:100%;
         overflow-x: hidden;
         padding: 5px;
         position: absolute;
+        box-sizing: border-box;
         top: 15%;
         z-index: 1002;
     }
@@ -2393,6 +2449,7 @@ width:100%;
     {
         background-color: #ffffff;
         border: none;
+        box-sizing: border-box;
         display: none;
         left: 1%;
         overflow-x: hidden;
@@ -2453,7 +2510,7 @@ width:100%;
     .tableproducts1
     {
         border: 1px solid #ccc;
-      
+      box-sizing: border-box;
         margin-top: 0;
        
     }
@@ -2525,7 +2582,7 @@ width:100%;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
-        width: 72%;
+        width: 72%;box-sizing: border-box;
     }
     .login_inner1
     {
@@ -2548,6 +2605,7 @@ width:100%;
     {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
+        box-sizing: border-box;
         display: none;
         left: 70%;
         overflow-x: hidden;
@@ -2564,6 +2622,7 @@ width:100%;
         top: -400px;
         width: 18%;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .p-contentlist
     {
@@ -2598,6 +2657,7 @@ width:100%;
 width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .white_contentdirection
     {
@@ -2608,6 +2668,7 @@ width:100%;
         width: 250px;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -2621,6 +2682,7 @@ width:100%;
         left: 10%;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -2629,6 +2691,7 @@ width:100%;
     {
         background-color: #ffffff;
         border: none;
+        box-sizing: border-box;
         display: none;
         left: 1%;
         overflow-x: hidden;
@@ -2667,7 +2730,7 @@ width:100%;
     .tableproducts1
     {
         border: 1px solid #ccc;
-   
+   box-sizing: border-box;
         margin-top: 0;
       
     }
@@ -2728,6 +2791,7 @@ width:100%;
         padding: 5px;
         position: absolute;
         top: 20%;
+        box-sizing: border-box;
         width: 95%;
         z-index: 1002;
     }
@@ -2737,6 +2801,7 @@ width:100%;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 50px auto;
+        box-sizing: border-box;
         width: 70%;
     }
     .login_inner1
@@ -2814,6 +2879,7 @@ width:100%;
         width: 100%;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -2824,6 +2890,7 @@ width:100%;
         position: relative;
         top: -400px;
         width: 50%;
+        box-sizing: border-box;
         border: 1px solid #ccc;
     }
     .p-contentlist
@@ -2859,6 +2926,7 @@ width:100%;
       width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .white_contentdirection
     {
@@ -2869,6 +2937,7 @@ width:100%;
         width: 250px;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -2938,6 +3007,7 @@ width:100%;
         position: absolute;
         top: 14%;
         width: 74%;
+        box-sizing: border-box;
         z-index: 1002;
     }
     .carttaximg
@@ -3029,6 +3099,7 @@ width:100%;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
+        box-sizing: border-box;
         width: 85%;
     }
     .login_inner1
@@ -3125,6 +3196,7 @@ width:100%;
         border: 1px solid #CCCCCC;
         display: none;
         left: 21%;
+        box-sizing: border-box;
         overflow-x: hidden;
         padding: 5px;
         position: absolute;
@@ -3144,6 +3216,7 @@ width:100%;
         top: -539px;
         width: 85%;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .p-contentlist
     {
@@ -3179,6 +3252,7 @@ width:100%;
     width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .white_contentdirection
     {
@@ -3188,6 +3262,7 @@ width:100%;
         left: 12%;
         width: 250px;
         padding: 5px;
+        box-sizing: border-box;
         border: 1px solid #CCC;
         background-color: #fff;
         z-index: 1002;
@@ -3202,6 +3277,7 @@ width:100%;
         left: 13%;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -3236,7 +3312,7 @@ width:100%;
     .tableproducts1
     {
         border: 1px solid #ccc;
-    
+    box-sizing: border-box;
         margin-top: 0;
       
     }
@@ -3255,6 +3331,7 @@ width:100%;
     {
         background-color: #ffffff;
         border: none;
+        box-sizing: border-box;
         display: none;
         left: 1%;
         overflow-x: hidden;
@@ -3381,6 +3458,7 @@ width:100%;
     {
         border: 1px solid #ccc;
         left: 23%;
+        box-sizing: border-box;
         position: absolute;
         top: 20%;
         width: 76%;
@@ -3480,6 +3558,7 @@ width:100%;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
+        box-sizing: border-box;
         width: 85%;
     }
     .login_inner1
@@ -3574,6 +3653,7 @@ width:100%;
     {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
+        box-sizing: border-box;
         display: none;
         left: 21%;
         overflow-x: hidden;
@@ -3595,6 +3675,7 @@ width:100%;
         top: -390px;
         width: 85%;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .p-contentlist
     {
@@ -3630,6 +3711,7 @@ width:100%;
   width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .pdtimg
     {
@@ -3645,6 +3727,7 @@ width:100%;
         width: 250px;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -3657,6 +3740,7 @@ width:100%;
         top: 22%;
         left: 10%;
         padding: 5px;
+        box-sizing: border-box;
         border: 1px solid #CCC;
         background-color: #fff;
         z-index: 1002;
@@ -3691,7 +3775,7 @@ width:100%;
         border: 1px solid #ccc;
 
         margin-top: 0;
- 
+ box-sizing: border-box;
         font-size: 12px;
     }
     .cartimg
@@ -3709,6 +3793,7 @@ width:100%;
     {
         background-color: #ffffff;
         border: none;
+        box-sizing: border-box;
         display: none;
         left: 1%;
         overflow-x: hidden;
@@ -3842,6 +3927,7 @@ width:100%;
     .addressbook
     {
         border: 1px solid #ccc;
+        box-sizing: border-box;
         left: 2%;
         position: absolute;
         top: 20%;
@@ -3862,7 +3948,7 @@ width:100%;
     .tableproducts1
     {
         border: 1px solid #ccc;
-     
+     box-sizing: border-box;
         margin-top: 0;
   
         font-size: 12px;
@@ -3884,6 +3970,7 @@ width:100%;
     .login_inner
     {
         border: 2px solid #ccc;
+        box-sizing: border-box;
         border-radius: 10px;
         margin: 40px auto;
         width: 94%;
@@ -3990,6 +4077,7 @@ width:100%;
     {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
+        box-sizing: border-box;
         display: none;
         left: 10%;
         overflow-x: hidden;
@@ -4011,6 +4099,7 @@ width:100%;
         width: 70%;
         left: 0;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .p-contentlist
     {
@@ -4046,6 +4135,7 @@ width:100%;
       width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .tableproducts
     {
@@ -4071,6 +4161,7 @@ width:100%;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
+        box-sizing: border-box;
     }
 
     .white_content
@@ -4081,6 +4172,7 @@ width:100%;
         left: 9%;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -4107,6 +4199,7 @@ width:100%;
     {
         background-color: #ffffff;
         border: none;
+        box-sizing: border-box;
         display: none;
         left: 1%;
         overflow-x: hidden;
@@ -4218,7 +4311,7 @@ width:100%;
     .tableproducts1
     {
         border: 1px solid #ccc;
-      
+      box-sizing: border-box;
         margin-top: 0;
        
     }
@@ -4236,6 +4329,7 @@ width:100%;
         border: 1px solid #ccc;
         color: #fff;
         width: 61px;
+        box-sizing: border-box;
         text-align: center;
         float: right;
     }
@@ -4243,6 +4337,7 @@ width:100%;
     {
         background: #ccc;
         border: 1px solid #ccc;
+        box-sizing: border-box;
         color: #fff;
         width: 61px;
         text-align: center;
@@ -4309,6 +4404,7 @@ width:100%;
     .addressbook
     {
         border: 1px solid #ccc;
+        box-sizing: border-box;
         left: 2%;
         position: absolute;
         top: 20%;
@@ -4331,7 +4427,7 @@ width:100%;
         border: 1px solid #ccc;
  
         margin-top: 0;
-      
+      box-sizing: border-box;
         font-size: 13px;
     }
 
@@ -4353,6 +4449,7 @@ width:100%;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
+        box-sizing: border-box;
         width: 94%;
     }
     .login_inner1
@@ -4457,6 +4554,7 @@ width:100%;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
+        box-sizing: border-box;
         left: 10%;
         overflow-x: hidden;
         padding: 5px;
@@ -4475,6 +4573,7 @@ width:100%;
         position: relative;
         top: -380px;
         width: 70%;
+        box-sizing: border-box;
         left: 0;
         border: 1px solid #ccc;
     }
@@ -4512,6 +4611,7 @@ width:100%;
   width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
     .tableproducts
     {
@@ -4531,6 +4631,7 @@ width:100%;
         width: 250px;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -4544,6 +4645,7 @@ width:100%;
         left: 9%;
         padding: 5px;
         border: 1px solid #CCC;
+        box-sizing: border-box;
         background-color: #fff;
         z-index: 1002;
         overflow-x: hidden;
@@ -4570,6 +4672,7 @@ width:100%;
     {
         background-color: #ffffff;
         border: none;
+        box-sizing: border-box;
         display: none;
         left: 1%;
         overflow-x: hidden;

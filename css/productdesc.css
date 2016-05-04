@@ -106,11 +106,13 @@ textarea
 input
 {
     border:1px solid #304589;
+    box-sizing: border-box;
     width:70%;height:20px;
 }
 select
 {
     border:1px solid #304589;
+    box-sizing: border-box;
     width:85%;height:20px;
 }
 .feedbkcondiv
@@ -133,35 +135,38 @@ select
 }
 .itemselecttax
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
+    background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px;box-sizing: border-box;
 }
 .itemselect
 {
     background: #304589; border: 1px solid #ccc; color: #fff; width: 45px; text-align: center;float: right;
+    box-sizing: border-box;
 }
 .itempayed
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px;
+    box-sizing: border-box;
 }
 .itempayed:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px;box-sizing: border-box;
+
 }
 .itempay
 {
-    background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px;box-sizing: border-box;
 }
 .itempay:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px;box-sizing: border-box;
 }
 .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
+    background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right;box-sizing: border-box;
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right        
+    background: #ccc; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right;box-sizing: border-box;
 }
 .available
 {font-size:14px
@@ -226,6 +231,7 @@ select
     height: 100px;
     cursor: pointer;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .contentdiv {
     height: 485px;
@@ -237,6 +243,7 @@ select
 hr {
     display: block; 
     height: 1px;
+    box-sizing: border-box;
     border: 0; 
     border-top: 1px solid #ccc;
 }
@@ -247,6 +254,7 @@ hr {
 .addressbook
 {
  border: 1px solid #ccc;
+ box-sizing: border-box;
     left: 37%;
     position: absolute;
     top: 34%;
@@ -256,6 +264,7 @@ hr {
 .itempdtimg
 {
     border: 1px solid #ccc;
+    box-sizing: border-box;
     left: 0;
     position: absolute;
     top: 23%;
@@ -310,6 +319,7 @@ hr {
      height:280px;
     cursor: pointer;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .imgpdtpdt
 {
@@ -317,6 +327,7 @@ hr {
     height: 2500px;
     cursor: pointer;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .mapviewalign {
       height: 30px;
@@ -409,6 +420,7 @@ width:100%;float:left;display:none
     width: 450px;
     padding: 5px;
     border: 1px solid #CCC;
+    box-sizing: border-box;
     background-color: #fff;
     z-index: 1002;
     overflow-x: hidden;
@@ -419,6 +431,7 @@ width:100%;float:left;display:none
 
        cursor: pointer;
    border: 1px solid #ccc;
+   box-sizing: border-box;
 }
 .tableproducts
 {
@@ -428,6 +441,7 @@ width:100%;float:left;display:none
 .tableproducts1
 {
      border: 1px solid #ccc;
+     box-sizing: border-box;
 
     margin-top: 0;
     
@@ -509,6 +523,7 @@ width:100%;float:left;display:none
     padding: 5px;
     border: 1px solid #CCC;
     background-color: #fff;
+    box-sizing: border-box;
     z-index: 1002;
     overflow-x: hidden;
 }
@@ -516,6 +531,7 @@ width:100%;float:left;display:none
 {
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
+    box-sizing: border-box;
     display: none;
     left: 77%;
     overflow-x: hidden;
@@ -529,6 +545,7 @@ width:100%;float:left;display:none
 .loginpopup
 {
     background-color: #FFFFFF;
+    box-sizing: border-box;
     border: none;
     display: none;
     left: 1%;
@@ -561,6 +578,7 @@ width:100%;float:left;display:none
     position: relative;
     top: -534px;
     width: 23%;
+    box-sizing: border-box;
     border: 1px solid #ccc;
 }
 .terms_condition
@@ -579,6 +597,7 @@ width:100%;float:left;display:none
     left: 30%;
     width: 50%;
     padding: 5px;
+    box-sizing: border-box;
     border: 1px solid #CCC;
     background-color: #1a2856;
     z-index: 1002;
@@ -869,7 +888,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .tableproducts1
 {
      border: 1px solid #ccc;
-
+     box-sizing: border-box;
     margin-top: 0;
   
 }
@@ -914,6 +933,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     {
         border: 2px solid #ccc;
         border-radius: 10px;
+        box-sizing: border-box;
         margin: 60px auto;
         width: 45%;
     }
@@ -944,6 +964,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
+        box-sizing: border-box;
         display: none;
         left: 68%;
         overflow-x: hidden;
@@ -960,6 +981,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         top: -499px;
         width: 32%;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
 
     .p-contentlist
@@ -999,6 +1021,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
          height:260px;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
      .imgpdtpdt
     {
@@ -1006,6 +1029,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         height: 243px;
         cursor: pointer;
         border: 1px solid #ccc;
+        box-sizing: border-box;
     }
 .white_content
 {
@@ -1015,6 +1039,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     left: 39%;
     padding: 5px;
     border: 1px solid #CCC;
+    box-sizing: border-box;
     background-color: #fff;
     z-index: 1002;
     overflow-x: hidden;
@@ -1341,7 +1366,7 @@ width:100%;
   .cartimg {
     cursor: pointer;
     float: right;
-   margin-top:0px;
+    margin-top:0;
     width: 100%;
 }
   .tablecart {
