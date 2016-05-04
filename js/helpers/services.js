@@ -73,14 +73,6 @@ var TotalProductCount = 10;
 var ToNextCount = parseInt(TotalProductCount, 10) - 1;
 
 
-//Global Variables
-
-var pricetax = 0;
-var shippingcharges = 0;
-var defaultbranchcode = "100";
-var defaultbranchname = "BLACKMAN - WAREHOUSE";
-var SecretPhrase = getCookie("AlphanumericToken");
-var AccessTokenKey, CustomerNumber, userID, UserProfile, isuserlogged, UserName, Isvalid;
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -92,6 +84,23 @@ function getCookie(cname) {
     }
     return "";
 }
+
+
+// function to store value to cookie
+
+function setCookie(cname, cvalue) {
+    var d = new Date();
+    d.setTime(d.getTime() + (5000 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+//Function to delete all the cookies
+
+function deleteCookies() {
+    document.cookie = "AlphanumericToken" + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+}
+
 
 //Function To set Localstorage
 
@@ -119,6 +128,17 @@ function getLS(Key) {
 function removeLS(Key) {
     localStorage.removeItem(Key);
 }
+
+
+
+//Global Variables
+
+var SettingsPricetax = 0;
+var SettingsShippingcharges = 0;
+var defaultbranchcode = "100";
+var defaultbranchname = "BLACKMAN - WAREHOUSE";
+var SecretPhrase = getCookie("AlphanumericToken");
+var AccessTokenKey, CustomerNumber, userID, UserProfile, isuserlogged, UserName, Isvalid;
 
 
 var encryptedkey = getLS('encryptedkey');

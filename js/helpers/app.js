@@ -78,20 +78,7 @@ function setEncryptedKey() {
     });
 }
 
-// function to store value to cookie
 
-function setCookie(cname, cvalue) {
-    var d = new Date();
-    d.setTime(d.getTime() + (5000 * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-
-//Function to delete all the cookies
-
-function deleteCookies() {
-    document.cookie = "AlphanumericToken" + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-}
 
 // Function to delete all the cookies values
 

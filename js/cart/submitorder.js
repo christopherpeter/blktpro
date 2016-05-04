@@ -79,6 +79,7 @@ function submitcart() {
     var Order = "O";
     var ShipToAddressFlag = "Y";
     var TaxableFlag = '';
+    var pricetax = SettingsPricetax, shippingcharges = SettingsShippingcharges;
     if (pricetax !== 0 && pricetax !== null) {
         TaxableFlag = 'Y';
     }
@@ -95,16 +96,16 @@ function submitcart() {
 
     var CountofLineItems = Totalitems;
     var TaxPercent = pricetax;
-    var OrderTaxAmount = TotalTax;
-    var SubtotalAmount = Totalamount;
+    var OrderTaxAmount = getLS('CartTotalTax');
+    var SubtotalAmount = getLS('CartTotalamount');
     var OtherChargesTotalAmount = parseFloat(shippingcharges);
     var CostTotalAmount = parseFloat(SubtotalAmount) + parseFloat(shippingcharges);
 
     var UserIDofMaintenance = getLS('UserID');
 
     var OrderFillTypeCode = "I";
-    var TaxableAmount = Totalamount_withtax;
-    var NonTaxableAmount = Totalamount;
+    var TaxableAmount = getLS('CartTotalamountWithTax');
+    var NonTaxableAmount = getLS('CartTotalamount');
     var RouteInUseTag = "L";
     var DiscountPercent = "0";
     var initials = "WOE";
@@ -363,7 +364,8 @@ function sendsummitorder(param1, param2) {
 
 function submitpopup() {
 
-
+    var pricetax = SettingsPricetax,shippingcharges= SettingsShippingcharges;
+   
     // Newly added on 12-01-2014
     var cartread = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
     cartread.transaction(function carinsertdetails(tx) {
@@ -382,13 +384,9 @@ function submitpopup() {
                     var Tax = Estimatedtotal * (parseFloat(pricetax) / 100);
                     var Pricewithtax = GrandTotal + Tax;
 
-
-                    //Assinging the values to global variables
-
-                    Totalamount = Estimatedtotal.toFixed(2);
-                    TotalTax = Tax.toFixed(2);
-                    Totalamount_withtax = Pricewithtax.toFixed(2);
-
+                    setLS('CartTotalamount', Estimatedtotal.toFixed(2));
+                    setLS('CartTotalTax', Tax.toFixed(2));
+                    setLS('CartTotalamountWithTax', Pricewithtax.toFixed(2));
 
                     output = output + '<table class="footertable">';
                     output = output + '<tr>';

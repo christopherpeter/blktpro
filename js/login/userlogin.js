@@ -53,6 +53,7 @@ function login() {
 //This function handled user log in 
 
 function submitButton(page) {
+  
     var accountno = $("#txtaccno").val().trim();
     var username = $("#txtuser").val().trim();
     var password = $("#txtpwd").val().trim();
@@ -117,7 +118,7 @@ function submitButton(page) {
                 var obj = JSON.parse(resultJSON);
                 var IsValid = obj.IsValid;
                 var CompanyNumber = obj.CompanyNumber;
-
+             
                 if (CompanyNumber !== '' && CompanyNumber !== 'undefined') {
      
                     var CustomerNumber = obj.CustomerNumber;
@@ -193,29 +194,34 @@ function submitButton(page) {
 
                     var defaultbranchname = getLS('default_branchname');
                     var defaultbranchcode = getLS('default_branchcode');
-                    if (IsValid === 'True') {
-                        var qry = 'INSERT INTO userinfo (CompanyNumber,CustomerNumber,UserName,UserProfile,UserPhoneAreaCode,UserPhonePrefix,UserPhoneSuffix,UserFaxAreaCode,UserFaxPrefix,UserFaxSuffix,UserEMail,MethodOfShipment,OrderStatusCode,BranchNumber,ShipfromBranchNumber,CheckStockStatus,LastAccessMonth,DayOfLastAccess,YearLastAccessed,LastAccessTime,LastUpdateMonth,LastUpdateDay,LastUpdateYear,ShippedShipCode,OurTruckShipCode,PickupShipCode,UserIDOfMaintenance,CustomerMailingAddress1,CustomerMailingAddress2,CustomerMailingAddress3,CustomerShippingAddress1,CustomerShippingAddress2,CustomerShippingAddress3,CustomerMailingCity,CustomerShippingCity,CustomerMailingState,CustomerShippingState,CustomerMainMailingZipCode,CustomerMainShippingZipCode,CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CreditHoldFlag,DeliveryChargeFlag,ContractInEffectFlag,CreditLimitAmount,CustTaxExemptionNumber,CustTaxExemptFlag,CustStatementPrintCode,GSTTaxExemptCode,AverageDaysToPay,PreferredMethodOfShipment,ShipCode,ShipCodeLockFlag,PickingSeq)'
-                      + 'VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+                    if (IsValid === 'True')
+                    {
+                        setLS('Isuserlogged', 'yes');
+                        var qry = 'INSERT INTO userinfo (CompanyNumber,CustomerNumber,UserName,UserProfile,UserPhoneAreaCode,UserPhonePrefix,UserPhoneSuffix,UserFaxAreaCode,UserFaxPrefix,UserFaxSuffix,UserEMail,MethodOfShipment,OrderStatusCode,BranchNumber,ShipfromBranchNumber,CheckStockStatus,LastAccessMonth,DayOfLastAccess,YearLastAccessed,LastAccessTime,LastUpdateMonth,LastUpdateDay,LastUpdateYear,ShippedShipCode,OurTruckShipCode,PickupShipCode,UserIDOfMaintenance,CustomerMailingAddress1,CustomerMailingAddress2,CustomerMailingAddress3,CustomerShippingAddress1,CustomerShippingAddress2,CustomerShippingAddress3,CustomerMailingCity,CustomerShippingCity,CustomerMailingState,CustomerShippingState,CustomerMainMailingZipCode,CustomerMainShippingZipCode,CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CreditHoldFlag,DeliveryChargeFlag,ContractInEffectFlag,CreditLimitAmount,CustTaxExemptionNumber,CustTaxExemptFlag,CustStatementPrintCode,GSTTaxExemptCode,AverageDaysToPay,PreferredMethodOfShipment,ShipCode,ShipCodeLockFlag,PickingSeq) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
                         tx.executeSql(qry, [CompanyNumber, CustomerNumber, UserName, UserProfile, UserPhoneAreaCode, UserPhonePrefix, UserPhoneSuffix, UserFaxAreaCode, UserFaxPrefix, UserFaxSuffix, UserEMail, MethodOfShipment, OrderStatusCode, BranchNumber, ShipfromBranchNumber, CheckStockStatus, LastAccessMonth, DayOfLastAccess, YearLastAccessed, LastAccessTime, LastUpdateMonth, LastUpdateDay, LastUpdateYear, ShippedShipCode, OurTruckShipCode, PickupShipCode, UserIDOfMaintenance, CustomerMailingAddress1, CustomerMailingAddress2, CustomerMailingAddress3, CustomerShippingAddress1, CustomerShippingAddress2, CustomerShippingAddress3, CustomerMailingCity, CustomerShippingCity, CustomerMailingState, CustomerShippingState, CustomerMainMailingZipCode, CustomerMainShippingZipCode, CustomerTelephoneAreaCode, CustomerTelephonePrefixNumber, CustomerTelephoneSuffixNumber, CreditHoldFlag, DeliveryChargeFlag, ContractInEffectFlag, CreditLimitAmount, CustTaxExemptionNumber, CustTaxExemptFlag, CustStatementPrintCode, GSTTaxExemptCode, AverageDaysToPay, PreferredMethodOfShipment, ShipCode, ShipCodeLockFlag, PickingSeq]);
-                        if (page === 1) {
-                            setLS('Isuserlogged', 'yes');
+                     
+                        if (page === '1')
+                        {
+                            
                             var getbranchname = getLS('default_branchname2');
                             var getbranchcode = getLS('default_branchcode2');
 
-                            if (getbranchcode !== null && getbranchcode !== "") {
+                            if (getbranchcode !== null && getbranchcode !== "")
+                            {
 
                                 setLS('default_branchcode', getbranchcode);
                                 setLS('Current_branch', getbranchcode);
                                 setLS('default_branchname', getbranchname);
                                 writeToLogFile("User Logged in", 1);
                             }
-                            else {
+                            else
+                            {
                                 writeToLogFile("User Logged in", 2);
                             }
                         }
-                        else if (page === 2) {
-                            setLS('Isuserlogged', 'yes');
-                            isuserlogged = 'yes'; //global variable;
+                        else if (page === '2')
+                        {                            
+                            isuserlogged = getLS('Isuserlogged');
                             userID = getLS('UserID');
                             UserID = getLS('UserID');
                             UserProfile = getLS('UserProfile');

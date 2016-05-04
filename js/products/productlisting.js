@@ -33,6 +33,226 @@ if (isuserlogged === 'yes') {
 }
 
 
+var myFuncCalls = 0;
+
+function loadsectionproductscontents(FirstLoad) {
+
+    var breadlist1 = getLS('breadlist1');
+    var breadlist2 = getLS('breadlist2');
+    var breadlist3 = getLS('breadlist3');
+    var breadlast = getLS('breadlast');
+
+
+    var htmltext = "";
+
+    htmltext = htmltext + '<div id="mybackbuttoncustom" style="text-align:left;float:left" onclick="pdoductpagereload()">   <img src="images/arrow_previous.png" /></div>';
+    htmltext = htmltext + '<div id="notsearch"  style="margin-top: 8px;font-weight:bold;color:#304589;font-size:10px" >';
+    if (breadlist1 !== "") {
+        htmltext = htmltext + '<span id="breadlist1" style="font-size:10px" onclick="breadcrumlist1()">' + breadlist1 + '</span><img src="images/next.png" style="width:9px" class="nxtimgclass" />';
+    }
+    if (breadlist2 !== "") {
+        htmltext = htmltext + '<span id="breadlist2" style="font-size:10px" onclick="breadcrumlist2()">' + breadlist2 + '</span><img src="images/next.png" style="width:9px" class="nxtimgclass" />';
+    }
+    if (breadlist3 !== "") {
+        htmltext = htmltext + '<span id="breadlist3" style="font-size:10px" onclick="breadcrumlist3()">' + breadlist3 + '</span><img src="images/next.png" style="width:9px" class="nxtimgclass" />';
+    }
+    htmltext = htmltext + '<span id="breadlistlast" style="font-size:10px" onclick="breadcrumlist4()"> ' + breadlast + '</span></div>';
+    htmltext = htmltext + '<div id="search"  style="margin-top: 8px;font-weight:bold;color:#304589;font-size:12px" > <label id="breadlistsearch" style="font-size:14px"/></div>';
+    $(".breadcrumstylefilter").html(htmltext);
+    $(".breadcrumstylefilter").show();
+    $("#notsearch").show();
+    $("#search").hide();
+    myFuncCalls = 0;
+
+    var view = getLS('viewimg');
+    var limit = getLS('product_count');
+
+    if (getLS('breadcrumb') === 'search') {
+        var searchtext = $("#txtpdtsrch").val().trim();
+        if (searchtext === "" || searchtext === null) {
+            navigator.notification.alert('Please enter product name.', null, 'Alert', 'OK');
+
+            return false;
+        }
+        document.getElementById("breadlistsearch").innerHTML = "Search text : " + searchtext;
+
+        $("#notsearch").hide();
+        $("#search").show();
+        $("#mybackbuttoncustom").attr("onclick", "pdtimgkitchendivdisplaynew1back()");
+
+    }
+    var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
+    showitems.transaction(function showitemsbybranch(tx) {
+        var html = '';
+
+        if (getLS('Isuserlogged') === 'yes') {
+            html = html + '<table  id="filternavigation" style="width:100%;background:#304589;text-align:center;color:#fff;height: 36px" > <tr><td style="text-decoration:underline;" onclick="filterselection1()"><img src="images/filte.png" style="width: 20px; height: 20px; margin-bottom: -3px;margin-left:4px;margin-top:4px;float:left" /><label  class="signinbtn1" style="float: left; font-size: 12px; margin-top: 7px">FILTERS</label></td></tr></table>';
+        }
+        else {
+            html = html + '<table  id="filternavigation" style="width:100%;background:#304589;color:#fff;height: 36px" > <tr><td style="text-decoration:underline;width:48%;float:left" onclick="filterselection1()"><img src="images/filte.png" style="width: 20px; height: 20px; margin-bottom: -3px;margin-left:4px;margin-top:4px;float:left" /><label  class="signinbtn1" style="float: left; font-size: 12px; margin-top: 7px">FILTERS</label></td><td style="text-decoration:underline;width:50%;float:right">          <label onclick="loginpopup()" class="signinbtn" style="font-size: 12px; margin-top: 7px"><img src="images/lock.png" style="width: 14px; height: 14px; margin-bottom: -2px;" /> SIGN IN TO GET PRICES</label></td></tr></table>';
+        }
+
+        tx.executeSql('select * from iteminfo', [], function itembranchsucces(txx, res) {
+            if (res.rows.length) {
+
+                html = html + '<table class="tableproducts1" style="border:none;width:100%;">';
+
+                var imageexistrowcount = 0;
+
+
+                for (var i = 0; i < res.rows.length; i++) {
+                    var ss = res.rows.item(i);
+                    var itemid = ss.id;
+                    var itemname = ss.ItemOrProductDescription;
+                    var OurListUnitPriceCompany = ss.ItemUnitPriceAmount;
+                    var OurItemNumber = ss.OurItemNumber;
+                    var AVAILABLEQUNTY = ss.AVAILABLEQUNTY;
+                    var PRODUCTIMAGE = ss.PRODUCTIMAGE;
+                    var STOCK = ss.STOCK;
+
+                    html = html + '<tr><td style="border: 1px solid #ccc;"><table><td>';
+                    html = html + '<tr  class="trclasspdt">';
+                    html = html + '<td onclick="storetolocal(' + OurItemNumber + ')"  class="pdtimg" style="width:30%;vertical-align: top;border:none">';
+                    html = html + '<img onerror="imgError(this);" src="' + productimagepath + PRODUCTIMAGE + '" class="imgpdtpdt" style="border:none;" />';
+                    html = html + '</td>';
+                    html = html + '<td  class="pdtimg lineheight" style="border-right:none;vertical-align:top;width:70%;border:none;font-size: 14px;"><table><tr><td><label><b class="positionleftalign">' + itemname + '</b></label><br />';
+                    html = html + '<label style="float:left;width:100%">Item # ' + OurItemNumber + '</label>';
+                    html = html + '<br />';
+                    if (isuserlogged === 'yes') {
+                        if (AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== "" && STOCK !== "N") {
+                            if (OurListUnitPriceCompany !== "" && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0) {
+                                html = html + '<label id="lblship"  style="color:green;font-size: 13px">Ready To Ship</label>';
+                            }
+                        }
+                        else {
+
+                            if (OurListUnitPriceCompany !== "" && AVAILABLEQUNTY >= 0 && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0) {
+                                var branch_id = getLS('default_branchcode');
+                                if (branch_id !== 100) {
+                                    html = html + '<label id="lblship" style="color:Red;font-size: 13px">Out Of Stock [Available In WareHouse]</label>';
+                                }
+                                else {
+                                    html = html + '<label id="lblship" style="color:Red;font-size: 13px">Out Of Stock</label>';
+                                }
+                            }
+
+                        }
+                    }
+
+                    html = html + '</td></tr>';
+
+                    if (isuserlogged === 'yes' && AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== "") {
+                        var textboxid = 'Idnumber' + i + '-' + AVAILABLEQUNTY + '';
+
+                        if (OurListUnitPriceCompany !== "" && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0) {
+
+                            html = html + '</table> ';
+                            html = html + '<label class="hide" style="margin-left:3px">Price : $' + parseFloat(OurListUnitPriceCompany).toFixed(2) + '</label> ';
+                            html = html + '</td>';
+                            html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" style="padding-top: 40px;" >';
+                            html = html + '<img src="images/ListRightArrow.png" style="width:26px;height:26px;float: right;margin-right: 20px;"/>';
+                            html = html + '</td>';
+                            html = html + '</tr>';
+                            html = html + '<tr><td><table style="margin: 0 auto;"><tr><td><label class="hide" style="float:left;font-size: 15px;margin-left:1px">Qty : </label><div style="float:left;margin-left:2px;margin-top:-2px"><input id="' + textboxid + '" maxlength="2" oninput="maxLengthCheck(this)" min="1" max="99" class="hide" onchange="handleChange(this);" style="text-align:center;width: 30px;height:16px;" value="1" /> </div> </td></tr></table></td><td><table><tr><td><a href="#" onclick=checkinventoryfun(' + OurItemNumber + '); ><img class="cartimg hide"  src="images/check_availability.png" style="height:auto" /></a></td><td><a href="#" onclick=addtocart(1,"' + OurItemNumber + '","' + textboxid + '"); ><img class="cartimg hide"  src="images/add_to_cart.png" style="height:auto" /></td></tr></table></td></tr>';
+                            html = html + '</table></td></tr>';
+                        }
+                        else {
+                            html = html + '</table> ';
+                            html = html + '<div style="width: 100%;color: black;font-size: 12px;margin-left:3px"><label class="hide lbl_' + OurItemNumber + '" style="font-weight:bold;margin-left: 3px;">';
+                            html = html + '<img class="imagemtop" src="images/textbox-loader.gif" style="width: 16px;height: 16px;float: left;">Loading Price...</label></div>'; //TextBoxLoader
+                            html = html + '</td>';
+                            html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" >';
+                            html = html + '<img src="images/ListRightArrow.png" style="width:26px;height:26px;float: right;margin-right: 20px;"/>';
+                            html = html + '</td>';
+                            html = html + '</tr>';
+                            html = html + '</table></td></tr>';
+                        }
+
+
+                    }
+                    else if (isuserlogged === 'yes') {
+
+                        html = html + '</table> ';
+                        html = html + '</td>';
+                        html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" >';
+                        html = html + '<img src="images/ListRightArrow.png" style="width:26px;height:26px;float: right;margin-right: 20px;"/>';
+                        html = html + '</td>';
+                        html = html + '</tr>';
+                        html = html + '</table></td></tr>';
+                    }
+                    else {
+                        html = html + '</table> ';
+                        html = html + '</td>';
+                        html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" >';
+                        html = html + '<img src="images/ListRightArrow.png" style="width:26px;height:26px;float: right;margin-right: 20px;"/>';
+                        html = html + '</td>';
+                        html = html + '</tr>';
+                        html = html + '</table></td></tr>';
+                    }
+
+                }
+                html = html + '</table>';
+                if (res.rows.length >= limit) //show or hide loadmorebutton
+                {
+
+                    html = html + '<div style="width:100%;text-align:center;padding: 10px 0 10px 0;">';
+                    html = html + '<a href="javascript:void(0)" onclick="loadmoreproducts()"><img src="images/show_more.png" style="width:165px;height:30px; margin-bottom:-3px;"/><a>';
+                    html = html + '</div>';
+                }
+
+                $(".pdtloadlistdiv").show();
+                $("#filterselctiondiv").hide();
+                $(".tableproducts1filter").hide();
+                $(".cleardivivfilter").hide();
+                $("#loaditems123").html(html);
+                $("#filternavigation").show();
+                $("#loading_pdt").hide();
+                $.mobile.loading("hide");
+
+                if (isuserlogged === "yes") {
+                    if (FirstLoad === "Yes") {
+                        ShowUserPrices();
+                    }
+                }
+
+            }
+            else {
+                html = html + "<div style='margin-bottom:45%;margin-top:45%;width: 100%;text-align: center;color: red;font-family: calibri;font-size: 16px;'>";
+                html = html + "<span>No products found.</span></div>";
+
+                $("#loaditems123").html(html);
+                $("#filternavigation").hide();
+                $(".tableproducts1filter").hide();
+                $(".cleardivivfilter").hide();
+                $("#filterselctiondiv").hide();
+                $("#loading_pdt").hide();
+                $.mobile.loading("hide");
+            }
+
+        });
+
+    });
+
+    $("#loaditems123").show();
+    $("#filterdiv").hide();
+    $(".searchdiv").hide();
+    $(".pdtimgkitchendivdisplay1").show();
+    $(".pdtimgdivdisplay").hide();
+    $("#default_div").hide();
+    $(".pdtimgkitchendivdisplay1").css('margin-top', '0px');
+
+    if (isuserlogged === 'yes') {
+        $(".hide").show();
+        $(".signinbtn").hide();
+    }
+    else {
+        $(".hide").hide();
+        $(".signinbtn").show();
+    }
+
+}
+
+
 $(document).ready(function () {
     setLS('viewimg', 'no');   //added on 1/12/2014
     $("#viewoff").click(function () {
@@ -725,224 +945,7 @@ function sleep(milliseconds) {
     }
 }
 
-var myFuncCalls = 0;
 
-function loadsectionproductscontents(FirstLoad) {
-
-    var breadlist1 = getLS('breadlist1');
-    var breadlist2 = getLS('breadlist2');
-    var breadlist3 = getLS('breadlist3');
-    var breadlast = getLS('breadlast');
-
-
-    htmltext = "";
-
-    htmltext = htmltext + '<div id="mybackbuttoncustom" style="text-align:left;float:left" onclick="pdoductpagereload()">   <img src="images/arrow_previous.png" /></div>';
-    htmltext = htmltext + '<div id="notsearch"  style="margin-top: 8px;font-weight:bold;color:#304589;font-size:10px" >';
-    if (breadlist1 !== "") {
-        htmltext = htmltext + '<span id="breadlist1" style="font-size:10px" onclick="breadcrumlist1()">' + breadlist1 + '</span><img src="images/next.png" style="width:9px" class="nxtimgclass" />';
-    }
-    if (breadlist2 !== "") {
-        htmltext = htmltext + '<span id="breadlist2" style="font-size:10px" onclick="breadcrumlist2()">' + breadlist2 + '</span><img src="images/next.png" style="width:9px" class="nxtimgclass" />';
-    }
-    if (breadlist3 !== "") {
-        htmltext = htmltext + '<span id="breadlist3" style="font-size:10px" onclick="breadcrumlist3()">' + breadlist3 + '</span><img src="images/next.png" style="width:9px" class="nxtimgclass" />';
-    }
-    htmltext = htmltext + '<span id="breadlistlast" style="font-size:10px" onclick="breadcrumlist4()"> ' + breadlast + '</span></div>';
-    htmltext = htmltext + '<div id="search"  style="margin-top: 8px;font-weight:bold;color:#304589;font-size:12px" > <label id="breadlistsearch" style="font-size:14px"/></div>';
-    $(".breadcrumstylefilter").html(htmltext);
-    $(".breadcrumstylefilter").show();
-    $("#notsearch").show();
-    $("#search").hide();
-    myFuncCalls = 0;
-
-    var view = getLS('viewimg');
-    var limit = getLS('product_count');
-
-    if (getLS('breadcrumb') === 'search') {
-        var searchtext = $("#txtpdtsrch").val().trim();
-        if (searchtext === "" || searchtext === null) {
-            navigator.notification.alert('Please enter product name.', null, 'Alert', 'OK');
-
-            return false;
-        }
-        document.getElementById("breadlistsearch").innerHTML = "Search text : " + searchtext;
-
-        $("#notsearch").hide();
-        $("#search").show();
-        $("#mybackbuttoncustom").attr("onclick", "pdtimgkitchendivdisplaynew1back()");
-
-    }
-    var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-    showitems.transaction(function showitemsbybranch(tx) {
-        var html = '';
-
-        if (getLS('Isuserlogged') === 'yes') {
-            html = html + '<table  id="filternavigation" style="width:100%;background:#304589;text-align:center;color:#fff;height: 36px" > <tr><td style="text-decoration:underline;" onclick="filterselection1()"><img src="images/filte.png" style="width: 20px; height: 20px; margin-bottom: -3px;margin-left:4px;margin-top:4px;float:left" /><label  class="signinbtn1" style="float: left; font-size: 12px; margin-top: 7px">FILTERS</label></td></tr></table>';
-        }
-        else {
-            html = html + '<table  id="filternavigation" style="width:100%;background:#304589;color:#fff;height: 36px" > <tr><td style="text-decoration:underline;width:48%;float:left" onclick="filterselection1()"><img src="images/filte.png" style="width: 20px; height: 20px; margin-bottom: -3px;margin-left:4px;margin-top:4px;float:left" /><label  class="signinbtn1" style="float: left; font-size: 12px; margin-top: 7px">FILTERS</label></td><td style="text-decoration:underline;width:50%;float:right">          <label onclick="loginpopup()" class="signinbtn" style="font-size: 12px; margin-top: 7px"><img src="images/lock.png" style="width: 14px; height: 14px; margin-bottom: -2px;" /> SIGN IN TO GET PRICES</label></td></tr></table>';
-        }
-
-        tx.executeSql('select * from iteminfo', [], function itembranchsucces(txx, res) {
-            if (res.rows.length) {
-
-                html = html + '<table class="tableproducts1" style="border:none;width:100%;">';
-
-                var imageexistrowcount = 0;
-
-
-                for (var i = 0; i < res.rows.length; i++) {
-                    var ss = res.rows.item(i);
-                    var itemid = ss.id;
-                    var itemname = ss.ItemOrProductDescription;
-                    var OurListUnitPriceCompany = ss.ItemUnitPriceAmount;
-                    var OurItemNumber = ss.OurItemNumber;
-                    var AVAILABLEQUNTY = ss.AVAILABLEQUNTY;
-                    var PRODUCTIMAGE = ss.PRODUCTIMAGE;
-                    var STOCK = ss.STOCK;
-
-                    html = html + '<tr><td style="border: 1px solid #ccc;"><table><td>';
-                    html = html + '<tr  class="trclasspdt">';
-                    html = html + '<td onclick="storetolocal(' + OurItemNumber + ')"  class="pdtimg" style="width:30%;vertical-align: top;border:none">';
-                    html = html + '<img onerror="imgError(this);" src="' + productimagepath + PRODUCTIMAGE + '" class="imgpdtpdt" style="border:none;" />';
-                    html = html + '</td>';
-                    html = html + '<td  class="pdtimg lineheight" style="border-right:none;vertical-align:top;width:70%;border:none;font-size: 14px;"><table><tr><td><label><b class="positionleftalign">' + itemname + '</b></label><br />';
-                    html = html + '<label style="float:left;width:100%">Item # ' + OurItemNumber + '</label>';
-                    html = html + '<br />';
-                    if (isuserlogged === 'yes') {
-                        if (AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== "" && STOCK !== "N") {
-                            if (OurListUnitPriceCompany !== "" && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0) {
-                                html = html + '<label id="lblship"  style="color:green;font-size: 13px">Ready To Ship</label>';
-                            }
-                        }
-                        else {
-
-                            if (OurListUnitPriceCompany !== "" && AVAILABLEQUNTY >= 0 && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0) {
-                                var branch_id = getLS('default_branchcode');
-                                if (branch_id !== 100) {
-                                    html = html + '<label id="lblship" style="color:Red;font-size: 13px">Out Of Stock [Available In WareHouse]</label>';
-                                }
-                                else {
-                                    html = html + '<label id="lblship" style="color:Red;font-size: 13px">Out Of Stock</label>';
-                                }
-                            }
-
-                        }
-                    }
-
-                    html = html + '</td></tr>';
-
-                    if (isuserlogged === 'yes' && AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== "") {
-                        var textboxid = 'Idnumber' + i + '-' + AVAILABLEQUNTY + '';
-
-                        if (OurListUnitPriceCompany !== "" && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0) {
-
-                            html = html + '</table> ';
-                            html = html + '<label class="hide" style="margin-left:3px">Price : $' + parseFloat(OurListUnitPriceCompany).toFixed(2) + '</label> ';
-                            html = html + '</td>';
-                            html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" style="padding-top: 40px;" >';
-                            html = html + '<img src="images/ListRightArrow.png" style="width:26px;height:26px;float: right;margin-right: 20px;"/>';
-                            html = html + '</td>';
-                            html = html + '</tr>';
-                            html = html + '<tr><td><table style="margin: 0 auto;"><tr><td><label class="hide" style="float:left;font-size: 15px;margin-left:1px">Qty : </label><div style="float:left;margin-left:2px;margin-top:-2px"><input id="' + textboxid + '" maxlength="2" oninput="maxLengthCheck(this)" min="1" max="99" class="hide" onchange="handleChange(this);" style="text-align:center;width: 30px;height:16px;" value="1" /> </div> </td></tr></table></td><td><table><tr><td><a href="#" onclick=checkinventoryfun(' + OurItemNumber + '); ><img class="cartimg hide"  src="images/check_availability.png" style="height:auto" /></a></td><td><a href="#" onclick=addtocart(1,"' + OurItemNumber + '","' + textboxid + '"); ><img class="cartimg hide"  src="images/add_to_cart.png" style="height:auto" /></td></tr></table></td></tr>';
-                            html = html + '</table></td></tr>';
-                        }
-                        else {
-                            html = html + '</table> ';
-                            html = html + '<div style="width: 100%;color: black;font-size: 12px;margin-left:3px"><label class="hide lbl_' + OurItemNumber + '" style="font-weight:bold;margin-left: 3px;">';
-                            html = html + '<img class="imagemtop" src="images/textbox-loader.gif" style="width: 16px;height: 16px;float: left;">Loading Price...</label></div>'; //TextBoxLoader
-                            html = html + '</td>';
-                            html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" >';
-                            html = html + '<img src="images/ListRightArrow.png" style="width:26px;height:26px;float: right;margin-right: 20px;"/>';
-                            html = html + '</td>';
-                            html = html + '</tr>';
-                            html = html + '</table></td></tr>';
-                        }
-
-
-                    }
-                    else if (isuserlogged === 'yes') {
-
-                        html = html + '</table> ';
-                        html = html + '</td>';
-                        html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" >';
-                        html = html + '<img src="images/ListRightArrow.png" style="width:26px;height:26px;float: right;margin-right: 20px;"/>';
-                        html = html + '</td>';
-                        html = html + '</tr>';
-                        html = html + '</table></td></tr>';
-                    }
-                    else {
-                        html = html + '</table> ';
-                        html = html + '</td>';
-                        html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" >';
-                        html = html + '<img src="images/ListRightArrow.png" style="width:26px;height:26px;float: right;margin-right: 20px;"/>';
-                        html = html + '</td>';
-                        html = html + '</tr>';
-                        html = html + '</table></td></tr>';
-                    }
-
-                }
-                html = html + '</table>';
-                if (res.rows.length >= limit) //show or hide loadmorebutton
-                {
-
-                    html = html + '<div style="width:100%;text-align:center;padding: 10px 0 10px 0;">';
-                    html = html + '<a href="javascript:void(0)" onclick="loadmoreproducts()"><img src="images/show_more.png" style="width:165px;height:30px; margin-bottom:-3px;"/><a>';
-                    html = html + '</div>';
-                }
-
-                $(".pdtloadlistdiv").show();
-                $("#filterselctiondiv").hide();
-                $(".tableproducts1filter").hide();
-                $(".cleardivivfilter").hide();
-                $("#loaditems123").html(html);
-                $("#filternavigation").show();
-                $("#loading_pdt").hide();
-                $.mobile.loading("hide");
-
-                if (isuserlogged === "yes") {
-                    if (FirstLoad === "Yes") {
-                        ShowUserPrices();
-                    }
-                }
-
-            }
-            else {
-                html = html + "<div style='margin-bottom:45%;margin-top:45%;width: 100%;text-align: center;color: red;font-family: calibri;font-size: 16px;'>";
-                html = html + "<span>No products found.</span></div>";
-
-                $("#loaditems123").html(html);
-                $("#filternavigation").hide();
-                $(".tableproducts1filter").hide();
-                $(".cleardivivfilter").hide();
-                $("#filterselctiondiv").hide();
-                $("#loading_pdt").hide();
-                $.mobile.loading("hide");
-            }
-
-        });
-
-    });
-
-    $("#loaditems123").show();
-    $("#filterdiv").hide();
-    $(".searchdiv").hide();
-    $(".pdtimgkitchendivdisplay1").show();
-    $(".pdtimgdivdisplay").hide();
-    $("#default_div").hide();
-    $(".pdtimgkitchendivdisplay1").css('margin-top', '0px');
-
-    if (isuserlogged === 'yes') {
-        $(".hide").show();
-        $(".signinbtn").hide();
-    }
-    else {
-        $(".hide").hide();
-        $(".signinbtn").show();
-    }
-
-}
 var GlobalItemsList = [];
 function ShowUserPrices() {
 
@@ -991,7 +994,7 @@ function ShowUserPrices() {
                         var ItemNumber = item.ItemNumber;
                         var ListPrice = item.NetPrice;
 
-                        qry = 'UPDATE iteminfo SET ItemUnitPriceAmount=' + ListPrice + ' WHERE OurItemNumber=?';
+                        var qry = 'UPDATE iteminfo SET ItemUnitPriceAmount=' + ListPrice + ' WHERE OurItemNumber=?';
                         //alert(qry);
                         tx.executeSql(qry, [ItemNumber]);
 
@@ -1023,7 +1026,7 @@ function imgErrortest(image) {
     if (2 * count === myFuncCalls) {
 
 
-        html = "";
+        var html = "";
         html = html + "<div style='margin-bottom:45%;margin-top:45%;width: 100%;text-align: center;color: red;font-family: calibri;font-size: 16px;'>";
         html = html + "<span>No products found.</span></div>";
         myFuncCalls = 0;
@@ -1031,9 +1034,6 @@ function imgErrortest(image) {
     }
 
 }
-
-
-
 
 // Function to show more products
 

@@ -33,7 +33,104 @@ if (isuserlogged === 'yes') {
 }
 
 
-//Function to load section code to the table sectionifo
+// This is used to read the sectioninfo table contents and used to form 3x4 grid view
+var totalgridlength = 0;
+function loadsectionimages() {
+
+    if ($(window).height() > 900) {
+        $("#prdtsectionimges").css("min-height", "1000px");
+        totalgridlength = 27;
+    }
+    else {
+        $("#prdtsectionimges").css("min-height", "450px");
+        totalgridlength = 12;
+
+    }
+
+    var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
+    showitems.transaction(function showitemsbybranch(tx) {
+        var html = "";
+        tx.executeSql('SELECT * FROM sectioninfo', [], function itembranchsucce(tx, results) {
+            setLS('TotalSections', results.rows.length);
+        });
+        tx.executeSql('SELECT * FROM sectioninfo WHERE id between 1 and ' + totalgridlength, [], function itembranchsucces(txx, res) {
+            var count = 0;
+            html = html + "<div class='tableproducts'>";
+            for (var i = 0; i < res.rows.length; i++) {
+                var ss = res.rows.item(i);
+                var id = ss.id;
+                var SECTIONCODE = ss.SECTION;
+                var DESCRIPTION = ss.DESCRIPTION;
+                var HSCODE = ss.HSCODE;
+                if (count % 3 === 0) {
+                    if (count === 0) {
+                        //html = html + "<tr class='trclasspdt'>";
+                        html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
+
+                        if (SECTIONCODE === "FILTERS") {
+                            html = html + "<img onerror=\"imgError(this);\" src='" + imagepath + HSCODE + ".jpg' style='width:27%;' onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\"  />";
+                        }
+                        else {
+                            html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:70%;padding:5%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
+                        }
+
+
+                        html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
+                        html = html + DESCRIPTION + "</p>";
+                        html = html + "</div>";
+                    }
+                    else {
+
+                        html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
+
+
+                        if (SECTIONCODE === "FILTERS") {
+                            html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
+                        }
+                        else {
+                            html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' class='productimagesizedisplay'    onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
+                        }
+
+                        html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
+                        html = html + DESCRIPTION + "</p>";
+                        html = html + "</div>";
+                    }
+
+                }
+                else {
+                    html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
+
+                    if (SECTIONCODE === "FILTERS") {
+                        html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
+                    }
+                    else {
+                        html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' class='productimagesizedisplay'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
+                    }
+                    html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
+                    html = html + DESCRIPTION + "</p>";
+                    html = html + "</div>";
+                }
+
+                count++;
+
+            }
+
+            html = html + "</div>";
+            setLS('images_oldcount', totalgridlength);
+            document.getElementById("prdtsectionimges").innerHTML = html;
+            $.mobile.loading("hide");
+            $("#loading_pdt").hide();
+        });
+    });
+}
+
+
+
+//Function to read the sectioninfo table contents and added it to the filter
+
+function loadsections() {
+    loadsectionimages();
+}
 
 
 function ChangeUserBranch() {
@@ -151,12 +248,6 @@ function loadsectionfilter() {
     }
 }
 
-
-//Function to read the sectioninfo table contents and added it to the filter
-
-function loadsections() {
-    loadsectionimages();
-}
 
 // This function will fire when a section has no sub groups in it
 
@@ -314,96 +405,6 @@ function loadmorecategories() {
     loadsections();
 }
 
-// This is used to read the sectioninfo table contents and used to form 3x4 grid view
-var totalgridlength = 0;
-function loadsectionimages() {
-
-    if ($(window).height() > 900) {
-        $("#prdtsectionimges").css("min-height", "1000px");
-        totalgridlength = 27;
-    }
-    else {
-        $("#prdtsectionimges").css("min-height", "450px");
-        totalgridlength = 12;
-
-    }
-
-    var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-    showitems.transaction(function showitemsbybranch(tx) {
-        var html = "";
-        tx.executeSql('SELECT * FROM sectioninfo', [], function itembranchsucce(tx, results) {
-            setLS('TotalSections', results.rows.length);
-        });
-        tx.executeSql('SELECT * FROM sectioninfo WHERE id between 1 and ' + totalgridlength, [], function itembranchsucces(txx, res) {
-            var count = 0;
-            html = html + "<div class='tableproducts'>";
-            for (var i = 0; i < res.rows.length; i++) {
-                var ss = res.rows.item(i);
-                var id = ss.id;
-                var SECTIONCODE = ss.SECTION;
-                var DESCRIPTION = ss.DESCRIPTION;
-                var HSCODE = ss.HSCODE;
-                if (count % 3 === 0) {
-                    if (Count = 0) {
-                        //html = html + "<tr class='trclasspdt'>";
-                        html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
-
-                        if (SECTIONCODE === "FILTERS") {
-                            html = html + "<img onerror=\"imgError(this);\" src='" + imagepath + HSCODE + ".jpg' style='width:27%;' onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\"  />";
-                        }
-                        else {
-                            html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:70%;padding:5%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
-                        }
-
-
-                        html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
-                        html = html + DESCRIPTION + "</p>";
-                        html = html + "</div>";
-                    }
-                    else {
-
-                        html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
-
-
-                        if (SECTIONCODE === "FILTERS") {
-                            html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
-                        }
-                        else {
-                            html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' class='productimagesizedisplay'    onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
-                        }
-
-                        html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
-                        html = html + DESCRIPTION + "</p>";
-                        html = html + "</div>";
-                    }
-
-                }
-                else {
-                    html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
-
-                    if (SECTIONCODE === "FILTERS") {
-                        html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
-                    }
-                    else {
-                        html = html + "<img onerror='imgError(this);' src='" + imagepath + HSCODE + ".jpg' class='productimagesizedisplay'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
-                    }
-                    html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
-                    html = html + DESCRIPTION + "</p>";
-                    html = html + "</div>";
-                }
-
-                count++;
-
-            }
-
-            html = html + "</div>";
-            setLS('images_oldcount', totalgridlength);
-            document.getElementById("prdtsectionimges").innerHTML = html;
-            $.mobile.loading("hide");
-            $("#loading_pdt").hide();
-        });
-    });
-}
 
 //This function is used for handling swipe next function
 

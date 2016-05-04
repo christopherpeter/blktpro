@@ -34,35 +34,6 @@ if (isuserlogged === 'yes') {
     Isvalid = "Y";
 }
 
-
-// Page Load event for cart
-
-function cartpageload() {
-
-    $("#loading_pdt").show();
-    setLS('ShippingMethod', "S");
-    setLS('ShipViaDescription', "UPS");
-
-    $.mobile.loading("show", {
-        text: "Loading,Please Wait...",
-        textVisible: true,
-        theme: "a",
-        textonly: true,
-        html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><p style='color:#304589;font-weight:bold'>Please Wait...</p></span>"
-
-    });
-
-    var shippingMethod = getLS('ShippingMethod');
-    if (shippingMethod !== '' || shippingMethod !== null) {
-        $('#ddshippment1').val(shippingMethod);
-    }
-    else {
-        $('#ddshippment1').val('0');
-    }
-    settax();
-    loadshippingaddress();
-}
-
 //fuction to load shipping address details()
 
 function loadshippingaddress() {
@@ -139,22 +110,110 @@ function loadshippingaddress() {
             }
         });
     });
-
-
-
-
-
 }
+
+
+
+function settax() {
+    if (isuserlogged === 'yes') {
+        var zipcode = getLS('Zipcode'), pricetax = SettingsPricetax;
+        $.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: gettaxfromzipcodeURL + zipcode + "&splib=" + splib + "&tablelib=" + tablelib,
+            dataType: "xml",
+            success: function (xmlData) {
+                var xmlString;
+                if (window.ActiveXObject) {
+                    xmlString = xmlData.xml;
+                }
+                else {
+                    xmlString = (new XMLSerializer()).serializeToString(xmlData);
+                }
+
+                var xmlDoc = $.parseXML(xmlString);
+
+                var $xml = $(xmlDoc);
+                var $Name = $xml.find('return');
+
+                var resultJSON = $Name.text();
+                var finalresult = "{" + resultJSON + "}";
+                var output = $.parseJSON(finalresult);
+                var list = output.BMCTaxRate;
+                var html = "";
+                if (output.BMCTaxRate.length > 0) {
+                    $.each(list, function (i, item) {
+                        var TaxPercentage = item.TaxPercentage;
+                        if (TaxPercentage !== "" && TaxPercentage !== null) {
+                            pricetax = TaxPercentage; //binding user zipcode -tax
+
+                            writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
+                        }
+                        else {
+
+                            pricetax = 0; //binding user zipcode -tax
+                            writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
+                        }
+
+                    });
+                }
+                else {
+                    pricetax = 0; //binding user zipcode -tax
+                    writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
+                }
+
+            }, error: function () {
+
+                $.mobile.loading("hide");
+                $("#loading_pdt").hide();
+                navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
+            }
+        });
+    }
+    else {
+        loadcartitems();
+        $.mobile.loading("hide");
+        $("#loading_pdt").hide();
+    }
+}
+
+
+
+// Page Load event for cart
+
+function cartpageload() {
+
+    $("#loading_pdt").show();
+    setLS('ShippingMethod', "S");
+    setLS('ShipViaDescription', "UPS");
+
+    $.mobile.loading("show", {
+        text: "Loading,Please Wait...",
+        textVisible: true,
+        theme: "a",
+        textonly: true,
+        html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><p style='color:#304589;font-weight:bold'>Please Wait...</p></span>"
+
+    });
+
+    var shippingMethod = getLS('ShippingMethod');
+    if (shippingMethod !== '' || shippingMethod !== null) {
+        $('#ddshippment1').val(shippingMethod);
+    }
+    else {
+        $('#ddshippment1').val('0');
+    }
+    settax();
+    loadshippingaddress();
+}
+
 
 //Function to load cart items
 
-var Totalamount;
-var TotalTax;
-var Totalamount_withtax;
 var Totalitems;
 
 function loadcartitems() {
-
+    var pricetax = SettingsPricetax, shippingcharges = SettingsShippingcharges;
     var cartread = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
     cartread.transaction(function carinsertdetails(tx) {
         var query1 = "CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)";
@@ -302,14 +361,10 @@ function loadcartitems() {
                             var Pricewithtax = GrandTotal + Tax;
 
                             setLS('Totalcartweight', TotalWeight);
-
-                            //Assinging the values to global variables
-
-                            Totalamount = Estimatedtotal.toFixed(2);
-                            TotalTax = Tax.toFixed(2);
-                            Totalamount_withtax = Pricewithtax.toFixed(2);
-
-
+                            setLS('CartTotalamount', Estimatedtotal.toFixed(2));
+                            setLS('CartTotalTax', Tax.toFixed(2));
+                            setLS('CartTotalamountWithTax', Pricewithtax.toFixed(2));
+     
                             output = output + '<table class="footertable">';
                             output = output + '<tr>';
                             output = output + '<td style="font-weight: bold; vertical-align: top; width: 15%; color: #304589; border-right: 1px solid #808080">';
@@ -649,71 +704,6 @@ function onConfirmModifyCart(buttonIndex) {
         }, errorCB);
     }
 }
-
-
-function settax() {
-    if (isuserlogged === 'yes') {
-        var zipcode = getLS('Zipcode');
-        $.ajax({
-            type: "GET",
-            crossDomain: true,
-            url: gettaxfromzipcodeURL + zipcode + "&splib=" + splib + "&tablelib=" + tablelib,
-            dataType: "xml",
-            success: function (xmlData) {
-                var xmlString;
-                if (window.ActiveXObject) {
-                    xmlString = xmlData.xml;
-                }
-                else {
-                    xmlString = (new XMLSerializer()).serializeToString(xmlData);
-                }
-
-                var xmlDoc = $.parseXML(xmlString);
-
-                var $xml = $(xmlDoc);
-                var $Name = $xml.find('return');
-
-                var resultJSON = $Name.text();
-                var finalresult = "{" + resultJSON + "}";
-                var output = $.parseJSON(finalresult);
-                var list = output.BMCTaxRate;
-                var html = "";
-                if (output.BMCTaxRate.length > 0) {
-                    $.each(list, function (i, item) {
-                        var TaxPercentage = item.TaxPercentage;
-                        if (TaxPercentage !== "" && TaxPercentage !== null) {
-                            pricetax = TaxPercentage; //binding user zipcode -tax
-
-                            writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
-                        }
-                        else {
-
-                            pricetax = 0; //binding user zipcode -tax
-                            writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
-                        }
-
-                    });
-                }
-                else {
-                    pricetax = 0; //binding user zipcode -tax
-                    writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
-                }
-
-            }, error: function () {
-
-                $.mobile.loading("hide");
-                $("#loading_pdt").hide();
-                navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-            }
-        });
-    }
-    else {
-        loadcartitems();
-        $.mobile.loading("hide");
-        $("#loading_pdt").hide();
-    }
-}
-
 
 
 function estimateshipping() {
@@ -1078,7 +1068,7 @@ function SortByName(a, b) {
 function getshippinginfo() {
     var OrderMethodOfShipment = $("#ddshippment1").val();
     setLS('ShippingMethod', OrderMethodOfShipment);
-    var branch_id = getLS('default_branchcode');
+    var branch_id = getLS('default_branchcode'), shippingcharges = SettingsShippingcharges;
     if (OrderMethodOfShipment === "O") {
         shippingcharges = 0;
         $("#frmbranch").html("Buy from branch :</br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
@@ -1276,11 +1266,11 @@ function Estimate() {
                     $("#shipcharge").show();
                 }
                 else {
-                    shippingcharges = amount;
+                    SettingsShippingcharges = amount;
                     $("#shipcharge").show();
                     $("#shipping_popup").show();
                     $("#shipcharge").html("Estimated Shipping Charge : $<span id='shipchargeval'></span>");
-                    $("#shipchargeval").text(shippingcharges);
+                    $("#shipchargeval").text(SettingsShippingcharges);
                     writeToLogFile("Shipping Charge is $" + amount, 11);
                 }
                 //loadcartitems();

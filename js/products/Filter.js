@@ -5,7 +5,7 @@ License:Tychons solutions
 */
 
 //Globalvalues for the JS
-
+var GlobalFilterArray = [];
 AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey === null) {
     AccessTokenKey = "";
@@ -309,7 +309,7 @@ function filterbackbtn() {
         pdtimgkitchendivdisplay(getLS('F_Sectioncode'), getLS('F_Groupcode'), getLS('F_Categorycode'), getLS('breadlist1'));
     }
 }
-var GlobalFilterArray = [];
+
 var AttributeName = "";
 var AttributeValue = "";
 
