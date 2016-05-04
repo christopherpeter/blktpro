@@ -9,9 +9,9 @@ function writeToLogFile(message, pageno) {
     var IMEI = getLS('IMEI');
     var UUID = getLS('UUID');
 
-    CustomerNumber = getLS('CustomerNumber');
+    var CustomerNumber = getLS('CustomerNumber');
     if (CustomerNumber === null) { CustomerNumber = ""; }
-    UserProfile = getLS('UserProfile');
+    var UserProfile = getLS('UserProfile');
     if (UserProfile === null) { UserProfile = ""; }
 
     if (IMEI === 'undefined' || IMEI === "" || IMEI === null) {

@@ -430,7 +430,7 @@ function product_next() {
                 var DESCRIPTION = ss.DESCRIPTION;
 
                 if (count % 3 === 0) {
-                    if (Count = 0) {
+                    if (count === 0) {
                         //html = html + "<tr class='trclasspdt'>";
                         html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
 
