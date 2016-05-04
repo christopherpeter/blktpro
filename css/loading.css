@@ -64,7 +64,7 @@ Inherited from body.ui-mobile-viewport.ui-overlay-c
 .ui-body-c, .ui-overlay-c {
 
 color: #333;
-text-shadow: 0 0 0 #fff;
+text-shadow: 0 0px 0 #fff;
 background: #f9f9f9;
 background-image: -webkit-gradient(linear,left top,left bottom,from(#f9f9f9),to(#eee));
 background-image: -webkit-linear-gradient(#f9f9f9,#eee);
@@ -75,7 +75,7 @@ background-image: linear-gradient(#f9f9f9,#eee);
 }
 body {
 font-family: calibri,Helvetica;
-margin: -16px 0 0 0;
+margin: -16px 0px 0 0px;
 }
 
 .ui-body-a, .ui-overlay-a {
@@ -112,7 +112,7 @@ Inherited from body.ui-mobile-viewport.ui-overlay-c
 .ui-body-c, .ui-overlay-c {
 
 color: #333;
-text-shadow: 0 0 0 #fff;
+text-shadow: 0 0px 0 #fff;
 background: #f9f9f9;
 background-image: -webkit-gradient(linear,left top,left bottom,from(#f9f9f9),to(#eee));
 background-image: -webkit-linear-gradient(#f9f9f9,#eee);
@@ -123,7 +123,7 @@ background-image: linear-gradient(#f9f9f9,#eee);
 }
 body {
 font-family: calibri,Helvetica;
-margin: -16px 0 0 0;
+margin: -16px 0px 0 0px;
 }
 
 
@@ -192,7 +192,7 @@ Inherited from body.ui-mobile-viewport.ui-overlay-c
 .ui-body-c, .ui-overlay-c {
 
 color: #333;
-text-shadow: 0 0 0 #fff;
+text-shadow: 0 0px 0 #fff;
 background: #f9f9f9;
 background-image: -webkit-gradient(linear,left top,left bottom,from(#f9f9f9),to(#eee));
 background-image: -webkit-linear-gradient(#f9f9f9,#eee);
@@ -203,5 +203,5 @@ background-image: linear-gradient(#f9f9f9,#eee);
 }
 body {
 font-family: calibri,Helvetica;
-margin: -16px 0 0 0;
+margin: -16px 0px 0 0px;
 }

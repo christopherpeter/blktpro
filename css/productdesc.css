@@ -1,7 +1,7 @@
 ﻿body
 {
     font-family: calibri,Helvetica;
-    margin: -16px 0 0 0;
+    margin: -16px 0px 0 0px;
 }
     .popupheight { height: 262px; overflow-x: hidden; overflow-y: scroll; }
 #desctable
@@ -106,13 +106,11 @@ textarea
 input
 {
     border:1px solid #304589;
-    box-sizing: border-box;
     width:70%;height:20px;
 }
 select
 {
     border:1px solid #304589;
-    box-sizing: border-box;
     width:85%;height:20px;
 }
 .feedbkcondiv
@@ -135,38 +133,35 @@ select
 }
 .itemselecttax
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px;box-sizing: border-box;
+    background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
 }
 .itemselect
 {
     background: #304589; border: 1px solid #ccc; color: #fff; width: 45px; text-align: center;float: right;
-    box-sizing: border-box;
 }
 .itempayed
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px;
-    box-sizing: border-box;
+    background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempayed:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px;box-sizing: border-box;
-
+    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay
 {
-    background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px;box-sizing: border-box;
+    background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px;box-sizing: border-box;
+    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right;box-sizing: border-box;
+    background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right;box-sizing: border-box;
+    background: #ccc; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right        
 }
 .available
 {font-size:14px
@@ -231,7 +226,6 @@ select
     height: 100px;
     cursor: pointer;
     border: 1px solid #ccc;
-    box-sizing: border-box;
 }
 .contentdiv {
     height: 485px;
@@ -243,7 +237,6 @@ select
 hr {
     display: block; 
     height: 1px;
-    box-sizing: border-box;
     border: 0; 
     border-top: 1px solid #ccc;
 }
@@ -254,7 +247,6 @@ hr {
 .addressbook
 {
  border: 1px solid #ccc;
- box-sizing: border-box;
     left: 37%;
     position: absolute;
     top: 34%;
@@ -264,7 +256,6 @@ hr {
 .itempdtimg
 {
     border: 1px solid #ccc;
-    box-sizing: border-box;
     left: 0;
     position: absolute;
     top: 23%;
@@ -274,8 +265,8 @@ hr {
 	.black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 100%;
 			background-color: gray;
@@ -289,8 +280,8 @@ hr {
     	.black_overlayin{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 100%;
 			background-color: gray;
@@ -304,7 +295,7 @@ hr {
 .cartimg {
 
      float: right;
-    margin-top: 0;
+    margin-top: 0px;
     width: 100%;
     cursor:pointer;
 }
@@ -319,7 +310,6 @@ hr {
      height:280px;
     cursor: pointer;
     border: 1px solid #ccc;
-    box-sizing: border-box;
 }
 .imgpdtpdt
 {
@@ -327,7 +317,6 @@ hr {
     height: 2500px;
     cursor: pointer;
     border: 1px solid #ccc;
-    box-sizing: border-box;
 }
 .mapviewalign {
       height: 30px;
@@ -336,7 +325,7 @@ hr {
     
 }
 .pdtimgdivdisplay {
-   width:100%;margin-left:0;
+   width:100%;margin-left:0%;
 }
 .pdtimgkitchendivdisplay1 {
    width:93px;
@@ -420,7 +409,6 @@ width:100%;float:left;display:none
     width: 450px;
     padding: 5px;
     border: 1px solid #CCC;
-    box-sizing: border-box;
     background-color: #fff;
     z-index: 1002;
     overflow-x: hidden;
@@ -431,17 +419,15 @@ width:100%;float:left;display:none
 
        cursor: pointer;
    border: 1px solid #ccc;
-   box-sizing: border-box;
 }
 .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: 2.5%;
 }
 .tableproducts1
 {
      border: 1px solid #ccc;
-     box-sizing: border-box;
 
     margin-top: 0;
     
@@ -466,7 +452,7 @@ width:100%;float:left;display:none
 {
     float: left;
   
-    margin-top: 0 !important;
+    margin-top: 0px !important;
     width: 100%;
 }
 .submitlinediv
@@ -523,7 +509,6 @@ width:100%;float:left;display:none
     padding: 5px;
     border: 1px solid #CCC;
     background-color: #fff;
-    box-sizing: border-box;
     z-index: 1002;
     overflow-x: hidden;
 }
@@ -531,7 +516,6 @@ width:100%;float:left;display:none
 {
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
-    box-sizing: border-box;
     display: none;
     left: 77%;
     overflow-x: hidden;
@@ -545,7 +529,6 @@ width:100%;float:left;display:none
 .loginpopup
 {
     background-color: #FFFFFF;
-    box-sizing: border-box;
     border: none;
     display: none;
     left: 1%;
@@ -562,7 +545,7 @@ width:100%;float:left;display:none
     position: fixed;
     top: 62px;
     width: 100%;
-    left:0;
+    left:0%;
     /*border-bottom: 1px solid #ccc;*/
 }
 .white_contentlistnew
@@ -574,11 +557,10 @@ width:100%;float:left;display:none
 }
 .white_contentlistnew1
 {
-    left: 0;
+    left: 0%;
     position: relative;
     top: -534px;
     width: 23%;
-    box-sizing: border-box;
     border: 1px solid #ccc;
 }
 .terms_condition
@@ -597,7 +579,6 @@ width:100%;float:left;display:none
     left: 30%;
     width: 50%;
     padding: 5px;
-    box-sizing: border-box;
     border: 1px solid #CCC;
     background-color: #1a2856;
     z-index: 1002;
@@ -677,7 +658,7 @@ width:100%;float:left;display:none
 }
 .popdiv
 {
-    margin-left: 0;
+    margin-left: 0px;
     margin-right: 5px;
     width: 100%;
     line-height: 15px
@@ -718,7 +699,7 @@ tableclass1
 }
 .empty
 {
-    height: 0;
+    height: 0px;
 }
 .tabcontent
 {
@@ -804,7 +785,7 @@ tableclass1
 }
 .login_inner1
 {
-    border-radius: 0;
+    border-radius: 0px;
     margin: 110px auto;
     width: 25%;
 }
@@ -822,7 +803,7 @@ tableclass1
 }
 .forgot_span
 {
-    margin: 0 10px 0 0;
+    margin: 0 10px 0 0px;
 }
 .leftdivalign {margin-left: 40%; cursor: pointer
 }
@@ -888,7 +869,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .tableproducts1
 {
      border: 1px solid #ccc;
-     box-sizing: border-box;
+
     margin-top: 0;
   
 }
@@ -933,13 +914,12 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     {
         border: 2px solid #ccc;
         border-radius: 10px;
-        box-sizing: border-box;
         margin: 60px auto;
         width: 45%;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 60px auto;
         width: 45%;
     }
@@ -964,7 +944,6 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
-        box-sizing: border-box;
         display: none;
         left: 68%;
         overflow-x: hidden;
@@ -976,12 +955,11 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -499px;
         width: 32%;
         border: 1px solid #ccc;
-        box-sizing: border-box;
     }
 
     .p-contentlist
@@ -1021,7 +999,6 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
          height:260px;
         cursor: pointer;
         border: 1px solid #ccc;
-        box-sizing: border-box;
     }
      .imgpdtpdt
     {
@@ -1029,7 +1006,6 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         height: 243px;
         cursor: pointer;
         border: 1px solid #ccc;
-        box-sizing: border-box;
     }
 .white_content
 {
@@ -1039,7 +1015,6 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     left: 39%;
     padding: 5px;
     border: 1px solid #CCC;
-    box-sizing: border-box;
     background-color: #fff;
     z-index: 1002;
     overflow-x: hidden;
@@ -1047,7 +1022,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 .cartimg {
     cursor: pointer;
     float: right;
-    margin-top: 0;
+    margin-top: 0px;
     width: 100%;
 }
 .arrow1 {
@@ -1247,7 +1222,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 60px auto;
         width: 45%;
     }
@@ -1283,7 +1258,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -1177px;
         width: 32%;
@@ -1366,7 +1341,7 @@ width:100%;
   .cartimg {
     cursor: pointer;
     float: right;
-    margin-top:0;
+   margin-top:0px;
     width: 100%;
 }
   .tablecart {
@@ -1486,7 +1461,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: 2.5%;
 }
 
@@ -1564,7 +1539,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 300px auto;
         width: 45%;
     }
@@ -1600,7 +1575,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -1177px;
         width: 34%;
@@ -1692,7 +1667,7 @@ width:100%;float:left;display:none
 .cartimg {
     cursor: pointer;
     float: right;
-    margin-top: 0;
+    margin-top: 0px;
     width: 100%;
 }
 .loginpopup {
@@ -1804,7 +1779,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .cartimg {
     cursor: pointer;
     float: right;
-    margin-top: 0;
+    margin-top: 0px;
     width: 100%;
 }
   .tableproducts1
@@ -1841,7 +1816,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
         .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; 
 }
 
@@ -1907,7 +1882,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 200px auto;
         width: 52%;
     }
@@ -1927,7 +1902,7 @@ float:left;display:none
     {
         float: left;
         margin-bottom: 10px;
-        margin-left: 0;
+        margin-left: 0px;
         width: 44%;
     }
     .white_contentlist
@@ -1945,7 +1920,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -924px;
         width: 37%;
@@ -2132,7 +2107,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .cartimg {
     cursor: pointer;
     float: right;
-    margin-top: 0;
+    margin-top: 0px;
     width: 100%;
 }
   .tableproducts1
@@ -2169,12 +2144,12 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: 2%;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:100%;margin-left:0;
+    float:left;width:100%;margin-left:0%;
 }
         
     .filter
@@ -2234,7 +2209,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 200px auto;
         width: 52%;
     }
@@ -2272,7 +2247,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -924px;
         width: 37%;
@@ -2488,7 +2463,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 60px auto;
         width: 72%;
     }
@@ -2605,7 +2580,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: 2%;
 }
 }
@@ -2722,7 +2697,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 50px auto;
         width: 70%;
     }
@@ -2759,7 +2734,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -2801,7 +2776,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -400px;
         width: 50%;
@@ -3090,7 +3065,7 @@ float:left;display:none;
 
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -3167,12 +3142,12 @@ float:left;display:none;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
         font-size: 11px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -539px;
         width: 85%;
@@ -3184,7 +3159,7 @@ float:left;display:none;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0;
+        margin-left: 0px;
         text-align: center;
         width: 100%;
     }
@@ -3256,7 +3231,7 @@ float:left;display:none;
 }
          .tableproducts
     {
-        margin-top: 0;
+        margin-top: 0px;
         width:100%; margin-left: 2%;
     }
              .tableclass
@@ -3276,7 +3251,7 @@ float:left;display:none;
                     .cartimg {
 
      float: right;
-    margin-top: 0;
+    margin-top: 0%;
     width: 100%;
     cursor:pointer;
 }
@@ -3335,8 +3310,8 @@ float:left;display:none;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 808px;
 			background-color: gray;
@@ -3350,7 +3325,7 @@ float:left;display:none;
 /*.imgdescdtl {
     margin-top: 5px;
 width: 80%;
-margin-left: 0;
+margin-left: 0%;
 margin-bottom: 10px;
 }*/
     #loading-image {
@@ -3471,7 +3446,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
      .tableproducts
     {
-        margin-top: 0;
+        margin-top: 0px;
         width:100%; margin-left: 2%;
     }
 
@@ -3548,7 +3523,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 40px auto;
         width: 85%;
     }
@@ -3574,7 +3549,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -3652,11 +3627,11 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     {
         background: #fff;
         font-size: 11px;
-        margin-left: 0;
+        margin-left: 0px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -390px;
         width: 85%;
@@ -3668,7 +3643,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0;
+        margin-left: 0px;
         text-align: center;
         width: 100%;
     }
@@ -3706,7 +3681,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .pdtimg
     {
         width: 30%;
-        height: 0;
+        height: 0%;
    
     }
     .white_contentdirection
@@ -3749,7 +3724,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 100%;
 }
     .pdtimgdivdisplay {
-    float:left;width:100%;margin-left:0;
+    float:left;width:100%;margin-left:0%;
 }
   
     .tableproducts1
@@ -3762,7 +3737,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .cartimg {
 
      float: right;
-    margin-top: 0;
+    margin-top: 0%;
     width: 100%;
     cursor:pointer;
 }
@@ -3821,8 +3796,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;
@@ -3836,7 +3811,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 /*.imgdescdtl {
 margin-top: 5px;
 width: 80%;
-margin-left: 0;
+margin-left: 0%;
 margin-bottom: 10px;
 }*/
 #loading-image {
@@ -3991,7 +3966,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -4079,7 +4054,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
         font-size: 11px;
     }
     .white_contentlistnew1
@@ -4087,7 +4062,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         position: relative;
         top: -380px;
         width: 70%;
-        left: 0;
+        left: 0%;
         border: 1px solid #ccc;
     }
     .p-contentlist
@@ -4134,13 +4109,13 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .tableproducts
     {
-        margin-top: 0;
+        margin-top: 0px;
         width:100%; margin-left: 2%;
     }
     .pdtimg
     {
            width: 30%;
-        height: 0;
+        height: 0%;
         font-size: 12px;
     
     }
@@ -4266,8 +4241,8 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;
@@ -4282,7 +4257,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 /*.imgdescdtl {
    margin-top: 5px;
 width: 80%;
-margin-left: 0;
+margin-left: 0%;
 margin-bottom: 10px;
 }*/
         .tableproducts1
@@ -4310,7 +4285,7 @@ margin-bottom: 10px;
         
 }
 .pdtimgdivdisplay {
-    margin-left: 0;
+    margin-left: 0%;
     width: 100%
 }
 #loading-image {
@@ -4457,7 +4432,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -4544,7 +4519,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
         font-size: 11px;
     }
     .white_contentlistnew1
@@ -4552,7 +4527,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         position: relative;
         top: -380px;
         width: 70%;
-        left: 0;
+        left: 0%;
         border: 1px solid #ccc;
     }
     .p-contentlist
@@ -4598,7 +4573,7 @@ height: 30px;
     }
     .tableproducts
     {
-        margin-top: 0;
+        margin-top: 0px;
         width:100%; margin-left: 2%;
     }
     .pdtimg
@@ -4639,7 +4614,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 .cartimg {
    cursor: pointer;
     float: right;
-    margin-top: 0;
+    margin-top: 0px;
     width: 100%;
 }
 
@@ -4714,8 +4689,8 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;
@@ -4730,7 +4705,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 /*.imgdescdtl {
  margin-top: 5px;
 width: 80%;
-margin-left: 0;
+margin-left: 0%;
 margin-bottom: 10px;
 }*/
 #loading-image {

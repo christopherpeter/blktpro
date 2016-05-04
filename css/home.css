@@ -1,7 +1,7 @@
 ﻿body
 {
     font-family: calibri,Helvetica;
-    margin: -16px 0 0 0;
+    margin: -16px 0px 0 0px;
 }
 .header
 {
@@ -17,8 +17,8 @@
     margin-top:90px;
      width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   position: fixed;
   font-size:21px;
   font-weight:bold;
@@ -217,8 +217,8 @@ hr {
 	.black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 100%;
 			background-color: gray;
@@ -232,8 +232,8 @@ hr {
     	.black_overlayin{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 100%;
 			background-color: gray;
@@ -360,12 +360,12 @@ width:100%;float:left;display:none
 }
 .pdtimg
 {
-    width: 0;
-    height: 0;
+    width: 0%;
+    height: 0%;
 }
 .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: -1%;
 }
 .tableproducts1
@@ -465,8 +465,9 @@ width:100%;float:left;display:none
     padding: 5px;
     position: absolute;
     top: 16%;
-    width: 100%;
+    width: 17%;
     z-index: 1002;
+    width: 100%;
 }
 .loginpopup
 {
@@ -487,7 +488,7 @@ width:100%;float:left;display:none
     position: absolute;
     top: 50px;
     width: 100%;
-    left:0;
+    left:0%;
     border-bottom: 1px solid #ccc;
 }
 .white_contentlistnew
@@ -499,7 +500,7 @@ width:100%;float:left;display:none
 }
 .white_contentlistnew1
 {
-    left: 0;
+    left: 0%;
     position: relative;
     top: -534px;
     width: 23%;
@@ -729,7 +730,7 @@ tableclass1
 }
 .login_inner1
 {
-    border-radius: 0;
+    border-radius: 0px;
     margin: 70px auto;
     width: 25%;
 }
@@ -747,7 +748,7 @@ tableclass1
 }
 .forgot_span
 {
-    margin: 0 10px 0 0;
+    margin: 0 10px 0 0px;
 }
 .leftdivalign {margin-left: 40%; cursor: pointer
 }
@@ -841,7 +842,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 60px auto;
         width: 65%;
     }
@@ -876,7 +877,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -499px;
         width: 32%;
@@ -1119,7 +1120,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 120px auto;
         width: 70%;
     }
@@ -1154,7 +1155,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -1177px;
         width: 32%;
@@ -1330,7 +1331,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: -1%;
 }
 
@@ -1408,7 +1409,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 135px auto;
         width: 80%;
     }
@@ -1443,7 +1444,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -1177px;
         width: 34%;
@@ -1650,12 +1651,12 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
         .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: 100%;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0;
+    float:left;width:0%;
 }
         
     .filter
@@ -1716,7 +1717,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 130px auto;
         width: 80%;
     }
@@ -1754,7 +1755,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -924px;
         width: 37%;
@@ -1944,12 +1945,12 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
         .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: 100%;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0;
+    float:left;width:0%;
 }
         
     .filter
@@ -2010,7 +2011,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 130px auto;
         width: 80%;
     }
@@ -2048,7 +2049,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -924px;
         width: 37%;
@@ -2211,7 +2212,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 60px auto;
         width: 72%;
     }
@@ -2378,7 +2379,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 50px auto;
         width: 85%;
     }
@@ -2415,7 +2416,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -2457,7 +2458,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -400px;
         width: 50%;
@@ -2691,7 +2692,7 @@ width:360px;float:left;display:none;
 
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -2767,11 +2768,11 @@ width:360px;float:left;display:none;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -539px;
         width: 85%;
@@ -2783,7 +2784,7 @@ width:360px;float:left;display:none;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0;
+        margin-left: 0px;
         text-align: center;
         width: 100%;
     }
@@ -2848,7 +2849,7 @@ width:360px;float:left;display:none;
 }
          .tableproducts
     {
-        margin-top: 0;
+        margin-top: 0px;
         width:100%; margin-left: 1%;
     }
              .tableclass
@@ -2868,7 +2869,7 @@ width:360px;float:left;display:none;
                     .cartimg {
 
      float: right;
-    margin-top: 0;
+    margin-top: 0%;
     width: 42%;
     cursor:pointer;
 }
@@ -2927,8 +2928,8 @@ width:360px;float:left;display:none;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 808px;
 			background-color: gray;
@@ -3001,7 +3002,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
      .tableproducts
     {
-        margin-top: 0;
+        margin-top: 0px;
         width:100%; margin-left: 1%;
     }
 
@@ -3083,7 +3084,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 40px auto;
         width: 85%;
     }
@@ -3109,7 +3110,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -3185,11 +3186,11 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -390px;
         width: 85%;
@@ -3201,7 +3202,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0;
+        margin-left: 0px;
         text-align: center;
         width: 100%;
     }
@@ -3232,8 +3233,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .pdtimg
     {
-        width: 0;
-        height: 0;
+        width: 0%;
+        height: 0%;
     }
     .white_contentdirection
 {
@@ -3288,7 +3289,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .cartimg {
 
      float: right;
-    margin-top: 0;
+    margin-top: 0%;
     width: 42%;
     cursor:pointer;
 }
@@ -3347,8 +3348,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;
@@ -3455,7 +3456,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -3542,14 +3543,14 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
     }
     .white_contentlistnew1
     {
         position: relative;
         top: -380px;
         width: 70%;
-        left: 0;
+        left: 0%;
         border: 1px solid #ccc;
     }
     .p-contentlist
@@ -3594,8 +3595,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .pdtimg
     {
-        width: 0;
-        height: 0;
+        width: 0%;
+        height: 0%;
         font-size: 12px;
     }
     .white_contentdirection
@@ -3724,8 +3725,8 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;
@@ -3861,7 +3862,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -3947,14 +3948,14 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
     }
     .white_contentlistnew1
     {
         position: relative;
         top: -380px;
         width: 70%;
-        left: 0;
+        left: 0%;
         border: 1px solid #ccc;
     }
     .p-contentlist
@@ -3999,8 +4000,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .pdtimg
     {
-        width: 0;
-        height: 0;
+        width: 0%;
+        height: 0%;
     }
     .white_contentdirection
 {
@@ -4109,8 +4110,8 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;

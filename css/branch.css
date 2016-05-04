@@ -1,7 +1,7 @@
 ﻿body
 {
     font-family: calibri,Helvetica;
-    margin: -16px 0 0 0;
+    margin: -16px 0px 0 0px;
 }
 .popupheight { height: 262px; overflow-x: hidden; overflow-y: scroll; }
 .globalbodyclass
@@ -207,7 +207,7 @@ hr {
 border: 1px solid #CCC;
 left: 39%;
 position: absolute;
-top: 0;
+top: 0%;
 width: 25%;
 z-index: 1002;
 }
@@ -223,8 +223,8 @@ z-index: 1002;
 	.black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 100%;
 			background-color: gray;
@@ -238,8 +238,8 @@ z-index: 1002;
     	.black_overlayin{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 100%;
 			background-color: gray;
@@ -253,8 +253,8 @@ z-index: 1002;
 		  	.black_overlayinnew{
 			display: none;
 		
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 100%;
 			background-color: gray;
@@ -381,12 +381,12 @@ width:100%;float:left;display:none
 }
 .pdtimg
 {
-    width: 0;
-    height: 0;
+    width: 0%;
+    height: 0%;
 }
 .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: -1%;
 }
 .tableproducts1
@@ -509,7 +509,7 @@ width:100%;float:left;display:none
     position: absolute;
     top: 50px;
     width: 100%;
-    left:0;
+    left:0%;
     border-bottom: 1px solid #ccc;
 }
 .white_contentlistnew
@@ -521,7 +521,7 @@ width:100%;float:left;display:none
 }
 .white_contentlistnew1
 {
-    left: 0;
+    left: 0%;
     position: relative;
     top: -600px;
     width: 23%;
@@ -531,7 +531,7 @@ width:100%;float:left;display:none
 {
     float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 
 top: 9%;
 position: absolute;
@@ -757,7 +757,7 @@ tableclass1
 }
 .login_inner1
 {
-    border-radius: 0;
+    border-radius: 0px;
     margin: 110px auto;
     width: 25%;
 }
@@ -775,7 +775,7 @@ tableclass1
 }
 .forgot_span
 {
-    margin: 0 10px 0 0;
+    margin: 0 10px 0 0px;
 }
 .leftdivalign {margin-left: 40%; cursor: pointer
 }
@@ -783,10 +783,10 @@ tableclass1
 {
     .termsconditioninnerdiv
 {
-    background-color:#304589;height: 40px; margin-left: 0; margin-right: 5px; margin-top: 5px; z-index:2;width:43%
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px; z-index:2;width:43%
 }
     .terms_condition {float: left;
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 12%;
 position: absolute;
 width: 43%;
@@ -879,7 +879,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 60px auto;
         width: 45%;
     }
@@ -915,7 +915,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -600px;
         width: 32%;
@@ -1016,7 +1016,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 43%;
@@ -1170,7 +1170,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 60px auto;
         width: 45%;
     }
@@ -1206,7 +1206,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -1182px;
         width: 32%;
@@ -1318,11 +1318,11 @@ width:100%;float:left;display:none
 {
     .termsconditioninnerdiv
 {
-    background-color:#304589;height: 40px; margin-left: 0; margin-right: 5px; margin-top: 5px;z-index:2;width:43%
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;z-index:2;width:43%
 }
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 43%;
@@ -1395,7 +1395,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: -1%;
 }
 
@@ -1473,7 +1473,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 300px auto;
         width: 45%;
     }
@@ -1509,7 +1509,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -1182px;
         width: 42%;
@@ -1636,11 +1636,11 @@ width:100%;float:left;display:none
 {
         .termsconditioninnerdiv
 {
-    background-color:#304589;height: 40px; margin-left: 0; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
 }
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 70%;
@@ -1728,12 +1728,12 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
         .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: 100%;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0;
+    float:left;width:0%;
 }
         
     .filter
@@ -1794,7 +1794,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 200px auto;
         width: 52%;
     }
@@ -1832,7 +1832,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -926px;
         width: 37%;
@@ -1942,11 +1942,11 @@ float:left;display:none
 {
     .termsconditioninnerdiv
 {
-    background-color:#304589;height: 40px; margin-left: 0; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
 }
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 70%;
@@ -2034,12 +2034,12 @@ z-index: 1002;
 
         .tableproducts
 {
-    margin-top: 0;
+    margin-top: 0px;
       width:100%; margin-left: 100%;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0;
+    float:left;width:0%;
 }
         
     .filter
@@ -2100,7 +2100,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 200px auto;
         width: 52%;
     }
@@ -2138,7 +2138,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -926px;
         width: 50%;
@@ -2259,7 +2259,7 @@ z-index: 1002;
 
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 70%;
@@ -2320,7 +2320,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 60px auto;
         width: 72%;
     }
@@ -2350,7 +2350,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
 position: relative;
 top: -600px;
 width: 52%;
@@ -2431,7 +2431,7 @@ height:360px;
     }
 .termsconditioninnerdiv
 {
-    background-color:#304589;height: 40px; margin-left: 0; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
 }
 }
 @media only screen and (min-width: 400px) and (max-width: 499px)
@@ -2439,7 +2439,7 @@ height:360px;
       .popupheight { height: 150px;overflow-x: hidden; overflow-y: scroll; }
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 70%;
@@ -2499,7 +2499,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 50px auto;
         width: 70%;
     }
@@ -2536,7 +2536,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -2578,7 +2578,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -600px;
         width: 65%;
@@ -2656,7 +2656,7 @@ z-index: 1002;
 }
 .termsconditioninnerdiv
 {
-    background-color:#304589;height: 40px; margin-left: 0; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:70%
 }
 }
 @media only screen and (min-width: 321px) and (max-width: 399px)
@@ -2664,7 +2664,7 @@ z-index: 1002;
     
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 80%;
@@ -2833,7 +2833,7 @@ width:360px;float:left;display:none;
 
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -2909,13 +2909,13 @@ width:360px;float:left;display:none;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
         font-size: 11px !important;
 
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -600px;
         width: 68%;
@@ -2928,7 +2928,7 @@ width:360px;float:left;display:none;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0;
+        margin-left: 0px;
         text-align: center;
         width: 100%;
     }
@@ -2993,7 +2993,7 @@ width:360px;float:left;display:none;
 }
          .tableproducts
     {
-        margin-top: 0;
+        margin-top: 0px;
         width:100%; margin-left: 1%;
     }
              .tableclass
@@ -3013,7 +3013,7 @@ width:360px;float:left;display:none;
                     .cartimg {
 
      float: right;
-    margin-top: 0;
+    margin-top: 0%;
     width: 42%;
     cursor:pointer;
 }
@@ -3072,8 +3072,8 @@ width:360px;float:left;display:none;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 808px;
 			background-color: gray;
@@ -3095,7 +3095,7 @@ width:360px;float:left;display:none;
 }
 .termsconditioninnerdiv
 {
-    background-color:#304589;height: 40px; margin-left: 0; margin-right: 5px; margin-top: 5px;  z-index:2;width:80%
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:80%
 }
 }
 @media only screen and (min-width: 300px) and (max-width: 320px)
@@ -3103,7 +3103,7 @@ width:360px;float:left;display:none;
   
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 70%;
@@ -3121,7 +3121,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     border: 1px solid #ccc;
     left: 23%;
     position: absolute;
-    top: 0;
+    top: 0%;
     width: 76%;
        z-index:1002;
 }
@@ -3158,7 +3158,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
      .tableproducts
     {
-        margin-top: 0;
+        margin-top: 0px;
         width:100%; margin-left: 1%;
     }
 
@@ -3240,7 +3240,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0;
+        border-radius: 0px;
         margin: 40px auto;
         width: 85%;
     }
@@ -3266,7 +3266,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -3342,12 +3342,12 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
         font-size: 11px;
     }
     .white_contentlistnew1
     {
-        left: 0;
+        left: 0%;
         position: relative;
         top: -600px;
         width: 85%;
@@ -3360,7 +3360,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0;
+        margin-left: 0px;
         text-align: center;
         width: 100%;
     }
@@ -3391,8 +3391,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .pdtimg
     {
-        width: 0;
-        height: 0;
+        width: 0%;
+        height: 0%;
     }
     .white_contentdirection
 {
@@ -3447,7 +3447,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .cartimg {
 
      float: right;
-    margin-top: 0;
+    margin-top: 0%;
     width: 42%;
     cursor:pointer;
 }
@@ -3506,8 +3506,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;
@@ -3536,7 +3536,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 {
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 70%;
@@ -3556,7 +3556,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     border: 1px solid #ccc;
     left: 2%;
     position: absolute;
-    top: 0;
+    top: 0%;
     width: 95%;
        z-index:1002;
 
@@ -3625,7 +3625,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -3712,7 +3712,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
         font-size: 11px;
     }
     .white_contentlistnew1
@@ -3720,7 +3720,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         position: relative;
         top: -600px;
         width: 70%;
-        left: 0;
+        left: 0%;
         border: 1px solid #ccc;
         height:360px;
     }
@@ -3766,8 +3766,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .pdtimg
     {
-        width: 0;
-        height: 0;
+        width: 0%;
+        height: 0%;
         font-size: 12px;
     }
     .white_contentdirection
@@ -3896,8 +3896,8 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;
@@ -3955,7 +3955,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 {
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 88%;
@@ -4045,7 +4045,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -4131,7 +4131,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
         font-size: 11px !important;
 
     }
@@ -4140,7 +4140,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         position: relative;
         top: -600px;
         width: 70%;
-        left: 0;
+        left: 0%;
         border: 1px solid #ccc;
         height:360px;
     }
@@ -4186,8 +4186,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .pdtimg
     {
-        width: 0;
-        height: 0;
+        width: 0%;
+        height: 0%;
     }
     .white_contentdirection
 {
@@ -4296,8 +4296,8 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;
@@ -4320,14 +4320,14 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 }
 .termsconditioninnerdiv
 {
-    background-color:#304589;height: 40px; margin-left: 0; margin-right: 5px; margin-top: 5px;  z-index:2;width:88%
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:88%
 }
 }
 @media only screen and (min-width: 220px) and (max-width: 299px)
 {
     .terms_condition {float: left;
 
-background: none repeat scroll 0 0 #FFF;
+background: none repeat scroll 0% 0% #FFF;
 top: 9%;
 position: absolute;
 width: 85%;
@@ -4417,7 +4417,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0;
+        margin: 0 10px 0 0px;
         font-size: 13px;
     }
     .newaccount_span
@@ -4504,7 +4504,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0;
+        margin-left: 0px;
         font-size: 11px !important;
 
     }
@@ -4513,7 +4513,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         position: relative;
         top: -600px;
         width: 70%;
-        left: 0;
+        left: 0%;
         border: 1px solid #ccc;
         height:360px;
     }
@@ -4559,8 +4559,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .pdtimg
     {
-        width: 0;
-        height: 0;
+        width: 0%;
+        height: 0%;
         font-size: 12px;
     }
     .white_contentdirection
@@ -4689,8 +4689,8 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 .black_overlay{
 			display: none;
 			position: fixed;
-			top: 0;
-			left: 0;
+			top: 0%;
+			left: 0%;
 			width: 100%;
 			height: 608px;
 			background-color: gray;
@@ -4741,7 +4741,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 }
 .termsconditioninnerdiv
 {
-    background-color:#304589;height: 40px; margin-left: 0; margin-right: 5px; margin-top: 5px;  z-index:2;width:85%
+    background-color:#304589;height: 40px; margin-left: 0px; margin-right: 5px; margin-top: 5px;  z-index:2;width:85%
 }
 
 
