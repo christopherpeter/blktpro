@@ -4,6 +4,10 @@ Creaded on:23/09/2014 7:30PM
 License:Tychons solutions
 */
 
+
+// JquerySelectorVariable
+var JQInvoiceClick = $('#invoiceclick');
+
 //Globalvalues for the JS
 AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey === null) {
@@ -57,10 +61,10 @@ function Loadorderhistory() {
 
                 var resultJSON = $Name.text();
                 var finalresult = "{" + resultJSON + "}";
-                var output = $.parseJSON(finalresult);
-                var list = output.BMCOrders;
+                var outputList = $.parseJSON(finalresult);
+                var list = outputList.BMCOrders;
 
-                if (output.BMCOrders.length > 0) {
+                if (outputList.BMCOrders.length > 0) {
                     var output = "";
                     $.each(list, function (i, item) {
                         var OrderNumber = item.OrderNumber;
@@ -402,7 +406,7 @@ function invoiceclick() {
 
                     });
 
-                    $('#invoiceclick').show();
+                    JQInvoiceClick.show();
                     $("#loading_pdt").hide();
                     $.mobile.loading("hide");
 
@@ -424,7 +428,7 @@ function invoiceclick() {
 
         $('#orderclick').hide();
         $('.footer').show();
-        $('#invoiceclick').show();
+        JQInvoiceClick.show();
         $('#lblorderhis').css("background", "#304589");
         $('#lblinvoice').css("background", "#838FB8");
     }
@@ -433,7 +437,7 @@ function invoiceclick() {
         $("#invoiceclick").html("<div style='text-align: center;padding: 31px;background-color: #fff;'><span style='color:red'>Please log in to see your current balance</span></div>");
         $('#orderclick').hide();
         $('.footer').hide();
-        $('#invoiceclick').show();
+        JQInvoiceClick.show();
         $('#lblorderhis').css("background", "#304589");
         $('#lblinvoice').css("background", "#838FB8");
 

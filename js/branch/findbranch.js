@@ -6,6 +6,11 @@ License:Tychons solutions
 
 var locations = [];
 var changedValues = [];
+
+// JquerySelectorVariable
+
+var textJQResults = $("#text_results");
+
 //Function for mapping filter branches to the map
 
 function loadGPSLocations() {
@@ -1133,8 +1138,8 @@ function getdirections(g, maptype, load) {
         }
         else {
             navigator.notification.alert('No Routes Found', null, 'Branch Direction', 'OK');
-            $("#text_results").html("<p style='text-align:center;color:red;margin-top: 30%;'>No Routes Found</p>");
-            $("#text_results").show();
+            textJQResults.html("<p style='text-align:center;color:red;margin-top: 30%;'>No Routes Found</p>");
+            textJQResults.show();
         }
     });
 

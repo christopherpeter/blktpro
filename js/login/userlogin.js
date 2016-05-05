@@ -4,6 +4,10 @@ Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
 
+// JquerySelectorVariable
+
+var textJQAccNo = $("#txtaccno");
+
 function backtoindexpage() {
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
@@ -54,7 +58,7 @@ function login() {
 
 function submitButton(page) {
   
-    var accountno = $("#txtaccno").val().trim();
+    var accountno = textJQAccNo.val().trim();
     var username = $("#txtuser").val().trim();
     var password = $("#txtpwd").val().trim();
     var numbers = /^[0-9]+$/;
@@ -69,7 +73,7 @@ function submitButton(page) {
     else if (!numbers.test(accountno)) {
 
         navigator.notification.alert('Please enter valid account no.', null, 'Authentication', 'OK');
-        $("#txtaccno").val('');
+        textJQAccNo.val('');
         return false;
     }
     else if (username === "") {

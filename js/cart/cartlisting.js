@@ -4,6 +4,10 @@ Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
 
+// JquerySelectorVariable
+
+var ddJQbranch = $("#ddbranch"), ddJQServiceOption = $("#ddserviceoption"), JQShipCharge = $("#shipcharge"), JQCartItems = $("#div_cartitems"), LblJQTotalItems = $("#lbltotalitems"), JQFromBranch = $("#frmbranch");
+
 //Globalvalues for the JS
 
 
@@ -320,8 +324,8 @@ function loadcartitems() {
                 else {
                     totalcartitems = "Cart- " + res.rows.length + " items";
                 }
-                $("#div_cartitems").html(html);
-                $("#lbltotalitems").html(totalcartitems);
+                JQCartItems.html(html);
+                LblJQTotalItems.html(totalcartitems);
             }
             else {
 
@@ -339,8 +343,8 @@ function loadcartitems() {
                 $("#div_cartfooter").html("");
             }
 
-            $("#div_cartitems").html(html);
-            $("#lbltotalitems").html(totalcartitems);
+            JQCartItems.html(html);
+            LblJQTotalItems.html(totalcartitems);
 
             //Code for Cart footer calculation
             if (cartitemscount > 0) {
@@ -818,7 +822,7 @@ function estimateshipping() {
     loadnearestbranch();
     // $("#shipping_popup").show();
 
-    $("#ddbranch").html("<option value='O'>Please Wait</option>");
+    ddJQbranch.html("<option value='O'>Please Wait</option>");
     /* New code */
     $("#fade1").show();
 
@@ -835,10 +839,10 @@ function estimateshipping() {
 }
 
 function branchcodenumberset() {
-    setLS('branchcodenumber', $("#ddbranch").val());
+    setLS('branchcodenumber', ddJQbranch.val());
 
     if (getLS('ShippingMethod') === "P") {
-        loadnewpickupAddress($("#ddbranch").val());
+        loadnewpickupAddress(ddJQbranch.val());
     }
 }
 
@@ -1025,12 +1029,12 @@ function findnearestLocations(lat1, lon1) {
                 }
 
             }
-            $("#ddbranch").html(html);
+            ddJQbranch.html(html);
             $("#shipping_popup").show();
             $("#submitpopup").hide();
             ChangedValues_Latest.sort(SortByName);
             setLS('branchcodenumber', ChangedValues_Latest[0][0]);
-            $("#ddbranch").val(ChangedValues_Latest[0][0]); //select the nearest branch
+            ddJQbranch.val(ChangedValues_Latest[0][0]); //select the nearest branch
             var addsplit;
             if (getLS('ShippingMethod') === 'P') {
                 addsplit = ChangedValues_Latest[0][3].split("@");
@@ -1071,43 +1075,43 @@ function getshippinginfo() {
     var branch_id = getLS('default_branchcode'), shippingcharges = SettingsShippingcharges;
     if (OrderMethodOfShipment === "O") {
         shippingcharges = 0;
-        $("#frmbranch").html("Buy from branch :</br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
+        JQFromBranch.html("Buy from branch :</br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
         $("#UPS").hide();
-        $("#ddserviceoption").hide();
-        $("#ddbranch").show();
+        ddJQServiceOption.hide();
+        ddJQbranch.show();
         $("#div_address1").show();
         $("#div_address2").show();
         $("#shipadddr").show();
-        $("#frmbranch").show();
-        $("#shipcharge").hide();
+        JQFromBranch.show();
+        JQShipCharge.hide();
         setLS('ShipViaDescription', "Our Truck");
     }
     else if (OrderMethodOfShipment === "P") {
         shippingcharges = 0;
-        $("#frmbranch").html("Pick up branch : </br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
+        JQFromBranch.html("Pick up branch : </br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
         $("#UPS").hide();
-        $("#ddserviceoption").hide();
-        $("#ddbranch").show();
+        ddJQServiceOption.hide();
+        ddJQbranch.show();
         $("#div_address1").show();
         $("#div_address2").show();
         $("#shipadddr").show();
-        $("#frmbranch").show();
-        $("#shipcharge").hide();
+        JQFromBranch.show();
+        JQShipCharge.hide();
         setLS('ShipViaDescription', "Pick Up");
 
     }
     else if (OrderMethodOfShipment === "S") {
         shippingcharges = 0;
-        $("#frmbranch").html("Buy from branch : </br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
+        JQFromBranch.html("Buy from branch : </br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
         $("#UPS").show();
-        $("#ddserviceoption").val(0);
-        $("#ddserviceoption").show();
-        $("#ddbranch").show();
+        ddJQServiceOption.val(0);
+        ddJQServiceOption.show();
+        ddJQbranch.show();
         $("#div_address1").show();
         $("#div_address2").show();
         $("#shipadddr").show();
-        $("#frmbranch").show();
-        $("#shipcharge").hide();
+        JQFromBranch.show();
+        JQShipCharge.hide();
         setLS('ShipViaDescription', "UPS");
 
     }
@@ -1130,7 +1134,7 @@ function estomatepopupclose() {
 }
 
 function Estimate() {
-    var ServiceOptioncode = $("#ddserviceoption").val();
+    var ServiceOptioncode = ddJQServiceOption.val();
 
     var BillOptionCode = "10";
 
@@ -1257,19 +1261,19 @@ function Estimate() {
                 var shipcharge = item.ShippingCharges;
                 var amount = shipcharge.replace('USD', "");
                 if (isNaN(amount)) {
-                    $("#shipcharge").html("<span id='shipchargeval' style='Color:red'>UPS service is unable to quote for this shipping address. Please check and try again.</span>");
-                    $("#ddserviceoption").val(0);
+                    JQShipCharge.html("<span id='shipchargeval' style='Color:red'>UPS service is unable to quote for this shipping address. Please check and try again.</span>");
+                    ddJQServiceOption.val(0);
 
                     $.mobile.loading("hide");
                     $("#fade1").hide();
                     $("#shipping_popup").show();
-                    $("#shipcharge").show();
+                    JQShipCharge.show();
                 }
                 else {
                     SettingsShippingcharges = amount;
-                    $("#shipcharge").show();
+                    JQShipCharge.show();
                     $("#shipping_popup").show();
-                    $("#shipcharge").html("Estimated Shipping Charge : $<span id='shipchargeval'></span>");
+                    JQShipCharge.html("Estimated Shipping Charge : $<span id='shipchargeval'></span>");
                     $("#shipchargeval").text(SettingsShippingcharges);
                     writeToLogFile("Shipping Charge is $" + amount, 11);
                 }
@@ -1278,7 +1282,7 @@ function Estimate() {
 
         },
         error: function () {
-            $("#ddserviceoption").val(0);
+            ddJQServiceOption.val(0);
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#shipping_popup").show();
             $("#fade1").hide();

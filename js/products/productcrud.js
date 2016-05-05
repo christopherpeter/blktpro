@@ -4,6 +4,10 @@ Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
 
+// JquerySelectorVariable
+
+var ListJQ3Products = $("#list3products"), ListJQ2Products = $("#list2products"), ListJQ1Products = $("#list1products");
+
 //Globalvalues for the JS
 AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey === null) {
@@ -709,8 +713,8 @@ function product_search() {
 function loadsecondproductservice() {
     GlobalItemsList.length = 0;
     var c_page = getLS('page');
-    var result = c_page.split(",");
-    if (result[result.length - 1] !== 'sections') {
+    var resultPage = c_page.split(",");
+    if (resultPage[resultPage.length - 1] !== 'sections') {
         setLS('page', c_page + ",sections");
     }
 
@@ -864,7 +868,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
         setLS('page', c_page + ",filter");
     }
 
-    $("#list1products").html("");
+    ListJQ1Products.html("");
     $("#loading_pdt").show();
     $.mobile.loading("show",
     {
@@ -939,7 +943,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
 
                 });
                 html = html + " </ul>";
-                $("#list1products").html(html);
+                ListJQ1Products.html(html);
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
 
@@ -952,7 +956,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                 //  html = html + "  <div style='text-align:left;margin-left:20px' onclick='pdtimgkitchendivdisplaynew1back()'>   <img src='images/save_button.png' /></div>";
                 html = html + " <div><No Groups Found</div>";
 
-                $("#list1products").html(html);
+                ListJQ1Products.html(html);
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
@@ -971,7 +975,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
     $("#sectiondiv").hide();
     $(".srchdivimg").hide();
     $("#navigationdiv").hide();
-    $("#list1products").show();
+    ListJQ1Products.show();
     $("#backbuttongrid").hide();
     $("#filterdiv").show();
 }
@@ -986,9 +990,9 @@ function pdtimgkitchendivdisplaynew1back() {
     $(".searchdiv").show();
     $(".srchdivimg").show();
     $("#navigationdiv").show();
-    $("#list1products").hide();
-    $("#list2products").hide();
-    $("#list3products").hide();
+    ListJQ1Products.hide();
+    ListJQ2Products.hide();
+    ListJQ3Products.hide();
     $("#backbuttongrid").hide();
     $(".breadcrumstylefilter").hide();
     $("#default_div").show();
@@ -1014,7 +1018,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
         setLS('page', c_page + ",filter2");
     }
 
-    $("#list2products").html('');
+    ListJQ2Products.html('');
     $("#loading_pdt").show();
     $.mobile.loading("show",
     {
@@ -1094,7 +1098,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
 
                 });
                 html = html + " </ul>";
-                $("#list2products").html(html);
+                ListJQ2Products.html(html);
                 setLS('IsNewFilterAttributes', 'Yes');
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
@@ -1106,7 +1110,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
                 html = html + ' </div>';
                 //  html = html + "  <div style='text-align:left;margin-left:20px' onclick='pdtimgkitchendivdisplaynew1back()'>   <img src='images/save_button.png' /></div>";
                 html = html + " <div><No Groups Found</div>";
-                $("#list2products").html(html);
+                ListJQ2Products.html(html);
                 setLS('IsNewFilterAttributes', 'Yes');
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
@@ -1124,8 +1128,8 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
     $("#sectiondiv").hide();
     $(".srchdivimg").hide();
     $("#navigationdiv").hide();
-    $("#list1products").hide();
-    $("#list2products").show();
+    ListJQ1Products.hide();
+    ListJQ2Products.show();
 }
 function pdtimgkitchendivdisplaynew2back() {
     $("#prdtsectionimges").hide();
@@ -1133,9 +1137,9 @@ function pdtimgkitchendivdisplaynew2back() {
     $(".srchdivimg").hide();
     $("#sectionpath").html("<span>" + getLS('breadlist1') + "</span>")
     $("#navigationdiv").hide();
-    $("#list1products").show();
-    $("#list2products").hide();
-    $("#list3products").hide();
+    ListJQ1Products.show();
+    ListJQ2Products.hide();
+    ListJQ3Products.hide();
     $(".breadcrumstyle").show();
     $("#breadcrumstyle").hide();
     $(".breadcrumstylefilter").hide();
@@ -1153,7 +1157,7 @@ function pdtimgkitchendivdisplaynew2back() {
 
 
 function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
-    var DESCRIPTIONlast = DESCRIPTIONlast.replace(/_/g, ' ');
+    DESCRIPTIONlast = DESCRIPTIONlast.replace(/_/g, ' ');
     setLS('breadlist3', DESCRIPTIONlast);
     var c_page = getLS('page');
     var result = c_page.split(",");
@@ -1161,7 +1165,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
         setLS('page', c_page + ",filter3");
     }
 
-    $("#list3products").html("");
+    ListJQ3Products.html("");
     $("#loading_pdt").show();
     $.mobile.loading("show",
     {
@@ -1225,13 +1229,13 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
 
                 });
                 html = html + "</div>";
-                $("#list3products").html(html);
+                ListJQ3Products.html(html);
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
             else {
 
-                $("#list3products").html(html);
+                ListJQ3Products.html(html);
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
             }
@@ -1247,9 +1251,9 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     $("#sectiondiv").hide();
     $(".srchdivimg").hide();
     $("#navigationdiv").hide();
-    $("#list1products").hide();
-    $("#list2products").hide();
-    $("#list3products").show();
+    ListJQ1Products.hide();
+    ListJQ2Products.hide();
+    ListJQ3Products.show();
     $("#backbuttongrid").hide();
     $(".breadcrumstyle").show();
 }
@@ -1258,9 +1262,9 @@ function pdtimgkitchendivdisplaynew3back() {
     $("#sectiondiv").hide();
     $(".srchdivimg").hide();
     $("#navigationdiv").hide();
-    $("#list1products").hide();
-    $("#list3products").hide();
-    $("#list2products").show();
+    ListJQ1Products.hide();
+    ListJQ3Products.hide();
+    ListJQ2Products.show();
     $("#default_div").show();
     $("#backbuttongrid").hide();
     $(".breadcrumstyle").show();
@@ -1281,7 +1285,7 @@ function backbuttongrid() {
     $("#sectiondiv").hide();
     $(".srchdivimg").show();
     $("#navigationdiv").show();
-    $("#list1products").hide();
+    ListJQ1Products.hide();
     $("#backbuttongrid").hide();
 
 }

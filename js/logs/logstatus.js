@@ -3,6 +3,10 @@ This javascript files is only for Logging user activity
 Creaded on:12/09/2014 1PM
 License:Tychons solutions
 */
+// JquerySelectorVariable
+
+var JQFade = $("#fade"), JQLoadingPage = $("#loading_pdt");
+
 
 function writeToLogFile(message, pageno) {
 
@@ -79,8 +83,8 @@ function writeToLogFile(message, pageno) {
                     loadcartitems();
                     // hide the loader
 
-                    $("#loading_pdt").hide();
-                    $("#fade").hide();
+                    JQLoadingPage.hide();
+                    JQFade.hide();
                     $.mobile.loading("hide");
                     break;
 
@@ -90,14 +94,14 @@ function writeToLogFile(message, pageno) {
 
                 case 9:
                     //alert('case9');.
-                    $("#loading_pdt").hide();
+                    JQLoadingPage.hide();
                     $.mobile.loading("hide");
                     navigator.notification.alert('Item Added to cart', null, 'Cart', 'OK');
                     checkinventoryfuncls();
                     break;
 
                 case 10:
-                    $("#loading_pdt").hide();
+                    JQLoadingPage.hide();
                     $.mobile.loading("hide");
                     product_pageload();
                     break;
@@ -110,15 +114,15 @@ function writeToLogFile(message, pageno) {
 
                 case 12:
                     //alert('case9');.
-                    $("#loading_pdt").hide();
+                    JQLoadingPage.hide();
                     $.mobile.loading("hide");
                     navigator.notification.alert('Item Added to cart', null, 'Cart', 'OK');
                     break;
 
                 case 13:
                     //alert('case9');.
-                    $("#loading_pdt").hide();
-                    $("#fade").hide();
+                    JQLoadingPage.hide();
+                    JQFade.hide();
                     $.mobile.loading("hide");
                     $("#checkinventory1").hide();
                     navigator.notification.alert('Item Added to cart', null, 'Cart', 'OK');
@@ -130,7 +134,7 @@ function writeToLogFile(message, pageno) {
         },
         error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-            $("#loading_pdt").hide();
+            JQLoadingPage.hide();
             $.mobile.loading("hide");
         }
     });

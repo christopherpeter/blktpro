@@ -3,6 +3,11 @@ This javascript files is only for general functions
 Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
+
+// JquerySelectorVariable
+
+var textJQPassword = $("#txtpwd"), textJQUserName = $("#txtuser");
+
 function maxLengthCheck(object) {
     if (object.value.length > object.maxLength)
         object.value = object.value.slice(0, object.maxLength)
@@ -11,14 +16,14 @@ function ConvertNameToUpperCase(Textbox)
 {
     var ConvertToUppercase, Username, Password;
     if (Textbox === "username") {
-        Username = $("#txtuser").val().trim();
+        Username = textJQUserName.val().trim();
         ConvertToUppercase = Username.toUpperCase();
-        $("#txtuser").val(ConvertToUppercase);
+        textJQUserName.val(ConvertToUppercase);
     }
     else {
-        Password = $("#txtpwd").val().trim();
+        Password = textJQPassword.val().trim();
         ConvertToUppercase = Password.toUpperCase();
-        $("#txtpwd").val(ConvertToUppercase);
+        $textJQPassword.val(ConvertToUppercase);
     }
 
 }

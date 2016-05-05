@@ -4,6 +4,12 @@ Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
 
+// JquerySelectorVariable
+
+var JQNotSearch = $("#notsearch"), TextJQAccNo = $("#txtaccno"), JQCheckInventory1 = $("#checkinventory1"), JQSpecificationDiv = $("#specificationdiv"), LblJQProductDiv = $("#lblProductdiv");
+var JQSearch = $("#search"), JQProductDisplay1 = $(".pdtimgkitchendivdisplay1"), JQProductDisplay2 = $(".pdtimgkitchendivdisplay2"), JQProductDisplay3 = $(".pdtimgkitchendivdisplay3"), JQProductDisplay4 = $(".pdtimgkitchendivdisplay4");
+var JQProductDisplay = $(".pdtimgdivdisplay"), LblJQSpecificationDiv = $("#lblSpecificationdiv");
+
 //Globalvalues for the JS
 AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey === null) {
@@ -60,8 +66,8 @@ function loadsectionproductscontents(FirstLoad) {
     htmltext = htmltext + '<div id="search"  style="margin-top: 8px;font-weight:bold;color:#304589;font-size:12px" > <label id="breadlistsearch" style="font-size:14px"/></div>';
     $(".breadcrumstylefilter").html(htmltext);
     $(".breadcrumstylefilter").show();
-    $("#notsearch").show();
-    $("#search").hide();
+    JQNotSearch.show();
+    JQSearch.hide();
     myFuncCalls = 0;
 
     var view = getLS('viewimg');
@@ -76,8 +82,8 @@ function loadsectionproductscontents(FirstLoad) {
         }
         document.getElementById("breadlistsearch").innerHTML = "Search text : " + searchtext;
 
-        $("#notsearch").hide();
-        $("#search").show();
+        JQNotSearch.hide();
+        JQSearch.show();
         $("#mybackbuttoncustom").attr("onclick", "pdtimgkitchendivdisplaynew1back()");
 
     }
@@ -236,10 +242,10 @@ function loadsectionproductscontents(FirstLoad) {
     $("#loaditems123").show();
     $("#filterdiv").hide();
     $(".searchdiv").hide();
-    $(".pdtimgkitchendivdisplay1").show();
-    $(".pdtimgdivdisplay").hide();
+    JQProductDisplay1.show();
+    JQProductDisplay.hide();
     $("#default_div").hide();
-    $(".pdtimgkitchendivdisplay1").css('margin-top', '0px');
+    JQProductDisplay1.css('margin-top', '0px');
 
     if (isuserlogged === 'yes') {
         $(".hide").show();
@@ -260,7 +266,7 @@ $(document).ready(function () {
         writeToLogFile(message, 3);
         $('#viewoff').show();
         setLS('viewimg', 'no');
-        if ($(".pdtimgkitchendivdisplay1").css('display') !== "none") {
+        if (JQProductDisplay1.css('display') !== "none") {
             loadsectionproductscontents("Yes");
 
         } else {
@@ -273,7 +279,7 @@ $(document).ready(function () {
         var message = "View Image turned OFF";
         writeToLogFile(message, 3);
 
-        if ($(".pdtimgkitchendivdisplay1").css('display') !== "none") {
+        if (JQProductDisplay1.css('display') !== "none") {
             loadsectionproductscontents("Yes");
 
         } else {
@@ -297,7 +303,7 @@ function backpage1() {
     $('#pdt').show();
     $('#productdesc').hide();
     $('#white_contentlistnewpdt').toggle();
-    $(".pdtimgkitchendivdisplay1").show();
+    JQProductDisplay1.show();
     ProductOverview();
 }
 function terms_condition() {
@@ -515,7 +521,7 @@ function pdtdesc(itemid) {
 
                         $("#prdtdesc").html(html);
                         $("#productdesc").show();
-                        $(".pdtimgkitchendivdisplay1").hide();
+                        JQProductDisplay1.hide();
                         $("#pdtoverview").html(desc);
 
                         $.mobile.loading("hide");
@@ -598,7 +604,7 @@ function productPageLoad2() {
 //Function for handling login popup in product page
 
 function submitlogin() {
-    var accountno = $("#txtaccno").val().trim();
+    var accountno = TextJQAccNo.val().trim();
     var username = $("#txtuser").val().trim();
     var password = $("#txtpwd").val().trim();
     var numbers = /^[0-9]+$/;
@@ -613,7 +619,7 @@ function submitlogin() {
     else if (!numbers.test(accountno)) {
 
         navigator.notification.alert('Please enter valid account no.', null, 'Authentication', 'OK');
-        $("#txtaccno").val('');
+        TextJQAccNo.val('');
         return false;
     }
     else if (username === "") {
@@ -650,20 +656,20 @@ function loginpopup() {
 function pdtimgkitchendivdisplay2() {
     $("#filterdiv").hide();
     $(".searchdiv").hide();
-    $(".pdtimgkitchendivdisplay2").show();
-    $(".pdtimgdivdisplay").hide();
+    JQProductDisplay2.show();
+    JQProductDisplay.hide();
 }
 function pdtimgkitchendivdisplay3() {
     $("#filterdiv").hide();
     $(".searchdiv").hide();
-    $(".pdtimgkitchendivdisplay3").show();
-    $(".pdtimgdivdisplay").hide();
+    JQProductDisplay3.show();
+    JQProductDisplay.hide();
 }
 function pdtimgkitchendivdisplay4() {
     $("#filterdiv").hide();
     $(".searchdiv").hide();
-    $(".pdtimgkitchendivdisplay4").show();
-    $(".pdtimgdivdisplay").hide();
+    JQProductDisplay4.show();
+    JQProductDisplay.hide();
 }
 function filter() {
     $("#default_div").show();
@@ -675,10 +681,10 @@ function filter() {
     $("#storagediv").hide();
     $("#Lightdiv").hide();
     $("#kitchensubdiv").hide();
-    $(".pdtimgkitchendivdisplay1").hide();
-    $(".pdtimgkitchendivdisplay2").hide();
-    $(".pdtimgkitchendivdisplay3").hide();
-    $(".pdtimgkitchendivdisplay4").hide();
+    JQProductDisplay1.hide();
+    JQProductDisplay2.hide();
+    JQProductDisplay3.hide();
+    JQProductDisplay4.hide();
     $("#backbuttongrid").hide();
     $("#img_previous").hide();
     $("#img_next").hide();
@@ -732,13 +738,12 @@ function backcategory() {
         setLS('page', new_page);
     }
 
-    $(".pdtimgdivdisplay").show();
+    JQProductDisplay.show();
     $("#filterdiv").slideToggle();
-    $(".pdtimgdivdisplay").show();
-    $(".pdtimgkitchendivdisplay1").hide();
-    $(".pdtimgkitchendivdisplay2").hide();
-    $(".pdtimgkitchendivdisplay3").hide();
-    $(".pdtimgkitchendivdisplay4").hide();
+    JQProductDisplay1.hide();
+    JQProductDisplay2.hide();
+    JQProductDisplay3.hide();
+    JQProductDisplay4.hide();
     $("#backdiv").show();
     $("#kitchendiv").hide();
     $("#bathroomdiv").hide();
@@ -1806,7 +1811,7 @@ function checkinventoryfun(ItemNumber) {
     });
 
 
-    $("#checkinventory1").show();
+    JQCheckInventory1.show();
     $("#fade").show();
 
 }
@@ -1829,13 +1834,13 @@ function checkinventoryfuncls() {
     }
 
 
-    $("#checkinventory1").hide();
+    JQCheckInventory1.hide();
     $("#fade").hide();
 }
 
 function Specification(itemno) {
 
-    $("#specificationdiv").html(' <div style="width:100%;height: 155px;margin-top:40px;text-align:center;"><img src="images/27.GIF" /></div>');
+    JQSpecificationDiv.html(' <div style="width:100%;height: 155px;margin-top:40px;text-align:center;"><img src="images/27.GIF" /></div>');
     $("#termsconditionid").hide();
 
 
@@ -2079,7 +2084,7 @@ function Specification(itemno) {
                         else {
                             attrib = attrib + '<div style="min-height:70px;text-align:center;color:red;margin-top: 50px">No Specifications Available</div>';
                         }
-                        $("#specificationdiv").html(attrib);
+                        JQSpecificationDiv.html(attrib);
                         $("#termsconditionid").show();
                     });
                 }
@@ -2099,29 +2104,29 @@ function Specification(itemno) {
 
     });
 
-    $("#specificationdiv").show();
+    JQSpecificationDiv.show();
     $("#pdtoverview").hide();
-    $("#lblSpecificationdiv").addClass('addclass');
-    $("#lblProductdiv").removeClass('addclass');
-    $("#lblProductdiv").addClass('backgroundcolor');
-    $("#lblSpecificationdiv").removeClass('backgroundcolor');
+    LblJQSpecificationDiv.addClass('addclass');
+    LblJQProductDiv.removeClass('addclass');
+    LblJQProductDiv.addClass('backgroundcolor');
+    LblJQSpecificationDiv.removeClass('backgroundcolor');
 }
 function ProductOverview() {
 
     //$("#lblSpecificationdiv").addClass('addclass');
-    $("#lblSpecificationdiv").removeClass('addclass');
-    $("#lblSpecificationdiv").addClass('backgroundcolor');
-    $("#lblProductdiv").addClass('addclass');
-    $("#lblProductdiv").removeClass('backgroundcolor');
-    $("#specificationdiv").hide();
+    LblJQSpecificationDiv.removeClass('addclass');
+    LblJQSpecificationDiv.addClass('backgroundcolor');
+    LblJQProductDiv.addClass('addclass');
+    LblJQProductDiv.removeClass('backgroundcolor');
+    JQSpecificationDiv.hide();
     $("#pdtoverview").show();
 }
 //<img src="images/backarrownew.png" onclick="pdoductpagereload()" style="float:left"/>
 function pdoductpagereload() {
     $("#filterdiv").show();
     $(".searchdiv").show();
-    $(".pdtimgkitchendivdisplay1").hide();
-    $(".pdtimgdivdisplay").hide();
+    JQProductDisplay1.hide();
+    JQProductDisplay.hide();
     $("#default_div").show();
     $(".pdtloadlistdiv").show();
     $("#filterselctiondiv").hide();
@@ -2137,7 +2142,6 @@ function pdoductpagereload() {
         new_page = c_page.replace(',' + result[result.length - 1], "");
         setLS('page', new_page);
     }
-    // $(".pdtimgkitchendivdisplay1").css('margin-top', '0px');
 }
 function navigationclick() {
     $("#prdtsectionimges").hide();

@@ -4,6 +4,10 @@ Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
 
+// JquerySelectorVariable
+
+var JQFilterSelectionDiv = $("#filterselctiondiv");
+
 //Globalvalues for the JS
 var GlobalFilterArray = [];
 AccessTokenKey = getLS('AccessTokenKey');
@@ -127,8 +131,8 @@ function filterselection1() {
 
                     });
 
-                    $("#filterselctiondiv").html(output);
-                    $("#filterselctiondiv").show();
+                    JQFilterSelectionDiv.html(output);
+                    JQFilterSelectionDiv.show();
                     $.mobile.loading("hide");
                     $("#loading_pdt").hide();
                     $(".pdtloadlistdiv").hide();
@@ -137,8 +141,8 @@ function filterselection1() {
                 }
                 else {
 
-                    $("#filterselctiondiv").html("<div style='Text-align:center;margin-top:50px;color:red;font-family:calibri'>No Filters</div>");
-                    $("#filterselctiondiv").show();
+                    JQFilterSelectionDiv.html("<div style='Text-align:center;margin-top:50px;color:red;font-family:calibri'>No Filters</div>");
+                    JQFilterSelectionDiv.show();
                     $.mobile.loading("hide");
                     $("#loading_pdt").hide();
                     $(".pdtloadlistdiv").hide();
@@ -160,7 +164,7 @@ function filterselection1() {
         });
     }
     else {
-        $("#filterselctiondiv").show();
+        JQFilterSelectionDiv.show();
         $.mobile.loading("hide");
         $("#loading_pdt").hide();
         $(".pdtloadlistdiv").hide();
@@ -287,7 +291,7 @@ function Filterdiv(Divid) {
 
 function filterbackbtn() {
     $(".pdtloadlistdiv").show();
-    $("#filterselctiondiv").hide();
+    JQFilterSelectionDiv.hide();
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
     var c_page = getLS('page');

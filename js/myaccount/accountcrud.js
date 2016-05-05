@@ -4,6 +4,10 @@ Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
 
+// JquerySelectorVariable
+
+var TextJQAddress = $("#txtaddress"), TextJQPinCode = $("#txtpincode"), TextJQPhoneNumber = $("#txtphonenumber"), TextJQCity = $("#txtcity"), TextJQState = $("#txtstate");
+
 //Globalvalues for the JS
 
 AccessTokenKey = getLS('AccessTokenKey');
@@ -70,11 +74,11 @@ function accountPageLoad() {
                 CustomerTelephoneSuffixNumber = ss.CustomerTelephoneSuffixNumber;
             }
 
-            $("#txtaddress").val(address1);
-            $("#txtcity").val(addresscity);
-            $("#txtstate").val(addressstate);
-            $("#txtpincode").val(addresszip);
-            $("#txtphonenumber").val(CustomerTelephoneAreaCode + '-' + CustomerTelephonePrefixNumber + '-' + CustomerTelephoneSuffixNumber);
+            TextJQAddress.val(address1);
+            TextJQCity.val(addresscity);
+            TextJQState.val(addressstate);
+            TextJQPinCode.val(addresszip);
+            TextJQPhoneNumber.val(CustomerTelephoneAreaCode + '-' + CustomerTelephonePrefixNumber + '-' + CustomerTelephoneSuffixNumber);
             $("#div_address1").html(address1);
             $("#div_address2").html(addresscity + "," + addressstate + "-" + addresszip);
         });
@@ -314,55 +318,55 @@ function saveBranch() {
     setLS('default_branchcode1', branch_code);
     setLS('default_branchname1', branch_name);
 
-    var address1 = $("#txtaddress").val();
-    var addresscity = $("#txtcity").val();
+    var address1 = TextJQAddress.val();
+    var addresscity = TextJQCity.val();
     var addressstate = $("#ddstate").val();
-    var addresszip = $("#txtpincode").val();
-    var phonenumber = $("#txtphonenumber").val();
+    var addresszip = TextJQPinCode.val();
+    var phonenumber = TextJQPhoneNumber.val();
     var shippement = $("#ddshippment").val();
     var mobile = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
     var zipcodeval = /[^\s\da-z\-]/i;
     var name = /^[A-Za-z]*$/;
 
     if (address1 === "") {
-        $("#txtaddress").focus();
+        TextJQAddress.focus();
 
         navigator.notification.alert('Please enter your address.', null, 'Alert', 'OK');
         return false;
     }
     else if (addresscity === "") {
-        $("#txtcity").focus();
+        TextJQCity.focus();
 
         navigator.notification.alert('Please enter your city.', null, 'Alert', 'OK');
         return false;
     }
     else if (addresszip === "") {
-        $("#txtpincode").focus();
+        TextJQPinCode.focus();
 
         navigator.notification.alert('Please enter your zipcode.', null, 'Alert', 'OK');
         return false;
     }
     else if (true === zipcodeval.test(addresszip)) {
-        $("#txtpincode").focus();
+        TextJQPinCode.focus();
 
         navigator.notification.alert('Please enter valid zipcode.', null, 'Alert', 'OK');
         return false;
     }
 
     else if (document.getElementById("txtpincode").value.length !== 5) {
-        $("#txtpincode").focus();
+        TextJQPinCode.focus();
         navigator.notification.alert('Please enter 5 digit zipcode.', null, 'Alert', 'OK');
 
         return false;
     }
     else if (phonenumber === "") {
-        $("#txtphonenumber").focus();
+        TextJQPhoneNumber.focus();
         navigator.notification.alert('Please Enter Your Phone Number.', null, 'Alert', 'OK');
 
         return false;
     }
     else if (!mobile.test(phonenumber)) {
-        $("#txtphonenumber").focus();
+        TextJQPhoneNumber.focus();
         navigator.notification.alert('Phone number format should be xxx-xxx-xxxx', null, 'Alert', 'OK');
 
         return false;
