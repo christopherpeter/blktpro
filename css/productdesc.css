@@ -1,7 +1,7 @@
 ﻿body
 {
     font-family: calibri,Helvetica;
-    margin: -16px 0px 0 0px;
+    margin: -16px 0 0 0;
 }
     .popupheight { height: 262px; overflow-x: hidden; overflow-y: scroll; }
 #desctable
@@ -295,7 +295,7 @@ hr {
 .cartimg {
 
      float: right;
-    margin-top: 0px;
+    margin-top: 0;
     width: 100%;
     cursor:pointer;
 }
@@ -422,7 +422,7 @@ width:100%;float:left;display:none
 }
 .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
       width:100%; margin-left: 2.5%;
 }
 .tableproducts1
@@ -452,7 +452,7 @@ width:100%;float:left;display:none
 {
     float: left;
   
-    margin-top: 0px !important;
+    margin-top: 0 !important;
     width: 100%;
 }
 .submitlinediv
@@ -658,7 +658,7 @@ width:100%;float:left;display:none
 }
 .popdiv
 {
-    margin-left: 0px;
+    margin-left: 0;
     margin-right: 5px;
     width: 100%;
     line-height: 15px
@@ -699,7 +699,7 @@ tableclass1
 }
 .empty
 {
-    height: 0px;
+    height: 0;
 }
 .tabcontent
 {
@@ -785,7 +785,7 @@ tableclass1
 }
 .login_inner1
 {
-    border-radius: 0px;
+    border-radius: 0;
     margin: 110px auto;
     width: 25%;
 }
@@ -803,7 +803,7 @@ tableclass1
 }
 .forgot_span
 {
-    margin: 0 10px 0 0px;
+    margin: 0 10px 0 0;
 }
 .leftdivalign {margin-left: 40%; cursor: pointer
 }
@@ -919,7 +919,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 45%;
     }
@@ -1022,7 +1022,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 .cartimg {
     cursor: pointer;
     float: right;
-    margin-top: 0px;
+    margin-top: 0;
     width: 100%;
 }
 .arrow1 {
@@ -1222,7 +1222,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 45%;
     }
@@ -1461,7 +1461,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
       width:100%; margin-left: 2.5%;
 }
 
@@ -1539,7 +1539,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 300px auto;
         width: 45%;
     }
@@ -1667,7 +1667,7 @@ width:100%;float:left;display:none
 .cartimg {
     cursor: pointer;
     float: right;
-    margin-top: 0px;
+    margin-top: 0;
     width: 100%;
 }
 .loginpopup {
@@ -1779,7 +1779,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .cartimg {
     cursor: pointer;
     float: right;
-    margin-top: 0px;
+    margin-top: 0;
     width: 100%;
 }
   .tableproducts1
@@ -1816,7 +1816,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
         .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
       width:100%; 
 }
 
@@ -1882,7 +1882,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 200px auto;
         width: 52%;
     }
@@ -1902,7 +1902,7 @@ float:left;display:none
     {
         float: left;
         margin-bottom: 10px;
-        margin-left: 0px;
+        margin-left: 0;
         width: 44%;
     }
     .white_contentlist
@@ -2107,7 +2107,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .cartimg {
     cursor: pointer;
     float: right;
-    margin-top: 0px;
+    margin-top: 0;
     width: 100%;
 }
   .tableproducts1
@@ -2144,7 +2144,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
       width:100%; margin-left: 2%;
 }
 
@@ -2209,7 +2209,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 200px auto;
         width: 52%;
     }
@@ -2463,7 +2463,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 72%;
     }
@@ -2580,7 +2580,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
       width:100%; margin-left: 2%;
 }
 }
@@ -2697,7 +2697,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 50px auto;
         width: 70%;
     }
@@ -2734,7 +2734,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3065,7 +3065,7 @@ float:left;display:none;
 
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3142,7 +3142,7 @@ float:left;display:none;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
         font-size: 11px;
     }
     .white_contentlistnew1
@@ -3159,7 +3159,7 @@ float:left;display:none;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0px;
+        margin-left: 0;
         text-align: center;
         width: 100%;
     }
@@ -3231,7 +3231,7 @@ float:left;display:none;
 }
          .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width:100%; margin-left: 2%;
     }
              .tableclass
@@ -3446,7 +3446,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
      .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width:100%; margin-left: 2%;
     }
 
@@ -3523,7 +3523,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 40px auto;
         width: 85%;
     }
@@ -3549,7 +3549,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3627,7 +3627,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     {
         background: #fff;
         font-size: 11px;
-        margin-left: 0px;
+        margin-left: 0;
     }
     .white_contentlistnew1
     {
@@ -3643,7 +3643,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0px;
+        margin-left: 0;
         text-align: center;
         width: 100%;
     }
@@ -3966,7 +3966,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -4054,7 +4054,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
         font-size: 11px;
     }
     .white_contentlistnew1
@@ -4109,7 +4109,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width:100%; margin-left: 2%;
     }
     .pdtimg
@@ -4432,7 +4432,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -4519,7 +4519,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
         font-size: 11px;
     }
     .white_contentlistnew1
@@ -4573,7 +4573,7 @@ height: 30px;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width:100%; margin-left: 2%;
     }
     .pdtimg
@@ -4614,7 +4614,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 .cartimg {
    cursor: pointer;
     float: right;
-    margin-top: 0px;
+    margin-top: 0;
     width: 100%;
 }
 

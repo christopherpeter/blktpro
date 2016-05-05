@@ -1,7 +1,7 @@
 ﻿body
 {
     font-family: calibri,Helvetica;
-    margin: -16px 0px 0 0px;
+    margin: -16px 0 0 0;
 }
     .popupheight { height: 262px; overflow-x: hidden; overflow-y: scroll; }
 .productimagesizedisplay {width:50%;padding:5% }
@@ -326,7 +326,7 @@ hr
 .cartimg
 {
     vertical-align: top;
-    margin-top: 0px;
+    margin-top: 0;
     width: 30%;
     cursor: pointer;
 }
@@ -437,7 +437,7 @@ width:100%;
 }
 .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
     width: 100%;
     margin-left: 1%;
 }
@@ -709,7 +709,7 @@ tableclass1
 }
 .empty
 {
-    height: 0px;
+    height: 0;
 }
 .tabcontent
 {
@@ -794,7 +794,7 @@ tableclass1
 }
 .login_inner1
 {
-    border-radius: 0px;
+    border-radius: 0;
     margin: 110px auto;
     width: 25%;
 }
@@ -812,7 +812,7 @@ tableclass1
 }
 .forgot_span
 {
-    margin: 0 10px 0 0px;
+    margin: 0 10px 0 0;
 }
 .leftdivalign
 {
@@ -951,7 +951,7 @@ tableclass1
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 45%;
     }
@@ -1049,7 +1049,7 @@ tableclass1
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 31%;
     }
     .arrow1
@@ -1268,7 +1268,7 @@ tableclass1
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 45%;
     }
@@ -1527,7 +1527,7 @@ tableclass1
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: -1%;
     }
@@ -1599,7 +1599,7 @@ tableclass1
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 300px auto;
         width: 45%;
     }
@@ -1721,7 +1721,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 30%;
     }
     .loginpopup
@@ -1846,7 +1846,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 30%;
     }
     .tableproducts1
@@ -1886,7 +1886,7 @@ width:100%;
 
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 45px;
     }
@@ -1943,7 +1943,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 200px auto;
         width: 52%;
     }
@@ -2179,7 +2179,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 30%;
     }
     .tableproducts1
@@ -2219,7 +2219,7 @@ width:100%;
 
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 100%;
     }
@@ -2276,7 +2276,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 200px auto;
         width: 52%;
     }
@@ -2529,7 +2529,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 72%;
     }
@@ -2741,7 +2741,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 50px auto;
         width: 70%;
     }
@@ -2778,7 +2778,7 @@ width:100%;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3059,7 +3059,7 @@ width:100%;
 
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3135,7 +3135,7 @@ width:100%;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
     }
     .white_contentlistnew1
     {
@@ -3151,7 +3151,7 @@ width:100%;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0px;
+        margin-left: 0;
         text-align: center;
         width: 100%;
     }
@@ -3223,7 +3223,7 @@ width:100%;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 1%;
     }
@@ -3423,7 +3423,7 @@ width:100%;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 1%;
     }
@@ -3484,7 +3484,7 @@ width:100%;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 40px auto;
         width: 85%;
     }
@@ -3510,7 +3510,7 @@ width:100%;
 
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3586,7 +3586,7 @@ width:100%;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
     }
     .white_contentlistnew1
     {
@@ -3602,7 +3602,7 @@ width:100%;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0px;
+        margin-left: 0;
         text-align: center;
         width: 100%;
     }
@@ -3915,7 +3915,7 @@ width:100%;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -4002,7 +4002,7 @@ width:100%;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
     }
     .white_contentlistnew1
     {
@@ -4049,7 +4049,7 @@ width:100%;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 15px;
     }
@@ -4095,7 +4095,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 40%;
     }
 
@@ -4382,7 +4382,7 @@ width:100%;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -4468,7 +4468,7 @@ width:100%;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
     }
     .white_contentlistnew1
     {
@@ -4515,7 +4515,7 @@ width:100%;
     }
     .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
     }
     .pdtimg
     {
@@ -4558,7 +4558,7 @@ width:100%;
     {
         cursor: pointer;
         vertical-align: top;
-        margin-top: 0px;
+        margin-top: 0;
         width: 40%;
     }
 

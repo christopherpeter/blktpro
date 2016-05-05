@@ -316,7 +316,7 @@ function invoiceclick() {
                 var xmlString;
                 if (window.ActiveXObject) {
                     xmlString = xmlData.xml;
-                } === 
+                }
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }

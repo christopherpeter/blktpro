@@ -1,7 +1,7 @@
 ﻿body
 {
     font-family: calibri,Helvetica;
-    margin: -16px 0px 0 0px;
+    margin: -16px 0 0 0;
 }
 .popupheight { height: 262px; overflow-x: hidden; overflow-y: scroll; }
 .editaddressclass
@@ -374,7 +374,7 @@ width:100%;float:left;display:none
 }
 .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
       width:100%; margin-left: -1%;
 }
 .tableproducts1
@@ -741,7 +741,7 @@ tableclass1
 }
 .login_inner1
 {
-    border-radius: 0px;
+    border-radius: 0;
     margin: 110px auto;
     width: 25%;
 }
@@ -759,7 +759,7 @@ tableclass1
 }
 .forgot_span
 {
-    margin: 0 10px 0 0px;
+    margin: 0 10px 0 0;
 }
 .leftdivalign {
     margin-right: 3%;cursor: pointer
@@ -855,7 +855,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 45%;
     }
@@ -1149,7 +1149,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 45%;
     }
@@ -1363,7 +1363,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
       width:100%; margin-left: -1%;
 }
 
@@ -1441,7 +1441,7 @@ width:100%;float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 300px auto;
         width: 45%;
     }
@@ -1685,7 +1685,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
         .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
       width:100%; margin-left: 100%;
 }
 
@@ -1751,7 +1751,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 200px auto;
         width: 52%;
     }
@@ -1980,7 +1980,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
         .tableproducts
 {
-    margin-top: 0px;
+    margin-top: 0;
       width:100%; margin-left: 100%;
 }
 
@@ -2046,7 +2046,7 @@ float:left;display:none
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 200px auto;
         width: 52%;
     }
@@ -2261,7 +2261,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 60px auto;
         width: 72%;
     }
@@ -2442,7 +2442,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 50px auto;
         width: 70%;
     }
@@ -2479,7 +2479,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -2757,7 +2757,7 @@ width:360px;float:left;display:none;
 
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -2833,7 +2833,7 @@ width:360px;float:left;display:none;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
         font-size:11px;
     }
     .white_contentlistnew1
@@ -2850,7 +2850,7 @@ width:360px;float:left;display:none;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0px;
+        margin-left: 0;
         text-align: center;
         width: 100%;
     }
@@ -2915,7 +2915,7 @@ width:360px;float:left;display:none;
 }
          .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width:100%; margin-left: 1%;
     }
              .tableclass
@@ -3081,7 +3081,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
      .tableproducts
     {
-        margin-top: 0px;
+        margin-top: 0;
         width:100%; margin-left: 1%;
     }
 
@@ -3163,7 +3163,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner1
     {
-        border-radius: 0px;
+        border-radius: 0;
         margin: 40px auto;
         width: 85%;
     }
@@ -3189,7 +3189,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3265,7 +3265,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
         font-size:11px;
     }
     .white_contentlistnew1
@@ -3282,7 +3282,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         font-size: 17px;
         font-weight: bold;
         margin-top: -30px;
-        margin-left: 0px;
+        margin-left: 0;
         text-align: center;
         width: 100%;
     }
@@ -3549,7 +3549,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -3635,7 +3635,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
         font-size:11px;
     }
     .white_contentlistnew1
@@ -3917,7 +3917,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .forgot_span
     {
-        margin: 0 10px 0 0px;
+        margin: 0 10px 0 0;
         font-size: 13px;
     }
     .newaccount_span
@@ -4004,7 +4004,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .innerpopup
     {
         background: #fff;
-        margin-left: 0px;
+        margin-left: 0;
         font-size:11px;
     }
     .white_contentlistnew1
