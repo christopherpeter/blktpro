@@ -325,7 +325,7 @@ hr {
     
 }
 .pdtimgdivdisplay {
-   width:100%;margin-left:0%;
+   width:100%;margin-left:0;
 }
 .pdtimgkitchendivdisplay1 {
    width:93px;
@@ -545,7 +545,7 @@ width:100%;float:left;display:none
     position: fixed;
     top: 62px;
     width: 100%;
-    left:0%;
+    left:0;
     /*border-bottom: 1px solid #ccc;*/
 }
 .white_contentlistnew
@@ -990,7 +990,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
         height: 100px;
     }
         .pdtimg {
-        height:0%;    width: 30%;
+        height:0;    
+        width: 30%;
    
     }
     .imgpdt
@@ -1341,7 +1342,7 @@ width:100%;
   .cartimg {
     cursor: pointer;
     float: right;
-   margin-top:0px;
+   margin-top:0;
     width: 100%;
 }
   .tablecart {
@@ -2149,7 +2150,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:100%;margin-left:0%;
+    float:left;width:100%;margin-left:0;
 }
         
     .filter
@@ -2378,7 +2379,7 @@ float:left;display:none
     .filtertxtalign{margin-left:136px}
         .popupheight { height: 150px; overflow-x: hidden; overflow-y: scroll; }
           .positionleftalign {
-    margin-left:0px;
+    margin-left:0;
 }
        .lineheight { 
     line-height:23px;

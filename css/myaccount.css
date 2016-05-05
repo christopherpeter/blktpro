@@ -497,7 +497,7 @@ width:100%;float:left;display:none
     position: fixed;
     top: 68px;
     width: 100%;
-    left:0%;
+    left:0;
     border-bottom: 1px solid #ccc;
 }
 .white_contentlistnew
@@ -1690,7 +1690,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0%;
+    float:left;width:0;
 }
         
     .filter

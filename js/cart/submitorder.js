@@ -158,13 +158,13 @@ function submitcart() {
                     var ItemPricingUnitofMeasure = ss.ItemStockingUnitOfMeasure; //doubt
                     var QuantityOrdered = ss.RequiredQuantity;
                     var ItemUnitPriceAmount = ss.ItemUnitPriceAmount;
-                    var ExtendedPriceAmount = QuantityOrdered * ItemUnitPriceAmount;
-                    var OrderLineItemType = "S";
-                    var LineItemPriceSourceCode = "I";
-                    var LineItemCostSourceCode = "I";
+                    //var ExtendedPriceAmount = QuantityOrdered * ItemUnitPriceAmount;
+                    //var OrderLineItemType = "S";
+                    //var LineItemPriceSourceCode = "I";
+                    //var LineItemCostSourceCode = "I";
                     var LineItemQuantityOrderedUnitOfMeasure = ss.ItemStockingUnitOfMeasure; //doubt
                     var selectedbranch = ss.selectedbranch;
-                    var OrderStatusCode = "O";
+                    //var OrderStatusCode = "O";
 
 
                     if (i !== res.rows.length - 1) {

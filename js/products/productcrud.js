@@ -428,7 +428,7 @@ function product_next() {
             html = html + "<div class='tableproducts'>";
             for (var i = 0; i < res.rows.length; i++) {
                 var ss = res.rows.item(i);
-                var id = ss.id;
+                //var id = ss.id;
                 var SECTIONCODE = ss.SECTION;
                 var HSCODE = ss.HSCODE;
                 var DESCRIPTION = ss.DESCRIPTION;
