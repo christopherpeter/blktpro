@@ -240,7 +240,7 @@ function loadcartitems() {
                     var RequiredQuantity = ss.RequiredQuantity;
                     var TotalPrice = ss.TotalPrice;
                     var AVAILABLEQUNTY = ss.AVAILABLEQUNTY;
-                    var OurItemNumber = ss.OurItemNumber;
+                    //var OurItemNumber = ss.OurItemNumber;
                     var PRODUCTIMAGE = ss.PRODUCTIMAGE;
 
 

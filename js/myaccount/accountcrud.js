@@ -112,7 +112,7 @@ function accountPageLoad() {
                 var ss = res.rows.item(i);
                 var BranchName = ss.BranchName;
                 var BranchCode = ss.BranchCode;
-                var id = ss.id;
+                //var id = ss.id;
                 if (branch_id === BranchCode) {
                     html = html + "<option value='" + BranchCode + "' selected>" + BranchName + "</option>";
                 }
@@ -134,7 +134,7 @@ function accountPageLoad() {
             for (var i = 0; i < res.rows.length; i++) {
                 var ss = res.rows.item(i);
                 var BranchName = ss.BranchName;
-                var BranchCode = ss.BranchCode;
+                //var BranchCode = ss.BranchCode;
                 // var email = ss.Email;
                 var PhoneNumber = ss.PhoneNumber;
                 var Address = ss.Address;
@@ -195,7 +195,7 @@ function loadalBranchesToLocaldbAccount() {
 
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCBranches;
-                var ouput_string;
+                //var ouput_string;
                 $.each(list, function (i, item) {
                     var BranchName = item.BranchName;
                     var BranchCode = item.BranchCode;

@@ -36,8 +36,8 @@ function loadGPSLocations() {
 
         var radlat1 = Math.PI * lat1 / 180;
         var radlat2 = Math.PI * lat2 / 180;
-        var radlon1 = Math.PI * lon1 / 180;
-        var radlon2 = Math.PI * lon2 / 180;
+       // var radlon1 = Math.PI * lon1 / 180;
+       // var radlon2 = Math.PI * lon2 / 180;
         var theta = (lon1) - (lon2);
         var unit = 'K';
         var radtheta = Math.PI * theta / 180;
@@ -498,7 +498,7 @@ function SearchBranch() {
             center: new google.maps.LatLng(40.71, -74.0059), // Show map to center :Newyork locations
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-            var infowindow = new google.maps.InfoWindow();
+            //var infowindow = new google.maps.InfoWindow();
             var marker, j;
             for (j = 0; j < locations.length; j++) {
 
@@ -662,7 +662,6 @@ function loadAllBranchesToLocalDB() {
 
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCBranches;
-                var ouput_string;
                 $.each(list, function (i, item) {
                     var BranchName = item.BranchName;
                     var BranchCode = item.BranchCode;
@@ -1037,6 +1036,7 @@ function toggle_visibilityclose() {
 }
 function mapdirection(mode) {
     var load = getLS('Default');
+    var mapno = getLS('mapno');
     getdirections(mapno, mode, load);
 }
 

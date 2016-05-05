@@ -70,7 +70,7 @@ function loadsectionproductscontents(FirstLoad) {
     JQSearch.hide();
     myFuncCalls = 0;
 
-    var view = getLS('viewimg');
+    //var view = getLS('viewimg');
     var limit = getLS('product_count');
 
     if (getLS('breadcrumb') === 'search') {

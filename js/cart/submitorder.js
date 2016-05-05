@@ -40,7 +40,6 @@ if (isuserlogged === 'yes') {
 function submitcart() {
 
     var ordercode = "O";
-    var JobName = "";
     var OrderChargeorCashCode = $("#ddorder").val();
 
     if (OrderChargeorCashCode === '0') {
@@ -71,13 +70,12 @@ function submitcart() {
 
     });
 
-    var TotalCartWeight = getLS('Totalcartweight');
+    //var TotalCartWeight = getLS('Totalcartweight');
     var ShipViaDescription = getLS('ShipViaDescription');
     var Ourstatuscode = "N";
-    var OrderEnteredAsType = "A";
-    var OrderAgeCode = 2;
-    var Order = "O";
-    var ShipToAddressFlag = "Y";
+    //var OrderEnteredAsType = "A";
+    //var OrderAgeCode = 2;
+    //var ShipToAddressFlag = "Y";
     var TaxableFlag = '';
     var pricetax = SettingsPricetax, shippingcharges = SettingsShippingcharges;
     if (pricetax !== 0 && pricetax !== null) {
@@ -95,19 +93,19 @@ function submitcart() {
     }
 
     var CountofLineItems = Totalitems;
-    var TaxPercent = pricetax;
-    var OrderTaxAmount = getLS('CartTotalTax');
+    //var TaxPercent = pricetax;
+    //var OrderTaxAmount = getLS('CartTotalTax');
     var SubtotalAmount = getLS('CartTotalamount');
     var OtherChargesTotalAmount = parseFloat(shippingcharges);
     var CostTotalAmount = parseFloat(SubtotalAmount) + parseFloat(shippingcharges);
 
     var UserIDofMaintenance = getLS('UserID');
 
-    var OrderFillTypeCode = "I";
-    var TaxableAmount = getLS('CartTotalamountWithTax');
-    var NonTaxableAmount = getLS('CartTotalamount');
-    var RouteInUseTag = "L";
-    var DiscountPercent = "0";
+    //var OrderFillTypeCode = "I";
+    //var TaxableAmount = getLS('CartTotalamountWithTax');
+    //var NonTaxableAmount = getLS('CartTotalamount');
+    //var RouteInUseTag = "L";
+    //var DiscountPercent = "0";
     var initials = "WOE";
 
     var jobnumber = "";
@@ -154,7 +152,7 @@ function submitcart() {
                 for (var i = 0; i < res.rows.length; i++) {
 
                     var ss = res.rows.item(i);
-                    var LineItemSequenceNumber = parseInt(i + 1, 10);
+                    //var LineItemSequenceNumber = parseInt(i + 1, 10);
                     var OurProductNumber = ss.OurProductNumber;
                     var OurItemNumber = ss.OurItemNumber;
                     var ItemPricingUnitofMeasure = ss.ItemStockingUnitOfMeasure; //doubt

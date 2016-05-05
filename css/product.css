@@ -299,8 +299,8 @@ hr
 {
     display: none;
     position: fixed;
-    top: 0%;
-    left: 0%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: gray;
@@ -313,8 +313,8 @@ hr
 {
     display: none;
     position: fixed;
-    top: 0%;
-    left: 0%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: gray;
@@ -357,7 +357,7 @@ width:100%;
 .pdtimgdivdisplay
 {
     width: 100%;
-    margin-left: 0%;
+    margin-left: 0;
 }
 .pdtimgkitchendivdisplay1
 {
@@ -986,7 +986,7 @@ tableclass1
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -499px;
         width: 32%;
@@ -1023,7 +1023,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
           width: 30%;
     }
     .imgpdt
@@ -1303,7 +1303,7 @@ tableclass1
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -1177px;
         width: 32%;
@@ -1340,7 +1340,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
            width: 30%;
     }
     .imgpdt
@@ -1634,7 +1634,7 @@ tableclass1
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -1177px;
         width: 34%;
@@ -1671,7 +1671,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
          width: 30%;
     }
     .imgpdt
@@ -1894,7 +1894,7 @@ width:100%;
     .pdtimgdivdisplay
     {
         float: left;
-        width: 0%;
+        width: 0;
     }
 
     .filter
@@ -1981,7 +1981,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -924px;
         width: 37%;
@@ -2017,7 +2017,7 @@ width:100%;
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
          width: 30%;
     }
     .imgpdt
@@ -2227,7 +2227,7 @@ width:100%;
     .pdtimgdivdisplay
     {
         float: left;
-        width: 0%;
+        width: 0;
     }
 
     .filter
@@ -2314,7 +2314,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -924px;
         width: 37%;
@@ -2350,7 +2350,7 @@ width:100%;
     }
     .pdtimg
     {
-        height: 0%;
+        height: 0;
             width: 30%;
     }
     .imgpdt
@@ -2820,7 +2820,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -400px;
         width: 50%;
@@ -3139,7 +3139,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -539px;
         width: 85%;
@@ -3243,7 +3243,7 @@ width:100%;
     .cartimg
     {
         vertical-align: top;
-        margin-top: 0%;
+        margin-top: 0;
         width: 38%;
         cursor: pointer;
     }
@@ -3311,8 +3311,8 @@ width:100%;
     {
         display: none;
         position: fixed;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 808px;
         background-color: gray;
@@ -3590,7 +3590,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
-        left: 0%;
+        left: 0;
         position: relative;
         top: -390px;
         width: 85%;
@@ -3634,7 +3634,7 @@ width:100%;
     .pdtimg
     {
           width: 30%;
-        height: 0%;
+        height: 0;
     }
     .white_contentdirection
     {
@@ -3697,7 +3697,7 @@ width:100%;
     .cartimg
     {
         vertical-align: top;
-        margin-top: 0%;
+        margin-top: 0;
         width: 42%;
         cursor: pointer;
     }
@@ -3771,8 +3771,8 @@ width:100%;
     {
         display: none;
         position: fixed;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 608px;
         background-color: gray;
@@ -4009,7 +4009,7 @@ width:100%;
         position: relative;
         top: -380px;
         width: 70%;
-        left: 0%;
+        left: 0;
         border: 1px solid #ccc;
     }
     .p-contentlist
@@ -4056,7 +4056,7 @@ width:100%;
     .pdtimg
     {
            width: 30%;
-        height: 0%;
+        height: 0;
         font-size: 12px;
     }
     .white_contentdirection
@@ -4195,8 +4195,8 @@ width:100%;
     {
         display: none;
         position: fixed;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 608px;
         background-color: gray;
@@ -4250,7 +4250,7 @@ width:100%;
     }
     .pdtimgdivdisplay
     {
-        margin-left: 0%;
+        margin-left: 0;
         width: 100%;
     }
     .loading-image
@@ -4475,7 +4475,7 @@ width:100%;
         position: relative;
         top: -380px;
         width: 70%;
-        left: 0%;
+        left: 0;
         border: 1px solid #ccc;
     }
     .p-contentlist
@@ -4520,7 +4520,7 @@ width:100%;
     .pdtimg
     {
           width: 30%;
-        height: 0%;
+        height: 0;
     }
     .white_contentdirection
     {
@@ -4647,8 +4647,8 @@ width:100%;
     {
         display: none;
         position: fixed;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 608px;
         background-color: gray;

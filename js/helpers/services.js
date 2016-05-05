@@ -63,7 +63,6 @@ var NewFilterProductsResultsURL = "https://www.blackmancommercialaccounts.com/ax
 
 var splib = "TYCHLIB";
 var tablelib = "TYCHLIB";
-var initials = "WOE";
 
 //Image path url
 var imagepath = "https://www.blackmancommercialaccounts.com/Categories/";  //Center category imagepath
@@ -103,7 +102,7 @@ function deleteCookies() {
 
 
 //Function To set Localstorage
-
+var SecretPhrase = getCookie("AlphanumericToken");
 function setLS(Key, Value) {
     //var EncryptedValue = CryptoJS.AES.encrypt(Value.toString(), SecretPhrase);
     localStorage.setItem(Key, Value);
@@ -137,13 +136,12 @@ var SettingsPricetax = 0;
 var SettingsShippingcharges = 0;
 var defaultbranchcode = "100";
 var defaultbranchname = "BLACKMAN - WAREHOUSE";
-var SecretPhrase = getCookie("AlphanumericToken");
 var AccessTokenKey, CustomerNumber, userID, UserProfile, isuserlogged, UserName, Isvalid;
 
 
 var encryptedkey = getLS('encryptedkey');
 
-if (getLS('AccessTokenKey') === null || getLS('AccessTokenKey') === "") {
+if (AccessTokenKey === null || AccessTokenKey === "") {
     AccessTokenKey = "";
 }
 else {

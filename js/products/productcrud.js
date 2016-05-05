@@ -62,7 +62,7 @@ function loadsectionimages() {
             html = html + "<div class='tableproducts'>";
             for (var i = 0; i < res.rows.length; i++) {
                 var ss = res.rows.item(i);
-                var id = ss.id;
+                //var id = ss.id;
                 var SECTIONCODE = ss.SECTION;
                 var DESCRIPTION = ss.DESCRIPTION;
                 var HSCODE = ss.HSCODE;
@@ -632,7 +632,7 @@ function product_search() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+        url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -859,6 +859,7 @@ function clearfilters() {
     writeToLogFile(message, 5);
 }
 function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
+
     description = description.replace(/_/g, " ");
     setLS('breadlist1', description);
     setLS('F_HSCODE', HSCODE);
@@ -886,6 +887,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
         url: NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + Sectioncode + "&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
+         
             var xmlString;
             if (window.ActiveXObject) {
                 xmlString = xmlData.xml;
@@ -943,12 +945,15 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
 
                 });
                 html = html + " </ul>";
-                ListJQ1Products.html(html);
+ 
+                ListJQ1Products.html(html);   
+                //ListJQ1Products.show();
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
 
             }
             else {
+      
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
                 html = html + '<div style="text-align:left;" onclick="pdtimgkitchendivdisplaynew1back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;  font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
@@ -962,7 +967,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
             }
 
         }, error: function () {
-
+    
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loading_pdt").hide();
             $.mobile.loading("hide");
