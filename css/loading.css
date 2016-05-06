@@ -144,6 +144,7 @@ padding: 15px;
 margin-left: -115px;
 }
 .ui-loader-verbose {
+    box-sizing: border-box;
 width: 200px;
 filter: Alpha(Opacity=88);
 opacity: .88;
