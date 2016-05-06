@@ -70,49 +70,48 @@ select
 }
 .feedbkcondiv
 {
-    background: none repeat scroll 0 0 #fff; margin-left: 5px; margin-top: 5px;
-            width: 96%;
+    box-sizing: border-box;background: none repeat scroll 0 0 #fff; margin-left: 5px; margin-top: 5px;width: 96%;
 }
 .addressdetail
 {
-    background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%;margin-top: 31px;
+    box-sizing: border-box;background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%;margin-top: 31px;
 }
 .addressdetailnew
 {
     
-    background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%
+    box-sizing: border-box;background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%
 }
 .addressdetailedit
 {
-    background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%;display:none
+    box-sizing: border-box;background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%;display:none
 }
 .itemselecttax
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
+    box-sizing: border-box;background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
 }
 .itemselect
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 45px; text-align: center;float: right;
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 45px; text-align: center;float: right;
 }
 .itempayed
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempayed:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay
 {
-    background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
 }
 .itemselect1:hover
 {
@@ -428,6 +427,7 @@ width:100%;float:left;display:none
 }
 .frgtpwd
 {
+    box-sizing: border-box;
     background: none repeat scroll 0 0 #1A2856;
     color: #FFFFFF;
     font-weight: bold;
@@ -468,6 +468,7 @@ width:100%;float:left;display:none
 }
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;
@@ -480,6 +481,7 @@ width:100%;float:left;display:none
 }
 .white_contentlist
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: none;
@@ -493,6 +495,7 @@ width:100%;float:left;display:none
 }
 .loginpopup
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: none;
@@ -521,6 +524,7 @@ width:100%;float:left;display:none
 }
 .white_contentlistnew1
 {
+    box-sizing: border-box;
     left: 0;
     position: relative;
     top: -600px;
@@ -542,6 +546,7 @@ left: 37%;
 
 .white_content1
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 30%;
@@ -750,6 +755,7 @@ tableclass1
 }
 .login_inner
 {
+    box-sizing: border-box;
     border: 2px solid #CCC;
     border-radius: 10px;
     margin: 110px auto;
@@ -807,6 +813,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     background: #ccc; min-height: 315px; display: none;font-size:15px;overflow:auto
 }
     .addressbook {
+        box-sizing: border-box;
  border: 1px solid #ccc;
     left: 37%;
     position: absolute;
@@ -828,6 +835,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .tableproducts1
 {
+        box-sizing: border-box;
      border: 1px solid #ccc;
    margin-left: 117px;
     margin-top: 0;
@@ -903,6 +911,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -916,6 +925,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -600px;
@@ -956,6 +966,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 243px;
         height: 243px;
         cursor: pointer;
@@ -964,6 +975,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 25%;
@@ -1045,6 +1057,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 13px;
 }
     .addressbook {
+        box-sizing: border-box;
    border: 1px solid #ccc;
     left: 33%;
     position: absolute;
@@ -1057,6 +1070,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     overflow:auto;
 }
     .loginpopup {
+        box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -1070,6 +1084,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
      .tableproducts1
 {
+         box-sizing: border-box;
     border: 1px solid #ccc;
     margin-left: 90px;
     margin-top: 0;
@@ -1164,6 +1179,7 @@ width:100%;float:left;display:none
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -1194,6 +1210,7 @@ width:100%;float:left;display:none
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -1207,6 +1224,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -1182px;
@@ -1247,6 +1265,7 @@ width:100%;float:left;display:none
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 206px;
         height: 206px;
         cursor: pointer;
@@ -1254,6 +1273,7 @@ width:100%;float:left;display:none
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
   background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -1268,6 +1288,7 @@ width:100%;float:left;display:none
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 15%;
@@ -1352,6 +1373,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 13px;
 }
     .addressbook {
+        box-sizing: border-box;
   border: 1px solid #ccc;
     left: 30%;
     position: absolute;
@@ -1372,6 +1394,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
   .tableproducts1
 {
+      box-sizing: border-box;
      border: 1px solid #ccc;
     margin-left: 74px;
     margin-top: 0;
@@ -1467,6 +1490,7 @@ width:100%;float:left;display:none
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -1497,6 +1521,7 @@ width:100%;float:left;display:none
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -1510,6 +1535,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -1182px;
@@ -1550,6 +1576,7 @@ width:100%;float:left;display:none
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 180px;
         height: 180px;
         cursor: pointer;
@@ -1557,6 +1584,7 @@ width:100%;float:left;display:none
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
      background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -1571,6 +1599,7 @@ width:100%;float:left;display:none
 
 .white_content
 {
+    box-sizing: border-box;
  background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -1599,6 +1628,7 @@ width:100%;float:left;display:none
     width: 30%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     
@@ -1671,6 +1701,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 13px;
 }
     .addressbook {
+        box-sizing: border-box;
  border: 1px solid #ccc;
     left: 29%;
     position: absolute;
@@ -1697,6 +1728,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
   .tableproducts1
 {
+      box-sizing: border-box;
      border: 1px solid #ccc;
    margin-left: 72px;
     margin-top: 0;
@@ -1788,6 +1820,7 @@ float:left;display:none
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 75px auto;
@@ -1820,6 +1853,7 @@ float:left;display:none
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -1833,6 +1867,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -926px;
@@ -1872,6 +1907,7 @@ float:left;display:none
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 160px;
         height: 160px;
         cursor: pointer;
@@ -1879,6 +1915,7 @@ float:left;display:none
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -1893,6 +1930,7 @@ float:left;display:none
 
 .white_content
 {
+    box-sizing: border-box;
    background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -1906,6 +1944,7 @@ float:left;display:none
   #map_canvas {
     height:924px;}
      .loginpopup {
+         box-sizing: border-box;
         background-color: #ffffff;
         border: 1px solid #cccccc;
         display: none;
@@ -1977,6 +2016,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 13px;
 }
     .addressbook {
+        box-sizing: border-box;
 border: 1px solid #ccc;
 left: 24%;
 position: absolute;
@@ -2003,6 +2043,7 @@ z-index: 1002;
 }
   .tableproducts1
 {
+      box-sizing: border-box;
      border: 1px solid #ccc;
    margin-left: 72px;
     margin-top: 0;
@@ -2094,6 +2135,7 @@ float:left;display:none
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 75px auto;
@@ -2126,6 +2168,7 @@ float:left;display:none
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -2139,6 +2182,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -926px;
@@ -2178,6 +2222,7 @@ float:left;display:none
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 141px;
         height: 141px;
         cursor: pointer;
@@ -2185,6 +2230,7 @@ float:left;display:none
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -2199,6 +2245,7 @@ float:left;display:none
 
 .white_content
 {
+    box-sizing: border-box;
    background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -2212,6 +2259,7 @@ float:left;display:none
   #map_canvas {
     height:924px;}
      .loginpopup {
+         box-sizing: border-box;
         background-color: #ffffff;
         border: 1px solid #cccccc;
         display: none;
@@ -2250,6 +2298,7 @@ float:left;display:none
 {
     .popupheight { height: 150px;overflow-x: hidden; overflow-y: scroll; }
     .addressbook {
+        box-sizing: border-box;
 border: 1px solid #CCC;
 left: 18%;
 position: absolute;
@@ -2314,6 +2363,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -2338,6 +2388,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -2351,6 +2402,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
 position: relative;
 top: -600px;
@@ -2387,6 +2439,7 @@ height:360px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 118px;
         height: 118px;
         cursor: pointer;
@@ -2394,6 +2447,7 @@ height:360px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top:12%;
@@ -2408,6 +2462,7 @@ height:360px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 25%;
@@ -2419,6 +2474,7 @@ height:360px;
     overflow-x: hidden;
 }
     .loginpopup {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: 1px solid #cccccc;
         display: none;
@@ -2479,6 +2535,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
     .loginpopup {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: 1px solid #cccccc;
         display: none;
@@ -2493,6 +2550,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 50px auto;
@@ -2566,6 +2624,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 16%;
@@ -2579,6 +2638,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -600px;
@@ -2615,6 +2675,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 90px;
         height: 90px;
         cursor: pointer;
@@ -2623,6 +2684,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 9%;
@@ -2647,6 +2709,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     font-size:14px
 } 
     .addressbook {
+        box-sizing: border-box;
 border: 1px solid #ccc;
 left: 14%;
 position: absolute;
@@ -2686,6 +2749,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 13px;
 }
     .addressbook {
+        box-sizing: border-box;
  border: 1px solid #ccc;
 left: 7%;
 position: absolute;
@@ -2800,6 +2864,7 @@ width:360px;float:left;display:none;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -2915,6 +2980,7 @@ width:360px;float:left;display:none;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -600px;
@@ -2952,6 +3018,7 @@ width:360px;float:left;display:none;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 60px;
         height: 60px;
         cursor: pointer;
@@ -2959,6 +3026,7 @@ width:360px;float:left;display:none;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 10%;
@@ -2973,6 +3041,7 @@ width:360px;float:left;display:none;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;
@@ -3005,6 +3074,7 @@ width:360px;float:left;display:none;
    
                     .tableproducts1
 {
+                        box-sizing: border-box;
      border: 1px solid #ccc;
   margin-left: 5px;
     margin-top: 0;
@@ -3022,6 +3092,7 @@ width:360px;float:left;display:none;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -3118,6 +3189,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     background: #ccc; min-height: 315px; display: none;font-size:15px;overflow:auto
 }
     .addressbook {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     left: 23%;
     position: absolute;
@@ -3233,6 +3305,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -3328,6 +3401,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -3347,6 +3421,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -600px;
@@ -3384,6 +3459,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 60px;
         height: 55px;
         cursor: pointer;
@@ -3396,6 +3472,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;
@@ -3410,6 +3487,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;
@@ -3439,6 +3517,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
   
     .tableproducts1
 {
+        box-sizing: border-box;
      border: 1px solid #ccc;
     margin-left: 3px;
     margin-top: 0;
@@ -3456,6 +3535,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -3553,6 +3633,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 
     .addressbook {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     left: 2%;
     position: absolute;
@@ -3571,6 +3652,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 3px;
     margin-top: 0;
@@ -3593,6 +3675,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -3698,6 +3781,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -3717,6 +3801,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         position: relative;
         top: -600px;
         width: 70%;
@@ -3754,7 +3839,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
-     
+        box-sizing: border-box;
         height: 60px;
         cursor: pointer;
         border: 1px solid #ccc;
@@ -3772,6 +3857,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 21%;
@@ -3786,6 +3872,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 11%;
@@ -3811,6 +3898,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -3914,6 +4002,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 }
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 0;
     margin-top: 0;
@@ -3928,11 +4017,11 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 }
         .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right;box-sizing: border-box;
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right;box-sizing: border-box;
 
         
 }
@@ -3972,6 +4061,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 
     .addressbook {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     left: 3%;
     position: absolute;
@@ -3991,6 +4081,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 3px;
     margin-top: 0;
@@ -4013,6 +4104,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -4117,6 +4209,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -4137,6 +4230,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         position: relative;
         top: -600px;
         width: 70%;
@@ -4174,6 +4268,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 65px;
         height: 60px;
         cursor: pointer;
@@ -4191,6 +4286,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 10%;
@@ -4205,6 +4301,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 11%;
@@ -4230,6 +4327,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -4345,6 +4443,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 
     .addressbook {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     left: 2%;
     position: absolute;
@@ -4363,6 +4462,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 3px;
     margin-top: 0;
@@ -4385,6 +4485,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -4490,6 +4591,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -4510,6 +4612,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         position: relative;
         top: -600px;
         width: 70%;
@@ -4547,7 +4650,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
-     
+       box-sizing: border-box;
         height: 60px;
         cursor: pointer;
         border: 1px solid #ccc;
@@ -4565,6 +4668,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 10%;
@@ -4579,6 +4683,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 11%;
@@ -4604,6 +4709,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -4707,6 +4813,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 }
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 0;
     margin-top: 0;
@@ -4721,11 +4828,11 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 }
         .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
 
         
 }

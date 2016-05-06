@@ -188,6 +188,7 @@ select
     background:#ccc;
 }
 hr {
+    box-sizing: border-box;
     display: block; 
     height: 1px;
     border: 0; 
@@ -199,7 +200,8 @@ hr {
 }
 .addressbook
 {
- border: 1px solid #ccc;
+   box-sizing: border-box;
+    border: 1px solid #ccc;
     left: 37%;
     position: absolute;
     top: 34%;
@@ -407,6 +409,7 @@ width:100%;float:left;display:none
 }
 .frgtpwd
 {
+    box-sizing: border-box;
     background: none repeat scroll 0 0 #1A2856;
     color: #FFFFFF;
     font-weight: bold;
@@ -459,6 +462,7 @@ width:100%;float:left;display:none
 }
 .white_contentlist
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: none;
@@ -467,7 +471,6 @@ width:100%;float:left;display:none
     padding: 5px;
     position: absolute;
     top: 16%;
-    width: 17%;
     z-index: 1002;
     width: 100%;
 }
@@ -1009,6 +1012,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     overflow:auto;
 }
     .loginpopup {
+        box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -3761,11 +3765,11 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 }
         .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
 
         
 }
