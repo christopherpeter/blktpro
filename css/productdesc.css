@@ -18,7 +18,7 @@
 .filtertxtalign{margin-left:15px}
 .breadcrumstyle
 {
-    background:#ccc;display: table-cell;width: 1%;vertical-align: middle;height: 39px;padding: 1%;
+    box-sizing: border-box;background:#ccc;display: table-cell;width: 1%;vertical-align: middle;height: 39px;padding: 1%;
 }.breadcrumstylefilter
 {
     background:#ccc;display: table-cell;width: 1%;vertical-align: middle;padding: 1%;
@@ -133,35 +133,35 @@ select
 }
 .itemselecttax
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
+    box-sizing: border-box;background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
 }
 .itemselect
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 45px; text-align: center;float: right;
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 45px; text-align: center;float: right;
 }
 .itempayed
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempayed:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay
 {
-    background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right        
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right        
 }
 .available
 {font-size:14px
@@ -238,6 +238,7 @@ hr {
     display: block; 
     height: 1px;
     border: 0; 
+    box-sizing: border-box;
     border-top: 1px solid #ccc;
 }
 .widthtd
@@ -402,6 +403,7 @@ width:100%;float:left;display:none
 }
 .white_contentdirection
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 19%;
@@ -462,6 +464,7 @@ width:100%;float:left;display:none
 }
 .frgtpwd
 {
+    box-sizing: border-box;
     background: none repeat scroll 0 0 #1A2856;
     color: #FFFFFF;
     font-weight: bold;
@@ -522,7 +525,6 @@ width:100%;float:left;display:none
     padding: 5px;
     position: absolute;
     top: 16%;
-    width: 17%;
     z-index: 1002;
     width: 100%;
 }
@@ -536,7 +538,6 @@ width:100%;float:left;display:none
     padding: 5px;
     position: absolute;
     top: 25%;
-    width: 95%;
     z-index: 1002;
     width: 100%;
 }
@@ -3725,7 +3726,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 100%;
 }
     .pdtimgdivdisplay {
-    float:left;width:100%;margin-left:0%;
+    float:left;width:100%;margin-left:0;
 }
   
     .tableproducts1
@@ -4277,11 +4278,11 @@ margin-bottom: 10px;
 }
         .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width: 61px; text-align: center;float:right
 
         
 }

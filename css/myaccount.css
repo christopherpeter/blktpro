@@ -77,39 +77,39 @@ select
 }
 .addressdetailedit
 {
-    background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%;display:none
+    box-sizing: border-box;background: none repeat scroll 0 0 #fff; margin-left: 5px; width: 96%;display:none
 }
 .itemselecttax
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
+    box-sizing: border-box;background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
 }
 .itemselect
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float: right;
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float: right;
 }
 .itempayed
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempayed:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay
 {
-    background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float:right
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float:right
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float:right
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float:right
 
         
 }
@@ -173,6 +173,7 @@ select
     color: #304589; font-size: 21px;font-weight:bold;margin-left:10px
 }
 .cartpdt {
+    box-sizing: border-box;
       width: 68px;
     height: 58px;
     cursor: pointer;
@@ -466,6 +467,7 @@ width:100%;float:left;display:none
 }
 .white_contentlist
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: none;
@@ -734,6 +736,7 @@ tableclass1
 }
 .login_inner
 {
+    box-sizing: border-box;
     border: 2px solid #CCC;
     border-radius: 10px;
     margin: 110px auto;
@@ -848,6 +851,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -1035,6 +1039,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     overflow:auto;
 }
     .loginpopup {
+        box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -2358,6 +2363,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     overflow-x: hidden;
 }
     .loginpopup {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: 1px solid #cccccc;
         display: none;

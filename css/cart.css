@@ -68,6 +68,7 @@ textarea
 input
 {
     border:1px solid #304589;
+    box-sizing: border-box;
     width:70%;height:20px;
 }
 select
@@ -95,35 +96,35 @@ select
 }
 .itemselecttax
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
+    box-sizing: border-box;background: #3A9805; border: 1px solid #ccc; color: #fff; width: 60px; text-align: center;margin-left:2%;padding:2px
 }
 .itemselect
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 45px; text-align: center;float: right;
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 45px; text-align: center;float: right;
 }
 .itempayed
 {
-    background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #3A9805; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempayed:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay
 {
-    background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #C6270D; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itempay:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width:60px; text-align: center;margin-top:2px
 }
 .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width: 57px; text-align: center;float:right;box-sizing: border-box;
 
         
 }
@@ -190,6 +191,7 @@ select
     height: 100px;
     cursor: pointer;
     border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 .contentdiv {
 
@@ -210,7 +212,8 @@ hr {
 }
 .addressbook
 {
-  border: 1px solid #ccc;
+  box-sizing: border-box;
+    border: 1px solid #ccc;
     left: 21%;
     position: absolute;
     top: 21%;
@@ -469,6 +472,7 @@ width:100%;float:left;display:none
 }
 .white_contentlist
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: none;
@@ -477,7 +481,6 @@ width:100%;float:left;display:none
     padding: 5px;
     position: absolute;
     top: 16%;
-    width: 17%;
     z-index: 1002;
     width: 100%;
 }
@@ -849,6 +852,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;

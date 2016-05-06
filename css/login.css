@@ -451,6 +451,7 @@ width:100%;float:left;display:none
 }
 .white_contentlist
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: none;
