@@ -456,6 +456,7 @@ width:100%;float:left;display:none
 }
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;
@@ -510,6 +511,7 @@ width:100%;float:left;display:none
 }
 .white_contentlistnew1
 {
+    box-sizing: border-box;
     left: 0;
     position: relative;
     top: -534px;
@@ -518,6 +520,7 @@ width:100%;float:left;display:none
 }
 .terms_condition
 {
+    box-sizing: border-box;
     border: 1px solid #ccc;
     left: -8px;
     position: relative;
@@ -527,6 +530,7 @@ width:100%;float:left;display:none
 }
 .white_content1
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 30%;
@@ -735,6 +739,7 @@ tableclass1
 }
 .login_inner
 {
+
     box-sizing: border-box;
     border: 2px solid #CCC;
     border-radius: 10px;
@@ -785,6 +790,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     background: #ccc; height: auto; display: none;font-size:15px;
 }
     .addressbook {
+        box-sizing: border-box;
   border: 1px solid #ccc;
     left: 35%;
     position: absolute;
@@ -806,6 +812,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .tableproducts1
 {
+        box-sizing: border-box;
      border: 1px solid #ccc;
    margin-left: 117px;
     margin-top: 0;
@@ -894,6 +901,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -499px;
@@ -941,6 +949,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 25%;
@@ -1026,6 +1035,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 13px;
 }
     .addressbook {
+        box-sizing: border-box;
   border: 1px solid #ccc;
     left: 27%;
     position: absolute;
@@ -1052,6 +1062,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
      .tableproducts1
 {
+         box-sizing: border-box;
     border: 1px solid #ccc;
     margin-left: 90px;
     margin-top: 0;
@@ -1146,6 +1157,7 @@ width:100%;float:left;display:none
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -1176,6 +1188,7 @@ width:100%;float:left;display:none
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -1189,6 +1202,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -1177px;
@@ -1228,6 +1242,7 @@ width:100%;float:left;display:none
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 206px;
         height: 206px;
         cursor: pointer;
@@ -1235,6 +1250,7 @@ width:100%;float:left;display:none
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
   background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -1249,6 +1265,7 @@ width:100%;float:left;display:none
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 25%;
@@ -1323,6 +1340,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
     .addressbook {
+        box-sizing: border-box;
   border: 1px solid #ccc;
     left: 25%;
     position: absolute;
@@ -1343,6 +1361,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
   .tableproducts1
 {
+
+     box-sizing: border-box;
      border: 1px solid #ccc;
     margin-left: 74px;
     margin-top: 0;
@@ -1438,6 +1458,7 @@ width:100%;float:left;display:none
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -1468,6 +1489,7 @@ width:100%;float:left;display:none
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -1481,6 +1503,7 @@ width:100%;float:left;display:none
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -1177px;
@@ -1520,6 +1543,7 @@ width:100%;float:left;display:none
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 180px;
         height: 180px;
         cursor: pointer;
@@ -1527,6 +1551,7 @@ width:100%;float:left;display:none
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
      background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -1569,9 +1594,9 @@ width:100%;float:left;display:none
     width: 30%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
-    border: 1px solid #cccccc;
-    
+    border: 1px solid #cccccc;    
     display: none;
     left: 1%;
     overflow-x: hidden;
@@ -1631,6 +1656,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 13px;
 }
     .addressbook {
+        box-sizing: border-box;
   border: 1px solid #ccc;
     left: 23%;
     position: absolute;
@@ -1657,6 +1683,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
   .tableproducts1
 {
+      box-sizing: border-box;
      border: 1px solid #ccc;
    margin-left: 72px;
     margin-top: 0;
@@ -1748,6 +1775,7 @@ float:left;display:none
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 75px auto;
@@ -1780,6 +1808,7 @@ float:left;display:none
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -1793,6 +1822,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -924px;
@@ -1831,6 +1861,7 @@ float:left;display:none
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 160px;
         height: 160px;
         cursor: pointer;
@@ -1838,6 +1869,7 @@ float:left;display:none
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -1852,6 +1884,7 @@ float:left;display:none
 
 .white_content
 {
+    box-sizing: border-box;
    background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -1865,6 +1898,7 @@ float:left;display:none
   #map_canvas {
     height:924px;}
      .loginpopup {
+         box-sizing: border-box;
         background-color: #ffffff;
         border: 1px solid #cccccc;
         display: none;
@@ -1926,6 +1960,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 13px;
 }
     .addressbook {
+        box-sizing: border-box;
       border: 1px solid #ccc;
     left: 28%;
     position: absolute;
@@ -1952,6 +1987,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
   .tableproducts1
 {
+      box-sizing: border-box;
      border: 1px solid #ccc;
    margin-left: 72px;
     margin-top: 0;
@@ -2075,6 +2111,7 @@ float:left;display:none
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -2126,6 +2163,7 @@ float:left;display:none
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 141px;
         height: 141px;
         cursor: pointer;
@@ -2133,6 +2171,7 @@ float:left;display:none
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -2147,6 +2186,7 @@ float:left;display:none
 
 .white_content
 {
+    box-sizing: border-box;
    background-color: #fff;
     border: 1px solid #ccc;
     display: none;
@@ -2160,6 +2200,7 @@ float:left;display:none
   #map_canvas {
     height:924px;}
      .loginpopup {
+         box-sizing: border-box;
         background-color: #ffffff;
         border: 1px solid #cccccc;
         display: none;
@@ -2258,6 +2299,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -2282,6 +2324,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -2295,6 +2338,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: -30%;
         position: relative;
         top: -400px;
@@ -2330,6 +2374,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 118px;
         height: 118px;
         cursor: pointer;
@@ -2337,6 +2382,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 25%;
@@ -2351,6 +2397,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 25%;
@@ -2426,6 +2473,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
     .loginpopup {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: 1px solid #cccccc;
         display: none;
@@ -2440,6 +2488,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 50px auto;
@@ -2513,6 +2562,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 16%;
@@ -2526,6 +2576,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -400px;
@@ -2561,6 +2612,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 90px;
         height: 90px;
         cursor: pointer;
@@ -2569,6 +2621,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 25%;
@@ -2615,6 +2668,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width: 13px;
 }
     .addressbook {
+        box-sizing: border-box;
   border: 1px solid #ccc;
     left: 12%;
     position: absolute;
@@ -2729,6 +2783,7 @@ width:360px;float:left;display:none;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -2843,6 +2898,7 @@ width:360px;float:left;display:none;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -539px;
@@ -2879,6 +2935,7 @@ width:360px;float:left;display:none;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 60px;
         height: 60px;
         cursor: pointer;
@@ -2886,6 +2943,7 @@ width:360px;float:left;display:none;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 18%;
@@ -2900,6 +2958,7 @@ width:360px;float:left;display:none;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;
@@ -2932,6 +2991,7 @@ width:360px;float:left;display:none;
    
                     .tableproducts1
 {
+                        box-sizing: border-box;
      border: 1px solid #ccc;
   margin-left: 5px;
     margin-top: 0;
@@ -2949,6 +3009,7 @@ width:360px;float:left;display:none;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -3024,6 +3085,7 @@ width:360px;float:left;display:none;
 @media only screen and (min-width: 300px) and (max-width: 320px)
 {
     .cartpdt {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     cursor: pointer;
     height: 50px;
@@ -3046,6 +3108,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     background: #ccc; height: auto; display: none;font-size:12px
 }
     .addressbook {
+        box-sizing: border-box;
   border: 1px solid #ccc;
     left: 15%;
     position: absolute;
@@ -3161,6 +3224,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -3256,6 +3320,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -3275,6 +3340,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -390px;
@@ -3311,6 +3377,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 60px;
         height: 55px;
         cursor: pointer;
@@ -3323,6 +3390,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;
@@ -3337,6 +3405,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;
@@ -3366,6 +3435,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
   
     .tableproducts1
 {
+        box-sizing: border-box;
      border: 1px solid #ccc;
     margin-left: 3px;
     margin-top: 0;
@@ -3383,6 +3453,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -3458,6 +3529,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 @media only screen and (max-width: 320px)
 {
     .cartpdt {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     cursor: pointer;
     height: 50px;
@@ -3482,6 +3554,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 
     .addressbook {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     left: 2%;
     position: absolute;
@@ -3500,6 +3573,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 3px;
     margin-top: 0;
@@ -3522,6 +3596,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -3626,6 +3701,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -3645,6 +3721,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         position: relative;
         top: -380px;
         width: 70%;
@@ -3653,6 +3730,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .p-contentlist
     {
+        box-sizing: border-box;
         color: #304589;
         font-size: 17px;
         font-weight: bold;
@@ -3681,6 +3759,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 65px;
         height: 60px;
         cursor: pointer;
@@ -3698,6 +3777,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 21%;
@@ -3712,6 +3792,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 11%;
@@ -3737,6 +3818,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -3829,6 +3911,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 @media only screen and (min-width: 280px) and (max-width: 319px)
 {
     .cartpdt {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     cursor: pointer;
     height: 50px;
@@ -3850,6 +3933,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 
     .addressbook {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     left: 5%;
     position: absolute;
@@ -3868,6 +3952,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 3px;
     margin-top: 0;
@@ -3890,6 +3975,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -3995,6 +4081,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -4014,6 +4101,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         position: relative;
         top: -380px;
         width: 70%;
@@ -4050,7 +4138,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
-     
+        box-sizing: border-box;
         height: 60px;
         cursor: pointer;
         border: 1px solid #ccc;
@@ -4068,6 +4156,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 21%;
@@ -4082,6 +4171,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 11%;
@@ -4107,6 +4197,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;
@@ -4210,6 +4301,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 }
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 0;
     margin-top: 0;
@@ -4227,11 +4319,11 @@ height: 30px; margin-top: 11px; margin-left: 17px;
     }
         .itemselect1
 {
-    background: #304589; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float:right
+    box-sizing: border-box;background: #304589; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float:right
 }
 .itemselect1:hover
 {
-    background: #ccc; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float:right
+    box-sizing: border-box;background: #ccc; border: 1px solid #ccc; color: #fff; width: 65px; text-align: center;float:right
 
         
 }

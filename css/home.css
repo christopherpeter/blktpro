@@ -3751,6 +3751,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
 }
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 0;
     margin-top: 0;
@@ -3798,6 +3799,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 
     .addressbook {
+        box-sizing: border-box;
     border: 1px solid #ccc;
     left: 2%;
     position: absolute;
@@ -3816,6 +3818,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     
         .tableproducts1
 {
+            box-sizing: border-box;
      border: 1px solid #ccc;
      margin-left: 3px;
     margin-top: 0;
@@ -3838,6 +3841,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -3942,6 +3946,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -3960,6 +3965,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         position: relative;
         top: -380px;
         width: 70%;
@@ -3996,6 +4002,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .imgpdt
     {
+        box-sizing: border-box;
         width: 65px;
         height: 60px;
         cursor: pointer;
@@ -4013,6 +4020,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+        box-sizing: border-box;
     display: none;
     position: absolute;
     top: 21%;
@@ -4027,6 +4035,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 11%;
@@ -4052,6 +4061,7 @@ height: 30px; margin-top: 11px; margin-left: 17px;
     width:85%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     display: none;

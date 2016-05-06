@@ -106,6 +106,7 @@ select
 }
 .itemselecttax
 {
+    box-sizing: border-box;
     background: #3A9805;
     border: 1px solid #ccc;
     color: #fff;
@@ -116,6 +117,7 @@ select
 }
 .itemselect
 {
+    box-sizing: border-box;
     background: #304589;
     border: 1px solid #ccc;
     color: #fff;
@@ -125,6 +127,7 @@ select
 }
 .itempayed
 {
+    box-sizing: border-box;
     background: #3A9805;
     border: 1px solid #ccc;
     color: #fff;
@@ -134,6 +137,7 @@ select
 }
 .itempayed:hover
 {
+    box-sizing: border-box;
     background: #ccc;
     border: 1px solid #ccc;
     color: #fff;
@@ -143,6 +147,7 @@ select
 }
 .itempay
 {
+    box-sizing: border-box;
     background: #C6270D;
     border: 1px solid #ccc;
     color: #fff;
@@ -152,6 +157,7 @@ select
 }
 .itempay:hover
 {
+    box-sizing: border-box;
     background: #ccc;
     border: 1px solid #ccc;
     color: #fff;
@@ -161,6 +167,7 @@ select
 }
 .itemselect1
 {
+    box-sizing: border-box;
     background: #304589;
     border: 1px solid #ccc;
     color: #fff;
@@ -170,6 +177,7 @@ select
 }
 .itemselect1:hover
 {
+    box-sizing: border-box;
     background: #ccc;
     border: 1px solid #ccc;
     color: #fff;
@@ -252,6 +260,7 @@ select
 }
 .cartpdt
 {
+    box-sizing: border-box;
     width: 100px;
     height: 100px;
     cursor: pointer;
@@ -268,6 +277,7 @@ select
 }
 hr
 {
+    box-sizing: border-box;
     display: block;
     height: 1px;
     border: 0;
@@ -279,6 +289,7 @@ hr
 }
 .addressbook
 {
+    box-sizing: border-box;
     border: 1px solid #ccc;
     left: 37%;
     position: absolute;
@@ -288,6 +299,7 @@ hr
 }
 .itempdtimg
 {
+    box-sizing: border-box;
     border: 1px solid #ccc;
     left: 0;
     position: absolute;
@@ -344,6 +356,7 @@ hr
 }
 .imgpdt
 {
+    box-sizing: border-box;
 width:100%;
     cursor: pointer;
     border: 1px solid #ccc;
@@ -520,6 +533,7 @@ width:100%;
 }
 .white_content
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;
@@ -532,6 +546,7 @@ width:100%;
 }
 .white_contentlist
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: none;
@@ -545,6 +560,7 @@ width:100%;
 }
 .loginpopup
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: none;
     display: none;
@@ -573,6 +589,7 @@ width:100%;
 }
 .white_contentlistnew1
 {
+    box-sizing: border-box;
     left: 0%;
     position: relative;
     top: -534px;
@@ -587,6 +604,7 @@ width:100%;
 }
 .white_content1
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 30%;
@@ -867,6 +885,7 @@ tableclass1
     }
     .addressbook
     {
+        box-sizing: border-box;
         border: 1px solid #ccc;
         left: 37%;
         position: absolute;
@@ -940,6 +959,7 @@ tableclass1
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -969,6 +989,7 @@ tableclass1
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -982,6 +1003,7 @@ tableclass1
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -499px;
@@ -1024,13 +1046,15 @@ tableclass1
     }
     .imgpdt
     {
-  width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
 
     .white_content
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 25%;
@@ -1140,6 +1164,7 @@ tableclass1
     }
     .addressbook
     {
+        box-sizing: border-box;
         border: 1px solid #ccc;
         left: 33%;
         position: absolute;
@@ -1154,6 +1179,7 @@ tableclass1
     }
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -1257,6 +1283,7 @@ tableclass1
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -1286,6 +1313,7 @@ tableclass1
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -1299,6 +1327,7 @@ tableclass1
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -1177px;
@@ -1341,12 +1370,14 @@ tableclass1
     }
     .imgpdt
     {
-     width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         background-color: #fff;
         border: 1px solid #ccc;
         display: none;
@@ -1361,6 +1392,7 @@ tableclass1
 
     .white_content
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 25%;
@@ -1474,6 +1506,7 @@ tableclass1
     }
     .addressbook
     {
+        box-sizing: border-box;
         border: 1px solid #ccc;
         left: 30%;
         position: absolute;
@@ -1496,10 +1529,8 @@ tableclass1
     }
     .tableproducts1
     {
-        border: 1px solid #ccc;
-   
-        margin-top: 0;
-   
+        border: 1px solid #ccc;   
+        margin-top: 0;   
     }
     .pdtimgkitchendivdisplay1
     {
@@ -1588,6 +1619,7 @@ tableclass1
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -1617,6 +1649,7 @@ tableclass1
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -1630,6 +1663,7 @@ tableclass1
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -1177px;
@@ -1672,12 +1706,14 @@ tableclass1
     }
     .imgpdt
     {
-width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         background-color: #fff;
         border: 1px solid #ccc;
         display: none;
@@ -1692,6 +1728,7 @@ width:100%;
 
     .white_content
     {
+        box-sizing: border-box;
         background-color: #fff;
         border: 1px solid #ccc;
         display: none;
@@ -1722,6 +1759,7 @@ width:100%;
     }
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -1818,6 +1856,7 @@ width:100%;
     }
     .addressbook
     {
+        box-sizing: border-box;
         border: 1px solid #ccc;
         left: 29%;
         position: absolute;
@@ -1932,6 +1971,7 @@ width:100%;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 75px auto;
@@ -1964,6 +2004,7 @@ width:100%;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -1977,6 +2018,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -924px;
@@ -2018,12 +2060,14 @@ width:100%;
     }
     .imgpdt
     {
-    width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         background-color: #fff;
         border: 1px solid #ccc;
         display: none;
@@ -2038,6 +2082,7 @@ width:100%;
 
     .white_content
     {
+        box-sizing: border-box;
         background-color: #fff;
         border: 1px solid #ccc;
         display: none;
@@ -2054,6 +2099,7 @@ width:100%;
     }
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -2151,6 +2197,7 @@ width:100%;
     }
     .addressbook
     {
+        box-sizing: border-box;
         border: 1px solid #ccc;
         left: 29%;
         position: absolute;
@@ -2265,6 +2312,7 @@ width:100%;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 75px auto;
@@ -2297,6 +2345,7 @@ width:100%;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -2310,6 +2359,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -924px;
@@ -2351,12 +2401,14 @@ width:100%;
     }
     .imgpdt
     {
-     width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         background-color: #fff;
         border: 1px solid #ccc;
         display: none;
@@ -2371,6 +2423,7 @@ width:100%;
 
     .white_content
     {
+        box-sizing: border-box;
         background-color: #fff;
         border: 1px solid #ccc;
         display: none;
@@ -2387,6 +2440,7 @@ width:100%;
     }
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -2518,6 +2572,7 @@ width:100%;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -2542,6 +2597,7 @@ width:100%;
 
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -2555,6 +2611,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: -30%;
         position: relative;
         top: -400px;
@@ -2591,12 +2648,14 @@ width:100%;
     }
     .imgpdt
     {
-width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 25%;
@@ -2611,6 +2670,7 @@ width:100%;
 
     .white_content
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 25%;
@@ -2623,6 +2683,7 @@ width:100%;
     }
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -2716,6 +2777,7 @@ width:100%;
 
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -2730,6 +2792,7 @@ width:100%;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 50px auto;
@@ -2803,6 +2866,7 @@ width:100%;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 16%;
@@ -2816,6 +2880,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -400px;
@@ -2852,12 +2917,14 @@ width:100%;
     }
     .imgpdt
     {
-      width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 25%;
@@ -2929,6 +2996,7 @@ width:100%;
     }
     .addressbook
     {
+        box-sizing: border-box;
         border: 1px solid #ccc;
         left: 12%;
         position: absolute;
@@ -3022,6 +3090,7 @@ width:100%;
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -3117,6 +3186,7 @@ width:100%;
 
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -3135,6 +3205,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -539px;
@@ -3172,12 +3243,14 @@ width:100%;
     }
     .imgpdt
     {
-    width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 18%;
@@ -3192,6 +3265,7 @@ width:100%;
 
     .white_content
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 22%;
@@ -3249,6 +3323,7 @@ width:100%;
     }
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -3375,6 +3450,7 @@ width:100%;
     }
     .addressbook
     {
+        box-sizing: border-box;
         border: 1px solid #ccc;
         left: 23%;
         position: absolute;
@@ -3473,6 +3549,7 @@ width:100%;
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -3586,6 +3663,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -390px;
@@ -3623,7 +3701,8 @@ width:100%;
     }
     .imgpdt
     {
-  width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
@@ -3634,6 +3713,7 @@ width:100%;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 22%;
@@ -3648,6 +3728,7 @@ width:100%;
 
     .white_content
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 22%;
@@ -3685,9 +3766,7 @@ width:100%;
     .tableproducts1
     {
         border: 1px solid #ccc;
-
-        margin-top: 0;
- 
+        margin-top: 0; 
         font-size: 12px;
     }
     .cartimg
@@ -3703,6 +3782,7 @@ width:100%;
     }
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -3837,6 +3917,7 @@ width:100%;
 
     .addressbook
     {
+        box-sizing: border-box;
         border: 1px solid #ccc;
         left: 2%;
         position: absolute;
@@ -3879,6 +3960,7 @@ width:100%;
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -3984,6 +4066,7 @@ width:100%;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -4002,6 +4085,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         position: relative;
         top: -380px;
         width: 70%;
@@ -4039,6 +4123,7 @@ width:100%;
     }
     .imgpdt
     {
+        box-sizing: border-box;
       width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
@@ -4057,6 +4142,7 @@ width:100%;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 21%;
@@ -4071,6 +4157,7 @@ width:100%;
 
     .white_content
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 11%;
@@ -4101,6 +4188,7 @@ width:100%;
     }
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -4228,6 +4316,7 @@ width:100%;
     }
     .itemselect1
     {
+        box-sizing: border-box;
         background: #304589;
         border: 1px solid #ccc;
         color: #fff;
@@ -4237,6 +4326,7 @@ width:100%;
     }
     .itemselect1:hover
     {
+        box-sizing: border-box;
         background: #ccc;
         border: 1px solid #ccc;
         color: #fff;
@@ -4304,6 +4394,7 @@ width:100%;
 
     .addressbook
     {
+        box-sizing: border-box;
         border: 1px solid #ccc;
         left: 2%;
         position: absolute;
@@ -4346,6 +4437,7 @@ width:100%;
     }
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 40px auto;
@@ -4450,6 +4542,7 @@ width:100%;
     }
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
@@ -4468,6 +4561,7 @@ width:100%;
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         position: relative;
         top: -380px;
         width: 70%;
@@ -4505,7 +4599,8 @@ width:100%;
     }
     .imgpdt
     {
-  width:100%;
+        box-sizing: border-box;
+        width:100%;
         cursor: pointer;
         border: 1px solid #ccc;
     }
@@ -4520,6 +4615,7 @@ width:100%;
     }
     .white_contentdirection
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 21%;
@@ -4534,6 +4630,7 @@ width:100%;
 
     .white_content
     {
+        box-sizing: border-box;
         display: none;
         position: absolute;
         top: 11%;
@@ -4564,6 +4661,7 @@ width:100%;
     }
     .loginpopup
     {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
