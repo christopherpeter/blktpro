@@ -54,6 +54,7 @@ textarea
 }
 input
 {
+      box-sizing: border-box;
     border:1px solid #304589;
     width:70%;height:20px;
 }
@@ -210,7 +211,8 @@ hr {
 }
 .itempdtimg
 {
-    border: 1px solid #ccc;
+   box-sizing: border-box;
+     border: 1px solid #ccc;
     left: 0;
     position: absolute;
     top: 23%;
@@ -476,6 +478,7 @@ width:100%;float:left;display:none
 }
 .loginpopup
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: none;
@@ -489,6 +492,7 @@ width:100%;float:left;display:none
 }
 .white_contentlistnewpdt
 {
+    box-sizing: border-box;
     position: absolute;
     top: 50px;
     width: 100%;
@@ -521,6 +525,7 @@ width:100%;float:left;display:none
 }
 .white_content1
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 30%;
@@ -840,6 +845,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .login_inner
     {
+          box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 60px auto;
@@ -1539,6 +1545,7 @@ width:100%;float:left;display:none
     width: 30%;
 }
 .loginpopup {
+    box-sizing: border-box;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     
@@ -1664,7 +1671,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0%;
+    float:left;width:0;
 }
         
     .filter
@@ -1958,7 +1965,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0%;
+    float:left;width:0;
 }
         
     .filter

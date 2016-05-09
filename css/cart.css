@@ -21,6 +21,7 @@
 }
 .submitpopup1
 {
+      box-sizing: border-box;
     background-color: #FFFFFF;
     border: none;
     display: none;
@@ -74,6 +75,7 @@ input
 }
 select
 {
+    box-sizing: border-box;
     border:1px solid #304589;
     width:80%;height:20px;
 }
@@ -276,6 +278,7 @@ hr {
     height:534px;}
 .imgpdt
 {
+    box-sizing: border-box;
     width: 310px;
     height: 310px;
     cursor: pointer;
@@ -425,6 +428,7 @@ width:100%;float:left;display:none
 }
 .frgtpwd
 {
+    box-sizing: border-box;
     background: none repeat scroll 0 0 #1A2856;
     color: #FFFFFF;
     font-weight: bold;
@@ -478,7 +482,6 @@ width:100%;float:left;display:none
 }
 .white_contentlist
 {
-    box-sizing: border-box;
     box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
@@ -2020,7 +2023,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0%;
+    float:left;width:0;
 }
         
     .filter
@@ -3351,6 +3354,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
+    box-sizing: border-box;
     display: none;
     position: absolute;
     top: 22%;

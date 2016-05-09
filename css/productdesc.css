@@ -21,7 +21,7 @@
     box-sizing: border-box;background:#ccc;display: table-cell;width: 1%;vertical-align: middle;height: 39px;padding: 1%;
 }.breadcrumstylefilter
 {
-    background:#ccc;display: table-cell;width: 1%;vertical-align: middle;padding: 1%;
+    box-sizing: border-box;background:#ccc;display: table-cell;width: 1%;vertical-align: middle;padding: 1%;
 }
 .positionleftalign {
     margin-left:-1px;
@@ -105,6 +105,7 @@ textarea
 }
 input
 {
+      box-sizing: border-box;
     border:1px solid #304589;
     width:70%;height:20px;
 }
@@ -240,7 +241,6 @@ hr {
     display: block; 
     height: 1px;
     border: 0; 
-    box-sizing: border-box;
     border-top: 1px solid #ccc;
 }
 .widthtd
@@ -320,6 +320,7 @@ hr {
 .imgpdtpdt
 {
     /*width: 250px;*/
+    box-sizing: border-box;
     height: 2500px;
     cursor: pointer;
     border: 1px solid #ccc;
@@ -1321,7 +1322,7 @@ width:100%;float:left;display:none
         height: 100px;
     }
         .pdtimg {
-        height:0%;    width: 30%;
+        height:0;width: 30%;
     
     }
     .imgpdt
@@ -1646,7 +1647,7 @@ width:100%;float:left;display:none
         height: 100px;
     }
         .pdtimg {
-        height:0%;    width: 30%;
+        height:0;    width: 30%;
       
     }
     .imgpdt
@@ -1998,7 +1999,7 @@ float:left;display:none
         height: 100px;
     }
     .pdtimg {
-        height:0%;    width: 30%;
+        height:0;    width: 30%;
     
     }
     .imgpdt
@@ -2333,7 +2334,7 @@ float:left;display:none
         height: 130px;
     }
     .pdtimg {
-        height:0%;width:30%;
+        height:0;width:30%;
  
     }
     .imgpdt
@@ -2668,7 +2669,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     font-size:13px
 }
           .positionleftalign {
-    margin-left:0px;
+    margin-left:0;
 }
        .lineheight { 
     line-height:23px;
@@ -2739,6 +2740,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
     .loginpopup {
+        box-sizing: border-box;
         background-color: #ffffff;
         border: none;
         display: none;
@@ -3768,7 +3770,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentdirection
 {
-    display: none;
+    box-sizing: border-box;
+        display: none;
     position: absolute;
     top: 22%;
     left: 10%;

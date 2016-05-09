@@ -409,6 +409,7 @@ width:100%;float:left;display:none
 }
 .frgtpwd
 {
+    box-sizing: border-box;
     background: none repeat scroll 0 0 #1A2856;
     color: #FFFFFF;
     font-weight: bold;
@@ -2006,7 +2007,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0%;
+    float:left;width:0;
 }
         
     .filter
@@ -2109,6 +2110,7 @@ float:left;display:none
     }
     .white_contentlistnew1
     {
+        box-sizing: border-box;
         left: 0;
         position: relative;
         top: -924px;
@@ -4049,7 +4051,8 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     }
     .white_contentlist
     {
-        background-color: #FFFFFF;
+       box-sizing: border-box;
+         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
         left: 10%;

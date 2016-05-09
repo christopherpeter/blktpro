@@ -53,6 +53,7 @@ textarea
 }
 input
 {
+    box-sizing: border-box;
     border:1px solid #304589;
     width:70%;height:20px;
 }
@@ -198,6 +199,7 @@ hr {
 }
 .addressbook
 {
+      box-sizing: border-box;
     border: 1px solid #ccc;
     left: 15%;
     position: absolute;
@@ -416,6 +418,7 @@ width:100%;float:left;display:none
 }
 .frgtpwd
 {
+    box-sizing: border-box;
     background: none repeat scroll 0 0 #1A2856;
     color: #FFFFFF;
     font-weight: bold;
@@ -483,6 +486,7 @@ width:100%;float:left;display:none
 }
 .loginpopup
 {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     display: none;
@@ -496,6 +500,7 @@ width:100%;float:left;display:none
 }
 .white_contentlistnewpdt
 {
+    box-sizing: border-box;
     position: fixed;
     top: 68px;
     width: 100%;
@@ -504,6 +509,7 @@ width:100%;float:left;display:none
 }
 .white_contentlistnew
 {
+    box-sizing: border-box;
     position: relative;
     top: -584px;
     width: 100%;
@@ -511,6 +517,7 @@ width:100%;float:left;display:none
 }
 .white_contentlistnew1
 {
+
     box-sizing: border-box;
     left: 0;
     position: relative;
@@ -2025,7 +2032,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0%;
+    float:left;width:0;
 }
         
     .filter
@@ -2079,6 +2086,7 @@ float:left;display:none
 
     .login_inner
     {
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 10px;
         margin: 75px auto;
@@ -2424,7 +2432,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     /*valli*/
 
 .leftrow {
-    padding-left: 50px !important;
+    box-sizing: border-box;padding-left: 50px !important;
 
 }
 .leftrowb {

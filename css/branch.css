@@ -60,6 +60,7 @@ textarea
 }
 input
 {
+    box-sizing: border-box;
     border:1px solid #304589;
     width:70%;height:20px;
 }
@@ -179,7 +180,8 @@ select
     color: #304589; font-size: 21px;font-weight:bold;margin-left:10px
 }
 .cartpdt {
-      width: 100px;
+    box-sizing: border-box;  
+    width: 100px;
     height: 100px;
     cursor: pointer;
     border: 1px solid #ccc;
@@ -192,6 +194,7 @@ select
     background:#ccc;
 }
 hr {
+    box-sizing: border-box;
     display: block; 
     height: 1px;
     border: 0; 
@@ -2081,7 +2084,7 @@ z-index: 1002;
 }
 
         .pdtimgdivdisplay {
-    float:left;width:0%;
+    float:left;width:0;
 }
         
     .filter
@@ -2960,6 +2963,7 @@ width:360px;float:left;display:none;
 
     .white_contentlist
     {
+        box-sizing: border-box;
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         display: none;
