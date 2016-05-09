@@ -305,7 +305,7 @@ function loadmap1(load) {
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
                     clickmarker1(i);
-                }
+                };
             })(marker, i));
         }
         else {
@@ -643,7 +643,8 @@ function loadAllBranchesToLocalDB() {
 
             dbinsert.transaction(function branchdetails(tx) {
                 tx.executeSql('DROP TABLE IF EXISTS  branchinfo');
-                tx.executeSql('CREATE TABLE IF NOT EXISTS branchinfo (id INTEGER PRIMARY KEY AUTOINCREMENT,BranchName VARCHAR UNIQUE,BranchCode,Latitude,Longitude,Address,PhoneNumber,Faxnumber,Managername,Email)');
+                var TableQuery = 'CREATE TABLE IF NOT EXISTS branchinfo (id INTEGER PRIMARY KEY AUTOINCREMENT,BranchName VARCHAR UNIQUE,BranchCode,Latitude,Longitude,Address,PhoneNumber,Faxnumber,Managername,Email)';
+                tx.executeSql(TableQuery);
                 var xmlString;
                 if (window.ActiveXObject) {
                     xmlString = xmlData.xml;
