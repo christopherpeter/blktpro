@@ -14,6 +14,7 @@ var textJQResults = $("#text_results");
 //Function for mapping filter branches to the map
 
 function loadGPSLocations() {
+    'use strict';
     setLS('Showroom', 'none');  //old branch place
     changedValues.length = 0;
 
