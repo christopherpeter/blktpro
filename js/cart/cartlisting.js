@@ -124,7 +124,7 @@ function settax() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: gettaxfromzipcodeURL + zipcode + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: BlackmanApplicationServices.gettaxfromzipcodeURL + zipcode + "&splib=" + splib + "&tablelib=" + tablelib,
             dataType: "xml",
             success: function (xmlData) {
                 var xmlString;
@@ -855,7 +855,7 @@ function loadnewpickupAddress(branchno) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BranchMatrixURL + "deviceencryptedkey=" + encryptedkey + "&branchtype=&branchcode=" + branchno + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.BranchMatrixURL + "deviceencryptedkey=" + encryptedkey + "&branchtype=&branchcode=" + branchno + "&splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
 
@@ -914,7 +914,7 @@ function loadnearestbranch() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BranchMatrixURL + "deviceencryptedkey=" + encryptedkey + "&branchtype=" + PreferredType + "&branchcode=&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.BranchMatrixURL + "deviceencryptedkey=" + encryptedkey + "&branchtype=" + PreferredType + "&branchcode=&splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1202,10 +1202,10 @@ function Estimate() {
     }
     var EstimateserviceURL = "";
     if (TotalCartWeight >= 96) {
-        EstimateserviceURL = FreightRateServiceURL + "Fromaddress=" + FromAddress1 + "&Fromcity=" + null + "&frmpostalcode=" + frompostalcode + "&fromstate=" + fromstate + "&fromcountry=US&toaddress=" + Toaddress + "&tocity=" + Tocity + "&topostalcode=" + Tozip + "&tostate=" + Tostate + "&tocountry=US&shipattentionname=" + Payshipname + "&payaatentionname=" + Payshipname + "&servicecode=" + ServiceOptioncode + "&billoptioncode=" + BillOptionCode + "&PackageWeight=" + TotalCartWeight + "&splib=" + splib + "&tablelib=" + tablelib;
+        EstimateserviceURL = BlackmanApplicationServices.FreightRateServiceURL + "Fromaddress=" + FromAddress1 + "&Fromcity=" + null + "&frmpostalcode=" + frompostalcode + "&fromstate=" + fromstate + "&fromcountry=US&toaddress=" + Toaddress + "&tocity=" + Tocity + "&topostalcode=" + Tozip + "&tostate=" + Tostate + "&tocountry=US&shipattentionname=" + Payshipname + "&payaatentionname=" + Payshipname + "&servicecode=" + ServiceOptioncode + "&billoptioncode=" + BillOptionCode + "&PackageWeight=" + TotalCartWeight + "&splib=" + splib + "&tablelib=" + tablelib;
     }
     else {
-        EstimateserviceURL = RateServiceURL + "Fromaddress=" + FromAddress1 + "&Fromcity=" + null + "&frmpostalcode=" + frompostalcode + "&fromstate=" + fromstate + "&fromcountry=US&toaddress=" + Toaddress + "&tocity=" + Tocity + "&topostalcode=" + Tozip + "&tostate=" + Tostate + "&tocountry=US&servicecode=" + ServiceOptioncode + "&packwght=" + TotalCartWeight + "&splib=" + splib + "&tablelib=" + tablelib;
+        EstimateserviceURL = BlackmanApplicationServices.RateServiceURL + "Fromaddress=" + FromAddress1 + "&Fromcity=" + null + "&frmpostalcode=" + frompostalcode + "&fromstate=" + fromstate + "&fromcountry=US&toaddress=" + Toaddress + "&tocity=" + Tocity + "&topostalcode=" + Tozip + "&tostate=" + Tostate + "&tocountry=US&servicecode=" + ServiceOptioncode + "&packwght=" + TotalCartWeight + "&splib=" + splib + "&tablelib=" + tablelib;
     }
 
 

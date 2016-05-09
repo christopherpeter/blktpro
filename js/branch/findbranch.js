@@ -636,7 +636,7 @@ function loadAllBranchesToLocalDB() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: branchURL,
+        url: BlackmanApplicationServices.branchURL,
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */

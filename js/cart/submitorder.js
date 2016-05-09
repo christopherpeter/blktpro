@@ -297,7 +297,7 @@ function sendsummitorder(param1, param2) {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: salesorderURL + "passValue1=" + param1 + "&passValue2=" + param2 + "&passValue3=" + param3 + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: BlackmanApplicationServices.salesorderURL + "passValue1=" + param1 + "&passValue2=" + param2 + "&passValue3=" + param3 + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
             dataType: "xml",
             success: function (xmlData) {
 

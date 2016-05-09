@@ -150,7 +150,7 @@ function loadsectionfilter() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: NewCategoryServiceURL + "hsCode=&secCode=&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
+            url: BlackmanApplicationServices.NewCategoryServiceURL + "hsCode=&secCode=&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
             dataType: "xml",
             success: function (xmlData) {
                 var Sectioninsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -201,7 +201,7 @@ function loadsectionfilter() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: NewCategoryServiceURL + "hsCode=&secCode=&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
+            url: BlackmanApplicationServices.NewCategoryServiceURL + "hsCode=&secCode=&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
             dataType: "xml",
             success: function (xmlData) {
                 var Sectioninsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -300,7 +300,7 @@ function filterkitchensub(sectioncode, groupcode, x) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: categoryURL + "?SCode=" + sectioncode + "&GCode=" + groupcode + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.categoryURL + "?SCode=" + sectioncode + "&GCode=" + groupcode + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             var xmlString;
@@ -632,7 +632,7 @@ function product_search() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -752,7 +752,7 @@ function loadsecondproductservice() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -884,7 +884,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + Sectioncode + "&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
+        url: BlackmanApplicationServices.NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + Sectioncode + "&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
          
@@ -1038,8 +1038,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        // url: groupcodeURL + "?SCode=" + sectioncode + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
-        url: NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + sectioncode + "&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
+        url: BlackmanApplicationServices.NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + sectioncode + "&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             var xmlString;
@@ -1184,7 +1183,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + sectioncode + "&groupCode=" + groupcode + "&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
+        url: BlackmanApplicationServices.NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + sectioncode + "&groupCode=" + groupcode + "&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + splib + "&tableLib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             var xmlString;

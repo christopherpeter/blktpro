@@ -350,7 +350,7 @@ function pdtdesc(itemid) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: productScanURL + "itemno=" + itemid + "&branchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.productScanURL + "itemno=" + itemid + "&branchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             try {
@@ -880,7 +880,7 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode + "&GroupCode=" + groupcode + "&CategoryCode=" + categorycode + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode + "&GroupCode=" + groupcode + "&CategoryCode=" + categorycode + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -973,7 +973,7 @@ function ShowUserPrices() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: PriceServiceURL + 'cusno=' + CustomerNumber + '&itemno=' + GlobalItemsList.join(","),
+        url: BlackmanApplicationServices.PriceServiceURL + 'cusno=' + CustomerNumber + '&itemno=' + GlobalItemsList.join(","),
         dataType: "xml",
         success: function (xmlData) {
             var xmlString;
@@ -1096,7 +1096,7 @@ function loadmoreproducts() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode1 + "&GroupCode=" + GroupCode1 + "&CategoryCode=" + CategoryCode1 + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode1 + "&GroupCode=" + GroupCode1 + "&CategoryCode=" + CategoryCode1 + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
             dataType: "xml",
             success: function (xmlData) {
                 var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1194,8 +1194,7 @@ function loadmoreproducts() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            //url: productsearchURL1 + "BranchCode=" + branch_id + "&Isvalid=" + Isvalid + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&Product=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
-            url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+            url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
             dataType: "xml",
             success: function (xmlData) {
                 var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1288,7 +1287,7 @@ function loadmoreprodutsbyusingsecondservice() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1732,7 +1731,7 @@ function checkinventoryfun(ItemNumber) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: branchavailablelistURL + ItemNumber + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.branchavailablelistURL + ItemNumber + "&splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             var xmlString;
@@ -1847,7 +1846,7 @@ function Specification(itemno) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: AttributeURL + "itemno=" + itemno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "=&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.AttributeURL + "itemno=" + itemno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "=&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             try {

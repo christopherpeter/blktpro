@@ -44,7 +44,7 @@ function setEncryptedKey() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: encryptedkeyURL,
+        url: BlackmanApplicationServices.encryptedkeyURL,
         dataType: "xml",
         success: function (xmlData) {
 

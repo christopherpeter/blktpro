@@ -42,7 +42,7 @@ function Loadorderhistory() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: orderhistory1URL + "CustNumber=" + CustomerNumber + "&ordercode=O&StartIndex=1&EndIndex=10&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: BlackmanApplicationServices.orderhistory1URL + "CustNumber=" + CustomerNumber + "&ordercode=O&StartIndex=1&EndIndex=10&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
             dataType: "xml",
             success: function (xmlData) {
 
@@ -202,7 +202,7 @@ function showinnerdiv(OrderNumber) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: orderhistoryItems + "OrderNum=" + OrderNumber + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.orderhistoryItems + "OrderNum=" + OrderNumber + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
 
@@ -315,7 +315,7 @@ function invoiceclick() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: CurrentBalanceURL + "Cmpynbr=&Division=&Region=&Brnbr=&Custnbr=" + CustomerNumber + "&CustCRRep=",
+            url: BlackmanApplicationServices.CurrentBalanceURL + "Cmpynbr=&Division=&Region=&Brnbr=&Custnbr=" + CustomerNumber + "&CustCRRep=",
             success: function (xmlData) {
                 var xmlString;
                 if (window.ActiveXObject) {
@@ -449,7 +449,7 @@ function tableinvoice(invoiceno) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: CurrentBalance2URL + "invoiceno=" + invoiceno + "&custno=" + CustomerNumber + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.CurrentBalance2URL + "invoiceno=" + invoiceno + "&custno=" + CustomerNumber + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             try {

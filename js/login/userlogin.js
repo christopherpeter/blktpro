@@ -102,7 +102,7 @@ function submitButton(page) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: loginURL + "?uname=" + username + "&pwd=" + password + "&accountnumber=" + accountno + "&deviceencryptedkey=" + encryptedkey + "&loginfrom=Mobile Application &splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.loginURL + "?uname=" + username + "&pwd=" + password + "&accountnumber=" + accountno + "&deviceencryptedkey=" + encryptedkey + "&loginfrom=Mobile Application &splib=" + splib + "&tablelib=" + tablelib,
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -301,7 +301,7 @@ function onConfirmExit(buttonIndex) {
             $.ajax({
                 type: "GET",
                 crossDomain: true,
-                url: logoutURL + "accesstoken=" + AccessTokenKey,
+                url: BlackmanApplicationServices.logoutURL + "accesstoken=" + AccessTokenKey,
                 dataType: "xml",
                 success: function (xmlData) {
                     document.cookie = "AlphanumericToken" + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";

@@ -1,76 +1,62 @@
 ﻿
-//Live URL
 
-var encryptedkeyURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCDeviceEncrytedKey/deviceEncryptedkey";
-var loginURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCLoginWS/loginCall";
-var logoutURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCLogoutWS/logOut?";
-var branchURL = "https://www.blackmancommercialaccounts.com/BMCBranchList.xml";
-var productsearchURL2 = "https://www.blackmancommercialaccounts.com/axis2/services/BMCITMSearchWS/getItemsByProduct?";
-var logURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCLogEntryWS/insertLog?";
-var shippingaddressURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCUpdateShippingWS/callUpdate?";
-var gettaxfromzipcodeURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCTaxRateWS/getTaxRate?zip=";
-var newproductlistpage1 = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTSecLevelSCode/getSectionCodes";
+var BlackmanApplicationServices = {
+    encryptedkeyURL: "https://www.blackmancommercialaccounts.com/axis2/services/BMCDeviceEncrytedKey/deviceEncryptedkey",
+    loginURL: "https://www.blackmancommercialaccounts.com/axis2/services/BMCLoginWS/loginCall",
+    logoutURL: "https://www.blackmancommercialaccounts.com/axis2/services/BMCLogoutWS/logOut?",
+    branchURL: "https://www.blackmancommercialaccounts.com/BMCBranchList.xml",
+    //productsearchURL2: "https://www.blackmancommercialaccounts.com/axis2/services/BMCITMSearchWS/getItemsByProduct?",
+    logURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCLogEntryWS/insertLog?",
+    shippingaddressURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCUpdateShippingWS/callUpdate?",
+    gettaxfromzipcodeURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCTaxRateWS/getTaxRate?zip=",
+    //newproductlistpage1 : "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTSecLevelSCode/getSectionCodes",
 
 //Develpment URL
 
-var salesorderURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCSalesOrderWS_DEV/submitOrder?";
-var orderhistory1URL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCSOHeaderWSMOB_DEV/getOrders?";
-var orderhistoryItems = "https://www.blackmancommercialaccounts.com/axis2/services/BMCSOItemsWS_DEV/getOrderItems?";
-var AdvancedSearchURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCAdvanceSearchWSDev/getItemsByVendor?";
+    salesorderURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCSalesOrderWS_DEV/submitOrder?",
+    orderhistory1URL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCSOHeaderWSMOB_DEV/getOrders?",
+    orderhistoryItems : "https://www.blackmancommercialaccounts.com/axis2/services/BMCSOItemsWS_DEV/getOrderItems?",
+    AdvancedSearchURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCAdvanceSearchWSDev/getItemsByVendor?",
 
 //Live URL
-//var salesorderURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCSalesOrderWS/submitOrder?";
-//var orderhistory1URL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCSOHeaderWS/getOrders?";
-//var orderhistoryItems = "https://www.blackmancommercialaccounts.com/axis2/services/BMCSOItemsWS/getOrderItems?";
+    // salesorderURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCSalesOrderWS/submitOrder?",
+    // orderhistory1URL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCSOHeaderWS/getOrders?",
+    // orderhistoryItems : "https://www.blackmancommercialaccounts.com/axis2/services/BMCSOItemsWS/getOrderItems?",
 
-var PriceServiceURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCInsertNetPrice/insertNetPrice?";
-
-
-var FreightRateServiceURL = "https://www.blackmancommercialaccounts.com/axis2/services/ShippingURL/getShippingdetails?";
-var RateServiceURL = "https://www.blackmancommercialaccounts.com/axis2/services/ShippingURL/getShippingdetails2?";
-var CurrentBalanceURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCAccountReceivableWP/accountReceive?";
-var productScanURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCItemScanWS/getItemscan?";
-var CurrentBalance2URL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBItemsWS/getOrderItems?";
-var branchavailablelistURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCItmBranchListWS/getItmBranchList?ItemNumber=";
-var AttributeURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCAttributesWS/getAttributes?";
-var ShippingAddressEntryURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCShipAddrWS/addShipAddr?";
-var BranchMatrixURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCWebOrderingBranchList/getBranchlist?";
-var AppFeedbackURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCAPPFeedBackWS/appFeedback?";
-
-//old
-//var getsectionURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCSCode2WS/getSectionCodes1?StartIndex=1&EndIndex=22";
-//var groupcodeURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCGCodeWS/getGroupCodes";
-//var categoryURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCategoryWS/getCategoryList";
-//var filtersearchURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCItmByUserWS/getItemsByUser?";
-//var productsearchURL1 = "https://www.blackmancommercialaccounts.com/axis2/services/BMCSearchWS/getItemsByProduct?";
-
-//New
-var getsectionURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTSCode2WS/getSectionCodes1?StartIndex=1&EndIndex=500";
-var groupcodeURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTGCodeWS/getGroupCodes";
-var categoryURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTCategoryWS/getCategoryList";
-var NewCategoryServiceURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCategoryDetails/getCategoryDetails?";
-//var filtersearchURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTItmByUserWS/getItemsByUser?";
-var filtersearchURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTItemByUserDev/getItemsByUser?";
-var productsearchURL1 = "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTSearchWS/getItemsByProduct?";
-var FilterOptionsURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCItemFilter/getItemList?"
-var FilterValueURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCItemAttributeValue/getValue?";
-var FilterProductsURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCItmByAttrWS/getItemsByAttr?";
-
-
-var NewFilterAttributesURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCAttributes/getFilterAttributes?";
-var NewFilterAttributesVauesURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCAttributeValues/getAttributeValues?";
-var NewFilterProductsResultsURL = "https://www.blackmancommercialaccounts.com/axis2/services/BMCAllProducts/getAllProducts?";
+    PriceServiceURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCInsertNetPrice/insertNetPrice?",
+    FreightRateServiceURL : "https://www.blackmancommercialaccounts.com/axis2/services/ShippingURL/getShippingdetails?",
+    RateServiceURL : "https://www.blackmancommercialaccounts.com/axis2/services/ShippingURL/getShippingdetails2?",
+    CurrentBalanceURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCAccountReceivableWP/accountReceive?",
+    productScanURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCItemScanWS/getItemscan?",
+    CurrentBalance2URL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBItemsWS/getOrderItems?",
+    branchavailablelistURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCItmBranchListWS/getItmBranchList?ItemNumber=",
+    AttributeURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCAttributesWS/getAttributes?",
+    //ShippingAddressEntryURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCShipAddrWS/addShipAddr?",
+    BranchMatrixURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCWebOrderingBranchList/getBranchlist?",
+    AppFeedbackURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCAPPFeedBackWS/appFeedback?",
+    //getsectionURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTSCode2WS/getSectionCodes1?StartIndex=1&EndIndex=500",
+    //groupcodeURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTGCodeWS/getGroupCodes",
+    categoryURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTCategoryWS/getCategoryList",
+    NewCategoryServiceURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCCategoryDetails/getCategoryDetails?",
+    //var filtersearchURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTItmByUserWS/getItemsByUser?",
+    filtersearchURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTItemByUserDev/getItemsByUser?",
+    productsearchURL1 : "https://www.blackmancommercialaccounts.com/axis2/services/BMCCBTSearchWS/getItemsByProduct?",
+    FilterOptionsURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCItemFilter/getItemList?",
+    FilterValueURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCItemAttributeValue/getValue?",
+    FilterProductsURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCItmByAttrWS/getItemsByAttr?",
+    NewFilterAttributesURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCAttributes/getFilterAttributes?",
+    NewFilterAttributesVauesURL: "https://www.blackmancommercialaccounts.com/axis2/services/BMCAttributeValues/getAttributeValues?",
+    NewFilterProductsResultsURL : "https://www.blackmancommercialaccounts.com/axis2/services/BMCAllProducts/getAllProducts?"
+}
 
 var splib = "TYCHLIB";
 var tablelib = "TYCHLIB";
-
 //Image path url
 var imagepath = "https://www.blackmancommercialaccounts.com/Categories/";  //Center category imagepath
 var productimagepath = "https://www.blackmancommercialaccounts.com/productimages/"; //Product image path
 
 var TotalProductCount = 10;
 var ToNextCount = parseInt(TotalProductCount, 10) - 1;
-
 
 
 function getCookie(cname) {
@@ -137,7 +123,6 @@ var SettingsShippingcharges = 0;
 var defaultbranchcode = "100";
 var defaultbranchname = "BLACKMAN - WAREHOUSE";
 var AccessTokenKey, CustomerNumber, userID, UserProfile, isuserlogged, UserName, Isvalid;
-
 
 var encryptedkey = getLS('encryptedkey');
 
