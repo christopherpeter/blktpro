@@ -49,16 +49,16 @@ var AccessTokenKey, CustomerNumber, userID, UserProfile, isuserlogged, UserName,
 
 // Global Variables
 var BlackmanApplicationVariables = {
-  SettingsPricetax : 0,
-  SettingsShippingcharges : 0,
-  defaultbranchcode : "100",
-  defaultbranchname : "BLACKMAN - WAREHOUSE",  
-  splib : "TYCHLIB",
-  tablelib : "TYCHLIB",
-  imagepath : "https://www.blackmancommercialaccounts.com/Categories/", //Center category imagepat
-  productimagepath : "https://www.blackmancommercialaccounts.com/productimages/", //Product image path
-  TotalProductCount : 10,
-  ToNextCount: parseInt(BlackmanApplicationVariables.TotalProductCount, 10) - 1,
+  "SettingsPricetax" : 0,
+  "SettingsShippingcharges" : 0,
+  "defaultbranchcode" : "100",
+  "defaultbranchname" : "BLACKMAN - WAREHOUSE",  
+  "splib" : "TYCHLIB",
+  "tablelib" : "TYCHLIB",
+  "imagepath" : "https://www.blackmancommercialaccounts.com/Categories/", //Center category imagepat
+  "productimagepath" : "https://www.blackmancommercialaccounts.com/productimages/", //Product image path
+  "TotalProductCount" : 10,
+  "ToNextCount": parseInt(BlackmanApplicationVariables.TotalProductCount, 10) - 1,
 }
 
 
