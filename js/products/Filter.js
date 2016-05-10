@@ -68,12 +68,12 @@ function filterselection1() {
             var fGroupCode = getLS('F_Groupcode');
             var fCategoryCode = getLS('F_Categorycode');
 
-            ServiceURL = BlackmanApplicationServices.FilterOptionsURL + 'sectionId=' + fSectionCode + '&HEADSECID=&groupId=' + fGroupCode + '&categoryId=' + fCategoryCode + '&splib=' + splib + '&tablelib=' + tablelib;
+            ServiceURL = BlackmanApplicationServices.FilterOptionsURL + 'sectionId=' + fSectionCode + '&HEADSECID=&groupId=' + fGroupCode + '&categoryId=' + fCategoryCode + '&splib=' + BlackmanApplicationVariables.splib + '&tablelib=' + BlackmanApplicationVariables.tablelib;
         }
         else {
             var searchType = getLS('SearchType');
             var searchText = getLS('LS_SearchText');
-            ServiceURL = BlackmanApplicationServices.NewFilterAttributesURL + 'SEARCHTYPE=' + searchType + '&SEARCHTXT=' + searchText.toUpperCase() + '&BRANCHCODE=' + branch_id + '&deviceencryptedkey=' + encryptedkey + '&splib=' + splib + '&tablelib=' + tablelib;
+            ServiceURL = BlackmanApplicationServices.NewFilterAttributesURL + 'SEARCHTYPE=' + searchType + '&SEARCHTXT=' + searchText.toUpperCase() + '&BRANCHCODE=' + branch_id + '&deviceencryptedkey=' + encryptedkey + '&splib=' + BlackmanApplicationVariables.splib + '&tablelib=' + BlackmanApplicationVariables.tablelib;
         }
 
         $.ajax({
@@ -191,10 +191,10 @@ function Filterdiv(Divid) {
         var ServiceURL = "";
 
         if (getLS('showmoreproducts') === 'filter') {
-            ServiceURL = BlackmanApplicationServices.FilterValueURL + "sectionId=" + getLS("F_Sectioncode") + "&HEADSECID=&groupId=" + getLS("F_Groupcode") + "&categoryId=" + getLS("F_Categorycode") + "&attributeName=" + Divid + "&userId=&deviceencryptedkey=" + getLS('encryptedkey') + "&accesstoken=&splib=" + splib + "&tablelib=" + tablelib;
+            ServiceURL = BlackmanApplicationServices.FilterValueURL + "sectionId=" + getLS("F_Sectioncode") + "&HEADSECID=&groupId=" + getLS("F_Groupcode") + "&categoryId=" + getLS("F_Categorycode") + "&attributeName=" + Divid + "&userId=&deviceencryptedkey=" + getLS('encryptedkey') + "&accesstoken=&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib;
         }
         else {
-            ServiceURL = BlackmanApplicationServices.NewFilterAttributesVauesURL + "SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + Divid + "&BRANCHCODE=" + branch_id + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&TABLELIB=" + tablelib;
+            ServiceURL = BlackmanApplicationServices.NewFilterAttributesVauesURL + "SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + Divid + "&BRANCHCODE=" + branch_id + "&deviceencryptedkey=" + encryptedkey + "&splib=" + BlackmanApplicationVariables.splib + "&TABLELIB=" + BlackmanApplicationVariables.tablelib;
         }
 
 
@@ -374,10 +374,10 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCo
     var ServiceURL = "";
 
     if (getLS('showmoreproducts') === 'filter') {
-        ServiceURL = BlackmanApplicationServices.FilterProductsURL + "SectionCode=" + getLS('F_Sectioncode') + "&HEADSECID=&GroupCode=" + getLS('F_Groupcode') + "&CategoryCode=" + getLS('F_Categorycode') + "&AttrName=" + AttributeName + "&AttrValue=" + AttributeValue + "&StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&brchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib;
+        ServiceURL = BlackmanApplicationServices.FilterProductsURL + "SectionCode=" + getLS('F_Sectioncode') + "&HEADSECID=&GroupCode=" + getLS('F_Groupcode') + "&CategoryCode=" + getLS('F_Categorycode') + "&AttrName=" + AttributeName + "&AttrValue=" + AttributeValue + "&StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&brchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib;
     }
     else {
-        ServiceURL = BlackmanApplicationServices.NewFilterProductsResultsURL + "StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&cusno=" + customerno + "&SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + AttributeName.replace(",", "','") + "&ATTRVALUE=" + AttributeValue.replace(",", "','") + "&BRANCHCODE=" + branch_id + "&username=" + UserProfile + "&accesstoken=" + AccessTokenKey + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random();
+        ServiceURL = BlackmanApplicationServices.NewFilterProductsResultsURL + "StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&cusno=" + customerno + "&SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + AttributeName.replace(",", "','") + "&ATTRVALUE=" + AttributeValue.replace(",", "','") + "&BRANCHCODE=" + branch_id + "&username=" + UserProfile + "&accesstoken=" + AccessTokenKey + "&deviceencryptedkey=" + encryptedkey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random();
     }
 
 

@@ -43,7 +43,7 @@ function writeToLogFile(message, pageno) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.logURL + "custnumber=" + CustomerNumber + "&custname=" + UserProfile + "&description=" + message + "&imeino=" + IMEI + "&uuid=" + UUID + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.logURL + "custnumber=" + CustomerNumber + "&custname=" + UserProfile + "&description=" + message + "&imeino=" + IMEI + "&uuid=" + UUID + "&deviceencryptedkey=" + encryptedkey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
             switch (pageno) {

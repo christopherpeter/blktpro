@@ -208,7 +208,7 @@ function loadalBranchesToLocaldbAccount() {
                     var Email = "";
 
 
-                    if (BranchCode === defaultbranchcode) {
+                    if (BranchCode === BlackmanApplicationVariables.defaultbranchcode) {
                         var defaultBranchCode = getLS('default_branchcode');
                         if (defaultBranchCode === "" || defaultBranchCode === null) {
 
@@ -254,7 +254,7 @@ function submitfeedBack() {
             $.ajax({
                 type: "GET",
                 crossDomain: true,
-                url: BlackmanApplicationServices.AppFeedbackURL + "userid=" + UserProfile + "&feedback=GoodApplcation&appname=" + appname + "&deviceencryptedkey=" + encryptedkey + "&splib=" + splib + "&tablelib=" + tablelib,
+                url: BlackmanApplicationServices.AppFeedbackURL + "userid=" + UserProfile + "&feedback=GoodApplcation&appname=" + appname + "&deviceencryptedkey=" + encryptedkey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
                 dataType: "xml",
                 success: function (xmlData) {
                     var xmlString;
@@ -404,7 +404,7 @@ function updateShippingAddress(address1, addresscity, addressstate, addresszip, 
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: BlackmanApplicationServices.shippingaddressURL + "CustNum=" + CustomerNumber + "&ShippingAddress1=" + address1 + "&ShippingAddress2=&ShippingAddress3=&ShippingCity=" + addresscity + "&ShippingState=" + addressstate + "&ShippingZip=" + addresszip + "&AreaCode=" + CustomerTelephoneAreaCode + "&TelePrefix=" + CustomerTelephonePrefixNumber + "&TeleSuffix=" + CustomerTelephoneSuffixNumber + "&prefMethdOfShip=" + shippement + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: BlackmanApplicationServices.shippingaddressURL + "CustNum=" + CustomerNumber + "&ShippingAddress1=" + address1 + "&ShippingAddress2=&ShippingAddress3=&ShippingCity=" + addresscity + "&ShippingState=" + addressstate + "&ShippingZip=" + addresszip + "&AreaCode=" + CustomerTelephoneAreaCode + "&TelePrefix=" + CustomerTelephonePrefixNumber + "&TeleSuffix=" + CustomerTelephoneSuffixNumber + "&prefMethdOfShip=" + shippement + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
             dataType: "xml",
             success: function (xmlData) {
                 var xmlString;

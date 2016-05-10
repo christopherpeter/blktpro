@@ -77,7 +77,7 @@ function submitcart() {
     //var OrderAgeCode = 2;
     //var ShipToAddressFlag = "Y";
     var TaxableFlag = '';
-    var pricetax = SettingsPricetax, shippingcharges = SettingsShippingcharges;
+    var pricetax = BlackmanApplicationVariables.SettingsPricetax, shippingcharges = BlackmanApplicationVariables.SettingsShippingcharges;
     if (pricetax !== 0 && pricetax !== null) {
         TaxableFlag = 'Y';
     }
@@ -297,7 +297,7 @@ function sendsummitorder(param1, param2) {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: BlackmanApplicationServices.salesorderURL + "passValue1=" + param1 + "&passValue2=" + param2 + "&passValue3=" + param3 + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: BlackmanApplicationServices.salesorderURL + "passValue1=" + param1 + "&passValue2=" + param2 + "&passValue3=" + param3 + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
             dataType: "xml",
             success: function (xmlData) {
 
@@ -362,7 +362,7 @@ function sendsummitorder(param1, param2) {
 
 function submitpopup() {
 
-    var pricetax = SettingsPricetax,shippingcharges= SettingsShippingcharges;
+    var pricetax = BlackmanApplicationVariables.SettingsPricetax, shippingcharges = BlackmanApplicationVariables.SettingsShippingcharges;
    
     // Newly added on 12-01-2014
     var cartread = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */

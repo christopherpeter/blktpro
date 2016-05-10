@@ -610,7 +610,7 @@ function CreateLocationArray() {
                         maximumAge: 30000
                     };
 
-                    navigator.geolocation.getCurrentPosition(success, error, options);
+                    navigator.geolocation.getCurrentPosition(success, Maperror, options);
 
                 }
                 else {
@@ -674,7 +674,7 @@ function loadAllBranchesToLocalDB() {
                     var Faxnumber = '', ManagerName = '', Email = '';
 
 
-                    if (BranchCode === defaultbranchcode) {
+                    if (BranchCode === BlackmanApplicationVariables.defaultbranchcode) {
                         var defaultBranchCode = getLS('default_branchcode');
                         if (defaultBranchCode === "" || defaultBranchCode === null) {
                             setLS('default_branchcode', BranchCode);
@@ -735,7 +735,7 @@ function success(position) {
 
 //error function called after error in Getting GPS Locations
 
-function error(error) {
+function Maperror(error) {
     var message = "";
     // Check for known errors
     switch (error.code) {

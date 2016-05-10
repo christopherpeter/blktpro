@@ -102,7 +102,7 @@ function submitButton(page) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.loginURL + "?uname=" + username + "&pwd=" + password + "&accountnumber=" + accountno + "&deviceencryptedkey=" + encryptedkey + "&loginfrom=Mobile Application &splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.loginURL + "?uname=" + username + "&pwd=" + password + "&accountnumber=" + accountno + "&deviceencryptedkey=" + encryptedkey + "&loginfrom=Mobile Application &splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */

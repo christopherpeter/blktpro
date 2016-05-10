@@ -45,14 +45,21 @@ var BlackmanApplicationServices = {
   "NewFilterProductsResultsURL" : "https://www.blackmancommercialaccounts.com/axis2/services/BMCAllProducts/getAllProducts?"
 }
 
-var splib = "TYCHLIB";
-var tablelib = "TYCHLIB";
-//Image path url
-var imagepath = "https://www.blackmancommercialaccounts.com/Categories/";  //Center category imagepath
-var productimagepath = "https://www.blackmancommercialaccounts.com/productimages/"; //Product image path
+var AccessTokenKey, CustomerNumber, userID, UserProfile, isuserlogged, UserName, Isvalid;
 
-var TotalProductCount = 10;
-var ToNextCount = parseInt(TotalProductCount, 10) - 1;
+//Global Variables
+var BlackmanApplicationVariables = {
+  SettingsPricetax : 0,
+  SettingsShippingcharges : 0,
+  defaultbranchcode : "100",
+  defaultbranchname : "BLACKMAN - WAREHOUSE",  
+  splib : "TYCHLIB",
+  tablelib : "TYCHLIB",
+  imagepath : "https://www.blackmancommercialaccounts.com/Categories/", //Center category imagepat
+  productimagepath : "https://www.blackmancommercialaccounts.com/productimages/", //Product image path
+  TotalProductCount : 10,
+  ToNextCount: parseInt(BlackmanApplicationVariables.TotalProductCount, 10) - 1,
+}
 
 
 function getCookie(cname) {
@@ -66,7 +73,6 @@ function getCookie(cname) {
     return "";
 }
 
-
 // function to store value to cookie
 
 function setCookie(cname, cvalue) {
@@ -76,12 +82,6 @@ function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 
-//Function to delete all the cookies
-/*
-function deleteCookies() {
-    document.cookie = "AlphanumericToken" + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-}
-*/
 
 //Function To set Localstorage
 var SecretPhrase = getCookie("AlphanumericToken");
@@ -103,7 +103,6 @@ function getLS(Key) {
     }
 }
 
-
 //Function to remove an item from locat storage
 
 function removeLS(Key) {
@@ -111,17 +110,7 @@ function removeLS(Key) {
 }
 
 
-
-//Global Variables
-
-var SettingsPricetax = 0;
-var SettingsShippingcharges = 0;
-var defaultbranchcode = "100";
-var defaultbranchname = "BLACKMAN - WAREHOUSE";
-var AccessTokenKey, CustomerNumber, userID, UserProfile, isuserlogged, UserName, Isvalid;
-
 var encryptedkey = getLS('encryptedkey');
-
 if (AccessTokenKey === null || AccessTokenKey === "") {
     AccessTokenKey = "";
 }
@@ -130,11 +119,10 @@ else {
     AccessTokenKey = getLS('AccessTokenKey');
 }
 
+//function onOnline() {
+//    location.reload();
+//}
 
-function onOnline() {
-    location.reload();
-}
-
-function onOffline() {
-    navigator.notification.alert('Please check your internet settings and try again !', null, 'Internet Failure', 'OK');
-}
+//function onOffline() {
+//    navigator.notification.alert('Please check your internet settings and try again !', null, 'Internet Failure', 'OK');
+//}

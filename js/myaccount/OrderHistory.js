@@ -42,7 +42,7 @@ function Loadorderhistory() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: BlackmanApplicationServices.orderhistory1URL + "CustNumber=" + CustomerNumber + "&ordercode=O&StartIndex=1&EndIndex=10&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: BlackmanApplicationServices.orderhistory1URL + "CustNumber=" + CustomerNumber + "&ordercode=O&StartIndex=1&EndIndex=10&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
             dataType: "xml",
             success: function (xmlData) {
 
@@ -202,7 +202,7 @@ function showinnerdiv(OrderNumber) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.orderhistoryItems + "OrderNum=" + OrderNumber + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.orderhistoryItems + "OrderNum=" + OrderNumber + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
 
@@ -241,7 +241,7 @@ function showinnerdiv(OrderNumber) {
                     outputHtml += '<table>';
                     outputHtml += '<tr>';
                     outputHtml += '<td>';
-                    outputHtml += '<img onerror="imgError(this);" src="' + productimagepath + PRODUCTIMAGE + '" class="cartpdt imgsizewidth" />';
+                    outputHtml += '<img onerror="imgError(this);" src="' + BlackmanApplicationVariables.productimagepath + PRODUCTIMAGE + '" class="cartpdt imgsizewidth" />';
                     outputHtml += '</td>';
                     outputHtml += '</tr>';
                     outputHtml += '</table>';
@@ -449,7 +449,7 @@ function tableinvoice(invoiceno) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.CurrentBalance2URL + "invoiceno=" + invoiceno + "&custno=" + CustomerNumber + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.CurrentBalance2URL + "invoiceno=" + invoiceno + "&custno=" + CustomerNumber + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
             try {
@@ -487,7 +487,7 @@ function tableinvoice(invoiceno) {
                         html = html + '<table>';
                         html = html + '<tr>';
                         html = html + '<td>';
-                        html = html + '<img onerror="imgError(this);" src="' + productimagepath + PRODUCTIMAGE + '" class="cartpdt imgsizewidth" />';
+                        html = html + '<img onerror="imgError(this);" src="' + BlackmanApplicationVariables.productimagepath + PRODUCTIMAGE + '" class="cartpdt imgsizewidth" />';
                         html = html + '</td>';
                         html = html + '</tr>';
                         html = html + '</table>';

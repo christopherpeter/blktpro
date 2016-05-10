@@ -1702,7 +1702,7 @@ tableclass1
     }
     .pdtimg
     {
-         height: 0%;
+          height: auto;
          width: 30%;
     }
     .imgpdt

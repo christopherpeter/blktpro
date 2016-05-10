@@ -119,7 +119,7 @@ function loadsectionproductscontents(FirstLoad) {
                     html = html + '<tr><td style="border: 1px solid #ccc;"><table><td>';
                     html = html + '<tr  class="trclasspdt">';
                     html = html + '<td onclick="storetolocal(' + OurItemNumber + ')"  class="pdtimg" style="width:30%;vertical-align: top;border:none">';
-                    html = html + '<img onerror="imgError(this);" src="' + productimagepath + PRODUCTIMAGE + '" class="imgpdtpdt" style="border:none;" />';
+                    html = html + '<img onerror="imgError(this);" src="' + BlackmanApplicationVariables.productimagepath + PRODUCTIMAGE + '" class="imgpdtpdt" style="border:none;" />';
                     html = html + '</td>';
                     html = html + '<td  class="pdtimg lineheight" style="border-right:none;vertical-align:top;width:70%;border:none;font-size: 14px;"><table><tr><td><label><b class="positionleftalign">' + itemname + '</b></label><br />';
                     html = html + '<label style="float:left;width:100%">Item # ' + OurItemNumber + '</label>';
@@ -350,7 +350,7 @@ function pdtdesc(itemid) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.productScanURL + "itemno=" + itemid + "&branchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.productScanURL + "itemno=" + itemid + "&branchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
             try {
@@ -432,7 +432,7 @@ function pdtdesc(itemid) {
                         description.push(FEATURE20);
 
 
-                        html = html + '<div style="width: 48%;margin: 0 auto;"><img onerror="imgError(this);" style="margin-top: 122px;" class="imgdescdtl" src="' + productimagepath + PRODUCTIMAGE + '" onclick="storetolocal(' + OurItemNumber + ')" /></div>';
+                        html = html + '<div style="width: 48%;margin: 0 auto;"><img onerror="imgError(this);" style="margin-top: 122px;" class="imgdescdtl" src="' + BlackmanApplicationVariables.productimagepath + PRODUCTIMAGE + '" onclick="storetolocal(' + OurItemNumber + ')" /></div>';
 
                         html = html + '<div style="width: 95%;"><label style="font-weight: bold;color: #304589; margin-left: -2px;">';
                         html = html + '<b>' + ItemOrProductDescription + '</b>';
@@ -811,7 +811,7 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode) {
     $("#filternavigation").show();
     var from_count, to_count, path, filterbackbutton, c_page, result, linkimage, branch_code, sectionname, groupname, sectname, categoryname, sectionname1;
     from_count = 1;
-    to_count = TotalProductCount;
+    to_count = BlackmanApplicationVariables.TotalProductCount;
 
     setLS('F_Sectioncode', sectioncode);
     setLS('F_Groupcode', groupcode);
@@ -880,7 +880,7 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode + "&GroupCode=" + groupcode + "&CategoryCode=" + categorycode + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode + "&GroupCode=" + groupcode + "&CategoryCode=" + categorycode + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1082,7 +1082,7 @@ function loadmoreproducts() {
         }
         product_count = getLS('product_count');
         from_count = parseInt(product_count, 10) + 1;
-        to_count = parseInt(from_count, 10) + ToNextCount;
+        to_count = parseInt(from_count, 10) + BlackmanApplicationVariables.ToNextCount;
 
         var sectionname1 = getLS('F_HSCODE');
         var sectname = "";
@@ -1096,7 +1096,7 @@ function loadmoreproducts() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode1 + "&GroupCode=" + GroupCode1 + "&CategoryCode=" + CategoryCode1 + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode1 + "&GroupCode=" + GroupCode1 + "&CategoryCode=" + CategoryCode1 + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
             dataType: "xml",
             success: function (xmlData) {
                 var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1156,7 +1156,7 @@ function loadmoreproducts() {
     else if (showmoreproducts === 'filterproducts') {
         product_count = getLS('product_count');
         FromCount = parseInt(product_count, 10) + 1;
-        ToCount = parseInt(product_count, 10) + TotalProductCount;
+        ToCount = parseInt(product_count, 10) + BlackmanApplicationVariables.TotalProductCount;
         GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCount)
     }
     else {
@@ -1173,7 +1173,7 @@ function loadmoreproducts() {
 
         product_count = getLS('product_count');
         from_count = parseInt(product_count, 10) + 1;
-        to_count = parseInt(from_count, 10) + ToNextCount;
+        to_count = parseInt(from_count, 10) + BlackmanApplicationVariables.ToNextCount;
         var branch_id = getLS('default_branchcode');
         var searchtext = $("#txtpdtsrch").val().trim();
 
@@ -1194,7 +1194,7 @@ function loadmoreproducts() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+            url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
             dataType: "xml",
             success: function (xmlData) {
                 var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1266,7 +1266,7 @@ function loadmoreprodutsbyusingsecondservice() {
     GlobalItemsList.length = 0;
     var product_count = getLS('product_count');
     var from_count = parseInt(product_count, 10) + 1;
-    var to_count = parseInt(from_count, 10) + ToNextCount;
+    var to_count = parseInt(from_count, 10) + BlackmanApplicationVariables.ToNextCount;
     var branch_id = getLS('default_branchcode');
 
     var searchtext = $("#txtpdtsrch").val().trim();
@@ -1287,7 +1287,7 @@ function loadmoreprodutsbyusingsecondservice() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1731,7 +1731,7 @@ function checkinventoryfun(ItemNumber) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.branchavailablelistURL + ItemNumber + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.branchavailablelistURL + ItemNumber + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
             var xmlString;
@@ -1764,7 +1764,7 @@ function checkinventoryfun(ItemNumber) {
                     var BRANCHNAME = item.BRANCHNAME;
                     var AVAILQUANTITY = item.Quantity;
 
-                    if (BRANCHNUMBER === defaultbranchcode) {
+                    if (BRANCHNUMBER === BlackmanApplicationVariables.defaultbranchcode) {
                         if (AVAILQUANTITY !== 0 && AVAILQUANTITY !== "" && AVAILQUANTITY !== null) {
                             output = output + '<tr><td><input type="radio" id="radio_' + i + '" checked name="branches" style="width:13px;left:15px !important" value="' + BRANCHNUMBER + '_' + AVAILQUANTITY + '"/></td><td style="width:180px"><label onclick="selectradio(' + i + ')" style="margin-right:10px;float:left;line-height:25px;margin-left:2px;">' + BRANCHNAME + '</label></td><td><b style="color:green">- ' + AVAILQUANTITY + ' Item(s)</b></td></tr>';
                         }
@@ -1846,7 +1846,7 @@ function Specification(itemno) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.AttributeURL + "itemno=" + itemno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "=&accesstoken=" + AccessTokenKey + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.AttributeURL + "itemno=" + itemno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "=&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
             try {

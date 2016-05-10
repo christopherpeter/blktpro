@@ -120,11 +120,11 @@ function loadshippingaddress() {
 
 function settax() {
     if (isuserlogged === 'yes') {
-        var zipcode = getLS('Zipcode'), pricetax = SettingsPricetax;
+        var zipcode = getLS('Zipcode'), pricetax = BlackmanApplicationVariables.SettingsPricetax;
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: BlackmanApplicationServices.gettaxfromzipcodeURL + zipcode + "&splib=" + splib + "&tablelib=" + tablelib,
+            url: BlackmanApplicationServices.gettaxfromzipcodeURL + zipcode + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
             dataType: "xml",
             success: function (xmlData) {
                 var xmlString;
@@ -217,7 +217,7 @@ function cartpageload() {
 var Totalitems;
 
 function loadcartitems() {
-    var pricetax = SettingsPricetax, shippingcharges = SettingsShippingcharges;
+    var pricetax = BlackmanApplicationVariables.SettingsPricetax, shippingcharges = BlackmanApplicationVariables.SettingsShippingcharges;
     var cartread = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
     cartread.transaction(function carinsertdetails(tx) {
         var query1 = "CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)";
@@ -256,7 +256,7 @@ function loadcartitems() {
                     html = html + '<table>';
                     html = html + '<tr>';
                     html = html + '<td>';
-                    html = html + '<img onerror="imgError(this);" src="' + productimagepath + PRODUCTIMAGE + '" class="cartpdt" />';
+                    html = html + '<img onerror="imgError(this);" src="' + BlackmanApplicationVariables.productimagepath + PRODUCTIMAGE + '" class="cartpdt" />';
                     html = html + '</td>';
                     html = html + '</tr>';
                     html = html + '</table>';
@@ -855,7 +855,7 @@ function loadnewpickupAddress(branchno) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.BranchMatrixURL + "deviceencryptedkey=" + encryptedkey + "&branchtype=&branchcode=" + branchno + "&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.BranchMatrixURL + "deviceencryptedkey=" + encryptedkey + "&branchtype=&branchcode=" + branchno + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
 
@@ -914,7 +914,7 @@ function loadnearestbranch() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.BranchMatrixURL + "deviceencryptedkey=" + encryptedkey + "&branchtype=" + PreferredType + "&branchcode=&splib=" + splib + "&tablelib=" + tablelib,
+        url: BlackmanApplicationServices.BranchMatrixURL + "deviceencryptedkey=" + encryptedkey + "&branchtype=" + PreferredType + "&branchcode=&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1072,7 +1072,7 @@ function SortByName(a, b) {
 function getshippinginfo() {
     var OrderMethodOfShipment = $("#ddshippment1").val();
     setLS('ShippingMethod', OrderMethodOfShipment);
-    var branch_id = getLS('default_branchcode'), shippingcharges = SettingsShippingcharges;
+    var branch_id = getLS('default_branchcode'), shippingcharges = BlackmanApplicationVariables.SettingsShippingcharges;
     if (OrderMethodOfShipment === "O") {
         shippingcharges = 0;
         JQFromBranch.html("Buy from branch :</br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
@@ -1202,10 +1202,10 @@ function Estimate() {
     }
     var EstimateserviceURL = "";
     if (TotalCartWeight >= 96) {
-        EstimateserviceURL = BlackmanApplicationServices.FreightRateServiceURL + "Fromaddress=" + FromAddress1 + "&Fromcity=" + null + "&frmpostalcode=" + frompostalcode + "&fromstate=" + fromstate + "&fromcountry=US&toaddress=" + Toaddress + "&tocity=" + Tocity + "&topostalcode=" + Tozip + "&tostate=" + Tostate + "&tocountry=US&shipattentionname=" + Payshipname + "&payaatentionname=" + Payshipname + "&servicecode=" + ServiceOptioncode + "&billoptioncode=" + BillOptionCode + "&PackageWeight=" + TotalCartWeight + "&splib=" + splib + "&tablelib=" + tablelib;
+        EstimateserviceURL = BlackmanApplicationServices.FreightRateServiceURL + "Fromaddress=" + FromAddress1 + "&Fromcity=" + null + "&frmpostalcode=" + frompostalcode + "&fromstate=" + fromstate + "&fromcountry=US&toaddress=" + Toaddress + "&tocity=" + Tocity + "&topostalcode=" + Tozip + "&tostate=" + Tostate + "&tocountry=US&shipattentionname=" + Payshipname + "&payaatentionname=" + Payshipname + "&servicecode=" + ServiceOptioncode + "&billoptioncode=" + BillOptionCode + "&PackageWeight=" + TotalCartWeight + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib;
     }
     else {
-        EstimateserviceURL = BlackmanApplicationServices.RateServiceURL + "Fromaddress=" + FromAddress1 + "&Fromcity=" + null + "&frmpostalcode=" + frompostalcode + "&fromstate=" + fromstate + "&fromcountry=US&toaddress=" + Toaddress + "&tocity=" + Tocity + "&topostalcode=" + Tozip + "&tostate=" + Tostate + "&tocountry=US&servicecode=" + ServiceOptioncode + "&packwght=" + TotalCartWeight + "&splib=" + splib + "&tablelib=" + tablelib;
+        EstimateserviceURL = BlackmanApplicationServices.RateServiceURL + "Fromaddress=" + FromAddress1 + "&Fromcity=" + null + "&frmpostalcode=" + frompostalcode + "&fromstate=" + fromstate + "&fromcountry=US&toaddress=" + Toaddress + "&tocity=" + Tocity + "&topostalcode=" + Tozip + "&tostate=" + Tostate + "&tocountry=US&servicecode=" + ServiceOptioncode + "&packwght=" + TotalCartWeight + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib;
     }
 
 
@@ -1270,11 +1270,11 @@ function Estimate() {
                     JQShipCharge.show();
                 }
                 else {
-                    SettingsShippingcharges = amount;
+                    BlackmanApplicationVariables.SettingsShippingcharges = amount;
                     JQShipCharge.show();
                     $("#shipping_popup").show();
                     JQShipCharge.html("Estimated Shipping Charge : $<span id='shipchargeval'></span>");
-                    $("#shipchargeval").text(SettingsShippingcharges);
+                    $("#shipchargeval").text(amount);
                     writeToLogFile("Shipping Charge is $" + amount, 11);
                 }
                 //loadcartitems();
