@@ -10,7 +10,7 @@ var JQNotSearch = $("#notsearch"), TextJQAccNo = $("#txtaccno"), JQCheckInventor
 var JQSearch = $("#search"), JQProductDisplay1 = $(".pdtimgkitchendivdisplay1"), JQProductDisplay2 = $(".pdtimgkitchendivdisplay2"), JQProductDisplay3 = $(".pdtimgkitchendivdisplay3"), JQProductDisplay4 = $(".pdtimgkitchendivdisplay4");
 var JQProductDisplay = $(".pdtimgdivdisplay"), LblJQSpecificationDiv = $("#lblSpecificationdiv");
 
-//Globalvalues for the JS
+// Globalvalues for the JS
 AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey === null) {
     AccessTokenKey = "";
@@ -70,7 +70,6 @@ function loadsectionproductscontents(FirstLoad) {
     JQSearch.hide();
     myFuncCalls = 0;
 
-    //var view = getLS('viewimg');
     var limit = getLS('product_count');
 
     if (getLS('breadcrumb') === 'search') {
@@ -165,7 +164,7 @@ function loadsectionproductscontents(FirstLoad) {
                         else {
                             html = html + '</table> ';
                             html = html + '<div style="width: 100%;color: black;font-size: 12px;margin-left:3px"><label class="hide lbl_' + OurItemNumber + '" style="font-weight:bold;margin-left: 3px;">';
-                            html = html + '<img class="imagemtop" src="images/textbox-loader.gif" style="width: 16px;height: 16px;float: left;">Loading Price...</label></div>'; //TextBoxLoader
+                            html = html + '<img class="imagemtop" src="images/textbox-loader.gif" style="width: 16px;height: 16px;float: left;">Loading Price...</label></div>'; 
                             html = html + '</td>';
                             html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" >';
                             html = html + '<img src="images/ListRightArrow.png" style="width:26px;height:26px;float: right;margin-right: 20px;"/>';
@@ -198,7 +197,7 @@ function loadsectionproductscontents(FirstLoad) {
 
                 }
                 html = html + '</table>';
-                if (res.rows.length >= limit) //show or hide loadmorebutton
+                if (res.rows.length >= limit) // show or hide loadmorebutton
                 {
 
                     html = html + '<div style="width:100%;text-align:center;padding: 10px 0 10px 0;">';
@@ -260,7 +259,7 @@ function loadsectionproductscontents(FirstLoad) {
 
 
 $(document).ready(function () {
-    setLS('viewimg', 'no');   //added on 1/12/2014
+    setLS('viewimg', 'no');   // added on 1/12/2014
     $("#viewoff").click(function () {
         var message = "View Image turned ON";
         writeToLogFile(message, 3);
@@ -367,7 +366,6 @@ function pdtdesc(itemid) {
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
                 var resultJSON = $Name.text().replace(/\t/g, '');
-                //var resultJSON = $Name.text();
                 var finalresult = "{" + resultJSON + "}";
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCItms;
@@ -388,7 +386,7 @@ function pdtdesc(itemid) {
                         var InventoryItemWeight = item.InventoryItemWeight;
                         var OurProductNumber = item.OurProductNumber;
 
-                        //Feature
+                        // Feature
                         var FEATURE1 = item.FEATURE1;
                         var FEATURE2 = item.FEATURE2;
                         var FEATURE3 = item.FEATURE3;
@@ -558,7 +556,7 @@ function loginclose() {
     $("#fade").hide();
 }
 
-//Page load function for product categories
+// Page load function for product categories
 
 function product_pageload() {
     var encryptedkey = getLS('encryptedkey');
@@ -601,7 +599,7 @@ function productPageLoad2() {
 }
 
 
-//Function for handling login popup in product page
+// Function for handling login popup in product page
 
 function submitlogin() {
     var accountno = TextJQAccNo.val().trim();
@@ -634,12 +632,6 @@ function submitlogin() {
     }
     $("#fadelogin").show();
     submitButton('2');
-
-}
-
-//Function for validating product quantity entered by user
-
-function handleChange(input) {
 
 }
 
@@ -768,7 +760,7 @@ $(function () {
 
 });
 
-//Function to be called after user selected check inventory button in branch information pop up
+// Function to be called after user selected check inventory button in branch information pop up
 
 function checkinventory(branch_id) {
 
@@ -955,7 +947,7 @@ var GlobalItemsList = [];
 function ShowUserPrices() {
 
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-    //Update the global variable values
+    // Update the global variable values
     AccessTokenKey = getLS('AccessTokenKey');
     if (AccessTokenKey === null) { AccessTokenKey = ""; }
     CustomerNumber = getLS('CustomerNumber');
@@ -1000,13 +992,12 @@ function ShowUserPrices() {
                         var ListPrice = item.NetPrice;
 
                         var qry = 'UPDATE iteminfo SET ItemUnitPriceAmount=' + ListPrice + ' WHERE OurItemNumber=?';
-                        //alert(qry);
                         tx.executeSql(qry, [ItemNumber]);
 
                     });
                 });
 
-                loadsectionproductscontents("No"); //Show the prices
+                loadsectionproductscontents("No"); // Show the prices
 
             }
 
@@ -1365,10 +1356,6 @@ function storetolocal(id) {
     if (result[result.length - 1] !== 'productlist') {
         setLS('page', c_page + ",productlist");
     }
-
-    // window.location.href = "productdesc.html";
-
-
     $("#productdesc").show();
     pdtdesc(id);
     $("#pdt").hide();
@@ -1415,13 +1402,13 @@ function loaddefaultbranchdetails() {
 }
 
 
-//Function for handling Addtocart button
+// Function for handling Addtocart button
 
 function addtocart(page, ItemNumber, textboxid) {
     var quantity = $("#" + textboxid).val();
     var quantity123 = textboxid.split("-");
     var aval = quantity123[1]; // Available quantity
-    var itemid = quantity123[0]; //Product id
+    var itemid = quantity123[0]; // Product id
 
 
     var RepairReplacementCoverage = 0;
@@ -1608,7 +1595,6 @@ function loadmenu_product(pageno) {
     html = html + '</tr>';
     html = html + '</table>';
     html = html + '</div>';
-    //html = html + '<hr />';
     html = html + '</div>';
     $("#white_contentlistnewpdt").html(html);
 }
@@ -1817,7 +1803,7 @@ function checkinventoryfun(ItemNumber) {
 
 function keypressInventory(e) {
     if (e.keyCode === 13) {
-        $('#txtinventory').blur(); //remove the focus from the textbox,that will automatically close the device keypad.
+        $('#txtinventory').blur(); // remove the focus from the textbox,that will automatically close the device keypad.
     }
 }
 function checkinventoryfuncls() {
@@ -1871,7 +1857,7 @@ function Specification(itemno) {
                 var attributesvalue = [];
                 if (output.BMCAttributes.length > 0) {
                     $.each(list, function (i, item) {
-                        //Attributes Label
+                        // Attributes Label
 
                         var AttributeLabel1 = item.AttributeLabel1;
                         attributeslabel.push(AttributeLabel1);
@@ -1945,7 +1931,7 @@ function Specification(itemno) {
                         // attributeslabel.push(AttributeLabel32);
 
 
-                        //Attributes Value
+                        // Attributes Value
 
                         var attributesvalue1 = item.AttributeVALUE1;
                         attributesvalue.push(attributesvalue1);
@@ -2015,8 +2001,6 @@ function Specification(itemno) {
 
                         var attributesvalue31 = item.AttributeVALUE31;
                         attributesvalue.push(attributesvalue31);
-                        //var attributesvalue32 = item.AttributeVALUE32;
-                        //attributesvalue.push(attributesvalue32);
 
                         var regex = /[a-zA-Z]/;
                         var ItemOrProductDescription = getLS('pItemOrProductDescription');
@@ -2111,8 +2095,6 @@ function Specification(itemno) {
     LblJQSpecificationDiv.removeClass('backgroundcolor');
 }
 function ProductOverview() {
-
-    //$("#lblSpecificationdiv").addClass('addclass');
     LblJQSpecificationDiv.removeClass('addclass');
     LblJQSpecificationDiv.addClass('backgroundcolor');
     LblJQProductDiv.addClass('addclass');
@@ -2120,7 +2102,7 @@ function ProductOverview() {
     JQSpecificationDiv.hide();
     $("#pdtoverview").show();
 }
-//<img src="images/backarrownew.png" onclick="pdoductpagereload()" style="float:left"/>
+
 function pdoductpagereload() {
     $("#filterdiv").show();
     $(".searchdiv").show();

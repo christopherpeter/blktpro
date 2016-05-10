@@ -184,8 +184,8 @@ function showShowRooms() {
     var showRoom = getLS('Showroom'), html, address_split;
     if (showRoom === 'all') {
         html = "<div class='empty'></div>";
-        html = html + "<div style='background: #fff;'>"; //1
-        html = html + "<div style='border-bottom: 1px solid #CCCCCC; height: 25px;margin-top: 25px;'>"; //2
+        html = html + "<div style='background: #fff;'>";
+        html = html + "<div style='border-bottom: 1px solid #CCCCCC; height: 25px;margin-top: 25px;'>";
         html = html + "<p class='p-contentlist'>";
         html = html + "List of Branches</p>";
         html = html + "</div>";
@@ -228,8 +228,8 @@ function showShowRooms() {
 
         }
         html = html + "<div class='submitdiv' style='height:5px'></div>";
-        html = html + "</div>"; //2
-        html = html + "</div>"; //1
+        html = html + "</div>";
+        html = html + "</div>"; 
         document.getElementById("white_contentlistnew1").innerHTML = html;
 
         $('#white_contentlistnew1').toggle();
@@ -304,7 +304,6 @@ function showShowRooms() {
 }
 
 function findBranch(page) {
-    // clearfilters();
     var c_page = getLS('page');
     var result = c_page.split(",");
     switch (page) {

@@ -8,7 +8,7 @@ License:Tychons solutions
 
 var ddJQbranch = $("#ddbranch"), ddJQServiceOption = $("#ddserviceoption"), JQShipCharge = $("#shipcharge"), JQCartItems = $("#div_cartitems"), LblJQTotalItems = $("#lbltotalitems"), JQFromBranch = $("#frmbranch");
 
-//Globalvalues for the JS
+// Globalvalues for the JS
 
 
 AccessTokenKey = getLS('AccessTokenKey');
@@ -38,7 +38,7 @@ if (isuserlogged === 'yes') {
     Isvalid = "Y";
 }
 
-//fuction to load shipping address details()
+// function to load shipping address details()
 
 function loadshippingaddress() {
     var output = "";
@@ -149,20 +149,20 @@ function settax() {
                     $.each(list, function (i, item) {
                         var TaxPercentage = item.TaxPercentage;
                         if (TaxPercentage !== "" && TaxPercentage !== null) {
-                            pricetax = TaxPercentage; //binding user zipcode -tax
+                            pricetax = TaxPercentage; // binding user zipcode -tax
 
                             writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
                         }
                         else {
 
-                            pricetax = 0; //binding user zipcode -tax
+                            pricetax = 0; // binding user zipcode -tax
                             writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
                         }
 
                     });
                 }
                 else {
-                    pricetax = 0; //binding user zipcode -tax
+                    pricetax = 0; // binding user zipcode -tax
                     writeToLogFile("Tax Rate for Zipcode[" + zipcode + "] is " + pricetax, 7);
                 }
 
@@ -212,7 +212,7 @@ function cartpageload() {
 }
 
 
-//Function to load cart items
+// Function to load cart items
 
 var Totalitems;
 
@@ -240,9 +240,7 @@ function loadcartitems() {
                     var RequiredQuantity = ss.RequiredQuantity;
                     var TotalPrice = ss.TotalPrice;
                     var AVAILABLEQUNTY = ss.AVAILABLEQUNTY;
-                    //var OurItemNumber = ss.OurItemNumber;
                     var PRODUCTIMAGE = ss.PRODUCTIMAGE;
-
 
                     html = html + '<div style="margin-top: 9px;">';
                     html = html + '<table class="tablecart" style="margin-bottom: -20px; margin-top: -6px;">';
@@ -346,7 +344,7 @@ function loadcartitems() {
             JQCartItems.html(html);
             LblJQTotalItems.html(totalcartitems);
 
-            //Code for Cart footer calculation
+            // Code for Cart footer calculation
             if (cartitemscount > 0) {
                 var output = "";
 
@@ -441,7 +439,7 @@ function loadcartitems() {
 
 }
 
-//Function to remove item from the cart
+// Function to remove item from the cart
 var globalcart_id = "";
 function removecartitem(id) {
     globalcart_id = id;
@@ -623,7 +621,7 @@ function addressbookcls() {
     $('#fade').hide();
 }
 
-//Function for validating product quantity entered by user
+// Function for validating product quantity entered by user
 
 
 var global_itemid = "";
@@ -637,7 +635,7 @@ function handleChange_ADDTOCART(input, initialvalue) {
     var temp_value = initialvalue;
     var quantity = id.split("-");
     var aval = quantity[1]; // Available quantity
-    var itemid = quantity[0]; //Product id
+    var itemid = quantity[0]; // Product id
     global_itemid = itemid;
     if (value === "" || value === null || parseInt(value, 10) <= 0) {
 
@@ -655,7 +653,6 @@ function handleChange_ADDTOCART(input, initialvalue) {
     else if (parseInt(value, 10) > parseInt(aval, 10)) {
         navigator.notification.alert('The quantity entered is not available currently.\nTotal quantity available in stock is ' + quantity[1] + '.', null, 'Alert', 'OK');
         $("#" + id).focus();
-        //input.value = quantity[1];
         input.value = temp_value;
         return false;
     }
@@ -667,7 +664,7 @@ function handleChange_ADDTOCART(input, initialvalue) {
 function onConfirmModifyCart(buttonIndex) {
     // Show the loader
     var value = global_value;
-    var itemid = global_itemid; //Product id
+    var itemid = global_itemid; // Product id
 
     if (buttonIndex === 1) {
         $("#loading_pdt").show();
@@ -757,8 +754,8 @@ function estimateshipping() {
         html = html + '<select id="ddserviceoption" onchange="Estimate()" style="width:90%;">';
         html = html + '<option value="0">Select</option>';
         html = html + '<option value="308">UPS Freight LTL</option>';
-        //html = html + '<option value="309">UPS Freight LTL - Guaranteed</option>';
-        //html = html + '<option value="334">UPS Freight LTL - Guaranteed A.M</option>';
+        // html = html + '<option value="309">UPS Freight LTL - Guaranteed</option>';
+        // html = html + '<option value="334">UPS Freight LTL - Guaranteed A.M</option>';
         html = html + '</select>';
     }
     else {
@@ -1034,7 +1031,7 @@ function findnearestLocations(lat1, lon1) {
             $("#submitpopup").hide();
             ChangedValues_Latest.sort(SortByName);
             setLS('branchcodenumber', ChangedValues_Latest[0][0]);
-            ddJQbranch.val(ChangedValues_Latest[0][0]); //select the nearest branch
+            ddJQbranch.val(ChangedValues_Latest[0][0]); // select the nearest branch
             var addsplit;
             if (getLS('ShippingMethod') === 'P') {
                 addsplit = ChangedValues_Latest[0][3].split("@");
@@ -1115,7 +1112,7 @@ function getshippinginfo() {
         setLS('ShipViaDescription', "UPS");
 
     }
-    loadnearestbranch(); //BranchMatrix Depends on shipping method
+    loadnearestbranch(); // BranchMatrix Depends on shipping method
 }
 
 
@@ -1154,7 +1151,7 @@ function Estimate() {
     var fromstate = "NY";
     var fromcity = "BAYPORT";
 
-    //Shipvia Description
+    // Shipvia Description
     if (ServiceOptioncode !== 0) {
 
         switch (ServiceOptioncode) {
@@ -1277,7 +1274,7 @@ function Estimate() {
                     $("#shipchargeval").text(amount);
                     writeToLogFile("Shipping Charge is $" + amount, 11);
                 }
-                //loadcartitems();
+                // loadcartitems();
             });
 
         },

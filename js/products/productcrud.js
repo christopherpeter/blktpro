@@ -8,7 +8,7 @@ License:Tychons solutions
 
 var ListJQ3Products = $("#list3products"), ListJQ2Products = $("#list2products"), ListJQ1Products = $("#list1products");
 
-//Globalvalues for the JS
+// Globalvalues for the JS
 AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey === null) {
     AccessTokenKey = "";
@@ -62,13 +62,12 @@ function loadsectionimages() {
             html = html + "<div class='tableproducts'>";
             for (var i = 0; i < res.rows.length; i++) {
                 var ss = res.rows.item(i);
-                //var id = ss.id;
                 var SECTIONCODE = ss.SECTION;
                 var DESCRIPTION = ss.DESCRIPTION;
                 var HSCODE = ss.HSCODE;
                 if (count % 3 === 0) {
                     if (count === 0) {
-                        //html = html + "<tr class='trclasspdt'>";
+                       
                         html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
 
                         if (SECTIONCODE === "FILTERS") {
@@ -130,7 +129,7 @@ function loadsectionimages() {
 
 
 
-//Function to read the sectioninfo table contents and added it to the filter
+// Function to read the sectioninfo table contents and added it to the filter
 
 function loadsections() {
     loadsectionimages();
@@ -241,9 +240,6 @@ function loadsectionfilter() {
                 }, errorCB);
 
             }, error: function () {
-
-                //navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-                //alert('Unable to connect server.Please try again later!');
                 $.mobile.loading("hide");
                 $("#loading_pdt").hide();
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -410,7 +406,7 @@ function loadmorecategories() {
 }
 
 
-//This function is used for handling swipe next function
+// This function is used for handling swipe next function
 
 function product_next() {
 
@@ -428,14 +424,12 @@ function product_next() {
             html = html + "<div class='tableproducts'>";
             for (var i = 0; i < res.rows.length; i++) {
                 var ss = res.rows.item(i);
-                //var id = ss.id;
                 var SECTIONCODE = ss.SECTION;
                 var HSCODE = ss.HSCODE;
                 var DESCRIPTION = ss.DESCRIPTION;
 
                 if (count % 3 === 0) {
                     if (count === 0) {
-                        //html = html + "<tr class='trclasspdt'>";
                         html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
 
                         if (SECTIONCODE === "FILTERS") {
@@ -450,8 +444,6 @@ function product_next() {
                         html = html + "</div>";
                     }
                     else {
-                        //html = html + "</tr>";
-                        //html = html + "<tr class='trclasspdt'>";
                         html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
                         if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:27%'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
@@ -459,8 +451,6 @@ function product_next() {
                         else {
                             html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' class='productimagesizedisplay'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
-                        // html = html + "<img onerror='imgError(this);' src='" + imagepath + SECTION + ".jpg' style='width:70%'  onclick=pdtimgkitchendivdisplay('" + SECTION + "'); />";
-
                         html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
                         html = html + DESCRIPTION + "</p>";
                         html = html + "</div>";
@@ -495,7 +485,7 @@ function product_next() {
     });
 }
 
-//This function is used for handling swipe previous function
+// This function is used for handling swipe previous function
 
 function product_previous() {
     var count = getLS('images_oldcount');
@@ -513,14 +503,12 @@ function product_previous() {
                 html = html + "<div class='tableproducts'>";
                 for (var i = 0; i < res.rows.length; i++) {
                     var ss = res.rows.item(i);
-                    var id = ss.id;
                     var SECTIONCODE = ss.SECTION;
                     var HSCODE = ss.HSCODE;
                     var DESCRIPTION = ss.DESCRIPTION;
 
                     if (count % 3 === 0) {
-                        if (Count = 0) {
-                            //html = html + "<tr class='trclasspdt'>";
+                        if (count === 0) {
                             html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
 
                             if (SECTIONCODE === "FILTERS") {
@@ -536,8 +524,7 @@ function product_previous() {
                             html = html + "</div>";
                         }
                         else {
-                            //html = html + "</tr>";
-                            //html = html + "<tr class='trclasspdt'>";
+
                             html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
 
 
@@ -846,7 +833,7 @@ function checkimageexistance(image) {
     return check;
 }
 
-//This function is used for clearing filters
+// This function is used for clearing filters
 
 function clearfilters() {
     localStorage.removeItem('Filter_sectioncode');
@@ -912,8 +899,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                 html = html + '<div style="text-align:left;float:left" onclick="pdtimgkitchendivdisplaynew1back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
                 html = html + ' </div>';
-                //   html = html + "  <div style='text-align:left;margin-left:20px' onclick='pdtimgkitchendivdisplaynew1back()'>   <img src='images/backproduct.png' /></div>";
-
+                
                 html = html + " <ul style='color:#304589;font-size:13px;font-weight:bold;width:100%;line-height:35PX;padding:0px;margin-top: 1px;'>";
                 $.each(list, function (i, item) {
                     var SECTIONCODE = item.SECTIONCODE;
@@ -921,8 +907,6 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                     var GROUPCOUNT = item.GROUPCOUNT;
 
                     var DESCRIPTION1 = DESCRIPTION.replace(/ /g, '_').replace(/'/g, '');
-
-                    //html = html + " <li  onclick=\"pdtimgkitchendivdisplaynew2('" + SECTIONCODE + "','" + DESCRIPTION1 + "','" + description + "')\">" + DESCRIPTION + " (" + GROUPCOUNT + ")</li>";
                     html = html + '<div>';
                     if (GROUPCOUNT > 0 && SECTIONCODE !== "" && SECTIONCODE !== null) {
                         html = html + "<div onclick=\"pdtimgkitchendivdisplaynew2('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION1 + "')\"  class='odd'>";
@@ -1063,20 +1047,14 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
                 html = html + '' + getLS('breadlist1') + '</div><div onclick="breadcrumlist2()" style="margin-top: 4px;font-weight:bold;color:#304589  ;font-size: 10px;" class="sectionpath1"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + newDESCRIPTION + '</div>';
                 html = html + ' </div>';
 
-
-                // html = html + "  <div style='text-align:left;margin-left:20px' onclick='pdtimgkitchendivdisplaynew2back()'>   <img src='images/backproduct.png' /></div>";
-
                 html = html + " <ul style='color:#304589;font-size:13px;font-weight:bold;width:100%;line-height:35PX;padding:0px;margin-top: 1px;'>";
                 $.each(list, function (i, item) {
                     var GROUPCODE = item.GROUPCODE;
                     var DESCRIPTION = item.DESCRIPTION;
                     var CATAGORYCOUNT = item.CATAGORYCOUNTs;
-
-                    var DESCRIPTION1 = DESCRIPTION.replace(/ /g, '_').replace(/'/g, '');;
-
-                    //html = html + " <li onclick=\"productlistingfinal('" + sectioncode + "','" + GROUPCODE + "','" + DESCRIPTION1 + "','" + newDESCRIPTION + "','" + descriptioncat + "')\">" + DESCRIPTION + " (" + CATAGORYCOUNT + ")</li>";
+                    var DESCRIPTION1 = DESCRIPTION.replace(/ /g, '_').replace(/'/g, '');
                     html = html + '<div>';
-
+                    
                     if (CATAGORYCOUNT > 0 && GROUPCODE !== "" && GROUPCODE !== null) {
                         html = html + "<div onclick=\"productlistingfinal('" + HSCODE + "','" + sectioncode + "','" + GROUPCODE + "','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
@@ -1109,7 +1087,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
                 html = html + '<div style="text-align:left;" onclick="pdtimgkitchendivdisplaynew1back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;  font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
                 html = html + ' </div>';
-                //  html = html + "  <div style='text-align:left;margin-left:20px' onclick='pdtimgkitchendivdisplaynew1back()'>   <img src='images/save_button.png' /></div>";
+                
                 html = html + " <div><No Groups Found</div>";
                 ListJQ2Products.html(html);
                 setLS('IsNewFilterAttributes', 'Yes');
