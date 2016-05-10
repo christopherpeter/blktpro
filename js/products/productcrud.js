@@ -945,9 +945,8 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
 
                 });
                 html = html + " </ul>";
- 
-                ListJQ1Products.html(html);   
-                //ListJQ1Products.show();
+                ListJQ1Products.html(html);
+                ListJQ1Products.show();
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");
 
@@ -957,10 +956,8 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
                 html = html + '<div style="text-align:left;" onclick="pdtimgkitchendivdisplaynew1back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;  font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
-                html = html + ' </div>';
-                //  html = html + "  <div style='text-align:left;margin-left:20px' onclick='pdtimgkitchendivdisplaynew1back()'>   <img src='images/save_button.png' /></div>";
+                html = html + ' </div>';                
                 html = html + " <div><No Groups Found</div>";
-
                 ListJQ1Products.html(html);
                 $("#loading_pdt").hide();
                 $.mobile.loading("hide");

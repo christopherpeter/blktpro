@@ -12,94 +12,7 @@
     <script src="js/jquery-ui.js" type="text/javascript"></script>
     <script src="cordova.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
-    <!-- Application Javascripts -->
-    <script src="js/encrypt/aes.js" type="text/javascript"></script>
-    <script src="js/helpers/services.js" type="text/javascript"></script>
-    <script src="js/helpers/app.js" type="text/javascript"></script>
-    <script src="js/logs/logstatus.js" type="text/javascript"></script>
-    <script src="js/helpers/navigation.js" type="text/javascript"></script>
-    <script src="js/branch/findbranch.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/cart/cartlisting.js"></script>
-    <script src="js/cart/submitorder.js" type="text/javascript"></script>
-    <script src="js/login/userlogin.js" type="text/javascript"></script>
-    <script src="js/myaccount/accountcrud.js" type="text/javascript"></script>
-    <script src="js/products/Filter.js"></script>
-    <script src="js/products/productcrud.js" type="text/javascript"></script>
-    <script src="js/products/productlisting.js" type="text/javascript"></script>
-
-    <!-- End of application javascripts-->
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            loadstatedetails();
-            loadalBranchesToLocaldbAccount();
-            setLS('page', 'index');
-
-            document.addEventListener('deviceready', GetIMEI, false);
-            function GetIMEI() {
-
-                var IMEI = cordova.plugins.uid.IMEI;
-                var UUID = cordova.plugins.uid.UUID;
-
-                setLS('IMEI', IMEI);
-                setLS('UUID', UUID);
-            }
-
-            var view = getLS('viewimg');
-            if (view === null) {
-                setLS('viewimg', 'no');
-            }
-            filter();
-
-
-            $('input').keypress(function (e) {
-                var code = (e.keyCode ? e.keyCode : e.which);
-                if ((code === 13) || (code === 10)) {
-
-                    if ($('#loginpopup').css('display') === 'block') {
-
-                        submitlogin(); //Login funtion form submit
-                    }
-                    else if ($('#loginpopup').css('display') === 'none') {
-
-                        product_search(); // Product Search form submit
-                    }
-                    
-                }
-
-            });
-
-           
-
-            if (getLS('Isuserlogged') === 'yes') {
-                $(".exitbtn").show();
-            }
-            else {
-                $(".exitbtn").hide();
-            }
-        });
-
-        document.addEventListener("deviceready", onDeviceReady, false);
-
-        function onDeviceReady()
-        {
-            
-            document.addEventListener("backbutton", function (e)
-            {
-                var c_page = getLS('page');
-                var result = c_page.split(","), new_page;
-                changepage(result[result.length - 1]);
-                if (result.length === 1) {
-                    new_page = c_page.replace(result[result.length - 1], "");
-                    setLS('page', new_page);
-                } else {
-                    new_page = c_page.replace(',' + result[result.length - 1], "");
-                    setLS('page', new_page);
-                }
-            });
-        }
-    </script>
-    <style>
+        <style>
         /*kandha new change*/
         .mainpagepdt {
             width: 20%;
@@ -110,9 +23,11 @@
         .filterkitchen {
             float: left;
         }
+
         .ui-mobile .ui-page {
-        background-color:#fff !important;
+            background-color: #fff !important;
         }
+
         .addclass {
             background: #a5b2f2;
             color: #fff;
@@ -149,7 +64,7 @@
             #spectable tr:nth-child(even) {
                 background: #FFFFFF;
             }
-  
+
         .odd {
             background: #fff;
             font-size: 16px;
@@ -166,58 +81,6 @@
             border: 1px solid #ccc;
         }
     </style>
-
-    <script type="text/javascript">
-
-        $(function () {
-            $("#prdtsectionimges").swipe(
-					{
-					    swipe: function (event, direction) {
-					        if (direction === 'left') {
-					            var limit_count = getLS('images_oldcount');
-					            var total_count = getLS('TotalSections');
-					            if (parseInt(limit_count) < total_count) {
-					                product_next();
-					            }
-					        }
-					        else if (direction === 'right') {
-					            var limit_count = getLS('images_oldcount');
-					            if (parseInt(limit_count) !== 12) {
-					                product_previous();
-					            }
-
-					        }
-					    },
-					    swipeStatus: function (event, phase) {
-					        if (phase === "cancel") {
-					            //alert("You didnt swipe far enough ");
-					        }
-					    },
-					    threshold: 50,
-					    allowPageScroll: "vertical"
-					});
-        });
-
-        $(window).bind('orientationchange', function (e) {
-            switch (window.orientation) {
-                case 0:
-                    //portrait mode
-                    //location.reload();
-                    break;
-                case 90:
-                    //turned to the right
-                    //location.reload();
-                    break;
-                case -90:
-                    //turned to the left
-                    //location.reload();
-                    break;
-            }
-        });
-
-       
-    </script>
-
 </head>
 <body onload="product_pageload();">
     <div id="loading_pdt" style="display: none; background-color: #ccc">
@@ -609,5 +472,114 @@ overflow: auto;font-size:12px">
 
     <div id="fade" class="black_overlay">
     </div>
+
+    <script src="js/encrypt/aes.js" type="text/javascript"></script>
+    <script src="js/helpers/services.js" type="text/javascript"></script>
+    <script src="js/helpers/app.js" type="text/javascript"></script>
+    <script src="js/logs/logstatus.js" type="text/javascript"></script>
+    <script src="js/helpers/navigation.js" type="text/javascript"></script>
+    <script src="js/branch/findbranch.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/cart/cartlisting.js"></script>
+    <script src="js/cart/submitorder.js" type="text/javascript"></script>
+    <script src="js/login/userlogin.js" type="text/javascript"></script>
+    <script src="js/myaccount/accountcrud.js" type="text/javascript"></script>
+    <script src="js/products/Filter.js"></script>
+    <script src="js/products/productcrud.js" type="text/javascript"></script>
+    <script src="js/products/productlisting.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            loadstatedetails();
+            loadalBranchesToLocaldbAccount();
+            setLS('page', 'index');
+            document.addEventListener('deviceready', GetIMEI, false);
+            function GetIMEI() {
+
+                var IMEI = cordova.plugins.uid.IMEI;
+                var UUID = cordova.plugins.uid.UUID;
+
+                setLS('IMEI', IMEI);
+                setLS('UUID', UUID);
+            }
+
+            var view = getLS('viewimg');
+            if (view === null) {
+                setLS('viewimg', 'no');
+            }
+            filter();
+
+
+            $('input').keypress(function (e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if ((code === 13) || (code === 10)) {
+
+                    if ($('#loginpopup').css('display') === 'block') {
+
+                        submitlogin(); //Login funtion form submit
+                    }
+                    else if ($('#loginpopup').css('display') === 'none') {
+
+                        product_search(); // Product Search form submit
+                    }
+                }
+            });
+
+            if (getLS('Isuserlogged') === 'yes') {
+                $(".exitbtn").show();
+            }
+            else {
+                $(".exitbtn").hide();
+            }
+        });
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady()
+        {
+
+            document.addEventListener("backbutton", function (e)
+            {
+                var c_page = getLS('page');
+                var result = c_page.split(","), new_page;
+                changepage(result[result.length - 1]);
+                if (result.length === 1) {
+                    new_page = c_page.replace(result[result.length - 1], "");
+                    setLS('page', new_page);
+                } else {
+                    new_page = c_page.replace(',' + result[result.length - 1], "");
+                    setLS('page', new_page);
+                }
+            });
+        }
+
+        $(function () {
+            $("#prdtsectionimges").swipe(
+					{
+					    swipe: function (event, direction) {
+					        if (direction === 'left') {
+					            var limit_count = getLS('images_oldcount');
+					            var total_count = getLS('TotalSections');
+					            if (parseInt(limit_count) < total_count) {
+					                product_next();
+					            }
+					        }
+					        else if (direction === 'right') {
+					            var limit_count = getLS('images_oldcount');
+					            if (parseInt(limit_count) !== 12) {
+					                product_previous();
+					            }
+
+					        }
+					    },
+					    swipeStatus: function (event, phase) {
+					       // if (phase === "cancel") {
+					            //alert("You didnt swipe far enough ");
+					       // }
+					    },
+					    threshold: 50,
+					    allowPageScroll: "vertical"
+					});
+        });
+    </script>
 </body>
 </html>
