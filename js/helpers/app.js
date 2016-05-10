@@ -23,7 +23,7 @@ function ConvertNameToUpperCase(Textbox)
     else {
         Password = textJQPassword.val().trim();
         ConvertToUppercase = Password.toUpperCase();
-        $textJQPassword.val(ConvertToUppercase);
+        textJQPassword.val(ConvertToUppercase);
     }
 
 }

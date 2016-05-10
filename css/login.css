@@ -364,7 +364,7 @@ width:100%;float:left;display:none
 .pdtimg
 {
     width: 0;
-    height: 0;
+    height: auto;
 }
 .tableproducts
 {
@@ -3331,7 +3331,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .pdtimg
     {
         width: 0;
-        height: 0;
+        height: auto;
     }
     .white_contentdirection
 {
@@ -3704,7 +3704,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .pdtimg
     {
         width: 0;
-        height: 0;
+        height: auto;
         font-size: 12px;
     }
     .white_contentdirection
@@ -4121,7 +4121,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .pdtimg
     {
         width: 0;
-        height: 0;
+        height: auto;
     }
     .white_contentdirection
 {

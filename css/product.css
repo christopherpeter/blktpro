@@ -448,7 +448,7 @@ width:100%;
 .pdtimg
 {
      width: 30%;
-    height: 0;
+    height: auto;
 }
 .tableproducts
 {
@@ -723,7 +723,7 @@ tableclass1
 }
 .empty
 {
-    height: 0;
+    height: auto;
 }
 .tabcontent
 {
@@ -1042,7 +1042,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0;
+        height: auto;
           width: 30%;
     }
     .imgpdt
@@ -1366,7 +1366,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0;
+        height: auto;
            width: 30%;
     }
     .imgpdt
@@ -1702,7 +1702,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0;
+         height: 0%;
          width: 30%;
     }
     .imgpdt
@@ -2056,7 +2056,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0;
+        height: auto;
          width: 30%;
     }
     .imgpdt
@@ -2397,7 +2397,7 @@ tableclass1
     }
     .pdtimg
     {
-        height: 0;
+        height: auto;
             width: 30%;
     }
     .imgpdt
@@ -3711,7 +3711,7 @@ tableclass1
     .pdtimg
     {
           width: 30%;
-        height: 0;
+        height: auto;
     }
     .white_contentdirection
     {
@@ -4139,7 +4139,7 @@ tableclass1
     .pdtimg
     {
            width: 30%;
-        height: 0;
+        height: auto;
         font-size: 12px;
     }
     .white_contentdirection
@@ -4613,7 +4613,7 @@ tableclass1
     .pdtimg
     {
           width: 30%;
-        height: 0;
+        height: auto;
     }
     .white_contentdirection
     {

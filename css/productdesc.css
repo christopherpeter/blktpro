@@ -713,7 +713,7 @@ tableclass1
 }
 .empty
 {
-    height: 0;
+    height: auto;
 }
 .tabcontent
 {
@@ -2943,7 +2943,7 @@ border: 1px solid #ccc;
     font-size:13px
 }
     .positionleftalign {
-    margin-left:0px;
+    margin-left:0;
 }
 
        .linkimgpath {
@@ -3443,7 +3443,7 @@ margin-bottom: 10px;
     font-size:13px
 }
        .positionleftalign {
-    margin-left:0px;
+    margin-left:0;
 }
 
        .linkimgpath {
@@ -3765,7 +3765,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .pdtimg
     {
         width: 30%;
-        height: 0;
+        height: auto;
    
     }
     .white_contentdirection
@@ -3937,7 +3937,7 @@ margin-bottom: 10px;
     font-size:13px
 }
        .positionleftalign {
-    margin-left:0px;
+    margin-left:0;
 }
 
        .linkimgpath {
@@ -4205,7 +4205,7 @@ font-weight: bold; color: #304589; margin-left: 23px; font-size: 18px;
     .pdtimg
     {
            width: 30%;
-        height: 0;
+        height: auto;
         font-size: 12px;
     
     }
@@ -4409,7 +4409,7 @@ margin-bottom: 10px;
     font-size:13px
 }
        .positionleftalign {
-    margin-left:0px;
+    margin-left:0;
 }
 
        .linkimgpath {

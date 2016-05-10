@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
-     <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title>My Account</title>
     <link href="css/myaccount.css?v=300620145PM" rel="stylesheet" type="text/css" />
     <link href="css/loading.css" rel="stylesheet" type="text/css" />
@@ -13,6 +13,291 @@
     <script src="cordova.js" type="text/javascript"></script>
     <script src="js/WifiWizard.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+
+    <style type="text/css">
+        #loading_pdt
+        {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: fixed;
+            opacity: 0.7;
+            z-index: 99;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="height: auto;background:#fff">
+    <div id="loading_pdt" style="display: none; background-color: #ccc">
+    </div>
+    <div style="background: #000; float: left; width: 100%; position: fixed;margin-top:-164px">
+        <div style="float: left; width: 11%">
+            <p style="margin: 0;">
+                <img id="locationfindercart" src="images/menu.png" style="margin-top: 20px; margin-right: 10px;
+                    height: 32px; width: 32px; cursor: pointer; margin-left: 2px;">
+            </p>
+        </div>
+        <div style="text-align: center; width: 78%; float: left;">
+            <p style="margin: 0;">
+                <img style="margin: 15px 0 0;" src="images/logo.png" alt="blackman">
+            </p>
+        </div>
+        <div style="float: right; width: 11%">
+            <p style="margin: 0;">
+                <img class="exitbtn" src="images/exit.png" onclick="exit()" style="margin-top: 20px; margin-right: 2px; float: right; cursor: pointer; display: none;">
+            </p>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+    <div style="background: #ccc; padding-right:5px">
+        <div style="background: #ccc; height: 60px; margin-top: -96px; width: 100%; position: fixed">
+            <div style="float: left; margin-left: 0;">
+                <img id="imgaccount" src="images/myaccount.png" style="height: 30px; margin-left: 3px;
+                    margin-top: 5px; vertical-align: bottom; width: 30px;" /><label id="lblmyaccount"
+                                                                                    class="lblcart">My Account -</label><label id="lblusername" style="color: #304589;
+                            margin-left: 5px;"></label><br />
+                <label id="lblaccount" style="color: #304589; margin-left: 43px">
+                    Account #:
+                </label><label id="lblCustomerNumber" style="color: #304589; margin-left: 3px"></label>
+            </div>
+            <div style="float: right; width: 0">
+                <img id="locationfinder1" src="images/list-alt.png" class="imagesearch" style="height: 32px;
+                    margin-left: -35px" onclick="addressBook()" alt="" />
+            </div>
+        </div>
+        <div style="background: #fff; margin-top: 180px">
+            <!--  <div id="divimg1" style="margin-top: -10px;">
+                <img src="images/arrowdown.png" class="arrow1" /></div>
+            <div id="divimg2" style="margin-top: -10px; display: none">
+                <img src="images/arrowdown.png" class="arrow2" /></div>
+            <div id="divimg3" style="margin-top: -10px; display: none; width: 100%">
+                <img src="images/arrowdown.png" class="arrow3" /></div>-->
+        </div>
+        <div id="tpmenu" class="accclickdiv" style="background: #304589; color: #fff; margin-left: 0;
+            height: 40px; width: 100%; position: fixed; margin-top: -40px">
+            <div id="lblorderhis" style="width: 50%; float: left; background: #838FB8; height: 40px;
+                text-align: center; line-height: 36px; padding: 0;" onclick="orderclick()">
+                <label style="cursor: pointer;">
+                    Orders History
+                </label>
+            </div>
+            <div onclick="invoiceclick()" id="lblinvoice" style="width: 50%; float: left; background: #304589;
+                height: 40px; text-align: center; line-height: 36px; padding: 0;">
+                <label style="width: 50%;" class="leftdivalign">
+                    Account Balance
+                </label>
+            </div>
+        </div>
+        <div id="kdmenu" class="accclickdiv" style="display:none; background: #304589; color: #fff; margin-left: 0;
+            height: 40px; width: 100%; position: fixed; margin-top: -40px">
+            <!--       </div>
+            <div style="color: #304589; margin-left: 6px; font-size: 14px">-->
+            <div id="Div13" style="width: 100%; background: #304589; height: 40px; text-align: center;
+                line-height: 36px; padding: 0;">
+                <label style="width: 50%;">
+                    Quotation History
+                </label>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div id="orderclick" class="orderclickstyle">
+        </div>
+        <div id="purchaseclickNEW" class="orderclickstyle" style="background: #fff; min-height: 500px;display:none; ">
+
+        </div>
+
+        <div id="invoiceclick">
+            <table class="accountbalance" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="leftrow">MTD Balance:</td>
+                    <td class="pricealign"><span id="MTD_Span"></span></td>
+                </tr>
+                <tr>
+                    <td style="text-decoration: underline" class="leftrowb">Statement Balance</td>
+                    <td class="pricealign leftrowb"><span>&nbsp</span></td>
+                </tr>
+                <tr>
+                    <td class="leftrow">Current:</td>
+                    <td class="pricealign"><span id="Current_Span"></span></td>
+                </tr>
+                <tr>
+                    <td class="leftrowb">30 Days:</td>
+                    <td class="rightrowb pricealign"><span id="30_Span"></span></td>
+                </tr>
+                <tr>
+                    <td class="leftrow">60 Days:</td>
+                    <td class="pricealign"><span id="60_Span"></span></td>
+                </tr>
+                <tr>
+                    <td class="leftrowb">90 Days:</td>
+                    <td class="rightrowb pricealign"><span id="90_Span"></span></td>
+                </tr>
+                <tr>
+                    <td class="leftrow">Total:</td>
+                    <td class="pricealign"><span id="Total_Span"></span></td>
+                </tr>
+                <tr>
+                    <td class="leftrowb">Future Due:</td>
+                    <td class="rightrowb pricealign"><span id="FutureDue_Span"></span></td>
+                </tr>
+                <tr>
+                    <td class="leftrow">Total Owned:</td>
+                    <td class="pricealign"><span id="TotalOwed_Span"></span></td>
+                </tr>
+                <tr>
+                    <td class="leftrowb">Average Days To Pay:</td>
+                    <td class="rightrowb pricealign"><span id="AvgDays_Span"></span></td>
+                </tr>
+            </table>
+        </div>
+
+
+
+        <div class="footer" id="cur_footer" style="display: none; background: #000; bottom: 0; position: fixed;
+            width: 100%">
+            <!--<table>
+                <tr>
+                    <td style="font-weight: bold; color: #fff;">
+                        TotalBalance:
+                    </td>
+                    <td style="font-weight: bold; color: #fff;">
+                        $ <span id="TotalBalance"></span>
+                    </td>
+                </tr>
+            </table>-->
+        </div>
+    </div>
+    <div id="white_contentlistnewpdt" style="display: none;" class="white_contentlistnewpdt popupheight">
+    </div>
+    <div id="addressbook" style="display: none; float: right;overflow-x: hidden;
+        background: #ccc; font-size: 16px;" class="addressbook">
+        <div id="edit_fade" class="black_overlay" style="display: none; background-color: #ccc">
+        </div>
+        <div class="maindivaddress" style="width: 100%; margin-left: 1px">
+            <div style="background: none repeat scroll 0 0 #304589; color: #fff; font-size: 19px !important;
+                font-weight: bold; margin-bottom: 5px; margin-left: 4px; margin-top: 5px; text-align: center;
+                width: 96%; height: 30px">
+                <div style="width: 88%; float: left; margin-top: 3px;">
+                    <img src="images/myaccount.png" style="height: 20px; margin-top: 3px; vertical-align: top;
+                        width: 20px;" />
+                    My Account Information
+                </div>
+                <div>
+                    <img src="images/close_square_white.png" style="cursor: pointer; height: 30px; margin-top: 0;
+                        width: 30px; border-radius: 10px" onclick="addressbookcls()" />
+                </div>
+            </div>
+        </div>
+        <div class="addressdetail">
+            <div style="font-weight: bold; color: #304589; margin-left: 4px;">
+                Shipping Address :
+                <div id="div_edit" style="float: right; margin-right: 5px; cursor: pointer; font-weight: normal"
+                     onclick="editaddress()">
+                    <img style="margin-top: 5px; cursor: pointer; height: 17px; width: 47px;" src="images/edit_button.png" />
+                </div>
+            </div>
+            <div id="div_address1" style="margin-left: 4px;">
+                -----
+            </div>
+            <div id="div_address2" style="margin-left: 4px;">
+                -----
+            </div>
+            <div style="font-weight: bold; color: #304589; margin-left: 4px;">
+                My Branch :
+            </div>
+            <div style="margin-left: 4px;">
+                <span id="loadbranchname_txt"></span>
+            </div>
+            <div style="color: #304589; font-weight: bold; cursor: pointer; margin-left: 4px;">
+                Default Branch Address :
+                <div style="float: right; cursor: pointer; font-weight: normal" onclick="contactcls()">
+                </div>
+                <div id="loadmainbranchaddress">
+                </div>
+            </div>
+        </div>
+        <div class="addressdetailedit">
+            <div style="font-weight: bold; color: #304589; margin-left: 4px;">
+                Shipping Address :
+                <div style="float: right; margin-right: 5px; cursor: pointer; font-weight: normal">
+                    <a href="javascript:void(0)" onclick="saveBranch();">
+                        <img style="cursor: pointer; height: 17px; margin-top: 5px; width: 48px;" src="images/save_button.png" />
+                    </a>
+                </div>
+            </div>
+            <div id="ramkumar">
+                <div style="margin-left: 4px;">
+                    <span class="editaddressclass">Address Line:</span></br>
+                    <input id="txtaddress" type="text" style="width: 96%;" placeholder="Address Line1"
+                           value="" />
+                </div>
+                <div style="margin-left: 4px;">
+                    <span class="editaddressclass">City:</span></br>
+                    <input id="txtcity" type="text" style="width: 96%;" placeholder="City" value="" />
+                </div>
+                <div style="margin-left: 4px;">
+                    <span class="editaddressclass">State:</span></br>
+                    <select id="ddstate" style="width: 97%; margin-left: -4px;"></select>
+                </div>
+                <div style="margin-left: 4px;">
+                    <span class="editaddressclass">Zip-Code:</span></br>
+                    <input id="txtpincode" maxlength="5" style="width: 96%;" type="text" placeholder="Zip-Code"
+                           value="" />
+                </div>
+                <div style="margin-left: 4px;">
+                    <span class="editaddressclass">Phone Number:</span></br>
+                    <input id="txtphonenumber" maxlength="12" style="width: 96%;" type="text" placeholder="xxx-xxx-xxxx"
+                           value="" />
+                </div>
+                <div style="margin-left: 4px;">
+                    <span class="editaddressclass">Preferred Method Of Shipment:</span></br>
+                    <select id="ddshippment" style="width: 97%; margin-left: -4px;">
+
+                        <option value="D">Direct </option>
+                        <option value="O">Our Truck</option>
+                        <option value="P">Pickup</option>
+                        <option value="S">Shipped</option>
+                    </select>
+                </div>
+                <div style="font-weight: bold; color: #304589; margin-left: 4px;">
+                    My Branch :
+                </div>
+                <div style="margin-left: 4px;">
+                    <select id="branch_list" style="width: 97%; margin-left: -4px;"></select>
+                </div>
+                <div style="color: #304589; font-weight: bold; cursor: pointer; margin-left: 4px;">
+                    Default Branch Address :
+                    <div style="float: right; cursor: pointer; font-weight: normal" onclick="contactcls()">
+                    </div>
+                    <div id="loadmainbranchaddress_edit">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feedbkcondiv">
+            <table>
+                <tr>
+                    <td class="feedbk" style="font-weight: bold; color: #304589; cursor: pointer" onclick="feedBack()">
+                        <img style="height: 22px; margin-top: -2px; vertical-align: middle; width: 22px;"
+                             src="images/plus_img.png" onclick="feedBack()" />
+                        App Feedback
+                    </td>
+                    <td class="feedbk1" style="font-weight: bold; color: #304589; cursor: pointer; display: none">
+                        <img onclick="feedbackrtn()" style="height: 22px; margin-top: -2px; vertical-align: middle; width: 22px;"
+                             src="images/minus_img.png" />
+                        <span onclick="feedbackrtn()">Feedback</span>
+                        <textarea id="txtfeedback" style="width: 98%; height: 100px"></textarea>
+                        <img src="images/send.jpg" onclick="submitFeedBack()" style="float: right; margin-top: 3px; width: 70px; height: 25px;" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="fade" class="black_overlay">
+    </div>
+
     <!-- Application Javascripts -->
     <script src="js/encrypt/aes.js" type="text/javascript"></script>
     <script src="js/helpers/services.js" type="text/javascript"></script>
@@ -29,15 +314,15 @@
     <script src="js/products/productlisting.js" type="text/javascript"></script>
     <!-- End of application javascripts-->
     <script>
-     
-        $(document).ready(function () 
+
+        $(document).ready(function ()
         {
             var encryptedKey = getLS('encryptedkey');
             if (encryptedKey === null || encryptedKey === "") {
                 location.href = "products.html";
             }
-         
-            
+
+
             var isUserLogged = getLS('Isuserlogged');
             if (isUserLogged === 'yes') {
                 $("#lblmyaccount").show();
@@ -75,280 +360,6 @@
         }
 
     </script>
-    <style type="text/css">
-        #loading_pdt
-        {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            position: fixed;
-            opacity: 0.7;
-            z-index: 99;
-            text-align: center;
-        }
-    </style>
-</head>
-<body style="height: auto;background:#fff">
-    <div id="loading_pdt" style="display: none; background-color: #ccc">
-    </div>
- <div style="background: #000; float: left; width: 100%; position: fixed;margin-top:-164px">
-        <div style="float: left; width: 11%">
-            <p style="margin: 0;">
-                <img id="locationfindercart" src="images/menu.png" style="margin-top: 20px; margin-right: 10px;
-                    height: 32px; width: 32px; cursor: pointer; margin-left: 2px;">
-            </p>
-        </div>
-        <div style="text-align: center; width: 78%; float: left;">
-            <p style="margin: 0;">
-                <img style="margin: 15px 0 0;" src="images/logo.png" alt="blackman">
-            </p>
-        </div>
-        <div style="float: right; width: 11%">
-            <p style="margin: 0;">
-                <img class="exitbtn" src="images/exit.png" onclick="exit()" style="margin-top: 20px; margin-right: 2px; float: right; cursor: pointer; display: none;">
-            </p>
-        </div>
-    </div>
-    <div class="clear">
-    </div>
-    <div style="background: #ccc; padding-right:5px">
-        <div style="background: #ccc; height: 60px; margin-top: -96px; width: 100%; position: fixed">
-            <div style="float: left; margin-left: 0;">
-                <img id="imgaccount" src="images/myaccount.png" style="height: 30px; margin-left: 3px;
-                    margin-top: 5px; vertical-align: bottom; width: 30px;" /><label id="lblmyaccount"
-                        class="lblcart">My Account -</label><label id="lblusername" style="color: #304589;
-                            margin-left: 5px;"></label><br />
-                <label id="lblaccount" style="color: #304589; margin-left: 43px">
-                    Account #:</label><label id="lblCustomerNumber" style="color: #304589; margin-left: 3px"></label>
-            </div>
-            <div style="float: right; width: 0">
-                <img id="locationfinder1" src="images/list-alt.png" class="imagesearch" style="height: 32px;
-                    margin-left: -35px" onclick="addressBook()" alt="" /></div>
-        </div>
-        <div style="background: #fff; margin-top: 180px">
-            <!--  <div id="divimg1" style="margin-top: -10px;">
-                <img src="images/arrowdown.png" class="arrow1" /></div>
-            <div id="divimg2" style="margin-top: -10px; display: none">
-                <img src="images/arrowdown.png" class="arrow2" /></div>
-            <div id="divimg3" style="margin-top: -10px; display: none; width: 100%">
-                <img src="images/arrowdown.png" class="arrow3" /></div>-->
-        </div>
-        <div id="tpmenu" class="accclickdiv" style="background: #304589; color: #fff; margin-left: 0;
-            height: 40px; width: 100%; position: fixed; margin-top: -40px">
-            <div id="lblorderhis" style="width: 50%; float: left; background: #838FB8; height: 40px;
-                text-align: center; line-height: 36px; padding: 0;" onclick="orderclick()">
-                <label style="cursor: pointer;">
-                    Orders History</label>
-            </div>
-            <div onclick="invoiceclick()" id="lblinvoice" style="width: 50%; float: left; background: #304589;
-                height: 40px; text-align: center; line-height: 36px; padding: 0;">
-                <label style="width: 50%;" class="leftdivalign">
-                    Account Balance</label>
-            </div>
-        </div>
-        <div id="kdmenu" class="accclickdiv" style="display:none; background: #304589; color: #fff; margin-left: 0;
-            height: 40px; width: 100%; position: fixed; margin-top: -40px">
-            <!--       </div>
-            <div style="color: #304589; margin-left: 6px; font-size: 14px">-->
-            <div id="Div13" style="width: 100%; background: #304589; height: 40px; text-align: center;
-                line-height: 36px; padding: 0;">
-                <label style="width: 50%;">
-                    Quotation History</label>
-            </div>
-        </div>
-         <div class="clear"></div>
-        <div id="orderclick" class="orderclickstyle">
-        </div>
-        <div id="purchaseclickNEW" class="orderclickstyle" style="background: #fff; min-height: 500px;display:none; ">
-            
-        </div>
-       
-        <div id="invoiceclick">
-        <table class="accountbalance" cellspacing="0" cellpadding="0">
-              <tr>
-                  <td class="leftrow" >MTD Balance:</td>
-                   <td class="pricealign"><span id="MTD_Span"></span></td>
-              </tr>
-              <tr>
-                  <td style="text-decoration: underline" class="leftrowb" >Statement Balance</td>
-                  <td class="pricealign leftrowb" ><span>&nbsp</span></td>
-              </tr>
-              <tr>
-                  <td class="leftrow" >Current:</td>
-                  <td class="pricealign" ><span id="Current_Span" ></span></td>
-              </tr>
-              <tr>
-                  <td class="leftrowb" >30 Days:</td>
-                  <td class="rightrowb pricealign"><span id="30_Span" ></span></td>
-              </tr>
-               <tr>
-                  <td class="leftrow" >60 Days:</td>
-                  <td class="pricealign"><span id="60_Span" ></span></td>
-              </tr>
-               <tr>
-                  <td class="leftrowb" >90 Days:</td>
-                  <td class="rightrowb pricealign"><span id="90_Span" ></span></td>
-              </tr>
-               <tr>
-                  <td class="leftrow" >Total:</td>
-                  <td class="pricealign"><span id="Total_Span" ></span></td>
-              </tr>
-               <tr>
-                  <td class="leftrowb" >Future Due:</td>
-                  <td class="rightrowb pricealign"><span id="FutureDue_Span" ></span></td>
-              </tr>
-               <tr>
-                  <td class="leftrow" >Total Owned:</td>
-                  <td class="pricealign"><span id="TotalOwed_Span"></span></td>
-              </tr>
-               <tr>
-                  <td class="leftrowb" >Average Days To Pay:</td>
-                  <td class="rightrowb pricealign"><span id="AvgDays_Span" ></span></td>
-              </tr>
-          </table>
-        </div>
 
-
-
-        <div class="footer" id="cur_footer" style="display: none; background: #000; bottom: 0; position: fixed;
-            width: 100%">
-            <!--<table>
-                <tr>
-                    <td style="font-weight: bold; color: #fff;">
-                        TotalBalance:
-                    </td>
-                    <td style="font-weight: bold; color: #fff;">
-                        $ <span id="TotalBalance"></span>
-                    </td>
-                </tr>
-            </table>-->
-        </div>
-    </div>
-    <div id="white_contentlistnewpdt" style="display: none;" class="white_contentlistnewpdt popupheight">
-    </div>
-    <div id="addressbook" style="display: none; float: right;overflow-x: hidden;
-        background: #ccc; font-size: 16px;" class="addressbook">
-        <div id="edit_fade" class="black_overlay" style="display: none; background-color: #ccc">
-    </div>
-        <div class="maindivaddress" style="width: 100%; margin-left: 1px">
-            <div style="background: none repeat scroll 0 0 #304589; color: #fff; font-size: 19px !important;
-                font-weight: bold; margin-bottom: 5px; margin-left: 4px; margin-top: 5px; text-align: center;
-                width: 96%; height: 30px">
-                <div style="width: 88%; float: left; margin-top: 3px;">
-                    <img src="images/myaccount.png" style="height: 20px; margin-top: 3px; vertical-align: top;
-                        width: 20px;" />
-                    My Account Information
-                </div>
-                <div>
-                    <img src="images/close_square_white.png" style="cursor: pointer; height: 30px; margin-top: 0;
-                        width: 30px; border-radius: 10px" onclick="addressbookcls()" /></div>
-            </div>
-        </div>
-        <div class="addressdetail">
-            <div style="font-weight: bold; color: #304589; margin-left: 4px;">
-                Shipping Address :
-                <div id="div_edit" style="float: right; margin-right: 5px; cursor: pointer; font-weight: normal"
-                    onclick="editaddress()">
-                    <img style="margin-top: 5px; cursor: pointer; height: 17px; width: 47px;" src="images/edit_button.png" /></div>
-            </div>
-            <div id="div_address1" style="margin-left: 4px;">
-                -----
-            </div>
-            <div id="div_address2" style="margin-left: 4px;">
-                -----
-            </div>
-            <div style="font-weight: bold; color: #304589; margin-left: 4px;">
-                My Branch :</div>
-            <div style="margin-left: 4px;">
-                <span id="loadbranchname_txt"></span>
-            </div>
-            <div style="color: #304589; font-weight: bold; cursor: pointer; margin-left: 4px;">
-                Default Branch Address :
-                <div style="float: right; cursor: pointer; font-weight: normal" onclick="contactcls()">
-                </div>
-                <div id="loadmainbranchaddress">
-                </div>
-            </div>
-        </div>
-        <div class="addressdetailedit">
-            <div style="font-weight: bold; color: #304589; margin-left: 4px;">
-                Shipping Address :
-                <div style="float: right; margin-right: 5px; cursor: pointer; font-weight: normal">
-                    <a href="javascript:void(0)" onclick="saveBranch();">
-                        <img style="cursor: pointer; height: 17px; margin-top: 5px; width: 48px;" src="images/save_button.png" /></a></div>
-            </div>
-            <div id="ramkumar">
-                <div style="margin-left: 4px;">
-                    <span class="editaddressclass">Address Line:</span></br>
-                    <input id="txtaddress" type="text" style="width: 96%;" placeholder="Address Line1"
-                        value="" />
-                </div>
-                <div style="margin-left: 4px;">
-                    <span class="editaddressclass">City:</span></br>
-                    <input id="txtcity" type="text" style="width: 96%;" placeholder="City" value="" />
-                </div>
-                <div style="margin-left: 4px;">
-                    <span class="editaddressclass">State:</span></br>
-                    <select id="ddstate" style="width: 97%; margin-left: -4px;">
-                    </select>
-                </div>
-                <div style="margin-left: 4px;">
-                    <span class="editaddressclass">Zip-Code:</span></br>
-                    <input id="txtpincode" maxlength="5" style="width: 96%;" type="text" placeholder="Zip-Code"
-                        value="" />
-                </div>
-                <div style="margin-left: 4px;">
-                    <span class="editaddressclass">Phone Number:</span></br>
-                    <input id="txtphonenumber" maxlength="12" style="width: 96%;" type="text" placeholder="xxx-xxx-xxxx"
-                        value="" />
-                </div>
-                <div style="margin-left: 4px;">
-                    <span class="editaddressclass">Preferred Method Of Shipment:</span></br>
-                    <select id="ddshippment" style="width: 97%; margin-left: -4px;">
-                        
-                        <option value="D">Direct </option>
-                        <option value="O">Our Truck</option>
-                        <option value="P">Pickup</option>
-                        <option value="S">Shipped</option>
-                    </select>
-                </div>
-                <div style="font-weight: bold; color: #304589; margin-left: 4px;">
-                    My Branch :</div>
-                <div style="margin-left: 4px;">
-                    <select id="branch_list" style="width: 97%; margin-left: -4px;">
-                        
-                    </select>
-                </div>
-                <div style="color: #304589; font-weight: bold; cursor: pointer; margin-left: 4px;">
-                    Default Branch Address :
-                    <div style="float: right; cursor: pointer; font-weight: normal" onclick="contactcls()">
-                    </div>
-                    <div id="loadmainbranchaddress_edit">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="feedbkcondiv">
-            <table>
-                <tr>
-                    <td class="feedbk" style="font-weight: bold; color: #304589; cursor: pointer" onclick="feedBack()">
-                        <img style="height: 22px; margin-top: -2px; vertical-align: middle; width: 22px;"
-                            src="images/plus_img.png" onclick="feedBack()" />
-                        App Feedback
-                    </td>
-                    <td class="feedbk1"  style="font-weight: bold; color: #304589; cursor: pointer; display: none">
-                        <img onclick="feedbackrtn()" style="height: 22px; margin-top: -2px; vertical-align: middle; width: 22px;"
-                            src="images/minus_img.png"  />
-                        <span onclick="feedbackrtn()">Feedback</span> 
-                        <textarea id="txtfeedback" style="width: 98%; height: 100px"></textarea>
-                        <img src="images/send.jpg" onclick="submitFeedBack()" style="float: right; margin-top: 3px; width: 70px; height: 25px;" />
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div id="fade" class="black_overlay">
-    </div>
 </body>
 </html>

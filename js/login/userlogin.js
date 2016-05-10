@@ -205,7 +205,7 @@ function submitButton(page) {
                         var qry = 'INSERT INTO userinfo (CompanyNumber,CustomerNumber,UserName,UserProfile,UserPhoneAreaCode,UserPhonePrefix,UserPhoneSuffix,UserFaxAreaCode,UserFaxPrefix,UserFaxSuffix,UserEMail,MethodOfShipment,OrderStatusCode,BranchNumber,ShipfromBranchNumber,CheckStockStatus,LastAccessMonth,DayOfLastAccess,YearLastAccessed,LastAccessTime,LastUpdateMonth,LastUpdateDay,LastUpdateYear,ShippedShipCode,OurTruckShipCode,PickupShipCode,UserIDOfMaintenance,CustomerMailingAddress1,CustomerMailingAddress2,CustomerMailingAddress3,CustomerShippingAddress1,CustomerShippingAddress2,CustomerShippingAddress3,CustomerMailingCity,CustomerShippingCity,CustomerMailingState,CustomerShippingState,CustomerMainMailingZipCode,CustomerMainShippingZipCode,CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CreditHoldFlag,DeliveryChargeFlag,ContractInEffectFlag,CreditLimitAmount,CustTaxExemptionNumber,CustTaxExemptFlag,CustStatementPrintCode,GSTTaxExemptCode,AverageDaysToPay,PreferredMethodOfShipment,ShipCode,ShipCodeLockFlag,PickingSeq) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
                         tx.executeSql(qry, [CompanyNumber, CustomerNumber, UserName, UserProfile, UserPhoneAreaCode, UserPhonePrefix, UserPhoneSuffix, UserFaxAreaCode, UserFaxPrefix, UserFaxSuffix, UserEMail, MethodOfShipment, OrderStatusCode, BranchNumber, ShipfromBranchNumber, CheckStockStatus, LastAccessMonth, DayOfLastAccess, YearLastAccessed, LastAccessTime, LastUpdateMonth, LastUpdateDay, LastUpdateYear, ShippedShipCode, OurTruckShipCode, PickupShipCode, UserIDOfMaintenance, CustomerMailingAddress1, CustomerMailingAddress2, CustomerMailingAddress3, CustomerShippingAddress1, CustomerShippingAddress2, CustomerShippingAddress3, CustomerMailingCity, CustomerShippingCity, CustomerMailingState, CustomerShippingState, CustomerMainMailingZipCode, CustomerMainShippingZipCode, CustomerTelephoneAreaCode, CustomerTelephonePrefixNumber, CustomerTelephoneSuffixNumber, CreditHoldFlag, DeliveryChargeFlag, ContractInEffectFlag, CreditLimitAmount, CustTaxExemptionNumber, CustTaxExemptFlag, CustStatementPrintCode, GSTTaxExemptCode, AverageDaysToPay, PreferredMethodOfShipment, ShipCode, ShipCodeLockFlag, PickingSeq]);
                        
-                        if (page === 1)
+                        if (page === '1' || page === 1)
                         {
                             var getbranchname = getLS('default_branchname2');
                             var getbranchcode = getLS('default_branchcode2');
@@ -225,7 +225,7 @@ function submitButton(page) {
                                 writeToLogFile("User Logged in", 2);
                             }
                         }
-                        else if (page === 2) {
+                        else if (page === '2' || page === 2) {
                             isuserlogged = getLS('Isuserlogged');
                             userID = getLS('UserID');
                             UserID = getLS('UserID');
