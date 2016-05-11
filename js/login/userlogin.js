@@ -241,7 +241,7 @@ function submitButton(page) {
                             $("#fade").hide();
                             $("#fadelogin").hide();
                             var sectioncode = getLS('SEC_CODE');
-                            pdtimgkitchendivdisplay1(getLS('F_Sectioncode'), getLS('F_Groupcode'), getLS('F_Categorycode'));
+                            pdtImgKitchenDivDisplay1(getLS('F_Sectioncode'), getLS('F_Groupcode'), getLS('F_Categorycode'));
                         }
 
                     }

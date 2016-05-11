@@ -41,7 +41,7 @@ if (isuserlogged === 'yes') {
 
 var myFuncCalls = 0;
 
-function loadsectionproductscontents(FirstLoad) {
+function loadSectionProductsContents(FirstLoad) {
 
     var breadlist1 = getLS('breadlist1');
     var breadlist2 = getLS('breadlist2');
@@ -83,7 +83,7 @@ function loadsectionproductscontents(FirstLoad) {
 
         JQNotSearch.hide();
         JQSearch.show();
-        $("#mybackbuttoncustom").attr("onclick", "pdtimgkitchendivdisplaynew1back()");
+        $("#mybackbuttoncustom").attr("onclick", "pdtImgKitchenDivDisplayNew1Back()");
 
     }
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
@@ -201,7 +201,7 @@ function loadsectionproductscontents(FirstLoad) {
                 {
 
                     html = html + '<div style="width:100%;text-align:center;padding: 10px 0 10px 0;">';
-                    html = html + '<a href="javascript:void(0)" onclick="loadmoreproducts()"><img src="images/show_more.png" style="width:165px;height:30px; margin-bottom:-3px;"/><a>';
+                    html = html + '<a href="javascript:void(0)" onclick="loadMoreProducts()"><img src="images/show_more.png" style="width:165px;height:30px; margin-bottom:-3px;"/><a>';
                     html = html + '</div>';
                 }
 
@@ -266,7 +266,7 @@ $(document).ready(function () {
         $('#viewoff').show();
         setLS('viewimg', 'no');
         if (JQProductDisplay1.css('display') !== "none") {
-            loadsectionproductscontents("Yes");
+            loadSectionProductsContents("Yes");
 
         } else {
             loadsectionfilter();
@@ -279,7 +279,7 @@ $(document).ready(function () {
         writeToLogFile(message, 3);
 
         if (JQProductDisplay1.css('display') !== "none") {
-            loadsectionproductscontents("Yes");
+            loadSectionProductsContents("Yes");
 
         } else {
             loadsectionfilter();
@@ -287,7 +287,7 @@ $(document).ready(function () {
     });
 });
 
-function backpage1() {
+function backPage1() {
 
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
@@ -305,7 +305,7 @@ function backpage1() {
     JQProductDisplay1.show();
     ProductOverview();
 }
-function terms_condition() {
+function termsCondition() {
     var c_page = getLS('page');
     var result = c_page.split(",");
     if (result[result.length - 1] !== "terms") {
@@ -315,7 +315,7 @@ function terms_condition() {
     $('.terms_condition').show();
     $('#fade').show();
 }
-function terms_conditioncls() {
+function termsConditionCls() {
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     if (result.length === 1) {
@@ -790,16 +790,16 @@ function checkinventory(branch_id) {
 
 // This Function is used to get the products based on section,gropucode and category code and load the contents to table iteminfo
 
-function pdtimgkitchendivdisplay(sec, group, cate, id) {
+function pdtImgKitchenDivDisplay(sec, group, cate, id) {
     setLS('breadlast', id.replace(/_/g, " "));
     $("#descriptioncat").html(id.replace(/_/g, " "));
     setLS('IsNewFilterAttributes', 'Yes');
-    pdtimgkitchendivdisplay1(sec, group, cate);
+    pdtImgKitchenDivDisplay1(sec, group, cate);
 }
 
 
 
-function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode) {
+function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
     $("#filternavigation").show();
     var from_count, to_count, path, filterbackbutton, c_page, result, linkimage, branch_code, sectionname, groupname, sectname, categoryname, sectionname1;
     from_count = 1;
@@ -920,7 +920,7 @@ function pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode) {
                     });
                 }
                 setLS('product_count', to_count);
-                loadsectionproductscontents('Yes');
+                loadSectionProductsContents('Yes');
 
             }, errorCB);
         }, error: function () {
@@ -997,7 +997,7 @@ function ShowUserPrices() {
                     });
                 });
 
-                loadsectionproductscontents("No"); // Show the prices
+                loadSectionProductsContents("No"); // Show the prices
 
             }
 
@@ -1033,7 +1033,7 @@ function imgErrortest(image) {
 
 // Function to show more products
 
-function loadmoreproducts() {
+function loadMoreProducts() {
     GlobalItemsList.length = 0;
     var AccessTokenKey = "";
     if (getLS('AccessTokenKey') === null || getLS('AccessTokenKey') === "") {
@@ -1135,7 +1135,7 @@ function loadmoreproducts() {
                         });
                     }
                     setLS('product_count', to_count);
-                    loadsectionproductscontents('Yes');
+                    loadSectionProductsContents('Yes');
                 }, errorCB);
             }, error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -1235,10 +1235,10 @@ function loadmoreproducts() {
 
                         });
                         setLS('product_count', to_count);
-                        loadsectionproductscontents('Yes');
+                        loadSectionProductsContents('Yes');
                     }
                     else {
-                        loadmoreprodutsbyusingsecondservice();
+                        loadMoreProdutsByUsingSecondService();
                     }
 
                 }, errorCB);
@@ -1253,7 +1253,7 @@ function loadmoreproducts() {
 }
 
 
-function loadmoreprodutsbyusingsecondservice() {
+function loadMoreProdutsByUsingSecondService() {
     GlobalItemsList.length = 0;
     var product_count = getLS('product_count');
     var from_count = parseInt(product_count, 10) + 1;
@@ -1327,7 +1327,7 @@ function loadmoreprodutsbyusingsecondservice() {
                 }
 
                 setLS('product_count', to_count);
-                loadsectionproductscontents('Yes');
+                loadSectionProductsContents('Yes');
 
             }, errorCB);
         }, error: function () {
@@ -1806,7 +1806,7 @@ function keypressInventory(e) {
         $('#txtinventory').blur(); // remove the focus from the textbox,that will automatically close the device keypad.
     }
 }
-function checkinventoryfuncls() {
+function checkInventoryFunCls() {
 
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;

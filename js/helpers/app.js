@@ -282,7 +282,7 @@ function showShowRooms() {
             html = html + "</td>";
 
             html = html + " <td style='width:15%;'>";
-            html = html + "<span><a onclick=checkinventorysearch('" + changedValues[k][10] + "','" + k + "')><img src='images/checkinventory.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a><a onclick='getdirections(" + k + ",1,1);'><img src='images/getdirections1.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a></span>";
+            html = html + "<span><a onclick=checkinventorysearch('" + changedValues[k][10] + "','" + k + "')><img src='images/checkinventory.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a><a onclick='getDirections(" + k + ",1,1);'><img src='images/getdirections1.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a></span>";
             html = html + "</td>";
 
             html = html + " </tr>";
@@ -341,7 +341,7 @@ function findBranch(page) {
     window.location.href = 'index.html';
 
 }
-function toggle_visibilityclose1() {
+function toggleVisibilityClose1() {
     document.getElementById('white_contentlistnew1').style.display = 'none';
     $("#fade").hide();
 }
@@ -460,7 +460,7 @@ function findaccount(page) {
 
 }
 
-function toggle_directionclose() {
+function toggleDirectionClose() {
     $("body").addClass('globalbodyclass');
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
@@ -475,7 +475,7 @@ function toggle_directionclose() {
     document.getElementById('lightdirection').style.display = 'none';
     document.getElementById('fade').style.display = 'none';
 }
-function popuphide() {
+function popupHide() {
     document.getElementById('lightdirection').style.display = 'none';
     document.getElementById('light').style.display = 'none';
     document.getElementById('white_contentlistnew1').style.display = 'none';

@@ -40,7 +40,7 @@ if (isuserlogged === 'yes') {
 
 // function to load shipping address details()
 
-function loadshippingaddress() {
+function loadShippingAddress() {
     var output = "";
     var tempOutput = "";
     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
@@ -55,7 +55,7 @@ function loadshippingaddress() {
             output = output + '</div>';
             output = output + '<div>';
             output = output + '<img src="images/close_square_white.png" style="width: 30px; height: 30px; cursor: pointer;';
-            output = output + 'border-radius: 10px; margin-top: 0" onclick="addressbookcls()" /></div>';
+            output = output + 'border-radius: 10px; margin-top: 0" onclick="addressBookCls()" /></div>';
             output = output + '</div>';
             output = output + '</div>';
             tempOutput = output;
@@ -118,7 +118,7 @@ function loadshippingaddress() {
 
 
 
-function settax() {
+function setTax() {
     if (isuserlogged === 'yes') {
         var zipcode = getLS('Zipcode'), pricetax = BlackmanApplicationVariables.SettingsPricetax;
         $.ajax({
@@ -175,7 +175,7 @@ function settax() {
         });
     }
     else {
-        loadcartitems();
+        loadCartItems();
         $.mobile.loading("hide");
         $("#loading_pdt").hide();
     }
@@ -185,7 +185,7 @@ function settax() {
 
 // Page Load event for cart
 
-function cartpageload() {
+function cartPageLoad() {
 
     $("#loading_pdt").show();
     setLS('ShippingMethod', "S");
@@ -207,8 +207,8 @@ function cartpageload() {
     else {
         $('#ddshippment1').val('0');
     }
-    settax();
-    loadshippingaddress();
+    setTax();
+    loadShippingAddress();
 }
 
 
@@ -216,7 +216,7 @@ function cartpageload() {
 
 var Totalitems;
 
-function loadcartitems() {
+function loadCartItems() {
     var pricetax = BlackmanApplicationVariables.SettingsPricetax, shippingcharges = BlackmanApplicationVariables.SettingsShippingcharges;
     var cartread = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
     cartread.transaction(function carinsertdetails(tx) {
@@ -606,7 +606,7 @@ function addressBook() {
     $('#fade').show();
 
 }
-function addressbookcls() {
+function addressBookCls() {
 
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
@@ -729,7 +729,7 @@ function estimateshipping() {
     html = html + 'My Shipment Information';
     html = html + '</div>';
     html = html + '<div style="position: absolute; right: 10px;">';
-    html = html + '<img src="images/close_square_white.png" style="width: 30px;height: 30px;cursor: pointer;border-radius: 10px;margin-top: 2px;" onclick="estomatepopupclose()" />';
+    html = html + '<img src="images/close_square_white.png" style="width: 30px;height: 30px;cursor: pointer;border-radius: 10px;margin-top: 2px;" onclick="estimatePopupClose()" />';
     html = html + '</div>';
     html = html + '</div>';
     html = html + '<div style="padding: 0 0 0 21px;">';
@@ -737,7 +737,7 @@ function estimateshipping() {
     html = html + '<p class="tabcontent1" style="margin-left: 0">';
     html = html + 'Preferred method of shipment :';
     html = html + '</p>';
-    html = html + '<select id="ddshippment1" onchange=getshippinginfo(); style="width:90%;">';
+    html = html + '<select id="ddshippment1" onchange=getShippingInfo(); style="width:90%;">';
     html = html + '<option value="O">Our Truck</option>';
     html = html + '<option value="P">Pickup</option>';
     html = html + '<option value="S" selected>UPS Service</option>';
@@ -1066,7 +1066,7 @@ function SortByName(a, b) {
     return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
 }
 
-function getshippinginfo() {
+function getShippingInfo() {
     var OrderMethodOfShipment = $("#ddshippment1").val();
     setLS('ShippingMethod', OrderMethodOfShipment);
     var branch_id = getLS('default_branchcode'), shippingcharges = BlackmanApplicationVariables.SettingsShippingcharges;
@@ -1116,7 +1116,7 @@ function getshippinginfo() {
 }
 
 
-function estomatepopupclose() {
+function estimatePopupClose() {
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
     if (result.length === 1) {

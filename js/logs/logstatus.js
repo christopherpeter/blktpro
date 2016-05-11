@@ -80,7 +80,7 @@ function writeToLogFile(message, pageno) {
 
                 case 7:
                     //alert('case7');
-                    loadcartitems();
+                    loadCartItems();
                     // hide the loader
 
                     JQLoadingPage.hide();
@@ -97,7 +97,7 @@ function writeToLogFile(message, pageno) {
                     JQLoadingPage.hide();
                     $.mobile.loading("hide");
                     navigator.notification.alert('Item Added to cart', null, 'Cart', 'OK');
-                    checkinventoryfuncls();
+                    checkInventoryFunCls();
                     break;
 
                 case 10:

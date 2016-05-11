@@ -55,7 +55,7 @@ function loadGPSLocations() {
         }
     }
 
-    changedValues.sort(sortfunc);
+    changedValues.sort(sortFunc);
     setLS('Showroom', 'none');
     var html = "<div class='empty'></div>";
     html = html + "<div style='background: #fff;'>";
@@ -97,7 +97,7 @@ function loadGPSLocations() {
 
         html = html + " <td style='width:15%;'>";
         //html = html + "<span><a onclick='getdirections(" + k + ",1,2);'><img src='images/getdirections1.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a></span>";
-        html = html + "<span><a onclick=checkinventorysearch('" + changedValues[k][10] + "','" + k + "')><img src='images/checkinventory.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a><a onclick='getdirections(" + k + ",1,2);'><img src='images/getdirections1.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a></span>";
+        html = html + "<span><a onclick=checkinventorysearch('" + changedValues[k][10] + "','" + k + "')><img src='images/checkinventory.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a><a onclick='getDirections(" + k + ",1,2);'><img src='images/getdirections1.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a></span>";
         html = html + "</td>"
         html = html + " </tr>"
         html = html + "</table>";
@@ -142,7 +142,7 @@ function clickmarker(i) {
     html = html + '</p>';
     html = html + '</div>';
     html = html + '<div style="float: right; margin-top: 1px; width: 12%;">';
-    html = html + '<a href="#" onclick="toggle_visibilityclose()">';
+    html = html + '<a href="#" onclick="toggleVisibilityClose()">';
     html = html + '<img src="images/close_square_white.png" style="height: 30px; width: 30px;border-radius:10px" alt="" /></a></div>';
     html = html + '</div>';
     html = html + '<div class="innerpopup1" style="float: left">';
@@ -213,7 +213,7 @@ function clickmarker(i) {
 
 
 
-function sortfunc(a, b) {
+function sortFunc(a, b) {
     return a[3] - b[3];
 }
 
@@ -223,10 +223,10 @@ function search_mapinitialize(load) {
     if (changedValues.length !== 0) {
 
         if (changedValues[0][3] <= 0.1) {
-            loadmap2(load);
+            loadMap2(load);
         }
         else {
-            loadmap1(load);
+            loadMap1(load);
         }
     }
     else {
@@ -238,7 +238,7 @@ function search_mapinitialize(load) {
 
 }
 
-function loadmap1(load) {
+function loadMap1(load) {
     var lat1;
     var lon1;
     if (load === 1) {
@@ -331,7 +331,7 @@ function loadmap1(load) {
 }
 
 
-function loadmap2(load) {
+function loadMap2(load) {
     var lat1;
     var lon1;
     if (load === 1) {
@@ -397,7 +397,7 @@ function loadmap2(load) {
 
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
-                    clickmarker2(i);
+                    clickMarker2(i);
                 }
             })(marker, i));
 
@@ -481,7 +481,7 @@ function SearchBranch() {
 
             }
 
-            changedValues.sort(sortfunc);
+            changedValues.sort(sortFunc);
             setLS('Showroom', 'none');
             //Ramkumar0909
 
@@ -813,7 +813,7 @@ function clickmarker1(i) {
     html = html + '</p>';
     html = html + '</div>';
     html = html + '<div style="float: right; margin-top: 1px; width: 12%;">';
-    html = html + '<a href="#" onclick="toggle_visibilityclose()">';
+    html = html + '<a href="#" onclick="toggleVisibilityClose()">';
     html = html + '<img src="images/close_square_white.png" style="height: 30px; width: 30px;border-radius:10px" alt="" /></a></div>';
     html = html + '</div>';
     html = html + '<div class="innerpopup1" style="float: left">';
@@ -865,7 +865,7 @@ function clickmarker1(i) {
     html = html + '<img src="images/getdirections.png"  style="width:33px;"/>';
     html = html + '</td>';
     html = html + '<td class="tabcontent" style="cursor:pointer">';
-    html = html + '<a style="margin-left: 1px;" onclick="getdirections( ' + i + ',1,' + mapno + ');">Get Direction</a>';
+    html = html + '<a style="margin-left: 1px;" onclick="getDirections( ' + i + ',1,' + mapno + ');">Get Direction</a>';
     html = html + '</td>';
     html = html + '</tr>';
     html = html + '</table>';
@@ -908,7 +908,7 @@ function clickmarker1(i) {
 
 //Function: when user clicks branck ballon in the map
 
-function clickmarker2(i) {
+function clickMarker2(i) {
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
@@ -935,7 +935,7 @@ function clickmarker2(i) {
     html = html + '</p>';
     html = html + '</div>';
     html = html + '<div style="float: right; margin-top: 1px; width: 12%;">';
-    html = html + '<a href="#" onclick="toggle_visibilityclose()">';
+    html = html + '<a href="#" onclick="toggleVisibilityClose()">';
     html = html + '<img src="images/close_square_white.png" style="height: 30px; width: 30px;border-radius:10px" alt="" /></a></div>';
     html = html + '</div>';
     html = html + '<div class="innerpopup1" style="float: left">';
@@ -1020,7 +1020,7 @@ function clickmarker2(i) {
 }
 
 
-function toggle_visibilityclose() {
+function toggleVisibilityClose() {
     $("body").addClass('globalbodyclass');
     var c_page = getLS('page');
     var result = c_page.split(","), new_page;
@@ -1036,10 +1036,10 @@ function toggle_visibilityclose() {
     $("#fade").hide();
     // location.reload();
 }
-function mapdirection(mode) {
+function mapDirection(mode) {
     var load = getLS('Default');
     var mapno = getLS('mapno');
-    getdirections(mapno, mode, load);
+    getDirections(mapno, mode, load);
 }
 
 
@@ -1058,7 +1058,7 @@ window.onresize = function () {
 
 
 
-function getdirections(g, maptype, load) {
+function getDirections(g, maptype, load) {
     $("#mapbody").removeClass('mapbody');
     var c_page = getLS('page');
     var result = c_page.split(",");
@@ -1154,7 +1154,7 @@ function getdirections(g, maptype, load) {
 
 //function to handle manual GPS search
 
-function manualsearch() {
+function manualSearch() {
     localStorage.removeItem('get_gpslocation');
     loadAllBranchesToLocalDB();
 }

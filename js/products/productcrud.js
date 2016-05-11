@@ -263,7 +263,7 @@ function filterkitchenproduts(sectioncode) {
     $("#loading_pdt").show();
     setLS('showmoreproducts', 'filter');
     writeToLogFile("Filter Search=Section:" + getLS('Filter_sectionname'), 3);
-    pdtimgkitchendivdisplay1(sectioncode, "", "");
+    pdtImgKitchenDivDisplay1(sectioncode, "", "");
 }
 
 // This function will fire when user clicks group name in filter
@@ -373,7 +373,7 @@ function filterkitchensub_products(sectioncode, groupcode) {
     $("#loading_pdt").show();
     setLS('showmoreproducts', 'filter');
     writeToLogFile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname'), 3);
-    pdtimgkitchendivdisplay1(sectioncode, groupcode, "");
+    pdtImgKitchenDivDisplay1(sectioncode, groupcode, "");
 }
 
 // This function will fire when user clicks category name in filter
@@ -395,7 +395,7 @@ function displayfilterproducts(sectioncode, groupcode, categorycode, x) {
     setLS('showmoreproducts', 'filter');
     setLS('filterbackbutton', 'filter');
     writeToLogFile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname') + "Category:" + getLS('Filter_categoryname'), 3);
-    pdtimgkitchendivdisplay1(sectioncode, groupcode, categorycode);
+    pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode);
 
 }
 
@@ -673,7 +673,7 @@ function product_search() {
                     setLS('IsNewFilterAttributes', 'Yes');
                     setLS('SearchType', 'PROD1');
                     writeToLogFile("User searched for product " + searchtext + ".It has results.", 3);
-                    loadsectionproductscontents('Yes');
+                    loadSectionProductsContents('Yes');
                 }
                 else {
                     setLS('IsNewFilterAttributes', 'Yes');
@@ -792,12 +792,12 @@ function loadsecondproductservice() {
 
                     setLS('product_count', to_count);
                     setLS('SearchType', 'PROD2');
-                    loadsectionproductscontents("Yes");
+                    loadSectionProductsContents("Yes");
                 }
 
                 else {
                     writeToLogFile("User searched for product " + searchtext + ".It has no results.", 3);
-                    loadsectionproductscontents("Yes");
+                    loadSectionProductsContents("Yes");
                 }
             }, errorCB);
         }, error: function () {
@@ -896,7 +896,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
             {
                 var html = "";
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
-                html = html + '<div style="text-align:left;float:left" onclick="pdtimgkitchendivdisplaynew1back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
+                html = html + '<div style="text-align:left;float:left" onclick="pdtImgKitchenDivDisplayNew1Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
                 html = html + ' </div>';
                 
@@ -917,7 +917,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
 
                         setLS('breadlist2', '');
                         setLS('breadlist3', '');
-                        html = html + "<div onclick=\"pdtimgkitchendivdisplay('" + SECTIONCODE + "','','','" + DESCRIPTION1 + "')\"  class='odd'>";
+                        html = html + "<div onclick=\"pdtImgKitchenDivDisplay('" + SECTIONCODE + "','','','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION;
                     }
@@ -938,7 +938,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
             else {
       
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
-                html = html + '<div style="text-align:left;" onclick="pdtimgkitchendivdisplaynew1back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;  font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
+                html = html + '<div style="text-align:left;" onclick="pdtImgKitchenDivDisplayNew1Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;  font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
                 html = html + ' </div>';                
                 html = html + " <div><No Groups Found</div>";
@@ -965,7 +965,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
     $("#backbuttongrid").hide();
     $("#filterdiv").show();
 }
-function pdtimgkitchendivdisplaynew1back() {
+function pdtImgKitchenDivDisplayNew1Back() {
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
     $("#filterselctiondiv").hide();
@@ -1043,7 +1043,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
             {
                 var html = "";
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
-                html = html + '<div style="text-align:left;float:left" onclick="pdtimgkitchendivdisplaynew2back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 4px;font-weight:bold;color:#304589  ;font-size: 10px;float:left" class="sectionpath1" onclick="breadcrumlist2()">';
+                html = html + '<div style="text-align:left;float:left" onclick="pdtImgKitchenDivDisplayNew2Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 4px;font-weight:bold;color:#304589  ;font-size: 10px;float:left" class="sectionpath1" onclick="breadcrumlist2()">';
                 html = html + '' + getLS('breadlist1') + '</div><div onclick="breadcrumlist2()" style="margin-top: 4px;font-weight:bold;color:#304589  ;font-size: 10px;" class="sectionpath1"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + newDESCRIPTION + '</div>';
                 html = html + ' </div>';
 
@@ -1056,14 +1056,14 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
                     html = html + '<div>';
                     
                     if (CATAGORYCOUNT > 0 && GROUPCODE !== "" && GROUPCODE !== null) {
-                        html = html + "<div onclick=\"productlistingfinal('" + HSCODE + "','" + sectioncode + "','" + GROUPCODE + "','" + DESCRIPTION1 + "')\"  class='odd'>";
+                        html = html + "<div onclick=\"productListingFinal('" + HSCODE + "','" + sectioncode + "','" + GROUPCODE + "','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION + '(' + CATAGORYCOUNT + ')';
                     }
                     else {
 
                         setLS('breadlist3', '');
-                        html = html + "<div onclick=\"pdtimgkitchendivdisplay('" + sectioncode + "','" + GROUPCODE + "','','" + DESCRIPTION1 + "')\"  class='odd'>";
+                        html = html + "<div onclick=\"pdtImgKitchenDivDisplay('" + sectioncode + "','" + GROUPCODE + "','','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION;
                     }
@@ -1084,7 +1084,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
             }
             else {
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
-                html = html + '<div style="text-align:left;" onclick="pdtimgkitchendivdisplaynew1back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;  font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
+                html = html + '<div style="text-align:left;" onclick="pdtImgKitchenDivDisplayNew1Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;  font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
                 html = html + ' </div>';
                 
@@ -1110,7 +1110,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
     ListJQ1Products.hide();
     ListJQ2Products.show();
 }
-function pdtimgkitchendivdisplaynew2back() {
+function pdtImgKitchenDivDisplayNew2Back() {
     $("#prdtsectionimges").hide();
     $("#sectiondiv").hide();
     $(".srchdivimg").hide();
@@ -1135,7 +1135,7 @@ function pdtimgkitchendivdisplaynew2back() {
 }
 
 
-function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
+function productListingFinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     DESCRIPTIONlast = DESCRIPTIONlast.replace(/_/g, ' ');
     setLS('breadlist3', DESCRIPTIONlast);
     var c_page = getLS('page');
@@ -1185,7 +1185,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
                 var html = "";
 
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
-                html = html + '<div style="text-align:left;float:left" onclick="pdtimgkitchendivdisplaynew3back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 4px;font-weight:bold;color:#304589;  font-size: 10px;line-height:18px;float:left" class="sectionpath1" onclick="breadcrumlist1()">';
+                html = html + '<div style="text-align:left;float:left" onclick="pdtImgKitchenDivDisplayNew3Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 4px;font-weight:bold;color:#304589;  font-size: 10px;line-height:18px;float:left" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + getLS('breadlist1') + '</div><div  style="margin-top: 4px;font-weight:bold;color:#304589;float:left;  font-size: 10px;line-height:18px" class="sectionpath1" onclick="breadcrumlist2()"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + getLS('breadlist2') + '</div><div  style="margin-top: 4px;font-weight:bold;color:#304589;float:left;  font-size: 10px;line-height:18px" class="sectionpath1" onclick="breadcrumlist3()"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + DESCRIPTIONlast + '</div>';
                 html = html + ' </div>';
 
@@ -1197,7 +1197,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
                     var DESCRIPTION = item.DESCRIPTION;
                     DESCRIPTION = DESCRIPTION.replace(/'/g, "");
                     html = html + '<div>';
-                    html = html + "<div onclick=\"pdtimgkitchendivdisplay('" + sectioncode + "','" + groupcode + "','" + CATEGORYCODE + "','" + DESCRIPTION + "')\"  class='odd'>";
+                    html = html + "<div onclick=\"pdtImgKitchenDivDisplay('" + sectioncode + "','" + groupcode + "','" + CATEGORYCODE + "','" + DESCRIPTION + "')\"  class='odd'>";
                     html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
 
                     html = html + DESCRIPTION;
@@ -1236,7 +1236,7 @@ function productlistingfinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     $("#backbuttongrid").hide();
     $(".breadcrumstyle").show();
 }
-function pdtimgkitchendivdisplaynew3back() {
+function pdtImgKitchenDivDisplayNew3Back() {
     $("#prdtsectionimges").hide();
     $("#sectiondiv").hide();
     $(".srchdivimg").hide();
@@ -1277,7 +1277,7 @@ function breadcrumlist1() {
     $(".cleardivivfilter").hide();
     $("#filterselctiondiv").hide();
 
-    pdtimgkitchendivdisplaynew1back();
+    pdtImgKitchenDivDisplayNew1Back();
 }
 function breadcrumlist2() {
     $(".tableproducts1filter").hide();
@@ -1286,7 +1286,7 @@ function breadcrumlist2() {
 
     $("#loaditems123").hide();
     $("#filterdiv").show();
-    pdtimgkitchendivdisplaynew2back();
+    pdtImgKitchenDivDisplayNew2Back();
 }
 function breadcrumlist3() {
     $(".tableproducts1filter").hide();
@@ -1295,7 +1295,7 @@ function breadcrumlist3() {
 
     $("#loaditems123").hide();
     $("#filterdiv").show();
-    pdtimgkitchendivdisplaynew3back();
+    pdtImgKitchenDivDisplayNew3Back();
 }
 function breadcrumlist4() {
     $("#filterdiv").show();

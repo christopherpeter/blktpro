@@ -537,7 +537,7 @@ function saveaddress() {
     $('.addressdetail').show();
     $('.addressdetailedit').hide();
 }
-function addressbookcls() {
+function addressBookCls() {
     $('.addressbook').hide();
     $('#fade').hide();
 }

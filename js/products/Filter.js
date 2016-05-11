@@ -289,7 +289,7 @@ function Filterdiv(Divid) {
 
 }
 
-function filterbackbtn() {
+function filterBackBtn() {
     $(".pdtloadlistdiv").show();
     JQFilterSelectionDiv.hide();
     $(".tableproducts1filter").hide();
@@ -310,7 +310,7 @@ function filterbackbtn() {
         //alert();
     }
     else {
-        pdtimgkitchendivdisplay(getLS('F_Sectioncode'), getLS('F_Groupcode'), getLS('F_Categorycode'), getLS('breadlist1'));
+        pdtImgKitchenDivDisplay(getLS('F_Sectioncode'), getLS('F_Groupcode'), getLS('F_Categorycode'), getLS('breadlist1'));
     }
 }
 
@@ -437,7 +437,7 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCo
                 }
                 setLS('product_count', 10);
                 setLS('showmoreproducts', 'filterproducts');
-                loadsectionproductscontents("Yes");
+                loadSectionProductsContents("Yes");
 
             }, errorCB);
         }, error: function () {

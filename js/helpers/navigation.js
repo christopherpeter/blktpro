@@ -61,7 +61,7 @@ function changepage(page) {
 
         case 'FilterPopUp':
 
-            filterbackbtn();
+            filterBackBtn();
 
             break;
 
@@ -91,31 +91,31 @@ function changepage(page) {
 
         case 'sections':
 
-            pdtimgkitchendivdisplaynew1back();
+            pdtImgKitchenDivDisplayNew1Back();
 
             break;
 
         case 'productlist':
 
-            backpage1();
+            backPage1();
 
             break;
 
         case 'filter':
 
-            pdtimgkitchendivdisplaynew1back();
+            pdtImgKitchenDivDisplayNew1Back();
 
             break;
 
         case 'filter2':
 
-            pdtimgkitchendivdisplaynew2back();
+            pdtImgKitchenDivDisplayNew2Back();
 
             break;
 
         case 'filter3':
 
-            pdtimgkitchendivdisplaynew3back();
+            pdtImgKitchenDivDisplayNew3Back();
 
             break;
 
@@ -133,31 +133,31 @@ function changepage(page) {
 
         case 'clickmarker':
 
-            toggle_visibilityclose();
+            toggleVisibilityClose();
 
             break;
 
         case 'getdirections':
 
-            toggle_directionclose();
+            toggleDirectionClose();
 
             break;
 
         case 'addressbook':
 
-            addressbookcls();
+            addressBookCls();
 
             break;
 
         case 'accpopup':
 
-            addressbookcls();
+            addressBookCls();
 
             break;
 
         case 'terms':
 
-            terms_conditioncls();
+            termsConditionCls();
 
             break;
 
@@ -176,13 +176,13 @@ function changepage(page) {
 
         case 'checkinventory':
 
-            checkinventoryfuncls();
+            checkInventoryFunCls();
 
             break;
 
         case 'estimateshipping':
 
-            estomatepopupclose();
+            estimatePopupClose();
 
             break;
 
