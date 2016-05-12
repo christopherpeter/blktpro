@@ -3,14 +3,10 @@ This javascript files is only for login pages functions
 Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
-
-// JquerySelectorVariable
-
 var textJQAccNo;
-
 function backtoindexpage() {
-    var cPage = getLS('page');
-    var result = cPage.split(","), newPage;
+    var cPage = getLS('page'), result, newPage;
+    result = cPage.split(",");
     changepage(result[result.length - 1]);
     if (result.length === 1) {
         newPage = cPage.replace(result[result.length - 1], "");
@@ -21,14 +17,12 @@ function backtoindexpage() {
     }
 }
 
-
 function login() {
-    var cPage = getLS('page');
-    var result = cPage.split(",");
-    var isuserlogged = getLS('Isuserlogged');
+    var cPage = getLS('page'), result, isuserlogged;
+    result = cPage.split(",");
+    isuserlogged = getLS('Isuserlogged');
     if (cPage !== null) {
-        if (cPage.indexOf(',') > -1) {
-           
+        if (cPage.indexOf(',') > -1) {           
             if (result[result.length - 1] !== "newlogin") {
                 setLS('page', cPage + ",newlogin");
             }
@@ -39,8 +33,7 @@ function login() {
     }
     else {
         setLS('page', 'newlogin');
-    }
-    
+    }    
     if (isuserlogged === 'yes') {
         if (result[result.length - 1] !== 'home');
         {
@@ -51,42 +44,32 @@ function login() {
     else {
         window.location.href = 'login.html';
     }
-
 }
 
 //This function handled user log in 
-
-function submitButton(page) {
-   
+function submitButton(page) {   
     textJQAccNo = $("#txtaccno");    
     var accountno = textJQAccNo.val().trim();
     var username = $("#txtuser").val().trim();
     var password = $("#txtpwd").val().trim();
     var numbers = /^[0-9]+$/;
-
     if (accountno === "") {
-
         navigator.notification.alert('Please enter account no.', null, 'Authentication', 'OK');
         return false;
     }
-
     else if (!numbers.test(accountno)) {
-
         navigator.notification.alert('Please enter valid account no.', null, 'Authentication', 'OK');
         textJQAccNo.val('');
         return false;
     }
     else if (username === "") {
-
         navigator.notification.alert('Please Enter Username.', null, 'Authentication', 'OK');
         return false;
     }
     else if (password === "") {
-
         navigator.notification.alert('Please enter password.', null, 'Authentication', 'OK');
         return false;
     }
-
     $("#loadingPdt").show();
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -94,10 +77,7 @@ function submitButton(page) {
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Loading please wait...</h2></span>"
-
     });
-
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -105,7 +85,6 @@ function submitButton(page) {
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
-
             dbinsert.transaction(function insertdetails(tx) {
                 tx.executeSql('CREATE TABLE IF NOT EXISTS userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT,CompanyNumber,CustomerNumber VARCHAR UNIQUE,UserName,UserProfile,UserPhoneAreaCode,UserPhonePrefix,UserPhoneSuffix,UserFaxAreaCode,UserFaxPrefix,UserFaxSuffix,UserEMail,MethodOfShipment,OrderStatusCode,BranchNumber,ShipfromBranchNumber,CheckStockStatus,LastAccessMonth,DayOfLastAccess,YearLastAccessed,LastAccessTime,LastUpdateMonth,LastUpdateDay,LastUpdateYear,ShippedShipCode,OurTruckShipCode,PickupShipCode,UserIDOfMaintenance,CustomerMailingAddress1,CustomerMailingAddress2,CustomerMailingAddress3,CustomerShippingAddress1,CustomerShippingAddress2,CustomerShippingAddress3,CustomerMailingCity,CustomerShippingCity,CustomerMailingState,CustomerShippingState,CustomerMainMailingZipCode,CustomerMainShippingZipCode,CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CreditHoldFlag,DeliveryChargeFlag,ContractInEffectFlag,CreditLimitAmount,CustTaxExemptionNumber,CustTaxExemptFlag,CustStatementPrintCode,GSTTaxExemptCode,AverageDaysToPay,PreferredMethodOfShipment,ShipCode,ShipCodeLockFlag,PickingSeq)');
                 var xmlString;
@@ -121,10 +100,8 @@ function submitButton(page) {
                 var resultJSON = $Name.text();
                 var obj = JSON.parse(resultJSON);
                 var IsValid = obj.IsValid;
-                var CompanyNumber = obj.CompanyNumber;
-             
-                if (CompanyNumber !== '' && CompanyNumber !== 'undefined') {
-     
+                var CompanyNumber = obj.CompanyNumber;             
+                if (CompanyNumber !== '' && CompanyNumber !== 'undefined') {     
                     var CustomerNumber = obj.CustomerNumber;
                     var UserName = obj.UserName;
                     var UserProfile = obj.UserProfile;
@@ -151,9 +128,6 @@ function submitButton(page) {
                     var OurTruckShipCode = obj.OurTruckShipCode;
                     var PickupShipCode = obj.PickupShipCode;
                     var UserIDOfMaintenance = obj.UserIDOfMaintenance;
-
-                    // New fields added on 10/09/2014 3PM
-
                     var CustomerMailingAddress1 = obj.CustomerMailingAddress1;
                     var CustomerMailingAddress2 = obj.CustomerMailingAddress2;
                     var CustomerMailingAddress3 = obj.CustomerMailingAddress3;
@@ -183,10 +157,8 @@ function submitButton(page) {
                     var ShipCodeLockFlag = obj.ShipCodeLockFlag;
                     var PickingSeq = obj.PickingSeq;
                     var AccessTokenKey = obj.AccessTokenKey;
-
                     var SALESPERSONID = obj.SALESPERSONID;
                     setLS('salesmanid', SALESPERSONID);
-
                     setLS('AccessTokenKey', AccessTokenKey);
                     setLS('UserID', UserIDOfMaintenance);
                     setLS('UserProfile', UserProfile);
@@ -195,32 +167,26 @@ function submitButton(page) {
                     setLS('UserName', UserName);
                     setLS('CustomerShippingState', CustomerShippingState);
                     setLS('ShippingMethod', PreferredMethodOfShipment);
-
                     //var defaultbranchname = getLS('default_branchname');
                     var defaultbranchcode = getLS('default_branchcode');
                     if (IsValid === 'True')
                     {
                         setLS('Isuserlogged', 'yes');
                         var qry = 'INSERT INTO userinfo (CompanyNumber,CustomerNumber,UserName,UserProfile,UserPhoneAreaCode,UserPhonePrefix,UserPhoneSuffix,UserFaxAreaCode,UserFaxPrefix,UserFaxSuffix,UserEMail,MethodOfShipment,OrderStatusCode,BranchNumber,ShipfromBranchNumber,CheckStockStatus,LastAccessMonth,DayOfLastAccess,YearLastAccessed,LastAccessTime,LastUpdateMonth,LastUpdateDay,LastUpdateYear,ShippedShipCode,OurTruckShipCode,PickupShipCode,UserIDOfMaintenance,CustomerMailingAddress1,CustomerMailingAddress2,CustomerMailingAddress3,CustomerShippingAddress1,CustomerShippingAddress2,CustomerShippingAddress3,CustomerMailingCity,CustomerShippingCity,CustomerMailingState,CustomerShippingState,CustomerMainMailingZipCode,CustomerMainShippingZipCode,CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CreditHoldFlag,DeliveryChargeFlag,ContractInEffectFlag,CreditLimitAmount,CustTaxExemptionNumber,CustTaxExemptFlag,CustStatementPrintCode,GSTTaxExemptCode,AverageDaysToPay,PreferredMethodOfShipment,ShipCode,ShipCodeLockFlag,PickingSeq) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-                        tx.executeSql(qry, [CompanyNumber, CustomerNumber, UserName, UserProfile, UserPhoneAreaCode, UserPhonePrefix, UserPhoneSuffix, UserFaxAreaCode, UserFaxPrefix, UserFaxSuffix, UserEMail, MethodOfShipment, OrderStatusCode, BranchNumber, ShipfromBranchNumber, CheckStockStatus, LastAccessMonth, DayOfLastAccess, YearLastAccessed, LastAccessTime, LastUpdateMonth, LastUpdateDay, LastUpdateYear, ShippedShipCode, OurTruckShipCode, PickupShipCode, UserIDOfMaintenance, CustomerMailingAddress1, CustomerMailingAddress2, CustomerMailingAddress3, CustomerShippingAddress1, CustomerShippingAddress2, CustomerShippingAddress3, CustomerMailingCity, CustomerShippingCity, CustomerMailingState, CustomerShippingState, CustomerMainMailingZipCode, CustomerMainShippingZipCode, CustomerTelephoneAreaCode, CustomerTelephonePrefixNumber, CustomerTelephoneSuffixNumber, CreditHoldFlag, DeliveryChargeFlag, ContractInEffectFlag, CreditLimitAmount, CustTaxExemptionNumber, CustTaxExemptFlag, CustStatementPrintCode, GSTTaxExemptCode, AverageDaysToPay, PreferredMethodOfShipment, ShipCode, ShipCodeLockFlag, PickingSeq]);
-                       
+                        tx.executeSql(qry, [CompanyNumber, CustomerNumber, UserName, UserProfile, UserPhoneAreaCode, UserPhonePrefix, UserPhoneSuffix, UserFaxAreaCode, UserFaxPrefix, UserFaxSuffix, UserEMail, MethodOfShipment, OrderStatusCode, BranchNumber, ShipfromBranchNumber, CheckStockStatus, LastAccessMonth, DayOfLastAccess, YearLastAccessed, LastAccessTime, LastUpdateMonth, LastUpdateDay, LastUpdateYear, ShippedShipCode, OurTruckShipCode, PickupShipCode, UserIDOfMaintenance, CustomerMailingAddress1, CustomerMailingAddress2, CustomerMailingAddress3, CustomerShippingAddress1, CustomerShippingAddress2, CustomerShippingAddress3, CustomerMailingCity, CustomerShippingCity, CustomerMailingState, CustomerShippingState, CustomerMainMailingZipCode, CustomerMainShippingZipCode, CustomerTelephoneAreaCode, CustomerTelephonePrefixNumber, CustomerTelephoneSuffixNumber, CreditHoldFlag, DeliveryChargeFlag, ContractInEffectFlag, CreditLimitAmount, CustTaxExemptionNumber, CustTaxExemptFlag, CustStatementPrintCode, GSTTaxExemptCode, AverageDaysToPay, PreferredMethodOfShipment, ShipCode, ShipCodeLockFlag, PickingSeq]);                     
                         if (page === '1' || page === 1)
                         {
                             var getbranchname = getLS('default_branchname2');
                             var getbranchcode = getLS('default_branchcode2');
-
                             if (getbranchcode !== null && getbranchcode !== "")
                             {
-
                                 setLS('default_branchcode', getbranchcode);
                                 setLS('Current_branch', getbranchcode);
-                                setLS('default_branchname', getbranchname);
-                                
+                                setLS('default_branchname', getbranchname);                                
                                 writeToLogFile("User Logged in", 1);
                             }
                             else
-                            {
-                              
+                            {                              
                                 writeToLogFile("User Logged in", 2);
                             }
                         }
@@ -232,7 +198,6 @@ function submitButton(page) {
                             isuserlogged = getLS('Isuserlogged');
                             CustomerNumber = getLS('CustomerNumber');
                             UserName = getLS('UserName');
-
                             $(".exitbtn").show();
                             $(".hide").show();
                             $(".loginpopup").hide();
@@ -242,7 +207,6 @@ function submitButton(page) {
                             var sectioncode = getLS('SEC_CODE');
                             pdtImgKitchenDivDisplay1(getLS('F_Sectioncode'), getLS('F_Groupcode'), getLS('F_Categorycode'));
                         }
-
                     }
                     else {
                         navigator.notification.alert('Invalid Username Or Password.', null, 'Authentication', 'OK');
@@ -253,31 +217,25 @@ function submitButton(page) {
                     }
                 }
             }, errorCB);
-
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loadingPdt").hide();
             $.mobile.loading("hide");
         }
-
     });
-
 }
-
 
 function errorCB() {
     navigator.notification.alert('Database error!.Please Contact administrator', null, 'Alert', 'OK');
-
     $("#loadingPdt").hide();
     $("#fade").hide();
     $.mobile.loading("hide");
 }
 
 //Function for user logout
-
 function exit() {
-    //navigator.notification.confirm('Are you sure want to logout?', onConfirmExit, 'Logout', ['Yes', 'No']);
-    onConfirmExit(1); // development
+    navigator.notification.confirm('Are you sure want to logout?', onConfirmExit, 'Logout', ['Yes', 'No']);
+    //onConfirmExit(1); // development
 }
 
 function onConfirmExit(buttonIndex) {
@@ -293,10 +251,7 @@ function onConfirmExit(buttonIndex) {
                 theme: "a",
                 textonly: true,
                 html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc;font-size:12px'><img src='images/ajax-loader.gif'/><br/><h style='color:#304589'>Please wait...</h></span>"
-
             });
-
-
             $.ajax({
                 type: "GET",
                 crossDomain: true,
@@ -306,14 +261,12 @@ function onConfirmExit(buttonIndex) {
                     document.cookie = "AlphanumericToken" + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
                     localStorage.clear();
                     writeToLogFile("User Logged out", 4);
-
                 }, error: function () {
                     navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                     $("#loadingPdt").hide();
                     $.mobile.loading("hide");
                 }
             });
-
         }
         else {
             window.location.href = 'index.html';

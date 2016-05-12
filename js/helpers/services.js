@@ -1,6 +1,4 @@
-﻿
-
-var BlackmanApplicationServices = {
+﻿var BlackmanApplicationServices = {
   "encryptedkeyURL": "https://www.blackmancommercialaccounts.com/axis2/services/BMCDeviceEncrytedKey/deviceEncryptedkey",
   "loginURL": "https://www.blackmancommercialaccounts.com/axis2/services/BMCLoginWS/loginCall",
   "logoutURL": "https://www.blackmancommercialaccounts.com/axis2/services/BMCLogoutWS/logOut?",
@@ -46,7 +44,6 @@ var BlackmanApplicationServices = {
 }
 
 var AccessTokenKey, CustomerNumber, userID, UserProfile, isuserlogged, UserName, Isvalid;
-
 // Global Variables
 var BlackmanApplicationVariables = {
   "SettingsPricetax" : 0,
@@ -61,7 +58,6 @@ var BlackmanApplicationVariables = {
   "ToNextCount": parseInt(BlackmanApplicationVariables.TotalProductCount, 10) - 1,
 }
 
-
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -74,14 +70,12 @@ function getCookie(cname) {
 }
 
 // function to store value to cookie
-
 function setCookie(cname, cvalue) {
     var d = new Date();
     d.setTime(d.getTime() + (5000 * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
-
 
 // Function To set Localstorage
 var SecretPhrase = getCookie("AlphanumericToken");
@@ -91,7 +85,6 @@ function setLS(Key, Value) {
 }
 
 // Function To get Localstorage value
-
 function getLS(Key) {
     if (localStorage.getItem(Key) === null || localStorage.getItem(Key) === "") {
         return null;
@@ -104,17 +97,14 @@ function getLS(Key) {
 }
 
 // Function to remove an item from locat storage
-
 function removeLS(Key) {
     localStorage.removeItem(Key);
 }
-
 
 var encryptedkey = getLS('encryptedkey');
 if (AccessTokenKey === null || AccessTokenKey === "") {
     AccessTokenKey = "";
 }
 else {
-
     AccessTokenKey = getLS('AccessTokenKey');
 }

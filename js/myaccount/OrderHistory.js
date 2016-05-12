@@ -3,8 +3,6 @@ This javascript files is only for order history functions
 Creaded on:23/09/2014 7:30PM
 License:Tychons solutions
 */
-
-
 // JquerySelectorVariable
 var JQInvoiceClick = $('#invoiceclick');
 
@@ -36,7 +34,6 @@ if (isuserlogged === 'yes') {
     Isvalid = "Y";
 }
 
-
 function Loadorderhistory() {
     if (isuserlogged === 'yes') {
         $.ajax({
@@ -45,7 +42,6 @@ function Loadorderhistory() {
             url: BlackmanApplicationServices.orderhistory1URL + "CustNumber=" + CustomerNumber + "&ordercode=O&StartIndex=1&EndIndex=10&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
             dataType: "xml",
             success: function (xmlData) {
-
                 var xmlString;
                 if (window.ActiveXObject) {
                     xmlString = xmlData.xml;
@@ -53,27 +49,23 @@ function Loadorderhistory() {
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
-
                 var xmlDoc = $.parseXML(xmlString);
-
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
-
                 var resultJSON = $Name.text();
                 var finalresult = "{" + resultJSON + "}";
                 var outputList = $.parseJSON(finalresult);
                 var list = outputList.BMCOrders;
-
                 if (outputList.BMCOrders.length > 0) {
                     var output = "";
+                    var OrderNumber, OrderNumber, ShippedDate, CountOfLineItems, OrderStatusCode, TotalInvoiceAmount;
                     $.each(list, function (i, item) {
-                        var OrderNumber = item.OrderNumber;
-                        var OrderDate = item.OrderDate;
-                        var ShippedDate = item.ShippedDate;
-                        var CountOfLineItems = item.CountOfLineItems;
-                        var OrderStatusCode = item.OrderStatusCode;
-                        var TotalInvoiceAmount = item.TotalInvoiceAmount;
-
+                        OrderNumber = item.OrderNumber;
+                        OrderNumber = item.OrderDate;
+                        ShippedDate = item.ShippedDate;
+                        CountOfLineItems = item.CountOfLineItems;
+                        OrderStatusCode = item.OrderStatusCode;
+                        TotalInvoiceAmount = item.TotalInvoiceAmount;
                         output = output + '<div id="div' + OrderNumber + '" style="background: none repeat scroll 0 0 #fff; margin-left: 5px;';
                         output = output + 'margin-top: 5px; border-bottom: 1px solid #ccc; width: 99%;">';
                         output = output + '<div>';
@@ -164,9 +156,7 @@ function Loadorderhistory() {
                         output = output + '</div>';
                         output = output + '</div>';
                         output = output + '</div>';
-
                     });
-
                     $("#orderclick").html(output);
                     $("#loadingPdt").hide();
                     $.mobile.loading("hide");
@@ -176,21 +166,15 @@ function Loadorderhistory() {
                     $("#loadingPdt").hide();
                     $.mobile.loading("hide");
                 }
-
-
             },
             error: function () {
-
-
                 $("#loadingPdt").hide();
                 $.mobile.loading("hide");
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-
             }
         });
     }
     else {
-
         $("#orderclick").html("<div style='text-align: center;padding: 31px;background-color: #fff;'><span style='color:red'>Please log in to see your order history</span></div>");
         $("#loadingPdt").hide();
         $.mobile.loading("hide");
@@ -198,14 +182,12 @@ function Loadorderhistory() {
 }
 
 function showinnerdiv(OrderNumber) {
-
     $.ajax({
         type: "GET",
         crossDomain: true,
         url: BlackmanApplicationServices.orderhistoryItems + "OrderNum=" + OrderNumber + "&UserId=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
-
             var xmlString;
             if (window.ActiveXObject) {
                 xmlString = xmlData.xml;
@@ -213,26 +195,22 @@ function showinnerdiv(OrderNumber) {
             else {
                 xmlString = (new XMLSerializer()).serializeToString(xmlData);
             }
-
             var xmlDoc = $.parseXML(xmlString);
-
             var $xml = $(xmlDoc);
             var $Name = $xml.find('return');
             var resultJSON = $Name.text();
             var finalresult = "{" + resultJSON + "}";
             var output = $.parseJSON(finalresult);
             var list = output.BMCOrderItems;
-
             if (output.BMCOrderItems.length > 0) {
                 var outputHtml = '<table class="itempdtimgdown" style="width: 100%;">';
+                var OurItemNumber, QuantityOrdered, TotalPrice, ProductName, PRODUCTIMAGE;
                 $.each(list, function (i, item) {
-                    var OurItemNumber = item.OURITEMNUMBER;
-                    var QuantityOrdered = item.QUANTITYORDERED;
-                    var TotalPrice = item.TOTALPRICE;
-                    var ProductName = item.PRODUCTNAME;
-                    var PRODUCTIMAGE = item.PRODUCTIMAGE;
-
-
+                    OurItemNumber = item.OURITEMNUMBER;
+                    QuantityOrdered = item.QUANTITYORDERED;
+                    TotalPrice = item.TOTALPRICE;
+                    ProductName = item.PRODUCTNAME;
+                    PRODUCTIMAGE = item.PRODUCTIMAGE;
                     outputHtml += '<tr>';
                     outputHtml += '<td>';
                     outputHtml += '<table class="tablecart">';
@@ -275,18 +253,13 @@ function showinnerdiv(OrderNumber) {
                     outputHtml += '</table>';
                     outputHtml += '</td>';
                     outputHtml += '</tr>';
-
-
                 });
-
                 outputHtml += '</table>';
                 $("#innerdiv" + OrderNumber).html(outputHtml);
             }
             else {
-
                 $("#innerdiv" + OrderNumber).html("<div style='color: red;text-align: center;padding: 0 0 10px 3px;'>No items found</div>");
             }
-
         },
         error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -294,22 +267,18 @@ function showinnerdiv(OrderNumber) {
             $.mobile.loading("hide");
         }
     });
-
-
     $("#innerdiv" + OrderNumber).slideToggle();
 }
 
 function invoiceclick() {
     if (isuserlogged === "yes") {
         $("#loadingPdt").show();
-
         $.mobile.loading("show", {
             text: "Loading,Please Wait...",
             textVisible: true,
             theme: "a",
             textonly: true,
             html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><p style='color:#304589;font-weight:bold'>Please Wait...</p></span>"
-
         });
 
         $.ajax({
@@ -332,7 +301,6 @@ function invoiceclick() {
                 var finalresult = "{" + jsontext + "}";
                 var outputresult = $.parseJSON(finalresult);
                 var list = outputresult.RESULTS;
-
                 if (outputresult.RESULTS.length > 0) {
                     $.each(list, function (i, item) {
                         switch (i) {
@@ -340,76 +308,61 @@ function invoiceclick() {
                                 if (item.Current === "" || item.Current === null || item.Current === 0 || item.Current === '0') {
                                     item.Current = '0.00';
                                 }
-
                                 $("#Current_Span").text("$" + item.Current);
                                 break;
-
                             case 1:
                                 if (item.ThirtyDays === "" || item.ThirtyDays === null || item.ThirtyDays === 0 || item.ThirtyDays === '0') {
                                     item.ThirtyDays = '0.00';
                                 }
                                 $("#30_Span").text("$" + item.ThirtyDays);
                                 break;
-
                             case 2:
                                 if (item.SixtyDays === "" || item.SixtyDays === null || item.SixtyDays === 0 || item.SixtyDays === '0') {
                                     item.SixtyDays = '0.00';
                                 }
                                 $("#60_Span").text("$" + item.SixtyDays);
                                 break;
-
                             case 3:
                                 if (item.NinetyDays === "" || item.NinetyDays === null || item.NinetyDays === 0 || item.NinetyDays === '0') {
                                     item.NinetyDays = '0.00';
                                 }
                                 $("#90_Span").text("$" + item.NinetyDays);
                                 break;
-
                             case 4:
                                 if (item.TotalDue === "" || item.TotalDue === null || item.TotalDue === 0 || item.TotalDue === '0') {
                                     item.TotalDue = '0.00';
                                 }
                                 $("#Total_Span").text("$" + item.TotalDue);
                                 break;
-
                             case 5:
                                 if (item.MTDPurchases === "" || item.MTDPurchases === null || item.MTDPurchases === 0 || item.MTDPurchases === '0') {
                                     item.MTDPurchases = '0.00';
                                 }
                                 $("#MTD_Span").text("$" + item.MTDPurchases);
                                 break;
-
                             case 6:
-
                                 if (item.FutureDue === "" || item.FutureDue === null || item.FutureDue === 0 || item.FutureDue === '0') {
                                     item.FutureDue = '0.00';
                                 }
                                 $("#FutureDue_Span").text("$" + item.FutureDue);
                                 break;
-
                             case 7:
-
                                 if (item.TotalOwed === "" || item.TotalOwed === null || item.TotalOwed === 0 || item.TotalOwed === '0') {
                                     item.TotalOwed = '0.00';
                                 }
                                 $("#TotalOwed_Span").text("$" + item.TotalOwed);
                                 break;
-
                             case 8:
-
                                 if (item.AverageDaysToPay === "" || item.AverageDaysToPay === null || item.AverageDaysToPay === 0 || item.AverageDaysToPay === '0') {
                                     item.AverageDaysToPay = '0';
                                 }
                                 $("#AvgDays_Span").text(item.AverageDaysToPay);
                                 break;
                         }
-
                     });
-
                     JQInvoiceClick.show();
                     $("#loadingPdt").hide();
                     $.mobile.loading("hide");
-
                 }
                 else {
                     $("#invoiceclick").html("<div style='text-align: center;padding-top: 10%;background-color: #fff;color: red;font-size: 14px;'><span>No balances found.</span></div>");
@@ -425,7 +378,6 @@ function invoiceclick() {
                 $("#cur_footer").hide();
             }
         });
-
         $('#orderclick').hide();
         $('.footer').show();
         JQInvoiceClick.show();
@@ -433,16 +385,13 @@ function invoiceclick() {
         $('#lblinvoice').css("background", "#838FB8");
     }
     else {
-        // For Guest User
         $("#invoiceclick").html("<div style='text-align: center;padding: 31px;background-color: #fff;'><span style='color:red'>Please log in to see your current balance</span></div>");
         $('#orderclick').hide();
         $('.footer').hide();
         JQInvoiceClick.show();
         $('#lblorderhis').css("background", "#304589");
         $('#lblinvoice').css("background", "#838FB8");
-
     }
-
 }
 
 function tableinvoice(invoiceno) {
@@ -460,25 +409,22 @@ function tableinvoice(invoiceno) {
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
-
                 var xmlDoc = $.parseXML(xmlString);
-
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
                 var resultJSON = $Name.text();
                 var finalresult = "{" + resultJSON + "}";
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCOrderItems;
-
                 if (output.BMCOrderItems.length > 0) {
                     var html = '<table style="width:100%">';
+                    var OurItemNumber, QuantityOrdered, TotalPrice, ProductName, PRODUCTIMAGE;
                     $.each(list, function (i, item) {
-                        var OurItemNumber = item.OURITEMNUMBER;
-                        var QuantityOrdered = item.QUANTITYORDERED;
-                        var TotalPrice = item.TOTALPRICE;
-                        var ProductName = item.PRODUCTNAME;
-                        var PRODUCTIMAGE = item.PRODUCTIMAGE;
-
+                        OurItemNumber = item.OURITEMNUMBER;
+                        QuantityOrdered = item.QUANTITYORDERED;
+                        TotalPrice = item.TOTALPRICE;
+                        ProductName = item.PRODUCTNAME;
+                        PRODUCTIMAGE = item.PRODUCTIMAGE;
                         html = html + '<tr>';
                         html = html + '<td>';
                         html = html + '<table class="tablecart">';
@@ -504,7 +450,6 @@ function tableinvoice(invoiceno) {
                         html = html + ProductName;
                         html = html + '</td>';
                         html = html + '</tr>';
-
                         html = html + '<tr>';
                         html = html + '<td style="font-weight: bold; color: #304589; width: 60%">';
                         html = html + 'Total Cost: $' + TotalPrice;
@@ -522,13 +467,9 @@ function tableinvoice(invoiceno) {
                         html = html + '</table>';
                         html = html + '</td>';
                         html = html + '</tr>';
-
-
                     });
-
                     html = html + '</table>';
                     $('#tableinvoice_' + invoiceno).html(html);
-                    //$('#tableinvoice_' + orderno).slideToggle();
                 }
                 else {
                     $('#tableinvoice_' + invoiceno).html("<div style='color: red;text-align: center;padding: 0 0 10px 3px;'>No items found</div>");
@@ -545,6 +486,5 @@ function tableinvoice(invoiceno) {
             $.mobile.loading("hide");
         }
     });
-
     $('#tableinvoice_' + invoiceno).slideToggle();
 }

@@ -3,43 +3,31 @@ This javascript files is only for Logging user activity
 Creaded on:12/09/2014 1PM
 License:Tychons solutions
 */
+
 // JquerySelectorVariable
-
 var JQFade = $("#fade"), JQLoadingPage = $("#loadingPdt");
-
-
 function writeToLogFile(message, pageno) {
-
     var IMEI = getLS('IMEI');
     var UUID = getLS('UUID');
-
     var CustomerNumber = getLS('CustomerNumber');
     if (CustomerNumber === null) { CustomerNumber = ""; }
     var UserProfile = getLS('UserProfile');
     if (UserProfile === null) { UserProfile = ""; }
-
     if (IMEI === 'undefined' || IMEI === "" || IMEI === null) {
         IMEI = "N/A"
     }
-
     if (UUID === 'undefined' || UUID === "" || UUID === null) {
         UUID = "N/A"
     }
-
     if (UserProfile === 'undefined' || UserProfile === "" || UserProfile === null) {
         UserProfile = ""
     }
-
     if (CustomerNumber === 'undefined' || CustomerNumber === "" || CustomerNumber === null) {
         CustomerNumber = "0"
     }
-
     if (UserProfile === 'undefined' || UserProfile === "" || UserProfile === null) {
         UserProfile = ""
     }
-
-
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -48,89 +36,61 @@ function writeToLogFile(message, pageno) {
         success: function (xmlData) {
             switch (pageno) {
                 case 1:
-                    //alert('case1');
                     window.location.href = 'products.html';
                     break;
-
                 case 2:
-                    //alert('case2');
                     window.location.href = 'products.html';
                     break;
-
                 case 3:
-                    //alert('case3');
                     break;
-
                 case 4:
-                    //alert('case4');
                     localStorage.clear();
                     droptable();
-
                     break;
-
                 case 5:
-                    //alert('case5');
                     window.location.reload();
                     break;
-
                 case 6:
-                    //alert('case6');
                     window.location.href = 'myaccount.html';
                     break;
-
                 case 7:
-                    //alert('case7');
-                    loadCartItems();
-                    // hide the loader
-
+                    loadCartItems();     
                     JQLoadingPage.hide();
                     JQFade.hide();
                     $.mobile.loading("hide");
                     break;
-
                 case 8:
                     accountPageLoad();
                     break;
-
                 case 9:
-                    //alert('case9');.
                     JQLoadingPage.hide();
                     $.mobile.loading("hide");
                     navigator.notification.alert('Item Added to cart', null, 'Cart', 'OK');
                     checkInventoryFunCls();
                     break;
-
                 case 10:
                     JQLoadingPage.hide();
                     $.mobile.loading("hide");
                     productPageLoad();
                     break;
-
                 case 11:
                     $.mobile.loading("hide");
                     $("#fade1").hide();
                     $("#shipping_popup").show();
                     break;
-
                 case 12:
-                    //alert('case9');.
                     JQLoadingPage.hide();
                     $.mobile.loading("hide");
                     navigator.notification.alert('Item Added to cart', null, 'Cart', 'OK');
                     break;
-
                 case 13:
-                    //alert('case9');.
                     JQLoadingPage.hide();
                     JQFade.hide();
                     $.mobile.loading("hide");
                     $("#checkinventory1").hide();
                     navigator.notification.alert('Item Added to cart', null, 'Cart', 'OK');
-
-
                     break;
             }
-
         },
         error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -138,5 +98,4 @@ function writeToLogFile(message, pageno) {
             $.mobile.loading("hide");
         }
     });
-
 }

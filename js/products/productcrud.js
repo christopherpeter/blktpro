@@ -3,12 +3,7 @@ This javascript files is only for products
 Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
-
-// JquerySelectorVariable
-
 var ListJQ3Products = $("#list3products"), ListJQ2Products = $("#list2products"), ListJQ1Products = $("#list1products");
-
-// Globalvalues for the JS
 AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey === null) {
     AccessTokenKey = "";
@@ -28,7 +23,6 @@ if (UserProfile === null) {
 isuserlogged = getLS('Isuserlogged');
 UserName = getLS('UserName');
 if (UserName === null) {
-
     UserName = "";
 }
 Isvalid = 'N';
@@ -36,11 +30,9 @@ if (isuserlogged === 'yes') {
     Isvalid = "Y";
 }
 
-
 // This is used to read the sectioninfo table contents and used to form 3x4 grid view
 var totalgridlength = 0;
 function loadsectionimages() {
-
     if ($(window).height() > 900) {
         $("#prdtsectionimges").css("min-height", "1000px");
         totalgridlength = 27;
@@ -48,9 +40,7 @@ function loadsectionimages() {
     else {
         $("#prdtsectionimges").css("min-height", "450px");
         totalgridlength = 12;
-
     }
-
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
     showitems.transaction(function showitemsbybranch(tx) {
         var html = "";
@@ -60,49 +50,40 @@ function loadsectionimages() {
         tx.executeSql('SELECT * FROM sectioninfo WHERE id between 1 and ' + totalgridlength, [], function itembranchsucces(txx, res) {
             var count = 0;
             html = html + "<div class='tableproducts'>";
+            var ss, SECTIONCODE, DESCRIPTION, HSCODE;
             for (var i = 0; i < res.rows.length; i++) {
-                var ss = res.rows.item(i);
-                var SECTIONCODE = ss.SECTION;
-                var DESCRIPTION = ss.DESCRIPTION;
-                var HSCODE = ss.HSCODE;
+                ss = res.rows.item(i);
+                SECTIONCODE = ss.SECTION;
+                DESCRIPTION = ss.DESCRIPTION;
+                HSCODE = ss.HSCODE;
                 if (count % 3 === 0) {
-                    if (count === 0) {
-                       
+                    if (count === 0) {                       
                         html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
-
                         if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror=\"imgError(this);\" src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:27%;' onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\"  />";
                         }
                         else {
                             html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:70%;padding:5%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
-
-
                         html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
                         html = html + DESCRIPTION + "</p>";
                         html = html + "</div>";
                     }
                     else {
-
                         html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
-
-
                         if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
                         else {
                             html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' class='productimagesizedisplay'    onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
-
                         html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
                         html = html + DESCRIPTION + "</p>";
                         html = html + "</div>";
                     }
-
                 }
                 else {
                     html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
-
                     if (SECTIONCODE === "FILTERS") {
                         html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                     }
@@ -113,11 +94,8 @@ function loadsectionimages() {
                     html = html + DESCRIPTION + "</p>";
                     html = html + "</div>";
                 }
-
                 count++;
-
             }
-
             html = html + "</div>";
             setLS('images_oldcount', totalgridlength);
             document.getElementById("prdtsectionimges").innerHTML = html;
@@ -127,25 +105,18 @@ function loadsectionimages() {
     });
 }
 
-
-
 // Function to read the sectioninfo table contents and added it to the filter
-
 function loadsections() {
     loadsectionimages();
 }
-
 
 function ChangeUserBranch() {
     findBranch(2);
 }
 
 function loadsectionfilter() {
-
     var view = getLS('viewimg');
-
     if (view === 'yes') {
-
         $.ajax({
             type: "GET",
             crossDomain: true,
@@ -163,12 +134,9 @@ function loadsectionfilter() {
                     else {
                         xmlString = (new XMLSerializer()).serializeToString(xmlData);
                     }
-
                     var xmlDoc = $.parseXML(xmlString);
-
                     var $xml = $(xmlDoc);
                     var $Name = $xml.find('return');
-
                     var resultJSON = $Name.text();
                     var finalresult = "{" + resultJSON + "}";
                     var output = $.parseJSON(finalresult);
@@ -186,7 +154,6 @@ function loadsectionfilter() {
                     setLS('cat_oldcount', "0");
                     loadsections();
                 }, errorCB);
-
             }, error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
@@ -196,7 +163,6 @@ function loadsectionfilter() {
         });
     }
     else if (view = 'no') {
-
         $.ajax({
             type: "GET",
             crossDomain: true,
@@ -214,12 +180,9 @@ function loadsectionfilter() {
                     else {
                         xmlString = (new XMLSerializer()).serializeToString(xmlData);
                     }
-
                     var xmlDoc = $.parseXML(xmlString);
-
                     var $xml = $(xmlDoc);
                     var $Name = $xml.find('return');
-
                     var resultJSON = $Name.text();
                     var finalresult = "{" + resultJSON + "}";
                     var output = $.parseJSON(finalresult);
@@ -229,16 +192,13 @@ function loadsectionfilter() {
                         var DESCRIPTION = item.DESCRIPTION;
                         var GROUPCOUNT = item.GROUPCOUNT;
                         var HSCODE = item.HEADSECTIONCODE;
-
                         var query = 'INSERT INTO sectioninfo (HSCODE,SECTION,DESCRIPTION,GROUPCOUNT)'
                                      + 'VALUES (?,?,?,?)';
                         tx.executeSql(query, [HSCODE, SECTION, DESCRIPTION, GROUPCOUNT]);
-
                     });
                     setLS('cat_oldcount', '0');
                     loadsections();
                 }, errorCB);
-
             }, error: function () {
                 $.mobile.loading("hide");
                 $("#loadingPdt").hide();
@@ -248,9 +208,7 @@ function loadsectionfilter() {
     }
 }
 
-
 // This function will fire when a section has no sub groups in it
-
 function filterkitchenproduts(sectioncode) {
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -258,7 +216,6 @@ function filterkitchenproduts(sectioncode) {
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
-
     });
     $("#loadingPdt").show();
     setLS('showmoreproducts', 'filter');
@@ -267,27 +224,21 @@ function filterkitchenproduts(sectioncode) {
 }
 
 // This function will fire when user clicks group name in filter
-
 function filterkitchensub(sectioncode, groupcode, x) {
     var divdisplaystatus1 = $("#kitchensubdiv" + sectioncode + groupcode).css('display');
-
     if (divdisplaystatus1 === "none") {
         $(".filterkitchensubimgdown" + sectioncode + groupcode).show();
         $(".filterkitchensubimg" + sectioncode + groupcode).hide();
-
     } else {
-
         $(".filterkitchensubimgdown" + sectioncode + groupcode).hide();
         $(".filterkitchensubimg" + sectioncode + groupcode).show();
     }
-
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
-
     });
     $("#loadingPdt").show();
     setLS('Filter_groupcode', groupcode);
@@ -306,26 +257,22 @@ function filterkitchensub(sectioncode, groupcode, x) {
             else {
                 xmlString = (new XMLSerializer()).serializeToString(xmlData);
             }
-
             var xmlDoc = $.parseXML(xmlString);
-
             var $xml = $(xmlDoc);
             var $Name = $xml.find('return');
-
             var resultJSON = $Name.text();
             var finalresult = "{" + resultJSON + "}";
             var output = $.parseJSON(finalresult);
             var list = output.BMCCategory;
             if (output.BMCCategory.length > 0) // Check the count of Cateogory available
             {
-                var html = "";
-
+                var html, CATEGORYCODE, DESCRIPTION;
                 html = html + "<div class='innerpopup'>";
                 html = html + "<div class='empty'>";
                 html = html + "</div>";
                 $.each(list, function (i, item) {
-                    var CATEGORYCODE = item.CATEGORYCODE;
-                    var DESCRIPTION = item.DESCRIPTION;
+                    CATEGORYCODE = item.CATEGORYCODE;
+                    DESCRIPTION = item.DESCRIPTION;
                     html = html + "<div class='popdiv'>";
                     html = html + "<table class='tableclass' style='background-color: #F9F9F9;border-color: #F9F9F9;'>";
                     html = html + "<tr style='width: 220px; text-align: left'>";
@@ -345,14 +292,10 @@ function filterkitchensub(sectioncode, groupcode, x) {
                 $("#loadingPdt").hide();
             }
             else {
-
                 filterKitchenSubProducts(sectioncode, groupcode);
             }
-
         }, error: function () {
-
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-
             $.mobile.loading("hide");
             $("#loadingPdt").hide();
         }
@@ -360,7 +303,6 @@ function filterkitchensub(sectioncode, groupcode, x) {
 }
 
 // This function will fire when a group doesnt have categories 
-
 function filterKitchenSubProducts(sectioncode, groupcode) {
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -368,7 +310,6 @@ function filterKitchenSubProducts(sectioncode, groupcode) {
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
-
     });
     $("#loadingPdt").show();
     setLS('showmoreproducts', 'filter');
@@ -377,7 +318,6 @@ function filterKitchenSubProducts(sectioncode, groupcode) {
 }
 
 // This function will fire when user clicks category name in filter
-
 function displayfilterproducts(sectioncode, groupcode, categorycode, x) {
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -385,40 +325,30 @@ function displayfilterproducts(sectioncode, groupcode, categorycode, x) {
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
-
     });
-
     setLS('Filter_categorycode', categorycode);
     setLS('Filter_categoryname', $(x).text());
     $("#loadingPdt").show();
-
     setLS('showmoreproducts', 'filter');
     setLS('filterbackbutton', 'filter');
     writeToLogFile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname') + "Category:" + getLS('Filter_categoryname'), 3);
     pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode);
-
 }
 
 // This function is used for loading more categories in the filter
-
 function loadmorecategories() {
     loadsections();
 }
 
-
 // This function is used for handling swipe next function
-
 function productNext() {
-
     var count = getLS('images_oldcount');
     var from = parseInt(count, 10) + 1;
     var to = parseInt(count, 10) + totalgridlength;
     var where = from + ' and ' + to;
-
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
     showitems.transaction(function showitemsbybranch(tx) {
         var html = "";
-
         tx.executeSql('SELECT * FROM sectioninfo WHERE id between ' + where, [], function itembranchsucces(txx, res) {
             var count = 0;
             html = html + "<div class='tableproducts'>";
@@ -427,18 +357,15 @@ function productNext() {
                 var SECTIONCODE = ss.SECTION;
                 var HSCODE = ss.HSCODE;
                 var DESCRIPTION = ss.DESCRIPTION;
-
                 if (count % 3 === 0) {
                     if (count === 0) {
                         html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
-
                         if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:27%'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
                         else {
                             html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:70%;padding:5%'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
-
                         html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
                         html = html + DESCRIPTION + "</p>";
                         html = html + "</div>";
@@ -455,27 +382,21 @@ function productNext() {
                         html = html + DESCRIPTION + "</p>";
                         html = html + "</div>";
                     }
-
                 }
                 else {
                     html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
-
                     if (SECTIONCODE === "FILTERS") {
                         html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:27%'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                     }
                     else {
                         html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' class='productimagesizedisplay'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                     }
-
                     html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
                     html = html + DESCRIPTION + "</p>";
                     html = html + "</div>";
                 }
-
                 count++;
-
             }
-
             html = html + "</div>";
             setLS('images_oldcount', to);
             document.getElementById("prdtsectionimges").innerHTML = html;
@@ -486,18 +407,15 @@ function productNext() {
 }
 
 // This function is used for handling swipe previous function
-
 function productPrevious() {
     var count = getLS('images_oldcount');
     var from = parseInt(count, 10) - totalgridlength - (totalgridlength - 1);
     var to = parseInt(count, 10) - totalgridlength;
     var where = from + ' and ' + to;
-
     if (to > 0) {
         var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
         showitems.transaction(function showitemsbybranch(tx) {
             var html = "";
-
             tx.executeSql('SELECT * FROM sectioninfo WHERE id between ' + where, [], function itembranchsucces(txx, res) {
                 var count = 0;
                 html = html + "<div class='tableproducts'>";
@@ -506,44 +424,34 @@ function productPrevious() {
                     var SECTIONCODE = ss.SECTION;
                     var HSCODE = ss.HSCODE;
                     var DESCRIPTION = ss.DESCRIPTION;
-
                     if (count % 3 === 0) {
                         if (count === 0) {
                             html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
-
                             if (SECTIONCODE === "FILTERS") {
                                 html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:27%;'  onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                             }
                             else {
                                 html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:70%;padding:5%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                             }
-
-
                             html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
                             html = html + DESCRIPTION + "</p>";
                             html = html + "</div>";
                         }
                         else {
-
                             html = html + "<div class='pdtimg' style='float:left;margin-left: 1%;margin-top: 1%;'>";
-
-
                             if (SECTIONCODE === "FILTERS") {
                                 html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                             }
                             else {
                                 html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' class='productimagesizedisplay'    onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                             }
-
                             html = html + "<p class='pdt-content' style='text-align: center;font-size:11px'>";
                             html = html + DESCRIPTION + "</p>";
                             html = html + "</div>";
                         }
-
                     }
                     else {
                         html = html + "<div class='pdtimg' style='float:left;margin-left:1%;margin-top: 1%;'>";
-
                         if (SECTIONCODE === "FILTERS") {
                             html = html + "<img onerror='imgError(this);' src='" + BlackmanApplicationVariables.imagepath + HSCODE + ".jpg' style='width:27%'   onclick=\"pdtimgkitchendivdisplaynew1('" + HSCODE + "','" + SECTIONCODE + "','" + DESCRIPTION + "')\" />";
                         }
@@ -554,11 +462,8 @@ function productPrevious() {
                         html = html + DESCRIPTION + "</p>";
                         html = html + "</div>";
                     }
-
                     count++;
-
                 }
-
                 html = html + "</div>";
                 setLS('images_oldcount', to);
                 document.getElementById("prdtsectionimges").innerHTML = html;
@@ -580,12 +485,9 @@ function productSearch() {
     }
     var fromCount = 1;
     var toCount = BlackmanApplicationVariables.TotalProductCount;
-
     var searchtext = $("#txtpdtsrch").val().trim();
     if (searchtext === "" || searchtext === null) {
-
         navigator.notification.alert('Please Enter Product Name.', null, 'Alert', 'OK');
-
         return false;
     }
     setLS('breadcrumb', 'search');
@@ -601,21 +503,17 @@ function productSearch() {
     });
     setLS('showmoreproducts', 'search');
     var branchId = getLS('default_branchcode');
-
     searchtext = searchtext.split(" ");
     var result = "";
     for (var i = 0; i < searchtext.length; i++) {
-
         if (i === searchtext.length - 1) {
             result = result + searchtext[i];
         }
         else {
             result = result + searchtext[i] + "@";
         }
-
     }
     searchtext = result;
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -633,42 +531,33 @@ function productSearch() {
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
-
                 var xmlDoc = $.parseXML(xmlString);
-
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
-
                 var resultJSON = $Name.text();
                 var finalresult = "{" + resultJSON + "}";
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCItms;
-                var html = "";
+                var html, OurItemNumber, OurProductNumber, STOCK, BRANCH, ItemUnitPriceAmount, AVAILABLEQUNTY, PRODUCTIMAGE, InventoryItemWeight, ItemStockingUnitOfMeasure, ItemOrProductDescription;
                 if (output.BMCItms.length > 0) {
                     $.each(list, function (i, item) {
-
-                        var OurItemNumber = item.OurItemNumber;
+                        OurItemNumber = item.OurItemNumber;
                         GlobalItemsList.push(OurItemNumber);
-                        var OurProductNumber = item.OurProductNumber;
-                        var ItemOrProductDescription = item.ItemOrProductDescription;
-                        var ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
-                        var InventoryItemWeight = item.InventoryItemWeight;
-                        var PRODUCTIMAGE = item.PRODUCTIMAGE;
-                        var AVAILABLEQUNTY = item.AVAILABLEQUNTY;
-                        var ItemUnitPriceAmount = item.ItemUnitPriceAmount;
-                        var BRANCH = item.BRANCH;
-                        var STOCK = item.STOCK;
-
+                        OurProductNumber = item.OurProductNumber;
+                        ItemOrProductDescription = item.ItemOrProductDescription;
+                        ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
+                        InventoryItemWeight = item.InventoryItemWeight;
+                        PRODUCTIMAGE = item.PRODUCTIMAGE;
+                        AVAILABLEQUNTY = item.AVAILABLEQUNTY;
+                        ItemUnitPriceAmount = item.ItemUnitPriceAmount;
+                        BRANCH = item.BRANCH;
+                        STOCK = item.STOCK;
                         if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                             ItemUnitPriceAmount = "0";
                         }
-
                         var qry = 'INSERT INTO iteminfo (OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK) VALUES (?,?,?,?,?,?,?,?,?,?)';
-
                         tx.executeSql(qry, [OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, ItemUnitPriceAmount, BRANCH, STOCK]);
-
                     });
-
                     setLS('product_count', toCount);
                     setLS('IsNewFilterAttributes', 'Yes');
                     setLS('SearchType', 'PROD1');
@@ -678,17 +567,13 @@ function productSearch() {
                 else {
                     setLS('IsNewFilterAttributes', 'Yes');
                     loadSecondProductService();
-
                 }
             }, errorCB);
         }, error: function () {
-
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
             $("#loadingPdt").hide();
         }
-
-
     });
     setLS('F_Categorycode', '');
     setLS('F_Groupcode', '');
@@ -696,7 +581,6 @@ function productSearch() {
 }
 
 // Function for products serach on all the products
-
 function loadSecondProductService() {
     GlobalItemsList.length = 0;
     var cPage = getLS('page');
@@ -704,23 +588,18 @@ function loadSecondProductService() {
     if (resultPage[resultPage.length - 1] !== 'sections') {
         setLS('page', cPage + ",sections");
     }
-
     var searchtext = $("#txtpdtsrch").val().trim();
-
     searchtext = searchtext.split(" ");
     var result = "";
     for (var i = 0; i < searchtext.length; i++) {
-
         if (i === searchtext.length - 1) {
             result = result + searchtext[i];
         }
         else {
             result = result + searchtext[i] + "@";
         }
-
     }
     searchtext = result;
-
     $("#loadingPdt").show();
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -728,14 +607,11 @@ function loadSecondProductService() {
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Loading Products...</h2></span>"
-
     });
     setLS('showmoreproducts', 'search');
     var branchId = getLS('default_branchcode');
-
     var fromCount = 1;
     var toCount = BlackmanApplicationVariables.TotalProductCount;
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -753,66 +629,52 @@ function loadSecondProductService() {
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
-
-
                 var xmlDoc = $.parseXML(xmlString);
-
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
-
                 var resultJSON = $Name.text();
                 var finalresult = "{" + resultJSON + "}";
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCItms;
-                var html = "";
+                var html, OurItemNumber, OurProductNumber, STOCK, BRANCH, ItemUnitPriceAmount, AVAILABLEQUNTY, PRODUCTIMAGE, InventoryItemWeight, ItemStockingUnitOfMeasure, ItemOrProductDescription;
 
                 if (output.BMCItms.length > 0) {
                     $.each(list, function (i, item) {
-                        var OurItemNumber = item.OurItemNumber;
+                        OurItemNumber = item.OurItemNumber;
                         GlobalItemsList.push(OurItemNumber);
-                        var OurProductNumber = item.OurProductNumber;
-                        var ItemOrProductDescription = item.ItemOrProductDescription;
-                        var ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
-                        var InventoryItemWeight = item.InventoryItemWeight;
-                        var PRODUCTIMAGE = item.PRODUCTIMAGE;
-                        var AVAILABLEQUNTY = item.AVAILABLEQUNTY;
-                        var ItemUnitPriceAmount = item.ItemUnitPriceAmount;
-                        var BRANCH = item.BRANCH;
-                        var STOCK = item.STOCK;
-
+                        OurProductNumber = item.OurProductNumber;
+                        ItemOrProductDescription = item.ItemOrProductDescription;
+                        ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
+                        InventoryItemWeight = item.InventoryItemWeight;
+                        PRODUCTIMAGE = item.PRODUCTIMAGE;
+                        AVAILABLEQUNTY = item.AVAILABLEQUNTY;
+                        ItemUnitPriceAmount = item.ItemUnitPriceAmount;
+                        BRANCH = item.BRANCH;
+                        STOCK = item.STOCK;
                         if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                             ItemUnitPriceAmount = "0";
                         }
-
                         var qry = 'INSERT INTO iteminfo (OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK) VALUES (?,?,?,?,?,?,?,?,?,?)';
-
                         tx.executeSql(qry, [OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, ItemUnitPriceAmount, BRANCH, STOCK]);
-
                     });
-
                     setLS('product_count', toCount);
                     setLS('SearchType', 'PROD2');
                     loadSectionProductsContents("Yes");
                 }
-
                 else {
                     writeToLogFile("User searched for product " + searchtext + ".It has no results.", 3);
                     loadSectionProductsContents("Yes");
                 }
             }, errorCB);
         }, error: function () {
-
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-
             $.mobile.loading("hide");
             $("#loadingPdt").hide();
         }
     });
 }
 
-
 // Function to handle broken images
-
 function imgError(image) {
     image.onerror = "";
     image.src = "images/no_image.jpg";
@@ -820,21 +682,16 @@ function imgError(image) {
 }
 
 function checkimageexistance(image) {
-
     var check = true;
     var img = new Image();
-
     img.src = image;
-
     $(img).error(function () {
         check = false;
     });
-
     return check;
 }
 
 // This function is used for clearing filters
-
 function clearfilters() {
     localStorage.removeItem('Filter_sectioncode');
     localStorage.removeItem('Filter_groupcode');
@@ -845,8 +702,8 @@ function clearfilters() {
     var message = "Cleared All filters";
     writeToLogFile(message, 5);
 }
-function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
 
+function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
     description = description.replace(/_/g, " ");
     setLS('breadlist1', description);
     setLS('F_HSCODE', HSCODE);
@@ -855,7 +712,6 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
     if (result[result.length - 1] !== "filter") {
         setLS('page', cPage + ",filter");
     }
-
     ListJQ1Products.html("");
     $("#loadingPdt").show();
     $.mobile.loading("show",
@@ -867,14 +723,12 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
     });
-
     $.ajax({
         type: "GET",
         crossDomain: true,
         url: BlackmanApplicationServices.NewCategoryServiceURL + "hsCode=" + HSCODE + "&secCode=" + Sectioncode + "&groupCode=&catCode=&deviceEncryptedkey=" + encryptedkey + "&spLib=" + BlackmanApplicationVariables.splib + "&tableLib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
-        success: function (xmlData) {
-         
+        success: function (xmlData) {         
             var xmlString;
             if (window.ActiveXObject) {
                 xmlString = xmlData.xml;
@@ -882,12 +736,9 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
             else {
                 xmlString = (new XMLSerializer()).serializeToString(xmlData);
             }
-
             var xmlDoc = $.parseXML(xmlString);
-
             var $xml = $(xmlDoc);
             var $Name = $xml.find('return');
-
             var resultJSON = $Name.text();
             var finalresult = "{" + resultJSON + "}";
             var output = $.parseJSON(finalresult);
@@ -898,14 +749,12 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
                 html = html + '<div style="text-align:left;float:left" onclick="pdtImgKitchenDivDisplayNew1Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
-                html = html + ' </div>';
-                
+                html = html + ' </div>';                
                 html = html + " <ul style='color:#304589;font-size:13px;font-weight:bold;width:100%;line-height:35PX;padding:0px;margin-top: 1px;'>";
                 $.each(list, function (i, item) {
                     var SECTIONCODE = item.SECTIONCODE;
                     var DESCRIPTION = item.DESCRIPTION;
                     var GROUPCOUNT = item.GROUPCOUNT;
-
                     var DESCRIPTION1 = DESCRIPTION.replace(/ /g, '_').replace(/'/g, '');
                     html = html + '<div>';
                     if (GROUPCOUNT > 0 && SECTIONCODE !== "" && SECTIONCODE !== null) {
@@ -914,29 +763,23 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                         html = html + DESCRIPTION + '(' + GROUPCOUNT + ')';
                     }
                     else {
-
                         setLS('breadlist2', '');
                         setLS('breadlist3', '');
                         html = html + "<div onclick=\"pdtImgKitchenDivDisplay('" + SECTIONCODE + "','','','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION;
                     }
-
                     html = html + '<img src="images/ListRightArrow.png" style="float: right; width: 25px;margin-top: 4px;" /></div>';
                     html = html + '</div>';
                     html = html + '</div>';
-
-
                 });
                 html = html + " </ul>";
                 ListJQ1Products.html(html);
                 ListJQ1Products.show();
                 $("#loadingPdt").hide();
                 $.mobile.loading("hide");
-
             }
-            else {
-      
+            else {      
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
                 html = html + '<div style="text-align:left;" onclick="pdtImgKitchenDivDisplayNew1Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;  font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
@@ -946,16 +789,12 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                 $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
-
-        }, error: function () {
-    
+        }, error: function () {    
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loadingPdt").hide();
             $.mobile.loading("hide");
-
         }
     });
-
     $("#loaditems123").hide();
     $("#prdtsectionimges").hide();
     $("#sectiondiv").hide();
@@ -970,7 +809,6 @@ function pdtImgKitchenDivDisplayNew1Back() {
     $(".cleardivivfilter").hide();
     $("#filterselctiondiv").hide();
     $("#loaditems123").hide();
-
     $("#prdtsectionimges").show();
     $("#sectiondiv").show();
     $(".searchdiv").show();
@@ -982,7 +820,6 @@ function pdtImgKitchenDivDisplayNew1Back() {
     $("#backbuttongrid").hide();
     $(".breadcrumstylefilter").hide();
     $("#default_div").show();
-
     var cPage = getLS('page');
     var result = cPage.split(","), newPage;
     if (result.length === 1) {
@@ -992,9 +829,8 @@ function pdtImgKitchenDivDisplayNew1Back() {
         newPage = cPage.replace(',' + result[result.length - 1], "");
         setLS('page', newPage);
     }
-
-
 }
+
 function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
     newDESCRIPTION = newDESCRIPTION.replace(/_/g, " ");
     setLS('breadlist2', newDESCRIPTION);
@@ -1003,7 +839,6 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
     if (result[result.length - 1] !== 'filter2') {
         setLS('page', cPage + ",filter2");
     }
-
     ListJQ2Products.html('');
     $("#loadingPdt").show();
     $.mobile.loading("show",
@@ -1013,7 +848,6 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
-
     });
 
     $.ajax({
@@ -1029,12 +863,9 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
             else {
                 xmlString = (new XMLSerializer()).serializeToString(xmlData);
             }
-
             var xmlDoc = $.parseXML(xmlString);
-
             var $xml = $(xmlDoc);
             var $Name = $xml.find('return');
-
             var resultJSON = $Name.text();
             var finalresult = "{" + resultJSON + "}";
             var output = $.parseJSON(finalresult);
@@ -1046,35 +877,27 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
                 html = html + '<div style="text-align:left;float:left" onclick="pdtImgKitchenDivDisplayNew2Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 4px;font-weight:bold;color:#304589  ;font-size: 10px;float:left" class="sectionpath1" onclick="breadcrumlist2()">';
                 html = html + '' + getLS('breadlist1') + '</div><div onclick="breadcrumlist2()" style="margin-top: 4px;font-weight:bold;color:#304589  ;font-size: 10px;" class="sectionpath1"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + newDESCRIPTION + '</div>';
                 html = html + ' </div>';
-
                 html = html + " <ul style='color:#304589;font-size:13px;font-weight:bold;width:100%;line-height:35PX;padding:0px;margin-top: 1px;'>";
                 $.each(list, function (i, item) {
                     var GROUPCODE = item.GROUPCODE;
                     var DESCRIPTION = item.DESCRIPTION;
                     var CATAGORYCOUNT = item.CATAGORYCOUNTs;
                     var DESCRIPTION1 = DESCRIPTION.replace(/ /g, '_').replace(/'/g, '');
-                    html = html + '<div>';
-                    
+                    html = html + '<div>';                    
                     if (CATAGORYCOUNT > 0 && GROUPCODE !== "" && GROUPCODE !== null) {
                         html = html + "<div onclick=\"productListingFinal('" + HSCODE + "','" + sectioncode + "','" + GROUPCODE + "','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION + '(' + CATAGORYCOUNT + ')';
                     }
                     else {
-
                         setLS('breadlist3', '');
                         html = html + "<div onclick=\"pdtImgKitchenDivDisplay('" + sectioncode + "','" + GROUPCODE + "','','" + DESCRIPTION1 + "')\"  class='odd'>";
                         html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
                         html = html + DESCRIPTION;
                     }
-
-
-
                     html = html + '<img src="images/ListRightArrow.png" style="float: right; width: 25px;margin-top: 4px;" /></div>';
                     html = html + '</div>';
                     html = html + '</div>';
-
-
                 });
                 html = html + " </ul>";
                 ListJQ2Products.html(html);
@@ -1086,21 +909,17 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
                 html = html + '<div style="text-align:left;" onclick="pdtImgKitchenDivDisplayNew1Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 10px;font-weight:bold;color:#304589;  font-size: 10px;" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + description + '</div>';
-                html = html + ' </div>';
-                
+                html = html + ' </div>';                
                 html = html + " <div><No Groups Found</div>";
                 ListJQ2Products.html(html);
                 setLS('IsNewFilterAttributes', 'Yes');
                 $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
-
         }, error: function () {
-
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loadingPdt").hide();
             $.mobile.loading("hide");
-
         }
     });
     $("#prdtsectionimges").hide();
@@ -1134,7 +953,6 @@ function pdtImgKitchenDivDisplayNew2Back() {
     }
 }
 
-
 function productListingFinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     DESCRIPTIONlast = DESCRIPTIONlast.replace(/_/g, ' ');
     setLS('breadlist3', DESCRIPTIONlast);
@@ -1143,7 +961,6 @@ function productListingFinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     if (result[result.length - 1] !== 'filter3') {
         setLS('page', cPage + ",filter3");
     }
-
     ListJQ3Products.html("");
     $("#loadingPdt").show();
     $.mobile.loading("show",
@@ -1168,29 +985,20 @@ function productListingFinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
             else {
                 xmlString = (new XMLSerializer()).serializeToString(xmlData);
             }
-
             var xmlDoc = $.parseXML(xmlString);
-
             var $xml = $(xmlDoc);
             var $Name = $xml.find('return');
-
             var resultJSON = $Name.text();
             var finalresult = "{" + resultJSON + "}";
             var output = $.parseJSON(finalresult);
             var list = output.BMCCategoryDetails;
-
-
             if (output.BMCCategoryDetails.length > 0) // Check the count of Cateogory available
             {
                 var html = "";
-
                 html = html + '<div class="breadcrumstyle" style="width:100%;display:block">';
                 html = html + '<div style="text-align:left;float:left" onclick="pdtImgKitchenDivDisplayNew3Back()">   <img src="images/arrow_previous.png" /></div><div id="sectionpath" style="margin-top: 4px;font-weight:bold;color:#304589;  font-size: 10px;line-height:18px;float:left" class="sectionpath1" onclick="breadcrumlist1()">';
                 html = html + '' + getLS('breadlist1') + '</div><div  style="margin-top: 4px;font-weight:bold;color:#304589;float:left;  font-size: 10px;line-height:18px" class="sectionpath1" onclick="breadcrumlist2()"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + getLS('breadlist2') + '</div><div  style="margin-top: 4px;font-weight:bold;color:#304589;float:left;  font-size: 10px;line-height:18px" class="sectionpath1" onclick="breadcrumlist3()"><img src="images/next.png" style="width:9px" class="nxtimgclass" />' + DESCRIPTIONlast + '</div>';
                 html = html + ' </div>';
-
-
-
                 html = html + " <ul style='color:#304589;font-size:13px;font-weight:bold;width:100%;line-height:35PX;padding:0px;margin-top: 1px;'>";
                 $.each(list, function (i, item) {
                     var CATEGORYCODE = item.CATEGORYCODE;
@@ -1199,13 +1007,10 @@ function productListingFinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
                     html = html + '<div>';
                     html = html + "<div onclick=\"pdtImgKitchenDivDisplay('" + sectioncode + "','" + groupcode + "','" + CATEGORYCODE + "','" + DESCRIPTION + "')\"  class='odd'>";
                     html = html + '<div style="margin: 4px 10px 10px 10px;  font-size: 12px;">';
-
                     html = html + DESCRIPTION;
                     html = html + '<img src="images/ListRightArrow.png" style="float: right; width: 25px;margin-top: 4px;" /></div>';
                     html = html + '</div>';
                     html = html + '</div>';
-
-
                 });
                 html = html + "</div>";
                 ListJQ3Products.html(html);
@@ -1213,14 +1018,12 @@ function productListingFinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
                 $.mobile.loading("hide");
             }
             else {
-
                 ListJQ3Products.html(html);
                 $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
             setLS('IsNewFilterAttributes', 'Yes');
         }, error: function () {
-
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $("#loadingPdt").hide();
             $.mobile.loading("hide");
@@ -1269,34 +1072,33 @@ function backbuttongrid() {
 
 }
 
-
 function breadcrumlist1() {
     $("#loaditems123").hide();
     $("#filterdiv").show();
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
     $("#filterselctiondiv").hide();
-
     pdtImgKitchenDivDisplayNew1Back();
 }
+
 function breadcrumlist2() {
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
     $("#filterselctiondiv").hide();
-
     $("#loaditems123").hide();
     $("#filterdiv").show();
     pdtImgKitchenDivDisplayNew2Back();
 }
+
 function breadcrumlist3() {
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
     $("#filterselctiondiv").hide();
-
     $("#loaditems123").hide();
     $("#filterdiv").show();
     pdtImgKitchenDivDisplayNew3Back();
 }
+
 function breadcrumlist4() {
     $("#filterdiv").show();
     $("#loaditems123").hide();

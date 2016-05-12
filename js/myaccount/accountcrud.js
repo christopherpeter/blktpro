@@ -5,11 +5,7 @@ License:Tychons solutions
 */
 
 // JquerySelectorVariable
-
 var TextJQAddress = $("#txtaddress"), TextJQPinCode = $("#txtpincode"), TextJQPhoneNumber = $("#txtphonenumber"), TextJQCity = $("#txtcity"), TextJQState = $("#txtstate");
-
-//Globalvalues for the JS
-
 AccessTokenKey = getLS('AccessTokenKey');
 if (AccessTokenKey === null) {
     AccessTokenKey = "";
@@ -37,11 +33,8 @@ if (isuserlogged === 'yes') {
     Isvalid = "Y";
 }
 
-
 function accountPageLoad() {
-
     $("#loadingPdt").show();
-
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
@@ -53,12 +46,9 @@ function accountPageLoad() {
 
     $("#lblusername").html(UserName);
     $("#lblCustomerNumber").html(CustomerNumber);
-
     var branchId = getLS('default_branchcode');
-
     var ShippingMethod = getLS('ShippingMethod');
     $("#ddshippment").val(ShippingMethod);
-
     var showproduct = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
     showproduct.transaction(function showitemsbyid(tx) {
         tx.executeSql('select CustomerTelephoneAreaCode,CustomerTelephonePrefixNumber,CustomerTelephoneSuffixNumber,CustomerShippingAddress1,CustomerShippingCity,CustomerShippingState,CustomerMainShippingZipCode from userinfo', [], function successitem(txx, res) {
@@ -73,7 +63,6 @@ function accountPageLoad() {
                 CustomerTelephonePrefixNumber = ss.CustomerTelephonePrefixNumber;
                 CustomerTelephoneSuffixNumber = ss.CustomerTelephoneSuffixNumber;
             }
-
             TextJQAddress.val(address1);
             TextJQCity.val(addresscity);
             TextJQState.val(addressstate);
@@ -82,8 +71,6 @@ function accountPageLoad() {
             $("#div_address1").html(address1);
             $("#div_address2").html(addresscity + "," + addressstate + "-" + addresszip);
         });
-
-
         tx.executeSql('select Statename,Statecode from states', [], function successitem(txx, res) {
             var html = "";
             for (var i = 0; i < res.rows.length; i++) {
@@ -91,8 +78,6 @@ function accountPageLoad() {
                 var Statename = ss.Statename;
                 var Statecode = ss.Statecode;
                 var CustomerShippingState = getLS('CustomerShippingState');
-
-
                 if (Statecode === CustomerShippingState) {
                     html = html + "<option value='" + Statecode + "' selected>" + Statename + "</option>";
                 }
@@ -100,19 +85,14 @@ function accountPageLoad() {
                     html = html + "<option value='" + Statecode + "'>" + Statename + "</option>";
                 }
             }
-
             $("#ddstate").html(html);
-
         });
-
-
         tx.executeSql('select id,BranchName,BranchCode from branchinfo', [], function successitem(txx, res) {
             var html = "";
             for (var i = 0; i < res.rows.length; i++) {
                 var ss = res.rows.item(i);
                 var BranchName = ss.BranchName;
                 var BranchCode = ss.BranchCode;
-                //var id = ss.id;
                 if (branchId === BranchCode) {
                     html = html + "<option value='" + BranchCode + "' selected>" + BranchName + "</option>";
                 }
@@ -120,14 +100,10 @@ function accountPageLoad() {
                     html = html + "<option value='" + BranchCode + "'>" + BranchName + "</option>";
                 }
             }
-
             document.getElementById("branch_list").innerHTML = html;
-
-
         });
 
         var branchCode = "'" + getLS('default_branchcode') + "'";
-
         tx.executeSql('select id,Address,BranchName,BranchCode,email,PhoneNumber from branchinfo where BranchCode=' + branchCode, [], function successitem(txx, res) {
             var data = "";
             var branchdata = "";
@@ -138,9 +114,7 @@ function accountPageLoad() {
                 // var email = ss.Email;
                 var PhoneNumber = ss.PhoneNumber;
                 var Address = ss.Address;
-
                 branchdata = BranchName;
-
                 data = data + '<div style="margin-left: 0; ">';
                 data = data + BranchName;
                 data = data + '</div>';
@@ -151,21 +125,15 @@ function accountPageLoad() {
                 data = data + '<a style="text-decoration: none; color: #304589" href="Tel: ' + PhoneNumber + '">' + PhoneNumber;
                 data = data + '<img style="height: 13px; margin-top: -2px; vertical-align: middle; width: 13px; margin-left: 10px" src="images/phone.png" />';
                 data = data + '</a></div>';
-
             }
-
             document.getElementById("loadmainbranchaddress").innerHTML = data;
             document.getElementById("loadmainbranchaddress_edit").innerHTML = data;
             document.getElementById("loadbranchname_txt").innerHTML = branchdata;
         });
-
-
     });
-
     Loadorderhistory();
 }
 function loadalBranchesToLocaldbAccount() {
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -173,7 +141,6 @@ function loadalBranchesToLocaldbAccount() {
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
-
             dbinsert.transaction(function branchdetails(tx) {
                 tx.executeSql('DROP TABLE IF EXISTS  branchinfo');
                 tx.executeSql('CREATE TABLE IF NOT EXISTS branchinfo (id INTEGER PRIMARY KEY AUTOINCREMENT,BranchName VARCHAR UNIQUE,BranchCode,Latitude,Longitude,Address,PhoneNumber,Faxnumber,Managername,Email)');
@@ -184,73 +151,56 @@ function loadalBranchesToLocaldbAccount() {
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
-
                 var xmlDoc = $.parseXML(xmlString);
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('BMC');
-
                 var resultJSON = $Name.text();
-
                 var finalresult = "{" + resultJSON + "}";
-
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCBranches;
-                //var ouput_string;
+                var BranchName, BranchCode, Latitude, Longitude, Address, PhoneNumber, Faxnumber ="", ManagerName="", Email="";
                 $.each(list, function (i, item) {
-                    var BranchName = item.BranchName;
-                    var BranchCode = item.BranchCode;
-                    var Latitude = item.Latitude;
-                    var Longitude = item.Longitude;
-                    var Address = item.Address;
-                    var PhoneNumber = item.PhoneNumber;
-                    var Faxnumber = "";
-                    var ManagerName = "";
-                    var Email = "";
-
-
+                    BranchName = item.BranchName;
+                    BranchCode = item.BranchCode;
+                    Latitude = item.Latitude;
+                    Longitude = item.Longitude;
+                    Address = item.Address;
+                    PhoneNumber = item.PhoneNumber;
+                    Faxnumber = "";
+                    ManagerName = "";
+                    Email = "";
                     if (BranchCode === BlackmanApplicationVariables.defaultbranchcode) {
                         var defaultBranchCode = getLS('default_branchcode');
                         if (defaultBranchCode === "" || defaultBranchCode === null) {
-
                             setLS('default_branchcode', BranchCode);
                             setLS('default_branchname', BranchName);
                             setLS('default_branchcode1', BranchCode);
                             setLS('default_branchname1', BranchName);
                         }
                     }
-
                     var qry = 'INSERT OR IGNORE INTO branchinfo (BranchName,BranchCode,Latitude,Longitude,Address,PhoneNumber,Faxnumber,Managername,Email)'
                           + 'VALUES (?,?,?,?,?,?,?,?,?)';
-
                     tx.executeSql(qry, [BranchName, BranchCode, Latitude, Longitude, Address, PhoneNumber, Faxnumber, ManagerName, Email]);
-
                 });
-
             }, errorCB);
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Internet Failure', 'OK');
         }
-
     });
 }
 
 function submitfeedBack() {
     if (isuserlogged === 'yes') {
         var appname = "TP";
-
         var feedback = $("#txtfeedback").val();
-
         var re = /^[ A-Za-z0-9'.,-]*$/
         if (feedback === "" || feedback === null) {
-
             navigator.notification.alert('Please enter valid feedback.', null, 'Account Feedback', 'OK');
-
             return false;
         }
         else if (re.test(feedback)) {
             var encryptedkey = getLS('encryptedkey');
             var UserProfile = getLS('UserProfile');
-
             $.ajax({
                 type: "GET",
                 crossDomain: true,
@@ -264,27 +214,20 @@ function submitfeedBack() {
                     else {
                         xmlString = (new XMLSerializer()).serializeToString(xmlData);
                     }
-
                     var xmlDoc = $.parseXML(xmlString);
                     var $xml = $(xmlDoc);
                     var $Name = $xml.find('return');
                     var resultJSON = $Name.text();
                     var json = $.parseJSON(resultJSON);
                     if (json.IsUpdated === "True") {
-
                         navigator.notification.alert('Thanks.Your Feedback has been submitted.!', null, 'Account Feedback', 'OK');
                     }
                     else {
-
                         navigator.notification.alert('Unable to submit your feedback.Please try again later.!', null, 'Account Feedback', 'OK');
-
-
                     }
                 },
                 error: function () {
                     navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-
-
                     $("#edit_fade").hide();
                     $.mobile.loading("hide");
                     $("#loadingPdt").hide();
@@ -294,30 +237,22 @@ function submitfeedBack() {
         }
         else {
             navigator.notification.alert('Please do not use any special characters!', null, 'Account Feedback', 'OK');
-
             return false;
         }
-
-
     }
     else {
-
         navigator.notification.alert('You must log in to write feedback..!', null, 'Account Feedback', 'OK');
-
     }
 }
 
 
 function saveBranch() {
-
     var branchCode = $("#branch_list").val();
     var branchName = $("#branch_list option:selected").text();
-
     setLS('default_branchcode', branchCode);
     setLS('default_branchname', branchName);
     setLS('default_branchcode1', branchCode);
     setLS('default_branchname1', branchName);
-
     var address1 = TextJQAddress.val();
     var addresscity = TextJQCity.val();
     var addressstate = $("#ddstate").val();
@@ -327,62 +262,49 @@ function saveBranch() {
     var mobile = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
     var zipcodeval = /[^\s\da-z\-]/i;
     var name = /^[A-Za-z]*$/;
-
     if (address1 === "") {
         TextJQAddress.focus();
-
         navigator.notification.alert('Please enter your address.', null, 'Alert', 'OK');
         return false;
     }
     else if (addresscity === "") {
         TextJQCity.focus();
-
         navigator.notification.alert('Please enter your city.', null, 'Alert', 'OK');
         return false;
     }
     else if (addresszip === "") {
         TextJQPinCode.focus();
-
         navigator.notification.alert('Please enter your zipcode.', null, 'Alert', 'OK');
         return false;
     }
     else if (true === zipcodeval.test(addresszip)) {
         TextJQPinCode.focus();
-
         navigator.notification.alert('Please enter valid zipcode.', null, 'Alert', 'OK');
         return false;
     }
-
     else if (document.getElementById("txtpincode").value.length !== 5) {
         TextJQPinCode.focus();
         navigator.notification.alert('Please enter 5 digit zipcode.', null, 'Alert', 'OK');
-
         return false;
     }
     else if (phonenumber === "") {
         TextJQPhoneNumber.focus();
         navigator.notification.alert('Please Enter Your Phone Number.', null, 'Alert', 'OK');
-
         return false;
     }
     else if (!mobile.test(phonenumber)) {
         TextJQPhoneNumber.focus();
         navigator.notification.alert('Phone number format should be xxx-xxx-xxxx', null, 'Alert', 'OK');
-
         return false;
     }
     else {
         updateShippingAddress(address1, addresscity, addressstate, addresszip, phonenumber, shippement);
     }
-
-
 }
 
 // Function to update this valid details to the server
-
 function updateShippingAddress(address1, addresscity, addressstate, addresszip, phonenumber, shippement) {
     $("#edit_fade").show();
-
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
@@ -391,13 +313,10 @@ function updateShippingAddress(address1, addresscity, addressstate, addresszip, 
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><p style='color:#304589;font-weight:bold'>Please Wait...</p></span>"
 
     });
-
-
     var Fullphonenumber = phonenumber.split('-');
     var CustomerTelephoneAreaCode = Fullphonenumber[0];
     var CustomerTelephonePrefixNumber = Fullphonenumber[1];
     var CustomerTelephoneSuffixNumber = Fullphonenumber[2];
-
     if (isuserlogged === 'yes') {
         var UserProfile = getLS('UserProfile');
         var CustomerNumber = getLS('CustomerNumber');
@@ -414,12 +333,9 @@ function updateShippingAddress(address1, addresscity, addressstate, addresszip, 
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
-
                 var xmlDoc = $.parseXML(xmlString);
-
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
-
                 var resultJSON = $Name.text();
                 var json = $.parseJSON(resultJSON);
                 if (json.IsUpdated === 'True') {
@@ -432,7 +348,6 @@ function updateShippingAddress(address1, addresscity, addressstate, addresszip, 
                         setLS('Tocity', addresscity);
                         setLS('Tostate', addressstate);
                         setLS('Tozip', addresszip);
-
                         $('.addressbook').hide();
                         navigator.notification.alert('User Information Updated!', null, 'Account', 'OK');
                         $.mobile.loading("hide");
@@ -441,7 +356,6 @@ function updateShippingAddress(address1, addresscity, addressstate, addresszip, 
                         $('#fade').hide();
                         writeToLogFile("User has updated his shipping details", 8);
                     }, errorCB);
-
                 }
                 else {
                     writeToLogFile("Error in updating user shipping details", 3);
@@ -454,39 +368,39 @@ function updateShippingAddress(address1, addresscity, addressstate, addresszip, 
             },
             error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-
-
                 $("#edit_fade").hide();
                 $.mobile.loading("hide");
                 $("#loadingPdt").hide();
                 writeToLogFile("Error in updating user shipping details", 3);
             }
         });
-
-
     }
-
 }
+
 function tableInvoice1() {
     $('.tableinvoice1').slideToggle();
     $('.tableinvoice2').hide();
     $('.tableinvoice3').hide();
 }
+
 function tableInvoice2() {
     $('.tableinvoice2').slideToggle();
     $('.tableinvoice1').hide();
     $('.tableinvoice3').hide();
 }
+
 function tableInvoice3() {
     $('.tableinvoice3').slideToggle();
     $('.tableinvoice1').hide();
     $('.tableinvoice2').hide();
 }
+
 function feedBack() {
     $('.contact').hide();
     $('.feedbk').hide();
     $('.feedbk1').show();
 }
+
 function feedBackRtn() {
     $('.contact').hide();
     $('.contact1').show();
@@ -494,19 +408,18 @@ function feedBackRtn() {
     $('.feedbk1').hide();
 }
 
-
 function Device() {
     $('.contact').hide();
     $('.device').hide();
     $('.device1').show();
 }
+
 function Devicertn() {
     $('.contact').hide();
     $('.contact1').show();
     $('.device').show();
     $('.device1').hide();
 }
-
 
 function contactcls() {
     $('.contact1').show();
@@ -517,26 +430,23 @@ function contactus() {
     $('.contact1').hide();
     $('.contact').show();
     $('.feedbk1').hide();
-
 }
-
 
 function contactusrtn() {
     $('.contact1').show();
     $('.contact').hide();
-
 }
 
-
 function editaddress() {
-
     $('.addressdetail').hide();
     $('.addressdetailedit').show();
 }
+
 function saveaddress() {
     $('.addressdetail').show();
     $('.addressdetailedit').hide();
 }
+
 function addressBookCls() {
     $('.addressbook').hide();
     $('#fade').hide();
@@ -549,6 +459,7 @@ function backcategorypdt1() {
     $('#itempdtimg4').hide();
     $('#fade').hide();
 }
+
 function orderclick() {
     $('#orderclick').show();
     $('#invoiceclick').hide();
@@ -565,17 +476,18 @@ function table1() {
     $('#new2').hide();
     $('#new3').hide();
 }
+
 function table2() {
     $('#new2').slideToggle();
     $('#new1').hide();
     $('#new3').hide();
 }
+
 function table3() {
     $('#new3').slideToggle();
     $('#new2').hide();
     $('#new1').hide();
 }
-
 
 function fullorderview() {
 
@@ -591,6 +503,7 @@ $(function () {
         loadMenuAccount(4);
     })
 });
+
 function addressBook() {
     var cPage = getLS('page');
     var result = cPage.split(",");
@@ -603,7 +516,6 @@ function addressBook() {
     $('.addressbook').toggle();
     $('.white_contentlistnewpdt').hide();
 }
-
 
 function loadMenuAccount(pageno) {
     var html = "";
@@ -643,7 +555,6 @@ function loadMenuAccount(pageno) {
         html = html + '</div>';
         html = html + '<hr />';
     }
-
     html = html + '<div class="popdiv" onclick="product(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
@@ -657,8 +568,6 @@ function loadMenuAccount(pageno) {
     html = html + '</table>';
     html = html + '</div>';
     html = html + '<hr />';
-
-
     html = html + '<div class="popdiv" onclick="findBranch(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
@@ -672,7 +581,6 @@ function loadMenuAccount(pageno) {
     html = html + '</table>';
     html = html + '</div>';
     html = html + '<hr />';
-
     html = html + '<div class="popdiv" onclick="findcart(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';

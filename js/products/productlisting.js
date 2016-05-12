@@ -5,7 +5,6 @@ License:Tychons solutions
 */
 
 // JquerySelectorVariable
-
 var JQNotSearch = $("#notsearch"), TextJQAccNo = $("#txtaccno"), JQCheckInventory1 = $("#checkinventory1"), JQSpecificationDiv = $("#specificationdiv"), LblJQProductDiv = $("#lblProductdiv");
 var JQSearch = $("#search"), JQProductDisplay1 = $(".pdtimgkitchendivdisplay1"), JQProductDisplay2 = $(".pdtimgkitchendivdisplay2"), JQProductDisplay3 = $(".pdtimgkitchendivdisplay3"), JQProductDisplay4 = $(".pdtimgkitchendivdisplay4");
 var JQProductDisplay = $(".pdtimgdivdisplay"), LblJQSpecificationDiv = $("#lblSpecificationdiv");
@@ -30,7 +29,6 @@ if (UserProfile === null) {
 isuserlogged = getLS('Isuserlogged');
 UserName = getLS('UserName');
 if (UserName === null) {
-
     UserName = "";
 }
 Isvalid = 'N';
@@ -38,19 +36,13 @@ if (isuserlogged === 'yes') {
     Isvalid = "Y";
 }
 
-
 var myFuncCalls = 0;
-
 function loadSectionProductsContents(FirstLoad) {
-
     var breadlist1 = getLS('breadlist1');
     var breadlist2 = getLS('breadlist2');
     var breadlist3 = getLS('breadlist3');
     var breadlast = getLS('breadlast');
-
-
     var htmltext = "";
-
     htmltext = htmltext + '<div id="mybackbuttoncustom" style="text-align:left;float:left" onclick="pdoductpagereload()">   <img src="images/arrow_previous.png" /></div>';
     htmltext = htmltext + '<div id="notsearch"  style="margin-top: 8px;font-weight:bold;color:#304589;font-size:10px" >';
     if (breadlist1 !== "") {
@@ -69,52 +61,41 @@ function loadSectionProductsContents(FirstLoad) {
     JQNotSearch.show();
     JQSearch.hide();
     myFuncCalls = 0;
-
     var limit = getLS('product_count');
-
     if (getLS('breadcrumb') === 'search') {
         var searchtext = $("#txtpdtsrch").val().trim();
         if (searchtext === "" || searchtext === null) {
             navigator.notification.alert('Please enter product name.', null, 'Alert', 'OK');
-
             return false;
         }
         document.getElementById("breadlistsearch").innerHTML = "Search text : " + searchtext;
-
         JQNotSearch.hide();
         JQSearch.show();
         $("#mybackbuttoncustom").attr("onclick", "pdtImgKitchenDivDisplayNew1Back()");
-
     }
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
     showitems.transaction(function showitemsbybranch(tx) {
         var html = '';
-
         if (getLS('Isuserlogged') === 'yes') {
             html = html + '<table  id="filternavigation" style="width:100%;background:#304589;text-align:center;color:#fff;height: 36px" > <tr><td style="text-decoration:underline;" onclick="filterselection1()"><img src="images/filte.png" style="width: 20px; height: 20px; margin-bottom: -3px;margin-left:4px;margin-top:4px;float:left" /><label  class="signinbtn1" style="float: left; font-size: 12px; margin-top: 7px">FILTERS</label></td></tr></table>';
         }
         else {
             html = html + '<table  id="filternavigation" style="width:100%;background:#304589;color:#fff;height: 36px" > <tr><td style="text-decoration:underline;width:48%;float:left" onclick="filterselection1()"><img src="images/filte.png" style="width: 20px; height: 20px; margin-bottom: -3px;margin-left:4px;margin-top:4px;float:left" /><label  class="signinbtn1" style="float: left; font-size: 12px; margin-top: 7px">FILTERS</label></td><td style="text-decoration:underline;width:50%;float:right">          <label onclick="loginpopup()" class="signinbtn" style="font-size: 12px; margin-top: 7px"><img src="images/lock.png" style="width: 14px; height: 14px; margin-bottom: -2px;" /> SIGN IN TO GET PRICES</label></td></tr></table>';
         }
-
         tx.executeSql('select * from iteminfo', [], function itembranchsucces(txx, res) {
             if (res.rows.length) {
-
                 html = html + '<table class="tableproducts1" style="border:none;width:100%;">';
-
                 var imageexistrowcount = 0;
-
-
+                var ss, itemid, itemname, OurListUnitPriceCompany, OurItemNumber, AVAILABLEQUNTY, PRODUCTIMAGE, STOCK;
                 for (var i = 0; i < res.rows.length; i++) {
-                    var ss = res.rows.item(i);
-                    var itemid = ss.id;
-                    var itemname = ss.ItemOrProductDescription;
-                    var OurListUnitPriceCompany = ss.ItemUnitPriceAmount;
-                    var OurItemNumber = ss.OurItemNumber;
-                    var AVAILABLEQUNTY = ss.AVAILABLEQUNTY;
-                    var PRODUCTIMAGE = ss.PRODUCTIMAGE;
-                    var STOCK = ss.STOCK;
-
+                    ss = res.rows.item(i);
+                    itemid = ss.id;
+                    itemname = ss.ItemOrProductDescription;
+                    OurListUnitPriceCompany = ss.ItemUnitPriceAmount;
+                    OurItemNumber = ss.OurItemNumber;
+                    AVAILABLEQUNTY = ss.AVAILABLEQUNTY;
+                    PRODUCTIMAGE = ss.PRODUCTIMAGE;
+                    STOCK = ss.STOCK;
                     html = html + '<tr><td style="border: 1px solid #ccc;"><table><td>';
                     html = html + '<tr  class="trclasspdt">';
                     html = html + '<td onclick="storetolocal(' + OurItemNumber + ')"  class="pdtimg" style="width:30%;vertical-align: top;border:none">';
@@ -130,7 +111,6 @@ function loadSectionProductsContents(FirstLoad) {
                             }
                         }
                         else {
-
                             if (OurListUnitPriceCompany !== "" && AVAILABLEQUNTY >= 0 && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0) {
                                 var branchId = getLS('default_branchcode');
                                 if (branchId !== 100) {
@@ -140,17 +120,12 @@ function loadSectionProductsContents(FirstLoad) {
                                     html = html + '<label id="lblship" style="color:Red;font-size: 13px">Out Of Stock</label>';
                                 }
                             }
-
                         }
                     }
-
                     html = html + '</td></tr>';
-
-                    if (isuserlogged === 'yes' && AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== "") {
+                    if (isuserlogged === 'yes' && AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== ""){
                         var textboxid = 'Idnumber' + i + '-' + AVAILABLEQUNTY + '';
-
                         if (OurListUnitPriceCompany !== "" && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0) {
-
                             html = html + '</table> ';
                             html = html + '<label class="hide" style="margin-left:3px">Price : $' + parseFloat(OurListUnitPriceCompany).toFixed(2) + '</label> ';
                             html = html + '</td>';
@@ -172,11 +147,8 @@ function loadSectionProductsContents(FirstLoad) {
                             html = html + '</tr>';
                             html = html + '</table></td></tr>';
                         }
-
-
                     }
                     else if (isuserlogged === 'yes') {
-
                         html = html + '</table> ';
                         html = html + '</td>';
                         html = html + '<td onclick="storetolocal(' + OurItemNumber + ')" >';
@@ -194,7 +166,6 @@ function loadSectionProductsContents(FirstLoad) {
                         html = html + '</tr>';
                         html = html + '</table></td></tr>';
                     }
-
                 }
                 html = html + '</table>';
                 if (res.rows.length >= limit) // show or hide loadmorebutton
@@ -204,7 +175,6 @@ function loadSectionProductsContents(FirstLoad) {
                     html = html + '<a href="javascript:void(0)" onclick="loadMoreProducts()"><img src="images/show_more.png" style="width:165px;height:30px; margin-bottom:-3px;"/><a>';
                     html = html + '</div>';
                 }
-
                 $(".pdtloadlistdiv").show();
                 $("#filterselctiondiv").hide();
                 $(".tableproducts1filter").hide();
@@ -213,18 +183,15 @@ function loadSectionProductsContents(FirstLoad) {
                 $("#filternavigation").show();
                 $("#loadingPdt").hide();
                 $.mobile.loading("hide");
-
                 if (isuserlogged === "yes") {
                     if (FirstLoad === "Yes") {
                         ShowUserPrices();
                     }
                 }
-
             }
             else {
                 html = html + "<div style='margin-bottom:45%;margin-top:45%;width: 100%;text-align: center;color: red;font-family: calibri;font-size: 16px;'>";
                 html = html + "<span>No products found.</span></div>";
-
                 $("#loaditems123").html(html);
                 $("#filternavigation").hide();
                 $(".tableproducts1filter").hide();
@@ -233,11 +200,8 @@ function loadSectionProductsContents(FirstLoad) {
                 $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
-
         });
-
     });
-
     $("#loaditems123").show();
     $("#filterdiv").hide();
     $(".searchdiv").hide();
@@ -245,7 +209,6 @@ function loadSectionProductsContents(FirstLoad) {
     JQProductDisplay.hide();
     $("#default_div").hide();
     JQProductDisplay1.css('margin-top', '0px');
-
     if (isuserlogged === 'yes') {
         $(".hide").show();
         $(".signinbtn").hide();
@@ -254,9 +217,7 @@ function loadSectionProductsContents(FirstLoad) {
         $(".hide").hide();
         $(".signinbtn").show();
     }
-
 }
-
 
 $(document).ready(function () {
     setLS('viewimg', 'no');   // added on 1/12/2014
@@ -267,7 +228,6 @@ $(document).ready(function () {
         setLS('viewimg', 'no');
         if (JQProductDisplay1.css('display') !== "none") {
             loadSectionProductsContents("Yes");
-
         } else {
             loadsectionfilter();
         }
@@ -277,10 +237,8 @@ $(document).ready(function () {
         $('#viewon').hide();
         var message = "View Image turned OFF";
         writeToLogFile(message, 3);
-
         if (JQProductDisplay1.css('display') !== "none") {
             loadSectionProductsContents("Yes");
-
         } else {
             loadsectionfilter();
         }
@@ -288,7 +246,6 @@ $(document).ready(function () {
 });
 
 function backPage1() {
-
     var cPage = getLS('page');
     var result = cPage.split(","), newPage;
     if (result.length === 1) {
@@ -298,7 +255,6 @@ function backPage1() {
         newPage = cPage.replace(',' + result[result.length - 1], "");
         setLS('page', newPage);
     }
-
     $('#pdt').show();
     $('#productdesc').hide();
     $('#white_contentlistnewpdt').toggle();
@@ -311,7 +267,6 @@ function termsCondition() {
     if (result[result.length - 1] !== "terms") {
         setLS('page', cPage + ",terms");
     }
-
     $('.terms_condition').show();
     $('#fade').show();
 }
@@ -325,27 +280,21 @@ function termsConditionCls() {
         newPage = cPage.replace(',' + result[result.length - 1], "");
         setLS('page', newPage);
     }
-
     $('.terms_condition').hide();
     $('#fade').hide();
 }
 
 // Function to show details of user selected product
-
 function pdtdesc(itemid) {
     $("#loadingPdt").show();
-
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Loading Products...</h2></span>"
-
     });
-
     var branchCode = getLS('default_branchcode');
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -360,32 +309,28 @@ function pdtdesc(itemid) {
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
-
                 var xmlDoc = $.parseXML(xmlString);
-
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
                 var resultJSON = $Name.text().replace(/\t/g, '');
                 var finalresult = "{" + resultJSON + "}";
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCItms;
-
                 var description = [];
                 if (output.BMCItms.length > 0) {
-                    var html = "";
+                    var html, InventoryItemWeight, OurProductNumber, Brand, PRODUCTIMAGE, itemno, ItemVendorManufacturerIDNumber, OurItemNumber, ItemOrProductDescription, ItemUnitPriceAmount, AVAILABLEQUNTY, ItemStockingUnitOfMeasure;
                     $.each(list, function (i, item) {
-                        var ItemOrProductDescription = item.ItemOrProductDescription;
-                        var ItemUnitPriceAmount = item.ItemUnitPriceAmount;
-                        var AVAILABLEQUNTY = item.AVAILABLEQUNTY;
-                        var ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
-                        var OurItemNumber = item.OurItemNumber;
-                        var ItemVendorManufacturerIDNumber = item.ItemVendorManufacturerIDNumber;
-                        var itemno = item.ItemVendorManufacturerIDNumber;
-                        var PRODUCTIMAGE = item.PRODUCTIMAGE;
-                        var Brand = item.Brand;
-                        var InventoryItemWeight = item.InventoryItemWeight;
-                        var OurProductNumber = item.OurProductNumber;
-
+                        ItemOrProductDescription = item.ItemOrProductDescription;
+                        ItemUnitPriceAmount = item.ItemUnitPriceAmount;
+                        AVAILABLEQUNTY = item.AVAILABLEQUNTY;
+                        ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
+                        OurItemNumber = item.OurItemNumber;
+                        ItemVendorManufacturerIDNumber = item.ItemVendorManufacturerIDNumber;
+                        itemno = item.ItemVendorManufacturerIDNumber;
+                        PRODUCTIMAGE = item.PRODUCTIMAGE;
+                        Brand = item.Brand;
+                        InventoryItemWeight = item.InventoryItemWeight;
+                        OurProductNumber = item.OurProductNumber;
                         // Feature
                         var FEATURE1 = item.FEATURE1;
                         var FEATURE2 = item.FEATURE2;
@@ -407,7 +352,6 @@ function pdtdesc(itemid) {
                         var FEATURE18 = item.FEATURE18;
                         var FEATURE19 = item.FEATURE19;
                         var FEATURE20 = item.FEATURE20;
-
                         description.push(FEATURE1);
                         description.push(FEATURE2);
                         description.push(FEATURE3);
@@ -428,17 +372,13 @@ function pdtdesc(itemid) {
                         description.push(FEATURE18);
                         description.push(FEATURE19);
                         description.push(FEATURE20);
-
-
                         html = html + '<div style="width: 48%;margin: 0 auto;"><img onerror="imgError(this);" style="margin-top: 122px;" class="imgdescdtl" src="' + BlackmanApplicationVariables.productimagepath + PRODUCTIMAGE + '" onclick="storetolocal(' + OurItemNumber + ')" /></div>';
-
                         html = html + '<div style="width: 95%;"><label style="font-weight: bold;color: #304589; margin-left: -2px;">';
                         html = html + '<b>' + ItemOrProductDescription + '</b>';
                         html = html + '</label>';
                         html = html + '<br>';
                         if (isuserlogged === 'yes' && AVAILABLEQUNTY !== '0' && AVAILABLEQUNTY !== "") {
                             if (ItemUnitPriceAmount !== "" && ItemUnitPriceAmount !== "0" && ItemUnitPriceAmount !== 'CNF' && ItemUnitPriceAmount !== 0) {
-
                                 html = html + '<div style="width: 95%;"><label style="font-weight: bold;color: #304589; margin-left: -2px;">';
                                 html = html + '<b>Price : $' + parseFloat(ItemUnitPriceAmount).toFixed(2) + '/each</b></label></div>';
                                 html = html + '<table style="margin-left: -5px">';
@@ -454,9 +394,7 @@ function pdtdesc(itemid) {
                                 html = html + '<a href="#" onclick=checkinventoryfun(' + OurItemNumber + '); ><img style="width: 100px; height: 30px; cursor: pointer" src="images/check_availability.png" /></a>';
                                 html = html + '</td>';
                             }
-
                         }
-
                         html = html + '</tr>';
                         html = html + '<tr>';
                         html = html + '<td class="available">';
@@ -465,7 +403,6 @@ function pdtdesc(itemid) {
                         html = html + '</tr>';
                         html = html + '</table>';
                         html = html + '</div>';
-
                         var desc = "";
                         desc = desc + '<div style="border:1px solid #ccc;">';
                         if (description.length >= 0) {
@@ -488,11 +425,8 @@ function pdtdesc(itemid) {
                         else {
                             desc = desc + '<div style="min-height:70px;text-align:center;color:red;margin-top: 50px">No Description Available</div>';
                         }
-
                         desc = desc + '</div>';
-
                         var menu = "";
-
                         menu = menu + '<div class="addclass" id="lblProductdiv" style="width: 50%; float: left;  height: 40px;';
                         menu = menu + 'text-align: center; line-height: 36px; padding: 0;" onclick="ProductOverview()">';
                         menu = menu + '<label style="cursor: pointer;font-size: 17px;">';
@@ -503,25 +437,17 @@ function pdtdesc(itemid) {
                         menu = menu + '<label style="width: 50%;margin-left:5%;font-size: 17px;" >';
                         menu = menu + 'Specification</label>';
                         menu = menu + '</div>';
-
-
-
                         $("#tpmenu").html(menu);
-
-
-
                         setLS('pItemOrProductDescription', ItemOrProductDescription);
                         setLS('pOurProductNumber', OurProductNumber);
                         setLS('pOurItemNumber', OurItemNumber);
                         setLS('pInventoryItemWeight', InventoryItemWeight);
                         setLS('pItemVendorManufacturerIDNumber', ItemVendorManufacturerIDNumber);
                         setLS('pBrand', Brand);
-
                         $("#prdtdesc").html(html);
                         $("#productdesc").show();
                         JQProductDisplay1.hide();
                         $("#pdtoverview").html(desc);
-
                         $.mobile.loading("hide");
                         $("#loadingPdt").hide();
                     });
@@ -532,7 +458,6 @@ function pdtdesc(itemid) {
                 $.mobile.loading("hide");
                 $("#loadingPdt").hide();
             }
-
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
@@ -551,21 +476,17 @@ function loginclose() {
         newPage = cPage.replace(',' + result[result.length - 1], "");
         setLS('page', newPage);
     }
-
     document.getElementById('loginpopup').style.display = 'none';
     $("#fade").hide();
 }
 
 // Page load function for product categories
-
 function productPageLoad() {
     var encryptedkey = getLS('encryptedkey');
-
     if (encryptedkey === null) {
         setEncryptedKey();
     }
     else {
-
         productPageLoad2(); // function to save all the branches details to localDB
     }
 }
@@ -578,9 +499,7 @@ function productPageLoad2() {
         setLS('default_branchcode1', defaultbranchcode);
         setLS('default_branchname1', defaultbranchname);
     }
-
     $("#loadingPdt").show();
-
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
@@ -591,47 +510,36 @@ function productPageLoad2() {
     });
     var branchname = getLS('default_branchname');
     var BranchName1 = getLS('default_branchname');
-
     $("#current_branch").html(BranchName1);
     $("#lblbranchname").html("&nbsp;[" + BranchName1 + "]");
     loadsectionfilter();
 }
-
-
-// Function for handling login popup in product page
 
 function submitlogin() {
     var accountno = TextJQAccNo.val().trim();
     var username = $("#txtuser").val().trim();
     var password = $("#txtpwd").val().trim();
     var numbers = /^[0-9]+$/;
-
     var branchCode = getLS('Current_branch');
     if (accountno === "") {
-
         navigator.notification.alert('Please enter account no.', null, 'Authentication', 'OK');
         return false;
     }
-
     else if (!numbers.test(accountno)) {
-
         navigator.notification.alert('Please enter valid account no.', null, 'Authentication', 'OK');
         TextJQAccNo.val('');
         return false;
     }
     else if (username === "") {
         navigator.notification.alert('Please enter username.', null, 'Authentication', 'OK');
-
         return false;
     }
     else if (password === "") {
-
         navigator.notification.alert('Please enter password.', null, 'Authentication', 'OK');
         return false;
     }
     $("#fadelogin").show();
     submitButton('2');
-
 }
 
 function loginpopup() {
@@ -650,18 +558,21 @@ function pdtimgkitchendivdisplay2() {
     JQProductDisplay2.show();
     JQProductDisplay.hide();
 }
+
 function pdtimgkitchendivdisplay3() {
     $("#filterdiv").hide();
     $(".searchdiv").hide();
     JQProductDisplay3.show();
     JQProductDisplay.hide();
 }
+
 function pdtimgkitchendivdisplay4() {
     $("#filterdiv").hide();
     $(".searchdiv").hide();
     JQProductDisplay4.show();
     JQProductDisplay.hide();
 }
+
 function filter() {
     $("#default_div").show();
     $(".searchdiv ").show();
@@ -680,13 +591,13 @@ function filter() {
     $("#img_previous").hide();
     $("#img_next").hide();
     setLS('secname', null);
-
     var cPage = getLS('page');
     var result = cPage.split(",");
     if (result[result.length - 1] !== 'filter') {
         setLS('page', cPage + ",filter");
     }
 }
+
 function filterout() {
     $("#filterdiv").hide();
 }
@@ -697,7 +608,6 @@ function filterbathrrom() {
     document.getElementById('storagediv').style.display = 'none';
     document.getElementById('Lightdiv').style.display = 'none';
     document.getElementById('kitchensubdiv').style.display = 'none';
-
 }
 
 function filterstorage() {
@@ -706,19 +616,17 @@ function filterstorage() {
     $("#storagediv").slideToggle();
     document.getElementById('Lightdiv').style.display = 'none';
     document.getElementById('kitchensubdiv').style.display = 'none';
-
 }
+
 function filterlight() {
     document.getElementById('kitchendiv').style.display = 'none';
     document.getElementById('bathroomdiv').style.display = 'none';
     document.getElementById('storagediv').style.display = 'none';
     $("#Lightdiv").slideToggle();
     document.getElementById('kitchensubdiv').style.display = 'none';
-
 }
 
 function backcategory() {
-
     var cPage = getLS('page');
     var result = cPage.split(","), newPage;
     if (result.length === 1) {
@@ -728,7 +636,6 @@ function backcategory() {
         newPage = cPage.replace(',' + result[result.length - 1], "");
         setLS('page', newPage);
     }
-
     JQProductDisplay.show();
     $("#filterdiv").slideToggle();
     JQProductDisplay1.hide();
@@ -740,11 +647,10 @@ function backcategory() {
     $("#bathroomdiv").hide();
     $("#storagediv").hide();
     $("#Lightdiv").hide();
-
     $("#kitchensubdiv").hide();
-
     loadsectionfilter();
 }
+
 function backcategorypdt() {
     filter();
     $(".searchdiv").show();
@@ -755,18 +661,14 @@ $(function () {
     $('#locationfinder_product').click(function () {
         $('.white_contentlistnewpdt').toggle();
         loadmenuProduct(2);
-    })
-
+    });
 });
 
 // Function to be called after user selected check inventory button in branch information pop up
-
 function checkinventory(branchId) {
-
     if (isuserlogged === 'yes') {
         var getBranchName = getLS('default_branchname2');
         var getBranchCode = getLS('default_branchcode2');
-
         setLS('default_branchcode', getBranchCode);
         setLS('Current_branch', getBranchCode);
         setLS('default_branchname', getBranchName);
@@ -778,17 +680,13 @@ function checkinventory(branchId) {
         if (result[result.length - 1] !== 'newlogin') {
             setLS('page', cPage + ",newlogin");
         }
-
         $("#loadingPdt").hide();
         $.mobile.loading("hide");
         window.location.href = 'login.html';
     }
-
 }
 
-
 // This Function is used to get the products based on section,gropucode and category code and load the contents to table iteminfo
-
 function pdtImgKitchenDivDisplay(sec, group, cate, id) {
     setLS('breadlast', id.replace(/_/g, " "));
     $("#descriptioncat").html(id.replace(/_/g, " "));
@@ -796,18 +694,14 @@ function pdtImgKitchenDivDisplay(sec, group, cate, id) {
     pdtImgKitchenDivDisplay1(sec, group, cate);
 }
 
-
-
 function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
     $("#filternavigation").show();
     var fromCount, toCount, path, filterbackbutton, cPage, result, linkimage, branchCode, sectionname, groupname, sectname, categoryname, sectionname1;
     fromCount = 1;
     toCount = BlackmanApplicationVariables.TotalProductCount;
-
     setLS('F_Sectioncode', sectioncode);
     setLS('F_Groupcode', groupcode);
     setLS('F_Categorycode', categorycode);
-
     localStorage.removeItem('breadcrumb');
     setLS('currentview', getLS('viewimg'));
     myFuncCalls = 0;
@@ -816,18 +710,15 @@ function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
     cPage = getLS('page');
     result = cPage.split(",");
     if (filterbackbutton === 'filter') {
-
         if (result[result.length - 1] !== "filterselection") {
             setLS('page', cPage + ",filterselection");
         }
     }
     else {
-
         if (result[result.length - 1] !== "filterresult") {
             setLS('page', cPage + ",filterresult");
         }
     }
-
     setLS('filterbackbutton', 'none');
     setLS('showmoreproducts', 'filter');
     branchCode = getLS('default_branchcode');
@@ -836,37 +727,29 @@ function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
     categoryname = getLS('Filter_categoryname');
     sectionname1 = getLS('F_HSCODE');
     sectname = "";
-
     if (sectionname1 !== "" && sectionname1 !== null && sectionname1 !== 'null') {
         sectname = sectionname1;
     }
     else {
         sectname = "";
     }
-
     linkimage = '<img src="images/next.png" class="linkimgpath">';
-
     path = "<span>" + sectionname + "</span>";
     if (groupname !== null && groupname !== 'null') {
         path = path + linkimage + "<span>" + groupname + "</span>";
     }
-
     if (categoryname !== null && categoryname !== 'null') {
         path = path + linkimage + "<span>" + categoryname + "</span>";
     }
-
     setLS('SEC_CODE', sectioncode);
     $("#loadingPdt").show();
-
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Loading Products...</h2></span>"
-
     });
-
     GlobalItemsList.length = 0;
     $.ajax({
         type: "GET",
@@ -885,42 +768,36 @@ function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
-
                 var xmlDoc = $.parseXML(xmlString);
-
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
                 var resultJSON = $Name.text().replace(/\t/g, '');
                 var finalresult = "{" + resultJSON + "}";
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCItms;
-                var html = "";
+                var html, STOCK, BRANCH, InventoryItemWeight, OurProductNumber, PRODUCTIMAGE, OurItemNumber, ItemOrProductDescription, ItemUnitPriceAmount, AVAILABLEQUNTY, ItemStockingUnitOfMeasure;
                 if (output.BMCItms.length > 0) {
                     $.each(list, function (i, item) {
-                        var OurItemNumber = item.OurItemNumber;
-                        var OurProductNumber = item.OurProductNumber;
-                        var ItemOrProductDescription = item.ItemOrProductDescription;
-                        var ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
-                        var InventoryItemWeight = item.InventoryItemWeight;
-                        var PRODUCTIMAGE = item.PRODUCTIMAGE;
-                        var AVAILABLEQUNTY = item.AVAILABLEQUNTY;
-                        var ItemUnitPriceAmount = item.ItemUnitPriceAmount;
-                        var BRANCH = item.BRANCH;
-                        var STOCK = item.STOCK;
+                        OurItemNumber = item.OurItemNumber;
+                        OurProductNumber = item.OurProductNumber;
+                        ItemOrProductDescription = item.ItemOrProductDescription;
+                        ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
+                        InventoryItemWeight = item.InventoryItemWeight;
+                        PRODUCTIMAGE = item.PRODUCTIMAGE;
+                        AVAILABLEQUNTY = item.AVAILABLEQUNTY;
+                        ItemUnitPriceAmount = item.ItemUnitPriceAmount;
+                        BRANCH = item.BRANCH;
+                        STOCK = item.STOCK;
                         GlobalItemsList.push(OurItemNumber);
                         if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                             ItemUnitPriceAmount = "0";
                         }
-
                         var qry = 'INSERT INTO iteminfo (OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK) VALUES (?,?,?,?,?,?,?,?,?,?)';
-
                         tx.executeSql(qry, [OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, ItemUnitPriceAmount, BRANCH, STOCK]);
-
                     });
                 }
                 setLS('product_count', toCount);
                 loadSectionProductsContents('Yes');
-
             }, errorCB);
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -931,7 +808,6 @@ function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
 }
 
 // This  function is used to get the products from the Iteminfo table and display it to the user
-
 function sleep(milliseconds) {
     var start = new Date().getTime();
     for (var i = 0; i < 1e7; i++) {
@@ -941,12 +817,9 @@ function sleep(milliseconds) {
     }
 }
 
-
 var GlobalItemsList = [];
 function ShowUserPrices() {
-
     var showitems = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
-    // Update the global variable values
     AccessTokenKey = getLS('AccessTokenKey');
     if (AccessTokenKey === null) { AccessTokenKey = ""; }
     CustomerNumber = getLS('CustomerNumber');
@@ -960,7 +833,6 @@ function ShowUserPrices() {
     if (UserName === null) { UserName = ""; }
     Isvalid = 'N';
     if (isuserlogged === 'yes') { Isvalid = "Y"; }
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -974,7 +846,6 @@ function ShowUserPrices() {
             else {
                 xmlString = (new XMLSerializer()).serializeToString(xmlData);
             }
-
             var namespace = 'http://tyc.com';
             var parser = new DOMParser(); // Webkit, IE has its own
             var xml = parser.parseFromString(xmlString, "text/xml");
@@ -985,27 +856,20 @@ function ShowUserPrices() {
             var list = outputresult.BMCPrice;
             if (outputresult.BMCPrice.length > 0) {
                 showitems.transaction(function showitemsbybranch(tx) {
-
                     $.each(list, function (i, item) {
                         var ItemNumber = item.ItemNumber;
                         var ListPrice = item.NetPrice;
-
                         var qry = 'UPDATE iteminfo SET ItemUnitPriceAmount=' + ListPrice + ' WHERE OurItemNumber=?';
                         tx.executeSql(qry, [ItemNumber]);
-
                     });
                 });
-
                 loadSectionProductsContents("No"); // Show the prices
-
             }
-
         }, error: function () {
             $("#unabletoconnectserver").show();
             $('html,body').animate({ scrollTop: 0 }, 800);
         }
     });
-
 }
 
 function getNodeText(xmlNode) {
@@ -1017,21 +881,16 @@ function getNodeText(xmlNode) {
 function imgErrortest(image) {
     myFuncCalls++;
     var count = getLS('testcount');
-
     if (2 * count === myFuncCalls) {
-
-
         var html = "";
         html = html + "<div style='margin-bottom:45%;margin-top:45%;width: 100%;text-align: center;color: red;font-family: calibri;font-size: 16px;'>";
         html = html + "<span>No products found.</span></div>";
         myFuncCalls = 0;
         $("#loaditems123").html(html);
     }
-
 }
 
 // Function to show more products
-
 function loadMoreProducts() {
     GlobalItemsList.length = 0;
     var AccessTokenKey = "";
@@ -1044,7 +903,6 @@ function loadMoreProducts() {
     var productCount, fromCount, toCount;
     var showmoreproducts = getLS('showmoreproducts');
     if (showmoreproducts === 'filter') {
-
         $("#loadingPdt").show();
         $.mobile.loading("show", {
             text: "Loading,Please Wait...",
@@ -1052,14 +910,12 @@ function loadMoreProducts() {
             theme: "a",
             textonly: true,
             html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Loading Products...</h2></span>"
-
         });
 
         var branchCode = getLS('default_branchcode');
         var sectioncode = getLS('F_Sectioncode');
         var GroupCode = getLS('F_Groupcode');
         var CategoryCode = getLS('F_Categorycode'), sectioncode1, GroupCode1, CategoryCode1;
-
         if (sectioncode !== null && sectioncode !== "" && sectioncode !== 'null') {
             sectioncode1 = sectioncode;
             GroupCode1 = GroupCode;
@@ -1073,7 +929,6 @@ function loadMoreProducts() {
         productCount = getLS('product_count');
         fromCount = parseInt(productCount, 10) + 1;
         toCount = parseInt(fromCount, 10) + BlackmanApplicationVariables.ToNextCount;
-
         var sectionname1 = getLS('F_HSCODE');
         var sectname = "";
         if (sectionname1 !== "" && sectionname1 !== null && sectionname1 !== 'null') {
@@ -1082,7 +937,6 @@ function loadMoreProducts() {
         else {
             sectname = "";
         }
-
         $.ajax({
             type: "GET",
             crossDomain: true,
@@ -1099,37 +953,31 @@ function loadMoreProducts() {
                     else {
                         xmlString = (new XMLSerializer()).serializeToString(xmlData);
                     }
-
                     var xmlDoc = $.parseXML(xmlString);
-
                     var $xml = $(xmlDoc);
                     var $Name = $xml.find('return');
-
                     var resultJSON = $Name.text().replace(/\t/g, '');
                     var finalresult = "{" + resultJSON + "}";
                     var output = $.parseJSON(finalresult);
                     var list = output.BMCItms;
-                    var html = "";
+                    var html, OurItemNumber, STOCK, BRANCH, ItemUnitPriceAmount, AVAILABLEQUNTY, PRODUCTIMAGE, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight;
                     if (output.BMCItms.length > 0) {
                         $.each(list, function (i, item) {
-                            var OurItemNumber = item.OurItemNumber;
-                            var OurProductNumber = item.OurProductNumber;
-                            var ItemOrProductDescription = item.ItemOrProductDescription;
-                            var ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
-                            var InventoryItemWeight = item.InventoryItemWeight;
-                            var PRODUCTIMAGE = item.PRODUCTIMAGE;
-                            var AVAILABLEQUNTY = item.AVAILABLEQUNTY;
-                            var ItemUnitPriceAmount = item.ItemUnitPriceAmount;
-                            var BRANCH = item.BRANCH;
-                            var STOCK = item.STOCK;
-
+                            OurItemNumber = item.OurItemNumber;
+                            OurProductNumber = item.OurProductNumber;
+                            ItemOrProductDescription = item.ItemOrProductDescription;
+                            ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
+                            InventoryItemWeight = item.InventoryItemWeight;
+                            PRODUCTIMAGE = item.PRODUCTIMAGE;
+                            AVAILABLEQUNTY = item.AVAILABLEQUNTY;
+                            ItemUnitPriceAmount = item.ItemUnitPriceAmount;
+                            BRANCH = item.BRANCH;
+                            STOCK = item.STOCK;
                             GlobalItemsList.push(OurItemNumber);
-
                             if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                                 ItemUnitPriceAmount = "0";
                             }
                             var qry = 'INSERT INTO iteminfo (OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK) VALUES (?,?,?,?,?,?,?,?,?,?)';
-
                             tx.executeSql(qry, [OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, ItemUnitPriceAmount, BRANCH, STOCK]);
                         });
                     }
@@ -1150,7 +998,6 @@ function loadMoreProducts() {
         GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCount)
     }
     else {
-
         $("#loadingPdt").show();
         $.mobile.loading("show", {
             text: "Loading,Please Wait...",
@@ -1158,29 +1005,23 @@ function loadMoreProducts() {
             theme: "a",
             textonly: true,
             html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Loading Products...</h2></span>"
-
         });
-
         productCount = getLS('product_count');
         fromCount = parseInt(productCount, 10) + 1;
         toCount = parseInt(fromCount, 10) + BlackmanApplicationVariables.ToNextCount;
         var branchId = getLS('default_branchcode');
         var searchtext = $("#txtpdtsrch").val().trim();
-
         searchtext = searchtext.split(" ");
         var result = "";
         for (var i = 0; i < searchtext.length; i++) {
-
             if (i === searchtext.length - 1) {
                 result = result + searchtext[i];
             }
             else {
                 result = result + searchtext[i] + "@";
             }
-
         }
         searchtext = result;
-
         $.ajax({
             type: "GET",
             crossDomain: true,
@@ -1197,41 +1038,32 @@ function loadMoreProducts() {
                     else {
                         xmlString = (new XMLSerializer()).serializeToString(xmlData);
                     }
-
                     var xmlDoc = $.parseXML(xmlString);
-
                     var $xml = $(xmlDoc);
                     var $Name = $xml.find('return');
-
                     var resultJSON = $Name.text().replace(/\t/g, '');
                     var finalresult = "{" + resultJSON + "}";
                     var output = $.parseJSON(finalresult);
                     var list = output.BMCItms;
-                    var html = "";
+                    var html, OurItemNumber, STOCK, BRANCH, ItemUnitPriceAmount, AVAILABLEQUNTY, PRODUCTIMAGE, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight;
                     if (output.BMCItms.length > 0) {
-
                         $.each(list, function (i, item) {
-
-                            var OurItemNumber = item.OurItemNumber;
+                            OurItemNumber = item.OurItemNumber;
                             GlobalItemsList.push(OurItemNumber);
-                            var OurProductNumber = item.OurProductNumber;
-                            var ItemOrProductDescription = item.ItemOrProductDescription;
-                            var ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
-                            var InventoryItemWeight = item.InventoryItemWeight;
-                            var PRODUCTIMAGE = item.PRODUCTIMAGE;
-                            var AVAILABLEQUNTY = item.AVAILABLEQUNTY;
-                            var ItemUnitPriceAmount = item.ItemUnitPriceAmount;
-                            var BRANCH = item.BRANCH;
-                            var STOCK = item.STOCK;
-
+                            OurProductNumber = item.OurProductNumber;
+                            ItemOrProductDescription = item.ItemOrProductDescription;
+                            ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
+                            InventoryItemWeight = item.InventoryItemWeight;
+                            PRODUCTIMAGE = item.PRODUCTIMAGE;
+                            AVAILABLEQUNTY = item.AVAILABLEQUNTY;
+                            ItemUnitPriceAmount = item.ItemUnitPriceAmount;
+                            BRANCH = item.BRANCH;
+                            STOCK = item.STOCK;
                             if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                                 ItemUnitPriceAmount = "0";
                             }
                             var qry = 'INSERT INTO iteminfo (OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK) VALUES (?,?,?,?,?,?,?,?,?,?)';
-
                             tx.executeSql(qry, [OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, ItemUnitPriceAmount, BRANCH, STOCK]);
-
-
                         });
                         setLS('product_count', toCount);
                         loadSectionProductsContents('Yes');
@@ -1239,7 +1071,6 @@ function loadMoreProducts() {
                     else {
                         loadMoreProdutsByUsingSecondService();
                     }
-
                 }, errorCB);
             }, error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -1247,10 +1078,8 @@ function loadMoreProducts() {
                 $("#loadingPdt").hide();
             }
         });
-
     }
 }
-
 
 function loadMoreProdutsByUsingSecondService() {
     GlobalItemsList.length = 0;
@@ -1258,22 +1087,18 @@ function loadMoreProdutsByUsingSecondService() {
     var fromCount = parseInt(productCount, 10) + 1;
     var toCount = parseInt(fromCount, 10) + BlackmanApplicationVariables.ToNextCount;
     var branchId = getLS('default_branchcode');
-
     var searchtext = $("#txtpdtsrch").val().trim();
     searchtext = searchtext.split(" ");
     var result = "";
     for (var i = 0; i < searchtext.length; i++) {
-
         if (i === searchtext.length - 1) {
             result = result + searchtext[i];
         }
         else {
             result = result + searchtext[i] + "@";
         }
-
     }
     searchtext = result;
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -1290,44 +1115,36 @@ function loadMoreProdutsByUsingSecondService() {
                 else {
                     xmlString = (new XMLSerializer()).serializeToString(xmlData);
                 }
-
                 var xmlDoc = $.parseXML(xmlString);
-
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
-
                 var resultJSON = $Name.text().replace(/\t/g, '');
                 var finalresult = "{" + resultJSON + "}";
                 var output = $.parseJSON(finalresult);
                 var list = output.BMCItms;
-                var html = "";
+                var html, OurItemNumber, STOCK, BRANCH, ItemUnitPriceAmount, AVAILABLEQUNTY, PRODUCTIMAGE, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight;
                 if (output.BMCItms.length > 0) {
                     $.each(list, function (i, item) {
-                        var OurItemNumber = item.OurItemNumber;
+                        OurItemNumber = item.OurItemNumber;
                         GlobalItemsList.push(OurItemNumber);
-                        var OurProductNumber = item.OurProductNumber;
-                        var ItemOrProductDescription = item.ItemOrProductDescription;
-                        var ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
-                        var InventoryItemWeight = item.InventoryItemWeight;
-                        var PRODUCTIMAGE = item.PRODUCTIMAGE;
-                        var AVAILABLEQUNTY = item.AVAILABLEQUNTY;
-                        var ItemUnitPriceAmount = item.ItemUnitPriceAmount;
-                        var BRANCH = item.BRANCH;
-                        var STOCK = item.STOCK;
-
+                        OurProductNumber = item.OurProductNumber;
+                        ItemOrProductDescription = item.ItemOrProductDescription;
+                        ItemStockingUnitOfMeasure = item.ItemStockingUnitOfMeasure;
+                        InventoryItemWeight = item.InventoryItemWeight;
+                        PRODUCTIMAGE = item.PRODUCTIMAGE;
+                        AVAILABLEQUNTY = item.AVAILABLEQUNTY;
+                        ItemUnitPriceAmount = item.ItemUnitPriceAmount;
+                        BRANCH = item.BRANCH;
+                        STOCK = item.STOCK;
                         if (ItemUnitPriceAmount === 0 || ItemUnitPriceAmount === "0" || ItemUnitPriceAmount === "" || ItemUnitPriceAmount === null || ItemUnitPriceAmount === "CNF") {
                             ItemUnitPriceAmount = "0";
                         }
                         var qry = 'INSERT INTO iteminfo (OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK) VALUES (?,?,?,?,?,?,?,?,?,?)';
-
                         tx.executeSql(qry, [OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, ItemUnitPriceAmount, BRANCH, STOCK]);
-
                     });
                 }
-
                 setLS('product_count', toCount);
                 loadSectionProductsContents('Yes');
-
             }, errorCB);
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -1337,18 +1154,14 @@ function loadMoreProdutsByUsingSecondService() {
     });
 }
 
-
-
 function errorCB() {
     navigator.notification.alert('Database error!.Please Contact administrator', null, 'Alert', 'OK');
-
     $("#loadingPdt").hide();
     $("#fade").hide();
     $.mobile.loading("hide");
 }
 
 // Product details page function
-
 function storetolocal(id) {
     var cPage = getLS('page');
     var result = cPage.split(",");
@@ -1363,21 +1176,16 @@ function storetolocal(id) {
         $("#show_addcart").show();
         $("#show_price").show();
         $("#show_qty").show();
-
     }
     else {
         $("#show_addcart").hide();
         $("#show_price").hide();
         $("#show_qty").hide();
-
     }
-
 }
 
 // This function is used to load the default branch (or) Fired when user clicked "cross mark(x)" next to current branch name.
-
 function loaddefaultbranchdetails() {
-
     $("#loadingPdt").show();
     $.mobile.loading("show",
     {
@@ -1388,41 +1196,29 @@ function loaddefaultbranchdetails() {
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
     });
-
     var branchId = getLS('default_branchcode1');
     var BranchName = getLS('default_branchname1');
     setLS('default_branchname', BranchName);
     setLS('default_branchcode', branchId);
-
     var BranchName1 = getLS('default_branchname1');
     $("#current_branch").html(BranchName1);
     var message = "User selected default branch";
     writeToLogFile(message, 10);
 }
-
-
 // Function for handling Addtocart button
-
 function addtocart(page, ItemNumber, textboxid) {
     var quantity = $("#" + textboxid).val();
     var quantity123 = textboxid.split("-");
     var aval = quantity123[1]; // Available quantity
     var itemid = quantity123[0]; // Product id
-
-
     var RepairReplacementCoverage = 0;
     var message = " added to cart";
-
     var selectedbranch = "";
-
     if (page === 1 || page === 2) {
         selectedbranch = getLS('default_branchcode');
     }
-
-
     var carinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
     carinsert.transaction(function carinsertdetails(tx) {
-
         tx.executeSql('CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)');
         tx.executeSql('select OurItemNumber from cartitems where OurItemNumber=?', [ItemNumber], function successitem(txx, results) {
             if (results.rows.length === 0) {
@@ -1452,7 +1248,6 @@ function addtocart(page, ItemNumber, textboxid) {
                         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
                     });
-
                     tx.executeSql('select * from iteminfo where OurItemNumber=? LIMIT 1', [ItemNumber], function successitem(txx, res) {
                         for (var i = 0; i < res.rows.length; i++) {
                             var ss = res.rows.item(i);
@@ -1469,15 +1264,11 @@ function addtocart(page, ItemNumber, textboxid) {
                             var RepairReplacementCoverage = 0;
                             var ReplacementCostUnitPriceCompany = "";
                             var totalweight = parseFloat(InventoryItemWeight) * quantity;
-
                             if (RepairReplacementCoverage === 0) {
                                 ReplacementCostUnitPriceCompany = 0;
                             }
-
                             var OurListUnitPriceCompany1 = parseFloat(OurListUnitPriceCompany) + parseFloat(ReplacementCostUnitPriceCompany);
-
                             var Totalprice = quantity * OurListUnitPriceCompany1.toFixed(2);
-
                             var qry = 'INSERT INTO cartitems (Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
                             tx.executeSql(qry, [ItemNumber, OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, OurListUnitPriceCompany, BRANCH, STOCK, quantity, Totalprice, totalweight, selectedbranch]);
                             writeToLogFile("Quantity:" + quantity + "," + ItemOrProductDescription + message, 9);
@@ -1492,19 +1283,14 @@ function addtocart(page, ItemNumber, textboxid) {
     }, errorCB);
 }
 
-
 function loadproductimage(id) {
-
     $("#loadingPdt").hide();
     $.mobile.loading("hide");
-
     $('#' + id).show();
-
 }
 
 function loadmenuProduct(pageno) {
     var isuserlogged = getLS('Isuserlogged');
-
     var html = "";
     html = html + '<div class="innerpopup">';
     html = html + '<div class="empty">';
@@ -1542,7 +1328,6 @@ function loadmenuProduct(pageno) {
         html = html + '</div>';
         html = html + '<hr />';
     }
-
     html = html + '<div class="popdiv" onclick="product(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
@@ -1610,12 +1395,9 @@ function inventoryaddtocart(ItemNumber) {
         carinsert.transaction(function carinsertdetails(tx) {
             var query1 = 'CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)';
             var query2 = 'select OurItemNumber from cartitems where OurItemNumber="' + ItemNumber + '"';
-
-
             tx.executeSql(query1);
             tx.executeSql(query2, [], function successitem(txx, results) {
                 if (results.rows.length === 0) {
-
                     if (quantity === "" || quantity === null || parseInt(quantity, 10) <= 0) {
                         navigator.notification.alert('Enter valid quantity!', null, 'Alert', 'OK');
                         $("#txtinventory").focus();
@@ -1633,10 +1415,8 @@ function inventoryaddtocart(ItemNumber) {
                     }
                     else {
                         tx.executeSql('select * from iteminfo where OurItemNumber="' + ItemNumber + '" LIMIT 1', [], function successitem(txx, res) {
-
                             if (res.rows.length > 0) {
                                 $("#loadingPdt").show();
-
                                 $.mobile.loading("show",
                                 {
                                     text: "Please Wait...",
@@ -1646,7 +1426,6 @@ function inventoryaddtocart(ItemNumber) {
                                     html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
                                 });
-
                                 var ss, OurItemNumber, qry, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE;
                                 var AVAILABLEQUNTY, Totalprice, OurListUnitPriceCompany1, OurListUnitPriceCompany, BRANCH, STOCK, RepairReplacementCoverage, ReplacementCostUnitPriceCompany, totalweight;
                                 for (var i = 0; i < res.rows.length; i++)
@@ -1665,15 +1444,12 @@ function inventoryaddtocart(ItemNumber) {
                                     RepairReplacementCoverage = 0;
                                     ReplacementCostUnitPriceCompany = "";
                                     totalweight = parseFloat(InventoryItemWeight) * quantity;
-
                                     if (RepairReplacementCoverage === 0) {
                                         ReplacementCostUnitPriceCompany = 0;
                                     }
-
                                     OurListUnitPriceCompany1 = parseFloat(OurListUnitPriceCompany) + parseFloat(ReplacementCostUnitPriceCompany);
                                     Totalprice = quantity * OurListUnitPriceCompany1.toFixed(2);
                                     qry = 'INSERT INTO cartitems (Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-
                                     tx.executeSql(qry, [ItemNumber, OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, aval, OurListUnitPriceCompany, BRANCH, STOCK, quantity, Totalprice, totalweight, branch]);
                                     writeToLogFile("Quantity:" + quantity + "," + ItemOrProductDescription + message, 9);
                                 }
@@ -1683,7 +1459,6 @@ function inventoryaddtocart(ItemNumber) {
                 }
                 else {
                     navigator.notification.alert('Item already added to cart', null, 'Cart', 'OK');
-
                 }
             });
         }, errorCB);
@@ -1691,27 +1466,21 @@ function inventoryaddtocart(ItemNumber) {
     else {
         navigator.notification.alert('Please select a branch with available quantity', null, 'Cart', 'OK');
     }
-
 }
 
 function selectradio(id) {
     $("#radio_" + id).prop("checked", true)
 }
 
-
 function checkinventoryfun(ItemNumber) {
-
     var screenTop = $(document).scrollTop();
     $('#checkinventory1').css('margin-top', screenTop);
     $("#checkinventory").html("<div style='Text-align:center;margin-top:50px;color:#304589;font-family:calibri'><p><b>Please Wait</b></p></div>");
-
     var cPage = getLS('page');
     var result = cPage.split(",");
     if (result[result.length - 1] !== "checkinventory") {
         setLS('page', cPage + ",checkinventory");
     }
-
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -1725,7 +1494,6 @@ function checkinventoryfun(ItemNumber) {
             else {
                 xmlString = (new XMLSerializer()).serializeToString(xmlData);
             }
-
             var namespace = 'http://tyc.com';
             var parser = new DOMParser(); // Webkit, IE has its own
             var xml = parser.parseFromString(xmlString, "text/xml");
@@ -1736,18 +1504,13 @@ function checkinventoryfun(ItemNumber) {
             var list = outputresult.BMCItmBranchList;
             var output = '';
             if (list.length > 0) {
-
-
                 output = output + '<div style="margin-left: 5px;height: 327px;overflow: auto;font-size:10px">';
                 output = output + '<table>';
-
-
-
+                var BRANCHNUMBER, BRANCHNAME, AVAILQUANTITY;
                 $.each(list, function (i, item) {
-                    var BRANCHNUMBER = item.BRANCHNUMBER;
-                    var BRANCHNAME = item.BRANCHNAME;
-                    var AVAILQUANTITY = item.Quantity;
-
+                    BRANCHNUMBER = item.BRANCHNUMBER;
+                    BRANCHNAME = item.BRANCHNAME;
+                    AVAILQUANTITY = item.Quantity;
                     if (BRANCHNUMBER === BlackmanApplicationVariables.defaultbranchcode) {
                         if (AVAILQUANTITY !== 0 && AVAILQUANTITY !== "" && AVAILQUANTITY !== null) {
                             output = output + '<tr><td><input type="radio" id="radio_' + i + '" checked name="branches" style="width:13px;left:15px !important" value="' + BRANCHNUMBER + '_' + AVAILQUANTITY + '"/></td><td style="width:180px"><label onclick="selectradio(' + i + ')" style="margin-right:10px;float:left;line-height:25px;margin-left:2px;">' + BRANCHNAME + '</label></td><td><b style="color:green">- ' + AVAILQUANTITY + ' Item(s)</b></td></tr>';
@@ -1757,7 +1520,6 @@ function checkinventoryfun(ItemNumber) {
                         }
                     }
                     else {
-
                         if (AVAILQUANTITY !== 0 && AVAILQUANTITY !== "" && AVAILQUANTITY !== null) {
                             output = output + '<tr><td><input type="radio" id="radio_' + i + '"  name="branches" style="width:13px;left:15px !important" value="' + BRANCHNUMBER + '_' + AVAILQUANTITY + '"/></td><td style="width:180px"><label onclick="selectradio(' + i + ')" style="margin-right:10px;float:left;line-height:25px;margin-left: 2px;">' + BRANCHNAME + '</label></td><td><b style="color:green">- ' + AVAILQUANTITY + ' Item(s)</b></td></tr>';
                         }
@@ -1765,10 +1527,7 @@ function checkinventoryfun(ItemNumber) {
                             output = output + '<tr><td><input type="radio" id="radio_' + i + '"  name="branches" style="width:13px;left:15px !important" value="' + BRANCHNUMBER + '_' + AVAILQUANTITY + '"/></td><td style="width:180px"><label onclick="selectradio(' + i + ')" style="margin-right:10px;float:left;line-height:25px;margin-left: 2px;">' + BRANCHNAME + '</label></td><td><b style="color:red">- Not Available</b></td></tr>';
                         }
                     }
-
-
                 });
-
                 output = output + '</table>';
                 output = output + '</div>';
                 output = output + '<div id="div_cartfooter" class="footer" style="bottom: 0;position: absolute;width: 100%;left: 0;">';
@@ -1778,25 +1537,17 @@ function checkinventoryfun(ItemNumber) {
                 output = output + '<td style="margin-top: 5px;float: right;"><img class=" hide" onclick="inventoryaddtocart(' + ItemNumber + ')"  src="images/add_to_cart.png" style="height:auto;" /></td>';
                 output = output + '</tr>';
                 output = output + '</table>';
-
                 $("#checkinventory").html(output);
             }
             else {
                 $("#checkinventory").html("<div style='Text-align:center;margin-top:50px;color:red;font-family:calibri'><p><b>Item not available in other branches</b></p></div>");
             }
-
-
         }, error: function () {
-
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-
         }
     });
-
-
     JQCheckInventory1.show();
     $("#fade").show();
-
 }
 
 function keypressInventory(e) {
@@ -1804,6 +1555,7 @@ function keypressInventory(e) {
         $('#txtinventory').blur(); // remove the focus from the textbox,that will automatically close the device keypad.
     }
 }
+
 function checkInventoryFunCls() {
 
     var cPage = getLS('page');
@@ -1815,18 +1567,13 @@ function checkInventoryFunCls() {
         newPage = cPage.replace(',' + result[result.length - 1], "");
         setLS('page', newPage);
     }
-
-
     JQCheckInventory1.hide();
     $("#fade").hide();
 }
 
 function Specification(itemno) {
-
     JQSpecificationDiv.html(' <div style="width:100%;height: 155px;margin-top:40px;text-align:center;"><img src="images/27.GIF" /></div>');
     $("#termsconditionid").hide();
-
-
     $.ajax({
         type: "GET",
         crossDomain: true,
@@ -1843,7 +1590,6 @@ function Specification(itemno) {
                 }
 
                 var xmlDoc = $.parseXML(xmlString);
-
                 var $xml = $(xmlDoc);
                 var $Name = $xml.find('return');
                 var resultJSON = $Name.text().replace(/\t/g, '');
@@ -1856,7 +1602,6 @@ function Specification(itemno) {
                 if (output.BMCAttributes.length > 0) {
                     $.each(list, function (i, item) {
                         // Attributes Label
-
                         var AttributeLabel1 = item.AttributeLabel1;
                         attributeslabel.push(AttributeLabel1);
                         var AttributeLabel2 = item.AttributeLabel2;
@@ -1867,7 +1612,6 @@ function Specification(itemno) {
                         attributeslabel.push(AttributeLabel4);
                         var AttributeLabel5 = item.AttributeLabel5;
                         attributeslabel.push(AttributeLabel5);
-
                         var AttributeLabel6 = item.AttributeLabel6;
                         attributeslabel.push(AttributeLabel6);
                         var AttributeLabel7 = item.AttributeLabel7;
@@ -1878,7 +1622,6 @@ function Specification(itemno) {
                         attributeslabel.push(AttributeLabel9);
                         var AttributeLabel10 = item.AttributeLabel10;
                         attributeslabel.push(AttributeLabel10);
-
                         var AttributeLabel11 = item.AttributeLabel11;
                         attributeslabel.push(AttributeLabel11);
                         var AttributeLabel12 = item.AttributeLabel12;
@@ -1889,7 +1632,6 @@ function Specification(itemno) {
                         attributeslabel.push(AttributeLabel14);
                         var AttributeLabel15 = item.AttributeLabel15;
                         attributeslabel.push(AttributeLabel15);
-
                         var AttributeLabel16 = item.AttributeLabel16;
                         attributeslabel.push(AttributeLabel16);
                         var AttributeLabel17 = item.AttributeLabel17;
@@ -1900,7 +1642,6 @@ function Specification(itemno) {
                         attributeslabel.push(AttributeLabel19);
                         var AttributeLabel20 = item.AttributeLabel20;
                         attributeslabel.push(AttributeLabel20);
-
                         var AttributeLabel21 = item.AttributeLabel21;
                         attributeslabel.push(AttributeLabel21);
                         var AttributeLabel22 = item.AttributeLabel22;
@@ -1911,7 +1652,6 @@ function Specification(itemno) {
                         attributeslabel.push(AttributeLabel24);
                         var AttributeLabel25 = item.AttributeLabel25;
                         attributeslabel.push(AttributeLabel25);
-
                         var AttributeLabel26 = item.AttributeLabel26;
                         attributeslabel.push(AttributeLabel26);
                         var AttributeLabel27 = item.AttributeLabel27;
@@ -1922,15 +1662,9 @@ function Specification(itemno) {
                         attributeslabel.push(AttributeLabel29);
                         var AttributeLabel30 = item.AttributeLabel30;
                         attributeslabel.push(AttributeLabel30);
-
                         var AttributeLabel31 = item.AttributeLabel31;
-                        attributeslabel.push(AttributeLabel31);
-                        // var AttributeLabel32 = item.AttributeLabel32;
-                        // attributeslabel.push(AttributeLabel32);
-
-
+                        attributeslabel.push(AttributeLabel31);        
                         // Attributes Value
-
                         var attributesvalue1 = item.AttributeVALUE1;
                         attributesvalue.push(attributesvalue1);
                         var attributesvalue2 = item.AttributeVALUE2;
@@ -1941,7 +1675,6 @@ function Specification(itemno) {
                         attributesvalue.push(attributesvalue4);
                         var attributesvalue5 = item.AttributeVALUE5;
                         attributesvalue.push(attributesvalue5);
-
                         var attributesvalue6 = item.AttributeVALUE6;
                         attributesvalue.push(attributesvalue6);
                         var attributesvalue7 = item.AttributeVALUE7;
@@ -1952,7 +1685,6 @@ function Specification(itemno) {
                         attributesvalue.push(attributesvalue9);
                         var attributesvalue10 = item.AttributeVALUE10;
                         attributesvalue.push(attributesvalue10);
-
                         var attributesvalue11 = item.AttributeVALUE11;
                         attributesvalue.push(attributesvalue11);
                         var attributesvalue12 = item.AttributeVALUE12;
@@ -1963,7 +1695,6 @@ function Specification(itemno) {
                         attributesvalue.push(attributesvalue14);
                         var attributesvalue15 = item.AttributeVALUE15;
                         attributesvalue.push(attributesvalue15);
-
                         var attributesvalue16 = item.AttributeVALUE16;
                         attributesvalue.push(attributesvalue16);
                         var attributesvalue17 = item.AttributeVALUE17;
@@ -1974,7 +1705,6 @@ function Specification(itemno) {
                         attributesvalue.push(attributesvalue19);
                         var attributesvalue20 = item.AttributeVALUE20;
                         attributesvalue.push(attributesvalue20);
-
                         var attributesvalue21 = item.AttributeVALUE21;
                         attributesvalue.push(attributesvalue21);
                         var attributesvalue22 = item.AttributeVALUE22;
@@ -1985,7 +1715,6 @@ function Specification(itemno) {
                         attributesvalue.push(attributesvalue24);
                         var attributesvalue25 = item.AttributeVALUE25;
                         attributesvalue.push(attributesvalue25);
-
                         var attributesvalue26 = item.AttributeVALUE26;
                         attributesvalue.push(attributesvalue26);
                         var attributesvalue27 = item.AttributeVALUE27;
@@ -1996,10 +1725,8 @@ function Specification(itemno) {
                         attributesvalue.push(attributesvalue29);
                         var attributesvalue30 = item.AttributeVALUE30;
                         attributesvalue.push(attributesvalue30);
-
                         var attributesvalue31 = item.AttributeVALUE31;
                         attributesvalue.push(attributesvalue31);
-
                         var regex = /[a-zA-Z]/;
                         var ItemOrProductDescription = getLS('pItemOrProductDescription');
                         var OurProductNumber = getLS('pOurProductNumber');
@@ -2007,43 +1734,30 @@ function Specification(itemno) {
                         var InventoryItemWeight = getLS('pInventoryItemWeight');
                         var ItemVendorManufacturerIDNumber = getLS('pItemVendorManufacturerIDNumber');
                         var Brand = getLS('pBrand');
-
-
-
-                        var attrib = '';
+                         var attrib = '';
                         if (attributesvalue.length >= 0 && attributeslabel.length >= 0) {
                             attrib = attrib + '<table id="spectable" style="width:100%">';
-
                             attrib = attrib + '<tr>';
                             attrib = attrib + '<td><b>Item Number</b></td>  <td><span>#' + OurItemNumber + '</span></td>';
                             attrib = attrib + '</tr>';
-
                             attrib = attrib + '<tr>';
                             attrib = attrib + '<td><b>Item Name</b></td>  <td><span>' + ItemOrProductDescription + '</span></td>';
                             attrib = attrib + '</tr>';
-
                             attrib = attrib + '<tr>';
                             attrib = attrib + '<td><b>Product Number</b></td>  <td><span>' + OurProductNumber + '</span></td>';
                             attrib = attrib + '</tr>';
-
                             attrib = attrib + '<tr>';
                             attrib = attrib + '<td><b>Manufacturer Number</b></td>  <td><span>' + ItemVendorManufacturerIDNumber + '</span></td>';
                             attrib = attrib + '</tr>';
-
                             attrib = attrib + '<tr>';
                             attrib = attrib + '<td><b>Vendor Name</b></td>  <td><span>' + Brand + '</span></td>';
                             attrib = attrib + '</tr>';
-
-
                             attrib = attrib + '<tr>';
                             attrib = attrib + '<td><b>Item Weight</b></td>  <td><span>' + parseFloat(InventoryItemWeight).toFixed(2) + ' Kg(s)</span></td>';
                             attrib = attrib + '</tr>';
                             var count = 0;
-
                             for (var a = 0; a < attributeslabel.length; a++) {
-
                                 if (attributesvalue[a] !== "" && attributesvalue[a] !== null && regex.test(attributesvalue[a])) {
-
                                     if (a % 2 === 0) {
                                         attrib = attrib + '<tr>';
                                         attrib = attrib + '<td><b>' + attributeslabel[a] + '</b></td>  <td><span>' + attributesvalue[a] + '</span></td>';
@@ -2057,9 +1771,7 @@ function Specification(itemno) {
                                         count++;
                                     }
                                 }
-
                             }
-
                             attrib = attrib + '</table>';
                         }
                         else {
@@ -2075,16 +1787,12 @@ function Specification(itemno) {
                 $.mobile.loading("hide");
                 $("#loadingPdt").hide();
             }
-
-
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
             $("#loadingPdt").hide();
         }
-
     });
-
     JQSpecificationDiv.show();
     $("#pdtoverview").hide();
     LblJQSpecificationDiv.addClass('addclass');
@@ -2092,6 +1800,7 @@ function Specification(itemno) {
     LblJQProductDiv.addClass('backgroundcolor');
     LblJQSpecificationDiv.removeClass('backgroundcolor');
 }
+
 function ProductOverview() {
     LblJQSpecificationDiv.removeClass('addclass');
     LblJQSpecificationDiv.addClass('backgroundcolor');
@@ -2111,7 +1820,6 @@ function pdoductpagereload() {
     $("#filterselctiondiv").hide();
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
-
     var cPage = getLS('page');
     var result = cPage.split(","), newPage;
     if (result.length === 1) {
@@ -2122,6 +1830,7 @@ function pdoductpagereload() {
         setLS('page', newPage);
     }
 }
+
 function navigationclick() {
     $("#prdtsectionimges").hide();
     $("#sectiondiv").show();

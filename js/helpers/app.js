@@ -3,11 +3,7 @@ This javascript files is only for general functions
 Creaded on:22/07/2014 12:05PM
 License:Tychons solutions
 */
-
-// JquerySelectorVariable
-
 var textJQPassword = $("#txtpwd"), textJQUserName = $("#txtuser");
-
 function maxLengthCheck(object) {
     if (object.value.length > object.maxLength)
         object.value = object.value.slice(0, object.maxLength)
@@ -25,20 +21,16 @@ function ConvertNameToUpperCase(Textbox)
         ConvertToUppercase = Password.toUpperCase();
         textJQPassword.val(ConvertToUppercase);
     }
-
 }
 
 function setEncryptedKey() {
-
     $("#fade").show();
-
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
         theme: "a",
         textonly: true,
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><p style='color:#304589;font-weight:bold'>Please Wait...</p></span>"
-
     });
 
     $.ajax({
@@ -47,7 +39,6 @@ function setEncryptedKey() {
         url: BlackmanApplicationServices.encryptedkeyURL,
         dataType: "xml",
         success: function (xmlData) {
-
             var xmlString;
             if (window.ActiveXObject) {
                 xmlString = xmlData.xml;
@@ -62,9 +53,7 @@ function setEncryptedKey() {
             var json = $.parseJSON(resultJSON);
             var DeviceEncrptedKey = json.DeviceEncrptedKey;
             var AlphanumericToken = json.AlphanumericToken;
-
             if (DeviceEncrptedKey !== "" && DeviceEncrptedKey !== null) {
-
                 setLS('encryptedkey', DeviceEncrptedKey);
                 setCookie("AlphanumericToken", AlphanumericToken);
                 SecretPhrase = getCookie("AlphanumericToken");
@@ -73,7 +62,6 @@ function setEncryptedKey() {
                 $("#fade").hide();
                 productPageLoad2();
             }
-
         },
         error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
@@ -83,13 +71,9 @@ function setEncryptedKey() {
     });
 }
 
-
-
 // Function to delete all the cookies values
-
 function deleteAllCookies() {
     var cookies = document.cookie.split(";");
-
     for (var i = 0; i < cookies.length; i++) {
         var cookie = cookies[i];
         var eqPos = cookie.indexOf("=");
@@ -97,7 +81,6 @@ function deleteAllCookies() {
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 }
-
 
 function loadstatedetails() {
     var create = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);
@@ -168,19 +151,14 @@ $(function () {
     })
 });
 
-
-
 function showShowRooms() {
-
     $("#mapbody").addClass('mapbody');
     if ($(window).height() > 800) {
         $("#white_contentlistnew1").css("height", "650px");
-
     }
     else {
         $("#white_contentlistnew1").css("min-height", "340px");
     }
-
     var showRoom = getLS('Showroom'), html, addressSplit;
     if (showRoom === 'all') {
         html = "<div class='empty'></div>";
@@ -191,10 +169,7 @@ function showShowRooms() {
         html = html + "</div>";
         html = html + "<div class='innerpopup' style='font-size:12px'>";
         for (var f = 0; f < locations.length; f++) {
-
             addressSplit = locations[f][4].split(',');
-
-
             html = html + "<div class='popdiv'>";
             html = html + "<table class='tableclass'>";
             html = html + "<tr style='width: 220px;'>";
@@ -208,7 +183,6 @@ function showShowRooms() {
             html = html + "<span style='color:#304589'>" + locations[f][0] + "</span>";
             html = html + "</td>";
             html = html + " </tr>";
-
             html = html + "<tr style='width: 220px;'>";
             html = html + " <td style='width: 40px'>";
             html = html + "<img src='images/address.png' width='20px' height='20px' />";
@@ -225,13 +199,11 @@ function showShowRooms() {
             html = html + " </tr>";
             html = html + "</table>";
             html = html + "</div>";
-
         }
         html = html + "<div class='submitdiv' style='height:5px'></div>";
         html = html + "</div>";
         html = html + "</div>"; 
         document.getElementById("white_contentlistnew1").innerHTML = html;
-
         $('#white_contentlistnew1').toggle();
         $('#white_contentlistnew').hide();
         $('#lightdirection').hide();
@@ -239,7 +211,6 @@ function showShowRooms() {
         $('.popdiv').css('display', 'block');
     }
     else {
-
         html = "<div class='empty'></div>";
         html = html + "<div style='background: #fff;'>";
         html = html + "<div style='border-bottom: 1px solid #CCCCCC; height: 25px;margin-top: 25px;'>";
@@ -247,54 +218,42 @@ function showShowRooms() {
         html = html + "List of Branches</p>";
         html = html + "</div>";
         html = html + "<div class='innerpopup' style='font-size:12px'>";
-
         for (var k = 0; k < changedValues.length; k++) {
-
             addressSplit = changedValues[k][5].split(',');
-
-
             html = html + "<div class='popdiv'>";
             html = html + "<table class='tableclass'>";
             html = html + "<tr style='width: 100%;'>";
             html = html + " <td class='widthtd' >";
-
             html = html + " <table>";
             html = html + "<tr>";
             html = html + " <td>";
             html = html + "<img src='images/showroom.png' width='20px' height='20px' />";
-            html = html + "</td>"
-
+            html = html + "</td>";
             html = html + " <td>";
             html = html + "<span style='color:#304589'>" + changedValues[k][0] + "</span>";
             html = html + "</td>";
             html = html + "</tr>";
-
             html = html + "<tr style='width: 220px;'>";
             html = html + " <td style='width: 40px'>";
             html = html + "<img src='images/address.png' width='20px' height='20px'/>";
             html = html + "</td>";
-
             html = html + " <td style='width: 220px'>";
             html = html + "<span style='color:#304589'>" + addressSplit[0] + "</br>" + addressSplit[1] + "</span><span  style='margin-left: 30px; font-weight: bold; color: green;'>" + changedValues[k][3] + "&nbsp;mi</span>";
             html = html + "</td>";
             html = html + " </tr>";
             html = html + "</table>";
             html = html + "</td>";
-
             html = html + " <td style='width:15%;'>";
             html = html + "<span><a onclick=checkinventorysearch('" + changedValues[k][10] + "','" + k + "')><img src='images/checkinventory.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a><a onclick='getDirections(" + k + ",1,1);'><img src='images/getdirections1.png' width='26px' height='26px' style='margin-top:6px;cursor:pointer'/></a></span>";
             html = html + "</td>";
-
             html = html + " </tr>";
             html = html + "</table>";
             html = html + "</div>";
         }
-
         html = html + "<div class='submitdiv' style='height:5px'></div>";
         html = html + "</div>";
         html = html + "</div>";
         document.getElementById("white_contentlistnew1").innerHTML = html;
-
         $('#white_contentlistnew1').toggle();
         $('#white_contentlistnew').hide();
         $('#lightdirection').hide();
@@ -308,38 +267,31 @@ function findBranch(page) {
     var result = cPage.split(",");
     switch (page) {
         case 1:
-
             if (result[result.length - 1] !== 'index');
             {
                 setLS('page', cPage + ",home");
             }
             break;
         case 2:
-
             if (result[result.length - 1] !== 'products');
             {
                 setLS('page', cPage + ",products");
             }
-
             break;
         case 3:
-
             if (result[result.length - 1] !== 'cart');
             {
                 setLS('page', cPage + ",cart");
             }
             break;
         case 4:
-
             if (result[result.length - 1] !== 'account');
             {
                 setLS('page', cPage + ",account");
             }
             break;
     }
-
     window.location.href = 'index.html';
-
 }
 function toggleVisibilityClose1() {
     document.getElementById('white_contentlistnew1').style.display = 'none';
@@ -360,30 +312,25 @@ function product(page) {
             }
             break;
         case 2:
-
             if (result[result.length - 1] !== 'products');
             {
                 setLS('page', cPage + ",products");
             }
             break;
         case 3:
-
             if (result[result.length - 1] !== 'cart');
             {
                 setLS('page', cPage + ",cart");
             }
             break;
         case 4:
-
             if (result[result.length - 1] !== 'account');
             {
                 setLS('page', cPage + ",account");
             }
             break;
     }
-
     window.location.href = 'products.html';
-
 }
 
 function findcart(page) {
@@ -391,29 +338,24 @@ function findcart(page) {
     var result = cPage.split(",");
     switch (page) {
         case 1:
-
             if (result[result.length - 1] !== 'index');
             {
                 setLS('page', cPage + ",home");
             }
             break;
         case 2:
-
             if (result[result.length - 1] !== 'products');
             {
                 setLS('page', cPage + ",products");
             }
-
             break;
         case 3:
-
             if (result[result.length - 1] !== 'cart');
             {
                 setLS('page', cPage + ",cart");
             }
             break;
         case 4:
-
             if (result[result.length - 1] !== 'account');
             {
                 setLS('page', cPage + ",account");
@@ -434,22 +376,18 @@ function findaccount(page) {
             }
             break;
         case 2:
-
             if (result[result.length - 1] !== 'products');
             {
                 setLS('page', cPage + ",products");
             }
-
             break;
         case 3:
-
             if (result[result.length - 1] !== 'cart');
             {
                 setLS('page', cPage + ",cart");
             }
             break;
         case 4:
-
             if (result[result.length - 1] !== 'account');
             {
                 setLS('page', cPage + ",account");
@@ -457,7 +395,6 @@ function findaccount(page) {
             break;
     }
     window.location.href = 'myaccount.html';
-
 }
 
 function toggleDirectionClose() {
@@ -471,7 +408,6 @@ function toggleDirectionClose() {
         newPage = cPage.replace(',' + result[result.length - 1], "");
         setLS('page', newPage);
     }
-
     document.getElementById('lightdirection').style.display = 'none';
     document.getElementById('fade').style.display = 'none';
 }
@@ -488,7 +424,6 @@ function index1() {
         document.getElementById('loading').style.display = 'none';
         window.location.href = 'index.html';
     }, 1000);
-
 }
 
 function droptable() {
@@ -500,7 +435,6 @@ function droptable() {
         tx.executeSql('DROP TABLE IF EXISTS  cartitems');
         tx.executeSql('DROP TABLE IF EXISTS  kdcartitems');
         tx.executeSql('DROP TABLE IF EXISTS  sectioninfo');
-
         window.location.href = 'products.html';
     });
 }
@@ -548,7 +482,6 @@ function loadmenu(pageno) {
         html = html + '</div>';
         html = html + '<hr />';
     }
-
     html = html + '<div class="popdiv"  onclick="product(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
@@ -562,8 +495,6 @@ function loadmenu(pageno) {
     html = html + '</table>';
     html = html + '</div>';
     html = html + '<hr />';
-
-
     html = html + '<div class="popdiv" onclick="findBranch(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
@@ -577,7 +508,6 @@ function loadmenu(pageno) {
     html = html + '</table>';
     html = html + '</div>';
     html = html + '<hr />';
-
     html = html + '<div class="popdiv" onclick="findcart(' + pageno + ')">';
     html = html + '<table class="tableclass" style="border: none;">';
     html = html + '<tr style="width: 220px; text-align: left">';
@@ -604,8 +534,6 @@ function loadmenu(pageno) {
     html = html + '</table>';
     html = html + '</div>';
     html = html + '</div>';
-
-
     $("#white_contentlistnew").html(html);
 }
 
