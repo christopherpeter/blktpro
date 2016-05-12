@@ -162,15 +162,15 @@
 
         function onDeviceReady() {
             document.addEventListener("backbutton", function (e) {
-                var c_page = getLS('page');
-                var result = c_page.split(","), new_page;
+                var cPage = getLS('page');
+                var result = cPage.split(","), newPage;
                 changepage(result[result.length - 1]);
                 if (result.length === 1) {
-                    new_page = c_page.replace(result[result.length - 1], "");
-                    setLS('page', new_page);
+                    newPage = cPage.replace(result[result.length - 1], "");
+                    setLS('page', newPage);
                 } else {
-                    new_page = c_page.replace(',' + result[result.length - 1], "");
-                    setLS('page', new_page);
+                    newPage = cPage.replace(',' + result[result.length - 1], "");
+                    setLS('page', newPage);
                 }
             });
         }

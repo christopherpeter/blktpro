@@ -132,8 +132,8 @@ function loadSectionProductsContents(FirstLoad) {
                         else {
 
                             if (OurListUnitPriceCompany !== "" && AVAILABLEQUNTY >= 0 && OurListUnitPriceCompany !== "0" && OurListUnitPriceCompany !== 'CNF' && OurListUnitPriceCompany !== 0) {
-                                var branch_id = getLS('default_branchcode');
-                                if (branch_id !== 100) {
+                                var branchId = getLS('default_branchcode');
+                                if (branchId !== 100) {
                                     html = html + '<label id="lblship" style="color:Red;font-size: 13px">Out Of Stock [Available In WareHouse]</label>';
                                 }
                                 else {
@@ -211,7 +211,7 @@ function loadSectionProductsContents(FirstLoad) {
                 $(".cleardivivfilter").hide();
                 $("#loaditems123").html(html);
                 $("#filternavigation").show();
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
 
                 if (isuserlogged === "yes") {
@@ -230,7 +230,7 @@ function loadSectionProductsContents(FirstLoad) {
                 $(".tableproducts1filter").hide();
                 $(".cleardivivfilter").hide();
                 $("#filterselctiondiv").hide();
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
 
@@ -289,14 +289,14 @@ $(document).ready(function () {
 
 function backPage1() {
 
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 
     $('#pdt').show();
@@ -306,24 +306,24 @@ function backPage1() {
     ProductOverview();
 }
 function termsCondition() {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "terms") {
-        setLS('page', c_page + ",terms");
+        setLS('page', cPage + ",terms");
     }
 
     $('.terms_condition').show();
     $('#fade').show();
 }
 function termsConditionCls() {
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 
     $('.terms_condition').hide();
@@ -333,7 +333,7 @@ function termsConditionCls() {
 // Function to show details of user selected product
 
 function pdtdesc(itemid) {
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
 
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -344,12 +344,12 @@ function pdtdesc(itemid) {
 
     });
 
-    var branch_code = getLS('default_branchcode');
+    var branchCode = getLS('default_branchcode');
 
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.productScanURL + "itemno=" + itemid + "&branchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
+        url: BlackmanApplicationServices.productScanURL + "itemno=" + itemid + "&branchcode=" + branchCode + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
         dataType: "xml",
         success: function (xmlData) {
             try {
@@ -523,33 +523,33 @@ function pdtdesc(itemid) {
                         $("#pdtoverview").html(desc);
 
                         $.mobile.loading("hide");
-                        $("#loading_pdt").hide();
+                        $("#loadingPdt").hide();
                     });
                 }
             }
             catch (e) {
                 navigator.notification.alert(e, null, 'Connection Failed', 'OK');
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
             }
 
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         }
     });
 }
 
 function loginclose() {
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 
     document.getElementById('loginpopup').style.display = 'none';
@@ -558,7 +558,7 @@ function loginclose() {
 
 // Page load function for product categories
 
-function product_pageload() {
+function productPageLoad() {
     var encryptedkey = getLS('encryptedkey');
 
     if (encryptedkey === null) {
@@ -579,7 +579,7 @@ function productPageLoad2() {
         setLS('default_branchname1', defaultbranchname);
     }
 
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
 
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -590,7 +590,6 @@ function productPageLoad2() {
 
     });
     var branchname = getLS('default_branchname');
-    var branch_id = getLS('default_branchcode');
     var BranchName1 = getLS('default_branchname');
 
     $("#current_branch").html(BranchName1);
@@ -607,7 +606,7 @@ function submitlogin() {
     var password = $("#txtpwd").val().trim();
     var numbers = /^[0-9]+$/;
 
-    var branch_code = getLS('Current_branch');
+    var branchCode = getLS('Current_branch');
     if (accountno === "") {
 
         navigator.notification.alert('Please enter account no.', null, 'Authentication', 'OK');
@@ -636,10 +635,10 @@ function submitlogin() {
 }
 
 function loginpopup() {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== 'loginpopup') {
-        setLS('page', c_page + ",loginpopup");
+        setLS('page', cPage + ",loginpopup");
     }
     $("#fade").show();
     $("#loginpopup").show();
@@ -682,10 +681,10 @@ function filter() {
     $("#img_next").hide();
     setLS('secname', null);
 
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== 'filter') {
-        setLS('page', c_page + ",filter");
+        setLS('page', cPage + ",filter");
     }
 }
 function filterout() {
@@ -720,14 +719,14 @@ function filterlight() {
 
 function backcategory() {
 
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 
     JQProductDisplay.show();
@@ -755,14 +754,14 @@ function backcategorypdt() {
 $(function () {
     $('#locationfinder_product').click(function () {
         $('.white_contentlistnewpdt').toggle();
-        loadmenu_product(2);
+        loadmenuProduct(2);
     })
 
 });
 
 // Function to be called after user selected check inventory button in branch information pop up
 
-function checkinventory(branch_id) {
+function checkinventory(branchId) {
 
     if (isuserlogged === 'yes') {
         var getBranchName = getLS('default_branchname2');
@@ -774,13 +773,13 @@ function checkinventory(branch_id) {
         writeToLogFile("Checked inventory-Branch Name: " + getBranchName, 1);
     }
     else {
-        var c_page = getLS('page');
-        var result = c_page.split(",");
+        var cPage = getLS('page');
+        var result = cPage.split(",");
         if (result[result.length - 1] !== 'newlogin') {
-            setLS('page', c_page + ",newlogin");
+            setLS('page', cPage + ",newlogin");
         }
 
-        $("#loading_pdt").hide();
+        $("#loadingPdt").hide();
         $.mobile.loading("hide");
         window.location.href = 'login.html';
     }
@@ -801,9 +800,9 @@ function pdtImgKitchenDivDisplay(sec, group, cate, id) {
 
 function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
     $("#filternavigation").show();
-    var from_count, to_count, path, filterbackbutton, c_page, result, linkimage, branch_code, sectionname, groupname, sectname, categoryname, sectionname1;
-    from_count = 1;
-    to_count = BlackmanApplicationVariables.TotalProductCount;
+    var fromCount, toCount, path, filterbackbutton, cPage, result, linkimage, branchCode, sectionname, groupname, sectname, categoryname, sectionname1;
+    fromCount = 1;
+    toCount = BlackmanApplicationVariables.TotalProductCount;
 
     setLS('F_Sectioncode', sectioncode);
     setLS('F_Groupcode', groupcode);
@@ -814,24 +813,24 @@ function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
     myFuncCalls = 0;
     filterbackbutton = getLS('filterbackbutton');
     $("#txtpdtsrch").val("");
-    c_page = getLS('page');
-    result = c_page.split(",");
+    cPage = getLS('page');
+    result = cPage.split(",");
     if (filterbackbutton === 'filter') {
 
         if (result[result.length - 1] !== "filterselection") {
-            setLS('page', c_page + ",filterselection");
+            setLS('page', cPage + ",filterselection");
         }
     }
     else {
 
         if (result[result.length - 1] !== "filterresult") {
-            setLS('page', c_page + ",filterresult");
+            setLS('page', cPage + ",filterresult");
         }
     }
 
     setLS('filterbackbutton', 'none');
     setLS('showmoreproducts', 'filter');
-    branch_code = getLS('default_branchcode');
+    branchCode = getLS('default_branchcode');
     sectionname = getLS('Filter_sectionname');
     groupname = getLS('Filter_groupname');
     categoryname = getLS('Filter_categoryname');
@@ -857,7 +856,7 @@ function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
     }
 
     setLS('SEC_CODE', sectioncode);
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
 
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -872,7 +871,7 @@ function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode + "&GroupCode=" + groupcode + "&CategoryCode=" + categorycode + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode + "&GroupCode=" + groupcode + "&CategoryCode=" + categorycode + "&StartIndex=" + fromCount + "&EndIndex=" + toCount + "&brchcode=" + branchCode + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -919,14 +918,14 @@ function pdtImgKitchenDivDisplay1(sectioncode, groupcode, categorycode) {
 
                     });
                 }
-                setLS('product_count', to_count);
+                setLS('product_count', toCount);
                 loadSectionProductsContents('Yes');
 
             }, errorCB);
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         }
     });
 }
@@ -1042,11 +1041,11 @@ function loadMoreProducts() {
     else {
         AccessTokenKey = getLS('AccessTokenKey');
     }
-    var product_count, from_count, to_count;
+    var productCount, fromCount, toCount;
     var showmoreproducts = getLS('showmoreproducts');
     if (showmoreproducts === 'filter') {
 
-        $("#loading_pdt").show();
+        $("#loadingPdt").show();
         $.mobile.loading("show", {
             text: "Loading,Please Wait...",
             textVisible: true,
@@ -1056,7 +1055,7 @@ function loadMoreProducts() {
 
         });
 
-        var branch_code = getLS('default_branchcode');
+        var branchCode = getLS('default_branchcode');
         var sectioncode = getLS('F_Sectioncode');
         var GroupCode = getLS('F_Groupcode');
         var CategoryCode = getLS('F_Categorycode'), sectioncode1, GroupCode1, CategoryCode1;
@@ -1071,9 +1070,9 @@ function loadMoreProducts() {
             GroupCode1 = "";
             CategoryCode1 = "";
         }
-        product_count = getLS('product_count');
-        from_count = parseInt(product_count, 10) + 1;
-        to_count = parseInt(from_count, 10) + BlackmanApplicationVariables.ToNextCount;
+        productCount = getLS('product_count');
+        fromCount = parseInt(productCount, 10) + 1;
+        toCount = parseInt(fromCount, 10) + BlackmanApplicationVariables.ToNextCount;
 
         var sectionname1 = getLS('F_HSCODE');
         var sectname = "";
@@ -1087,7 +1086,7 @@ function loadMoreProducts() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode1 + "&GroupCode=" + GroupCode1 + "&CategoryCode=" + CategoryCode1 + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&brchcode=" + branch_code + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
+            url: BlackmanApplicationServices.filtersearchURL + "SecName=" + sectname + "&SectionCode=" + sectioncode1 + "&GroupCode=" + GroupCode1 + "&CategoryCode=" + CategoryCode1 + "&StartIndex=" + fromCount + "&EndIndex=" + toCount + "&brchcode=" + branchCode + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib,
             dataType: "xml",
             success: function (xmlData) {
                 var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1134,25 +1133,25 @@ function loadMoreProducts() {
                             tx.executeSql(qry, [OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, AVAILABLEQUNTY, ItemUnitPriceAmount, BRANCH, STOCK]);
                         });
                     }
-                    setLS('product_count', to_count);
+                    setLS('product_count', toCount);
                     loadSectionProductsContents('Yes');
                 }, errorCB);
             }, error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
             }
         });
     }
     else if (showmoreproducts === 'filterproducts') {
-        product_count = getLS('product_count');
-        FromCount = parseInt(product_count, 10) + 1;
-        ToCount = parseInt(product_count, 10) + BlackmanApplicationVariables.TotalProductCount;
+        productCount = getLS('product_count');
+        FromCount = parseInt(productCount, 10) + 1;
+        ToCount = parseInt(productCount, 10) + BlackmanApplicationVariables.TotalProductCount;
         GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCount)
     }
     else {
 
-        $("#loading_pdt").show();
+        $("#loadingPdt").show();
         $.mobile.loading("show", {
             text: "Loading,Please Wait...",
             textVisible: true,
@@ -1162,10 +1161,10 @@ function loadMoreProducts() {
 
         });
 
-        product_count = getLS('product_count');
-        from_count = parseInt(product_count, 10) + 1;
-        to_count = parseInt(from_count, 10) + BlackmanApplicationVariables.ToNextCount;
-        var branch_id = getLS('default_branchcode');
+        productCount = getLS('product_count');
+        fromCount = parseInt(productCount, 10) + 1;
+        toCount = parseInt(fromCount, 10) + BlackmanApplicationVariables.ToNextCount;
+        var branchId = getLS('default_branchcode');
         var searchtext = $("#txtpdtsrch").val().trim();
 
         searchtext = searchtext.split(" ");
@@ -1185,7 +1184,7 @@ function loadMoreProducts() {
         $.ajax({
             type: "GET",
             crossDomain: true,
-            url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
+            url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branchId + "&StartIndex=" + fromCount + "&EndIndex=" + toCount + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
             dataType: "xml",
             success: function (xmlData) {
                 var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1234,7 +1233,7 @@ function loadMoreProducts() {
 
 
                         });
-                        setLS('product_count', to_count);
+                        setLS('product_count', toCount);
                         loadSectionProductsContents('Yes');
                     }
                     else {
@@ -1245,7 +1244,7 @@ function loadMoreProducts() {
             }, error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
             }
         });
 
@@ -1255,10 +1254,10 @@ function loadMoreProducts() {
 
 function loadMoreProdutsByUsingSecondService() {
     GlobalItemsList.length = 0;
-    var product_count = getLS('product_count');
-    var from_count = parseInt(product_count, 10) + 1;
-    var to_count = parseInt(from_count, 10) + BlackmanApplicationVariables.ToNextCount;
-    var branch_id = getLS('default_branchcode');
+    var productCount = getLS('product_count');
+    var fromCount = parseInt(productCount, 10) + 1;
+    var toCount = parseInt(fromCount, 10) + BlackmanApplicationVariables.ToNextCount;
+    var branchId = getLS('default_branchcode');
 
     var searchtext = $("#txtpdtsrch").val().trim();
     searchtext = searchtext.split(" ");
@@ -1278,7 +1277,7 @@ function loadMoreProdutsByUsingSecondService() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branchId + "&StartIndex=" + fromCount + "&EndIndex=" + toCount + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -1326,14 +1325,14 @@ function loadMoreProdutsByUsingSecondService() {
                     });
                 }
 
-                setLS('product_count', to_count);
+                setLS('product_count', toCount);
                 loadSectionProductsContents('Yes');
 
             }, errorCB);
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         }
     });
 }
@@ -1343,7 +1342,7 @@ function loadMoreProdutsByUsingSecondService() {
 function errorCB() {
     navigator.notification.alert('Database error!.Please Contact administrator', null, 'Alert', 'OK');
 
-    $("#loading_pdt").hide();
+    $("#loadingPdt").hide();
     $("#fade").hide();
     $.mobile.loading("hide");
 }
@@ -1351,10 +1350,10 @@ function errorCB() {
 // Product details page function
 
 function storetolocal(id) {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== 'productlist') {
-        setLS('page', c_page + ",productlist");
+        setLS('page', cPage + ",productlist");
     }
     $("#productdesc").show();
     pdtdesc(id);
@@ -1379,7 +1378,7 @@ function storetolocal(id) {
 
 function loaddefaultbranchdetails() {
 
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     $.mobile.loading("show",
     {
         text: "Please Wait...",
@@ -1390,10 +1389,10 @@ function loaddefaultbranchdetails() {
 
     });
 
-    var branch_id = getLS('default_branchcode1');
+    var branchId = getLS('default_branchcode1');
     var BranchName = getLS('default_branchname1');
     setLS('default_branchname', BranchName);
-    setLS('default_branchcode', branch_id);
+    setLS('default_branchcode', branchId);
 
     var BranchName1 = getLS('default_branchname1');
     $("#current_branch").html(BranchName1);
@@ -1443,7 +1442,7 @@ function addtocart(page, ItemNumber, textboxid) {
                     return false;
                 }
                 else {
-                    $("#loading_pdt").show();
+                    $("#loadingPdt").show();
                     $.mobile.loading("show",
                     {
                         text: "Please Wait...",
@@ -1496,14 +1495,14 @@ function addtocart(page, ItemNumber, textboxid) {
 
 function loadproductimage(id) {
 
-    $("#loading_pdt").hide();
+    $("#loadingPdt").hide();
     $.mobile.loading("hide");
 
     $('#' + id).show();
 
 }
 
-function loadmenu_product(pageno) {
+function loadmenuProduct(pageno) {
     var isuserlogged = getLS('Isuserlogged');
 
     var html = "";
@@ -1601,12 +1600,12 @@ function loadmenu_product(pageno) {
 
 function inventoryaddtocart(ItemNumber) {
     var quantity = $("#txtinventory").val();
-    var checked_branchno = $('input:radio[name=branches]:checked').val();
-    var split_data = checked_branchno.split('_');
-    var branch = split_data[0];
-    var aval = split_data[1];
+    var checkedBranchNo = $('input:radio[name=branches]:checked').val();
+    var splitData = checkedBranchNo.split('_');
+    var branch = splitData[0];
+    var aval = splitData[1];
     var message = " added to cart";
-    if (split_data[1] !== 0 && split_data[1] >= 0) {
+    if (splitData[1] !== 0 && splitData[1] >= 0) {
         var carinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
         carinsert.transaction(function carinsertdetails(tx) {
             var query1 = 'CREATE TABLE IF NOT EXISTS cartitems (id INTEGER PRIMARY KEY AUTOINCREMENT,Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch)';
@@ -1636,7 +1635,7 @@ function inventoryaddtocart(ItemNumber) {
                         tx.executeSql('select * from iteminfo where OurItemNumber="' + ItemNumber + '" LIMIT 1', [], function successitem(txx, res) {
 
                             if (res.rows.length > 0) {
-                                $("#loading_pdt").show();
+                                $("#loadingPdt").show();
 
                                 $.mobile.loading("show",
                                 {
@@ -1648,33 +1647,32 @@ function inventoryaddtocart(ItemNumber) {
 
                                 });
 
-                                for (var i = 0; i < res.rows.length; i++) {
-
-
-                                    var ss = res.rows.item(i);
-                                    var OurItemNumber = ss.OurItemNumber;
-                                    var OurProductNumber = ss.OurProductNumber;
-                                    var ItemOrProductDescription = ss.ItemOrProductDescription;
-                                    var ItemStockingUnitOfMeasure = ss.ItemStockingUnitOfMeasure;
-                                    var InventoryItemWeight = ss.InventoryItemWeight;
-                                    var PRODUCTIMAGE = ss.PRODUCTIMAGE;
-                                    var AVAILABLEQUNTY = ss.AVAILABLEQUNTY;
-                                    var OurListUnitPriceCompany = ss.ItemUnitPriceAmount;
-                                    var BRANCH = ss.BRANCH;
-                                    var STOCK = ss.STOCK;
-                                    var RepairReplacementCoverage = 0;
-                                    var ReplacementCostUnitPriceCompany = "";
-                                    var totalweight = parseFloat(InventoryItemWeight) * quantity;
+                                var ss, OurItemNumber, qry, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE;
+                                var AVAILABLEQUNTY, Totalprice, OurListUnitPriceCompany1, OurListUnitPriceCompany, BRANCH, STOCK, RepairReplacementCoverage, ReplacementCostUnitPriceCompany, totalweight;
+                                for (var i = 0; i < res.rows.length; i++)
+                                {
+                                    ss = res.rows.item(i);
+                                    OurItemNumber = ss.OurItemNumber;
+                                    OurProductNumber = ss.OurProductNumber;
+                                    ItemOrProductDescription = ss.ItemOrProductDescription;
+                                    ItemStockingUnitOfMeasure = ss.ItemStockingUnitOfMeasure;
+                                    InventoryItemWeight = ss.InventoryItemWeight;
+                                    PRODUCTIMAGE = ss.PRODUCTIMAGE;
+                                    AVAILABLEQUNTY = ss.AVAILABLEQUNTY;
+                                    OurListUnitPriceCompany = ss.ItemUnitPriceAmount;
+                                    BRANCH = ss.BRANCH;
+                                    STOCK = ss.STOCK;
+                                    RepairReplacementCoverage = 0;
+                                    ReplacementCostUnitPriceCompany = "";
+                                    totalweight = parseFloat(InventoryItemWeight) * quantity;
 
                                     if (RepairReplacementCoverage === 0) {
                                         ReplacementCostUnitPriceCompany = 0;
                                     }
 
-                                    var OurListUnitPriceCompany1 = parseFloat(OurListUnitPriceCompany) + parseFloat(ReplacementCostUnitPriceCompany);
-
-                                    var Totalprice = quantity * OurListUnitPriceCompany1.toFixed(2);
-
-                                    var qry = 'INSERT INTO cartitems (Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+                                    OurListUnitPriceCompany1 = parseFloat(OurListUnitPriceCompany) + parseFloat(ReplacementCostUnitPriceCompany);
+                                    Totalprice = quantity * OurListUnitPriceCompany1.toFixed(2);
+                                    qry = 'INSERT INTO cartitems (Product_ID,OurItemNumber,OurProductNumber,ItemOrProductDescription,ItemStockingUnitOfMeasure,InventoryItemWeight,PRODUCTIMAGE,AVAILABLEQUNTY,ItemUnitPriceAmount,BRANCH,STOCK,RequiredQuantity,TotalPrice,Totalweight,selectedbranch) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
                                     tx.executeSql(qry, [ItemNumber, OurItemNumber, OurProductNumber, ItemOrProductDescription, ItemStockingUnitOfMeasure, InventoryItemWeight, PRODUCTIMAGE, aval, OurListUnitPriceCompany, BRANCH, STOCK, quantity, Totalprice, totalweight, branch]);
                                     writeToLogFile("Quantity:" + quantity + "," + ItemOrProductDescription + message, 9);
@@ -1707,10 +1705,10 @@ function checkinventoryfun(ItemNumber) {
     $('#checkinventory1').css('margin-top', screenTop);
     $("#checkinventory").html("<div style='Text-align:center;margin-top:50px;color:#304589;font-family:calibri'><p><b>Please Wait</b></p></div>");
 
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "checkinventory") {
-        setLS('page', c_page + ",checkinventory");
+        setLS('page', cPage + ",checkinventory");
     }
 
 
@@ -1808,14 +1806,14 @@ function keypressInventory(e) {
 }
 function checkInventoryFunCls() {
 
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 
 
@@ -2075,14 +2073,14 @@ function Specification(itemno) {
             catch (e) {
                 navigator.notification.alert(e, null, 'Alert', 'OK');
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
             }
 
 
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         }
 
     });
@@ -2114,14 +2112,14 @@ function pdoductpagereload() {
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
 
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 }
 function navigationclick() {

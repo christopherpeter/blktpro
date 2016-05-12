@@ -9,28 +9,28 @@ License:Tychons solutions
 var textJQAccNo;
 
 function backtoindexpage() {
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     changepage(result[result.length - 1]);
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 }
 
 
 function login() {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     var isuserlogged = getLS('Isuserlogged');
-    if (c_page !== null) {
-        if (c_page.indexOf(',') > -1) {
+    if (cPage !== null) {
+        if (cPage.indexOf(',') > -1) {
            
             if (result[result.length - 1] !== "newlogin") {
-                setLS('page', c_page + ",newlogin");
+                setLS('page', cPage + ",newlogin");
             }
         }
         else {
@@ -44,7 +44,7 @@ function login() {
     if (isuserlogged === 'yes') {
         if (result[result.length - 1] !== 'home');
         {
-            setLS('page', c_page + ",home");
+            setLS('page', cPage + ",home");
         }
         window.location.href = 'products.html';
     }
@@ -64,7 +64,6 @@ function submitButton(page) {
     var password = $("#txtpwd").val().trim();
     var numbers = /^[0-9]+$/;
 
-    //var branch_code = getLS('Current_branch');
     if (accountno === "") {
 
         navigator.notification.alert('Please enter account no.', null, 'Authentication', 'OK');
@@ -88,7 +87,7 @@ function submitButton(page) {
         return false;
     }
 
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
@@ -248,7 +247,7 @@ function submitButton(page) {
                     else {
                         navigator.notification.alert('Invalid Username Or Password.', null, 'Authentication', 'OK');
                         setLS('Isuserlogged', 'No');
-                        $("#loading_pdt").hide();
+                        $("#loadingPdt").hide();
                         $.mobile.loading("hide");
                         $("#fadelogin").hide();
                     }
@@ -257,7 +256,7 @@ function submitButton(page) {
 
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
             $.mobile.loading("hide");
         }
 
@@ -269,7 +268,7 @@ function submitButton(page) {
 function errorCB() {
     navigator.notification.alert('Database error!.Please Contact administrator', null, 'Alert', 'OK');
 
-    $("#loading_pdt").hide();
+    $("#loadingPdt").hide();
     $("#fade").hide();
     $.mobile.loading("hide");
 }
@@ -286,7 +285,7 @@ function onConfirmExit(buttonIndex) {
         var isuserlogged = getLS('Isuserlogged');
         if (isuserlogged === 'yes') {
             var AccessTokenKey = getLS('AccessTokenKey');
-            $("#loading_pdt").show();
+            $("#loadingPdt").show();
             $.mobile.loading("show",
             {
                 text: "Loading,Please Wait...",
@@ -310,7 +309,7 @@ function onConfirmExit(buttonIndex) {
 
                 }, error: function () {
                     navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     $.mobile.loading("hide");
                 }
             });

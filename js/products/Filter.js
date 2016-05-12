@@ -37,13 +37,13 @@ if (isuserlogged === 'yes') {
 }
 
 
-var branch_id = getLS('default_branchcode');
+var branchId = getLS('default_branchcode');
 function filterselection1() {
 
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "FilterPopUp") {
-        setLS('page', c_page + ",FilterPopUp");
+        setLS('page', cPage + ",FilterPopUp");
     }
     if (getLS('IsNewFilterAttributes') === 'Yes') {
         GlobalFilterArray.length = 0;
@@ -56,7 +56,7 @@ function filterselection1() {
             html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
         });
-        $("#loading_pdt").show();
+        $("#loadingPdt").show();
 
 
         var ServiceURL = "";
@@ -73,7 +73,7 @@ function filterselection1() {
         else {
             var searchType = getLS('SearchType');
             var searchText = getLS('LS_SearchText');
-            ServiceURL = BlackmanApplicationServices.NewFilterAttributesURL + 'SEARCHTYPE=' + searchType + '&SEARCHTXT=' + searchText.toUpperCase() + '&BRANCHCODE=' + branch_id + '&deviceencryptedkey=' + encryptedkey + '&splib=' + BlackmanApplicationVariables.splib + '&tablelib=' + BlackmanApplicationVariables.tablelib;
+            ServiceURL = BlackmanApplicationServices.NewFilterAttributesURL + 'SEARCHTYPE=' + searchType + '&SEARCHTXT=' + searchText.toUpperCase() + '&BRANCHCODE=' + branchId + '&deviceencryptedkey=' + encryptedkey + '&splib=' + BlackmanApplicationVariables.splib + '&tablelib=' + BlackmanApplicationVariables.tablelib;
         }
 
         $.ajax({
@@ -134,7 +134,7 @@ function filterselection1() {
                     JQFilterSelectionDiv.html(output);
                     JQFilterSelectionDiv.show();
                     $.mobile.loading("hide");
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     $(".pdtloadlistdiv").hide();
                     $(".tableproducts1filter").show();
                     $(".cleardivivfilter").show();
@@ -144,7 +144,7 @@ function filterselection1() {
                     JQFilterSelectionDiv.html("<div style='Text-align:center;margin-top:50px;color:red;font-family:calibri'>No Filters</div>");
                     JQFilterSelectionDiv.show();
                     $.mobile.loading("hide");
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     $(".pdtloadlistdiv").hide();
                     $(".tableproducts1filter").show();
                     $(".cleardivivfilter").show();
@@ -154,7 +154,7 @@ function filterselection1() {
 
             }, error: function () {
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
                 $(".pdtloadlistdiv").hide();
                 $(".tableproducts1filter").show();
@@ -166,7 +166,7 @@ function filterselection1() {
     else {
         JQFilterSelectionDiv.show();
         $.mobile.loading("hide");
-        $("#loading_pdt").hide();
+        $("#loadingPdt").hide();
         $(".pdtloadlistdiv").hide();
         $(".tableproducts1filter").show();
         $(".cleardivivfilter").show();
@@ -185,7 +185,7 @@ function Filterdiv(Divid) {
            html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
        });
-        $("#loading_pdt").show();
+        $("#loadingPdt").show();
 
 
         var ServiceURL = "";
@@ -194,7 +194,7 @@ function Filterdiv(Divid) {
             ServiceURL = BlackmanApplicationServices.FilterValueURL + "sectionId=" + getLS("F_Sectioncode") + "&HEADSECID=&groupId=" + getLS("F_Groupcode") + "&categoryId=" + getLS("F_Categorycode") + "&attributeName=" + Divid + "&userId=&deviceencryptedkey=" + getLS('encryptedkey') + "&accesstoken=&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib;
         }
         else {
-            ServiceURL = BlackmanApplicationServices.NewFilterAttributesVauesURL + "SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + Divid + "&BRANCHCODE=" + branch_id + "&deviceencryptedkey=" + encryptedkey + "&splib=" + BlackmanApplicationVariables.splib + "&TABLELIB=" + BlackmanApplicationVariables.tablelib;
+            ServiceURL = BlackmanApplicationServices.NewFilterAttributesVauesURL + "SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + Divid + "&BRANCHCODE=" + branchId + "&deviceencryptedkey=" + encryptedkey + "&splib=" + BlackmanApplicationVariables.splib + "&TABLELIB=" + BlackmanApplicationVariables.tablelib;
         }
 
 
@@ -251,19 +251,19 @@ function Filterdiv(Divid) {
                     }
                     $("#filterdiv_" + Divid).show();
                     $.mobile.loading("hide");
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                 }
                 else {
                     $("#filterdiv_" + Divid).html("<div style='Text-align:center;margin-top:50px;color:red;font-family:calibri'>No Filters</div>");
                     $("#filterdiv_" + Divid).show();
                     $.mobile.loading("hide");
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
 
                 }
 
             }, error: function () {
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
 
@@ -294,14 +294,14 @@ function filterBackBtn() {
     JQFilterSelectionDiv.hide();
     $(".tableproducts1filter").hide();
     $(".cleardivivfilter").hide();
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
     var valuefilter = getLS('showmoreproducts');
 
@@ -367,17 +367,17 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCo
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
     });
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
 
-    var branch_code = getLS('default_branchcode');
+    var branchCode = getLS('default_branchcode');
 
-    var ServiceURL = "";
+    var ServiceURL;
 
     if (getLS('showmoreproducts') === 'filter') {
-        ServiceURL = BlackmanApplicationServices.FilterProductsURL + "SectionCode=" + getLS('F_Sectioncode') + "&HEADSECID=&GroupCode=" + getLS('F_Groupcode') + "&CategoryCode=" + getLS('F_Categorycode') + "&AttrName=" + AttributeName + "&AttrValue=" + AttributeValue + "&StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&brchcode=" + branch_code + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib;
+        ServiceURL = BlackmanApplicationServices.FilterProductsURL + "SectionCode=" + getLS('F_Sectioncode') + "&HEADSECID=&GroupCode=" + getLS('F_Groupcode') + "&CategoryCode=" + getLS('F_Categorycode') + "&AttrName=" + AttributeName + "&AttrValue=" + AttributeValue + "&StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&brchcode=" + branchCode + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib;
     }
     else {
-        ServiceURL = BlackmanApplicationServices.NewFilterProductsResultsURL + "StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&cusno=" + customerno + "&SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + AttributeName.replace(",", "','") + "&ATTRVALUE=" + AttributeValue.replace(",", "','") + "&BRANCHCODE=" + branch_id + "&username=" + UserProfile + "&accesstoken=" + AccessTokenKey + "&deviceencryptedkey=" + encryptedkey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random();
+        ServiceURL = BlackmanApplicationServices.NewFilterProductsResultsURL + "StartIndex=" + FromCount + "&EndIndex=" + ToCount + "&cusno=" + customerno + "&SEARCHTYPE=" + getLS("SearchType") + "&SEARCHTXT=" + getLS("LS_SearchText").toUpperCase() + "&ATTRNAME=" + AttributeName.replace(",", "','") + "&ATTRVALUE=" + AttributeValue.replace(",", "','") + "&BRANCHCODE=" + branchCode + "&username=" + UserProfile + "&accesstoken=" + AccessTokenKey + "&deviceencryptedkey=" + encryptedkey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random();
     }
 
 
@@ -443,7 +443,7 @@ function GetProductsBasedOnFilter(AttributeName, AttributeValue, FromCount, ToCo
         }, error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         }
     });
 }

@@ -168,12 +168,12 @@ function Loadorderhistory() {
                     });
 
                     $("#orderclick").html(output);
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     $.mobile.loading("hide");
                 }
                 else {
                     $("#orderclick").html("<div style='text-align: center;padding: 31px;background-color: #fff;color:red'><span>No Orders Found</span></div>");
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     $.mobile.loading("hide");
                 }
 
@@ -182,7 +182,7 @@ function Loadorderhistory() {
             error: function () {
 
 
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
@@ -192,7 +192,7 @@ function Loadorderhistory() {
     else {
 
         $("#orderclick").html("<div style='text-align: center;padding: 31px;background-color: #fff;'><span style='color:red'>Please log in to see your order history</span></div>");
-        $("#loading_pdt").hide();
+        $("#loadingPdt").hide();
         $.mobile.loading("hide");
     }
 }
@@ -290,7 +290,7 @@ function showinnerdiv(OrderNumber) {
         },
         error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
             $.mobile.loading("hide");
         }
     });
@@ -301,7 +301,7 @@ function showinnerdiv(OrderNumber) {
 
 function invoiceclick() {
     if (isuserlogged === "yes") {
-        $("#loading_pdt").show();
+        $("#loadingPdt").show();
 
         $.mobile.loading("show", {
             text: "Loading,Please Wait...",
@@ -407,20 +407,20 @@ function invoiceclick() {
                     });
 
                     JQInvoiceClick.show();
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     $.mobile.loading("hide");
 
                 }
                 else {
                     $("#invoiceclick").html("<div style='text-align: center;padding-top: 10%;background-color: #fff;color: red;font-size: 14px;'><span>No balances found.</span></div>");
                     $("#cur_footer").hide();
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     $.mobile.loading("hide");
                 }
             },
             error: function () {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
                 $("#cur_footer").hide();
             }
@@ -541,7 +541,7 @@ function tableinvoice(invoiceno) {
         },
         error: function () {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
             $.mobile.loading("hide");
         }
     });

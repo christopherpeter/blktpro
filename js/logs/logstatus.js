@@ -5,7 +5,7 @@ License:Tychons solutions
 */
 // JquerySelectorVariable
 
-var JQFade = $("#fade"), JQLoadingPage = $("#loading_pdt");
+var JQFade = $("#fade"), JQLoadingPage = $("#loadingPdt");
 
 
 function writeToLogFile(message, pageno) {
@@ -103,7 +103,7 @@ function writeToLogFile(message, pageno) {
                 case 10:
                     JQLoadingPage.hide();
                     $.mobile.loading("hide");
-                    product_pageload();
+                    productPageLoad();
                     break;
 
                 case 11:

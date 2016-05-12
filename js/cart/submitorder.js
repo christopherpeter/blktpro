@@ -328,7 +328,7 @@ function sendsummitorder(param1, param2) {
 
                     });
 
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     $.mobile.loading("hide");
                     document.getElementById('submitpopup').style.display = 'none';
                     $("#fade").hide();
@@ -459,12 +459,12 @@ function submitpopup() {
 
 
     var OrderMethodOfShipment = $("#ddshippment1").val();
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (OrderMethodOfShipment === "D") {
 
         if (result[result.length - 1] !== "submitpopup") {
-            setLS('page', c_page + ",submitpopup");
+            setLS('page', cPage + ",submitpopup");
         }
 
         $("#shipping_popup").hide();
@@ -475,7 +475,7 @@ function submitpopup() {
     else if (OrderMethodOfShipment === "O") {
 
         if (result[result.length - 1] !== "submitpopup") {
-            setLS('page', c_page + ",submitpopup");
+            setLS('page', cPage + ",submitpopup");
         }
 
         $("#shipping_popup").hide();
@@ -491,7 +491,7 @@ function submitpopup() {
         }
 
         if (result[result.length - 1] !== "submitpopup") {
-            setLS('page', c_page + ",submitpopup");
+            setLS('page', cPage + ",submitpopup");
         }
         $("#shipping_popup").hide();
         $("#fade").show();
@@ -507,7 +507,7 @@ function submitpopup() {
         }
 
         if (result[result.length - 1] !== "submitpopup") {
-            setLS('page', c_page + ",submitpopup");
+            setLS('page', cPage + ",submitpopup");
         }
         $("#shipping_popup").hide();
         $("#fade").show();
@@ -519,14 +519,14 @@ function submitpopup() {
 
 function onConfirmCancelOrder(buttonIndex) {
     if (buttonIndex === 1) {
-        var c_page = getLS('page');
-        var result = c_page.split(","), new_page;
+        var cPage = getLS('page');
+        var result = cPage.split(","), newPage;
         if (result.length === 1) {
-            new_page = c_page.replace(result[result.length - 1], "");
-            setLS('page', new_page);
+            newPage = cPage.replace(result[result.length - 1], "");
+            setLS('page', newPage);
         } else {
-            new_page = c_page.replace('estimateshipping,' + result[result.length - 1], "");
-            setLS('page', new_page);
+            newPage = cPage.replace('estimateshipping,' + result[result.length - 1], "");
+            setLS('page', newPage);
         }
 
         document.getElementById('submitpopup').style.display = 'none';

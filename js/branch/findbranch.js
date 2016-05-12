@@ -49,9 +49,9 @@ function loadGPSLocations() {
         if (unit === "K") { dist = dist * 1.609344 }
         if (unit === "N") { dist = dist * 0.8684 }
 
-        var distance_in_KM = (dist / 1.6).toFixed(2);
-        if (distance_in_KM <= 20) {
-            changedValues.push([locations[i][0], locations[i][1], locations[i][2], distance_in_KM, 1, locations[i][4], locations[i][5], locations[i][6], locations[i][7], locations[i][8]])
+        var distanceInKM = (dist / 1.6).toFixed(2);
+        if (distanceInKM <= 20) {
+            changedValues.push([locations[i][0], locations[i][1], locations[i][2], distanceInKM, 1, locations[i][4], locations[i][5], locations[i][6], locations[i][7], locations[i][8]])
         }
     }
 
@@ -66,7 +66,7 @@ function loadGPSLocations() {
     html = html + "<div class='innerpopup' style='font-size:12px'>";
 
     for (var k = 0; k < changedValues.length; k++) {
-        var address_split = changedValues[k][5].split(',');
+        var addressSplit = changedValues[k][5].split(',');
         html = html + "<div class='popdiv'>";
         html = html + "<table class='tableclass'>";
         html = html + "<tr style='width:100%;'>";
@@ -89,7 +89,7 @@ function loadGPSLocations() {
         html = html + "</td>"
 
         html = html + " <td style='width: 220px'>";
-        html = html + "<span style='color:#304589'>" + address_split[0] + "</br>" + address_split[1] + "</span><span  style='margin-left: 30px; font-weight: bold; color: green;'>" + changedValues[k][3] + "&nbsp;mi</span>";
+        html = html + "<span style='color:#304589'>" + addressSplit[0] + "</br>" + addressSplit[1] + "</span><span  style='margin-left: 30px; font-weight: bold; color: green;'>" + changedValues[k][3] + "&nbsp;mi</span>";
         html = html + "</td>"
         html = html + " </tr>"
         html = html + "</table>";
@@ -122,18 +122,18 @@ function clickmarker(i) {
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "clickmarker") {
-        setLS('page', c_page + ",clickmarker");
+        setLS('page', cPage + ",clickmarker");
     }
 
-    var address_split = locations[i][4].split(',');
-    var branch_name = locations[i][0];
-    var branch_id = locations[i][3];
+    var addressSplit = locations[i][4].split(',');
+    var branchName = locations[i][0];
+    var branchId = locations[i][3];
 
-    setLS('default_branchname2', branch_name);
-    setLS('default_branchcode2', branch_id);
+    setLS('default_branchname2', branchName);
+    setLS('default_branchcode2', branchId);
 
     var html = '<div style="background: none repeat scroll 0 0 #304589; float: left; height: 32px;width: 100%;color:#fff">';
     html = html + '<div style="width: 88%; float: left">';
@@ -156,7 +156,7 @@ function clickmarker(i) {
     html = html + '<td style="width: 220px">';
     html = html + locations[i][0];
     html = html + '<br />';
-    html = html + address_split[0] + "</br>" + address_split[1];
+    html = html + addressSplit[0] + "</br>" + addressSplit[1];
     html = html + '</td>';
     html = html + '</tr>';
     html = html + '</table>';
@@ -474,9 +474,9 @@ function SearchBranch() {
                 if (unit === "K") { dist = dist * 1.609344 }
                 if (unit === "N") { dist = dist * 0.8684 }
 
-                var distance_in_KM = (dist / 1.6).toFixed(2);
-                if (distance_in_KM <= 20) {
-                    changedValues.push([locations[i][0], locations[i][1], locations[i][2], distance_in_KM, 1, locations[i][4], locations[i][5], locations[i][6], locations[i][7], locations[i][8], locations[i][3]])
+                var distanceInKM = (dist / 1.6).toFixed(2);
+                if (distanceInKM <= 20) {
+                    changedValues.push([locations[i][0], locations[i][1], locations[i][2], distanceInKM, 1, locations[i][4], locations[i][5], locations[i][6], locations[i][7], locations[i][8], locations[i][3]])
                 }
 
             }
@@ -763,7 +763,7 @@ function Maperror(error) {
 }
 
 var branchNameNew, branchIdNew;
-function checkinventorynew(branch_id, id) {
+function checkinventorynew(branchId, id) {
     branchNameNew = locations[id][0];
     branchIdNew = locations[id][3];
 
@@ -772,7 +772,7 @@ function checkinventorynew(branch_id, id) {
     checkinventory(branchIdNew);
 }
 
-function checkinventorysearch(branch_id, id) {
+function checkinventorysearch(branchId, id) {
     branchNameNew = changedValues[id][0];
     branchIdNew = changedValues[id][10];
 
@@ -789,22 +789,22 @@ function clickmarker1(i) {
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "clickmarker") {
-        setLS('page', c_page + ",clickmarker");
+        setLS('page', cPage + ",clickmarker");
     }
 
-    var branch_name = changedValues[i][0];
-    var branch_id = changedValues[i][10];
+    var branchName = changedValues[i][0];
+    var branchId = changedValues[i][10];
 
-    setLS('default_branchname2', branch_name);
-    setLS('default_branchcode2', branch_id);
+    setLS('default_branchname2', branchName);
+    setLS('default_branchcode2', branchId);
 
 
 
     var mapno = getLS('map_number');
-    var address_split = changedValues[i][5].split(',');
+    var addressSplit = changedValues[i][5].split(',');
 
     var html = '<div style="background: none repeat scroll 0 0 #304589; float: left; height: 32px;width: 100%;color:#fff">';
     html = html + '<div style="width: 88%; float: left">';
@@ -826,7 +826,7 @@ function clickmarker1(i) {
     html = html + '<tr style="width: 220px; text-align: left;">';
     html = html + '<td style="width: 220px">';
     html = html + changedValues[i][0] + "</br>";
-    html = html + address_split[0] + "</br>" + address_split[1];
+    html = html + addressSplit[0] + "</br>" + addressSplit[1];
     html = html + '</td>';
     html = html + '</tr>';
     html = html + '</table>';
@@ -912,22 +912,22 @@ function clickMarker2(i) {
 
     $("body").removeClass('globalbodyclass');
     $("#mapbody").removeClass('mapbody');
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "clickmarker") {
-        setLS('page', c_page + ",clickmarker");
+        setLS('page', cPage + ",clickmarker");
     }
 
     var mapno = getLS('map_number');
 
-    var branch_name = changedValues[i][0];
-    var branch_id = changedValues[i][10];
+    var branchName = changedValues[i][0];
+    var branchId = changedValues[i][10];
 
-    setLS('default_branchname2', branch_name);
-    setLS('default_branchcode2', branch_id);
+    setLS('default_branchname2', branchName);
+    setLS('default_branchcode2', branchId);
 
 
-    var address_split = changedValues[i][5].split(',');
+    var addressSplit = changedValues[i][5].split(',');
     var html = '<div style="background: none repeat scroll 0 0 #304589; float: left; height: 32px;width: 100%;color:#fff">';
     html = html + '<div style="width: 88%; float: left">';
     html = html + '<p class="p-content" style="font-weight:bold;font-size:19px">';
@@ -948,7 +948,7 @@ function clickMarker2(i) {
     html = html + '<tr style="width: 220px; text-align: left;">';
     html = html + '<td style="width: 220px">';
     html = html + changedValues[i][0] + "</br>";
-    html = html + address_split[0] + "</br>" + address_split[1];
+    html = html + addressSplit[0] + "</br>" + addressSplit[1];
     html = html + '</td>';
     html = html + '</tr>';
     html = html + '</table>';
@@ -1022,14 +1022,14 @@ function clickMarker2(i) {
 
 function toggleVisibilityClose() {
     $("body").addClass('globalbodyclass');
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 
     $("#light").hide();
@@ -1060,10 +1060,10 @@ window.onresize = function () {
 
 function getDirections(g, maptype, load) {
     $("#mapbody").removeClass('mapbody');
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "getdirections") {
-        setLS('page', c_page + ",getdirections");
+        setLS('page', cPage + ",getdirections");
     }
 
     var Source_lat;

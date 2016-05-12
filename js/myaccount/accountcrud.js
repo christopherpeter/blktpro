@@ -40,7 +40,7 @@ if (isuserlogged === 'yes') {
 
 function accountPageLoad() {
 
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
 
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
@@ -54,7 +54,7 @@ function accountPageLoad() {
     $("#lblusername").html(UserName);
     $("#lblCustomerNumber").html(CustomerNumber);
 
-    var branch_id = getLS('default_branchcode');
+    var branchId = getLS('default_branchcode');
 
     var ShippingMethod = getLS('ShippingMethod');
     $("#ddshippment").val(ShippingMethod);
@@ -113,7 +113,7 @@ function accountPageLoad() {
                 var BranchName = ss.BranchName;
                 var BranchCode = ss.BranchCode;
                 //var id = ss.id;
-                if (branch_id === BranchCode) {
+                if (branchId === BranchCode) {
                     html = html + "<option value='" + BranchCode + "' selected>" + BranchName + "</option>";
                 }
                 else {
@@ -126,9 +126,9 @@ function accountPageLoad() {
 
         });
 
-        var branch_code = "'" + getLS('default_branchcode') + "'";
+        var branchCode = "'" + getLS('default_branchcode') + "'";
 
-        tx.executeSql('select id,Address,BranchName,BranchCode,email,PhoneNumber from branchinfo where BranchCode=' + branch_code, [], function successitem(txx, res) {
+        tx.executeSql('select id,Address,BranchName,BranchCode,email,PhoneNumber from branchinfo where BranchCode=' + branchCode, [], function successitem(txx, res) {
             var data = "";
             var branchdata = "";
             for (var i = 0; i < res.rows.length; i++) {
@@ -287,7 +287,7 @@ function submitfeedBack() {
 
                     $("#edit_fade").hide();
                     $.mobile.loading("hide");
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     writeToLogFile("Error in updating user shipping details", 3);
                 }
             });
@@ -310,13 +310,13 @@ function submitfeedBack() {
 
 function saveBranch() {
 
-    var branch_code = $("#branch_list").val();
-    var branch_name = $("#branch_list option:selected").text();
+    var branchCode = $("#branch_list").val();
+    var branchName = $("#branch_list option:selected").text();
 
-    setLS('default_branchcode', branch_code);
-    setLS('default_branchname', branch_name);
-    setLS('default_branchcode1', branch_code);
-    setLS('default_branchname1', branch_name);
+    setLS('default_branchcode', branchCode);
+    setLS('default_branchname', branchName);
+    setLS('default_branchcode1', branchCode);
+    setLS('default_branchname1', branchName);
 
     var address1 = TextJQAddress.val();
     var addresscity = TextJQCity.val();
@@ -436,7 +436,7 @@ function updateShippingAddress(address1, addresscity, addressstate, addresszip, 
                         $('.addressbook').hide();
                         navigator.notification.alert('User Information Updated!', null, 'Account', 'OK');
                         $.mobile.loading("hide");
-                        $("#loading_pdt").hide();
+                        $("#loadingPdt").hide();
                         $("#edit_fade").hide();
                         $('#fade').hide();
                         writeToLogFile("User has updated his shipping details", 8);
@@ -447,7 +447,7 @@ function updateShippingAddress(address1, addresscity, addressstate, addresszip, 
                     writeToLogFile("Error in updating user shipping details", 3);
                     navigator.notification.alert('User Information Is Not Updated!', null, 'Account', 'OK');
                     $.mobile.loading("hide");
-                    $("#loading_pdt").hide();
+                    $("#loadingPdt").hide();
                     $('#fade').hide();
                     $("#edit_fade").hide();
                 }
@@ -458,7 +458,7 @@ function updateShippingAddress(address1, addresscity, addressstate, addresszip, 
 
                 $("#edit_fade").hide();
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 writeToLogFile("Error in updating user shipping details", 3);
             }
         });
@@ -592,10 +592,10 @@ $(function () {
     })
 });
 function addressBook() {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "accpopup") {
-        setLS('page', c_page + ",accpopup");
+        setLS('page', cPage + ",accpopup");
     }
     saveaddress();
     feedBackRtn();

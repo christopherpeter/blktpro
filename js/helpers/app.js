@@ -181,7 +181,7 @@ function showShowRooms() {
         $("#white_contentlistnew1").css("min-height", "340px");
     }
 
-    var showRoom = getLS('Showroom'), html, address_split;
+    var showRoom = getLS('Showroom'), html, addressSplit;
     if (showRoom === 'all') {
         html = "<div class='empty'></div>";
         html = html + "<div style='background: #fff;'>";
@@ -192,7 +192,7 @@ function showShowRooms() {
         html = html + "<div class='innerpopup' style='font-size:12px'>";
         for (var f = 0; f < locations.length; f++) {
 
-            address_split = locations[f][4].split(',');
+            addressSplit = locations[f][4].split(',');
 
 
             html = html + "<div class='popdiv'>";
@@ -214,7 +214,7 @@ function showShowRooms() {
             html = html + "<img src='images/address.png' width='20px' height='20px' />";
             html = html + "</td>";
             html = html + " <td style='width: 220px'>";
-            html = html + "<span style='color:#304589'>" + address_split[0] + "</br>" + address_split[1];
+            html = html + "<span style='color:#304589'>" + addressSplit[0] + "</br>" + addressSplit[1];
             html = html + "</td>";
             html = html + " </tr>";
             html = html + "</table>";
@@ -250,7 +250,7 @@ function showShowRooms() {
 
         for (var k = 0; k < changedValues.length; k++) {
 
-            address_split = changedValues[k][5].split(',');
+            addressSplit = changedValues[k][5].split(',');
 
 
             html = html + "<div class='popdiv'>";
@@ -275,7 +275,7 @@ function showShowRooms() {
             html = html + "</td>";
 
             html = html + " <td style='width: 220px'>";
-            html = html + "<span style='color:#304589'>" + address_split[0] + "</br>" + address_split[1] + "</span><span  style='margin-left: 30px; font-weight: bold; color: green;'>" + changedValues[k][3] + "&nbsp;mi</span>";
+            html = html + "<span style='color:#304589'>" + addressSplit[0] + "</br>" + addressSplit[1] + "</span><span  style='margin-left: 30px; font-weight: bold; color: green;'>" + changedValues[k][3] + "&nbsp;mi</span>";
             html = html + "</td>";
             html = html + " </tr>";
             html = html + "</table>";
@@ -304,21 +304,21 @@ function showShowRooms() {
 }
 
 function findBranch(page) {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     switch (page) {
         case 1:
 
             if (result[result.length - 1] !== 'index');
             {
-                setLS('page', c_page + ",home");
+                setLS('page', cPage + ",home");
             }
             break;
         case 2:
 
             if (result[result.length - 1] !== 'products');
             {
-                setLS('page', c_page + ",products");
+                setLS('page', cPage + ",products");
             }
 
             break;
@@ -326,14 +326,14 @@ function findBranch(page) {
 
             if (result[result.length - 1] !== 'cart');
             {
-                setLS('page', c_page + ",cart");
+                setLS('page', cPage + ",cart");
             }
             break;
         case 4:
 
             if (result[result.length - 1] !== 'account');
             {
-                setLS('page', c_page + ",account");
+                setLS('page', cPage + ",account");
             }
             break;
     }
@@ -350,34 +350,34 @@ function listbox() {
 }
 
 function product(page) {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     switch (page) {
         case 1:
             if (result[result.length - 1] !== 'index');
             {
-                setLS('page', c_page + ",home");
+                setLS('page', cPage + ",home");
             }
             break;
         case 2:
 
             if (result[result.length - 1] !== 'products');
             {
-                setLS('page', c_page + ",products");
+                setLS('page', cPage + ",products");
             }
             break;
         case 3:
 
             if (result[result.length - 1] !== 'cart');
             {
-                setLS('page', c_page + ",cart");
+                setLS('page', cPage + ",cart");
             }
             break;
         case 4:
 
             if (result[result.length - 1] !== 'account');
             {
-                setLS('page', c_page + ",account");
+                setLS('page', cPage + ",account");
             }
             break;
     }
@@ -387,21 +387,21 @@ function product(page) {
 }
 
 function findcart(page) {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     switch (page) {
         case 1:
 
             if (result[result.length - 1] !== 'index');
             {
-                setLS('page', c_page + ",home");
+                setLS('page', cPage + ",home");
             }
             break;
         case 2:
 
             if (result[result.length - 1] !== 'products');
             {
-                setLS('page', c_page + ",products");
+                setLS('page', cPage + ",products");
             }
 
             break;
@@ -409,14 +409,14 @@ function findcart(page) {
 
             if (result[result.length - 1] !== 'cart');
             {
-                setLS('page', c_page + ",cart");
+                setLS('page', cPage + ",cart");
             }
             break;
         case 4:
 
             if (result[result.length - 1] !== 'account');
             {
-                setLS('page', c_page + ",account");
+                setLS('page', cPage + ",account");
             }
             break;
     }
@@ -424,20 +424,20 @@ function findcart(page) {
 }
 
 function findaccount(page) {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     switch (page) {
         case 1:
             if (result[result.length - 1] !== 'index');
             {
-                setLS('page', c_page + ",home");
+                setLS('page', cPage + ",home");
             }
             break;
         case 2:
 
             if (result[result.length - 1] !== 'products');
             {
-                setLS('page', c_page + ",products");
+                setLS('page', cPage + ",products");
             }
 
             break;
@@ -445,14 +445,14 @@ function findaccount(page) {
 
             if (result[result.length - 1] !== 'cart');
             {
-                setLS('page', c_page + ",cart");
+                setLS('page', cPage + ",cart");
             }
             break;
         case 4:
 
             if (result[result.length - 1] !== 'account');
             {
-                setLS('page', c_page + ",account");
+                setLS('page', cPage + ",account");
             }
             break;
     }
@@ -462,14 +462,14 @@ function findaccount(page) {
 
 function toggleDirectionClose() {
     $("body").addClass('globalbodyclass');
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 
     document.getElementById('lightdirection').style.display = 'none';

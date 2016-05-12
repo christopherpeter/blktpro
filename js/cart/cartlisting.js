@@ -169,7 +169,7 @@ function setTax() {
             }, error: function () {
 
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             }
         });
@@ -177,7 +177,7 @@ function setTax() {
     else {
         loadCartItems();
         $.mobile.loading("hide");
-        $("#loading_pdt").hide();
+        $("#loadingPdt").hide();
     }
 }
 
@@ -187,7 +187,7 @@ function setTax() {
 
 function cartPageLoad() {
 
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     setLS('ShippingMethod', "S");
     setLS('ShipViaDescription', "UPS");
 
@@ -271,7 +271,7 @@ function loadCartItems() {
                     html = html + '</tr>';
                     html = html + '<tr>';
                     html = html + '<td style="font-weight: bold; color: #304589; width: 100%">';
-                    html = html + 'Qty:<input id="' + id + '-' + AVAILABLEQUNTY + '" oninput="maxLengthCheck(this)" min="1" max="99" maxlength="2" type="number" onchange="handleChange_ADDTOCART(this,' + RequiredQuantity + ');" style="text-align: center; width: 30px;';
+                    html = html + 'Qty:<input id="' + id + '-' + AVAILABLEQUNTY + '" oninput="maxLengthCheck(this)" min="1" max="99" maxlength="2" type="number" onchange="handleChangeAddToCart(this,' + RequiredQuantity + ');" style="text-align: center; width: 30px;';
                     html = html + 'height: 20px; margin-left: 5px; margin-right: 5px" value="' + RequiredQuantity + '"  />$' + parseFloat(OurListUnitPriceCompany).toFixed(2) + '/each';
                     html = html + '</td>';
                     html = html + '</tr>';
@@ -440,18 +440,18 @@ function loadCartItems() {
 }
 
 // Function to remove item from the cart
-var globalcart_id = "";
+var globalCartId = "";
 function removecartitem(id) {
-    globalcart_id = id;
+    globalCartId = id;
     navigator.notification.confirm('Are you sure want to remove this product from cart?', onConfirmRemoveCart, 'Cart', ['Yes', 'No']);
 
 
 }
 
 function onConfirmRemoveCart(buttonIndex) {
-    var id = globalcart_id;
+    var id = globalCartId;
     if (buttonIndex === 1) {
-        $("#loading_pdt").show();
+        $("#loadingPdt").show();
 
         $.mobile.loading("show", {
             text: "Loading,Please Wait...",
@@ -492,11 +492,11 @@ $(function () {
     $('#locationfindercart').click(function () {
         $('.white_contentlistnewpdt').toggle();
         $('.addressbook').hide();
-        loadmenu_cart(3)
+        loadmenuCart(3)
     })
 });
 
-function loadmenu_cart(pageno) {
+function loadmenuCart(pageno) {
     UserName = getLS('UserName');
     var html = "";
     html = html + '<div class="innerpopup">';
@@ -596,10 +596,10 @@ function loadmenu_cart(pageno) {
 
 
 function addressBook() {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "addressbook") {
-        setLS('page', c_page + ",addressbook");
+        setLS('page', cPage + ",addressbook");
     }
     $('.addressbook').show();
     $('.white_contentlistnewpdt').hide();
@@ -608,14 +608,14 @@ function addressBook() {
 }
 function addressBookCls() {
 
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
     $('.addressbook').hide();
     $('#fade').hide();
@@ -624,36 +624,36 @@ function addressBookCls() {
 // Function for validating product quantity entered by user
 
 
-var global_itemid = "";
-var global_value = "";
+var globalItemid = "";
+var globalValue = "";
 
 
-function handleChange_ADDTOCART(input, initialvalue) {
+function handleChangeAddToCart(input, initialvalue) {
     var id = $(input).attr('id');
     var value = input.value;
-    global_value = value;
-    var temp_value = initialvalue;
+    globalValue = value;
+    var tempValue = initialvalue;
     var quantity = id.split("-");
     var aval = quantity[1]; // Available quantity
     var itemid = quantity[0]; // Product id
-    global_itemid = itemid;
+    globalItemid = itemid;
     if (value === "" || value === null || parseInt(value, 10) <= 0) {
 
         navigator.notification.alert('Enter valid quantity.', null, 'Alert', 'OK');
         $("#" + id).focus();
-        input.value = temp_value;
+        input.value = tempValue;
         return false;
     }
     else if (isNaN(value) === true) {
         navigator.notification.alert('Enter only numeric values.', null, 'Alert', 'OK');
         $("#" + id).focus();
-        input.value = temp_value;
+        input.value = tempValue;
         return false;
     }
     else if (parseInt(value, 10) > parseInt(aval, 10)) {
         navigator.notification.alert('The quantity entered is not available currently.\nTotal quantity available in stock is ' + quantity[1] + '.', null, 'Alert', 'OK');
         $("#" + id).focus();
-        input.value = temp_value;
+        input.value = tempValue;
         return false;
     }
     navigator.notification.confirm('Are you sure want to modify the quantity?', onConfirmModifyCart, 'Cart', ['Yes', 'No']);
@@ -663,11 +663,11 @@ function handleChange_ADDTOCART(input, initialvalue) {
 
 function onConfirmModifyCart(buttonIndex) {
     // Show the loader
-    var value = global_value;
-    var itemid = global_itemid; // Product id
+    var value = globalValue;
+    var itemid = globalItemid; // Product id
 
     if (buttonIndex === 1) {
-        $("#loading_pdt").show();
+        $("#loadingPdt").show();
 
         $.mobile.loading("show", {
             text: "Loading,Please Wait...",
@@ -708,10 +708,10 @@ function onConfirmModifyCart(buttonIndex) {
 
 
 function estimateshipping() {
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== 'estimateshipping') {
-        setLS('page', c_page + ",estimateshipping");
+        setLS('page', cPage + ",estimateshipping");
     }
 
     var TotalCartWeight = getLS('Totalcartweight');
@@ -873,7 +873,6 @@ function loadnewpickupAddress(branchno) {
 
             var output = $.parseJSON(finalresult);
             var list = output.BRANCHLIST;
-            var ouput_string;
 
             $.each(list, function (i, ss) {
                 $("#div_address1").html(ss.BRANCHSHIPPINGADDRESS1 + ss.BRANCHSHIPPINGADDRESS2 + ss.BRANCHSHIPPINGADDRESS3);
@@ -963,7 +962,7 @@ function loadnearestbranch() {
 
 }
 
-var ChangedValues_Latest = [];
+var ChangedValuesLatest = [];
 
 function loadtodropdown() {
     var branchtxt = "";
@@ -1019,9 +1018,9 @@ function findnearestLocations(lat1, lon1) {
                 dist = dist * 60 * 1.1515;
                 if (unit === "K") { dist = dist * 1.609344 }
 
-                var distance_in_KM = (dist / 1.6).toFixed(2);
-                if (distance_in_KM <= 100) {
-                    ChangedValues_Latest.push([ss.BranchCode, ss.BranchName, distance_in_KM, ss.Address]);
+                var distanceInKM = (dist / 1.6).toFixed(2);
+                if (distanceInKM <= 100) {
+                    ChangedValuesLatest.push([ss.BranchCode, ss.BranchName, distanceInKM, ss.Address]);
 
                 }
 
@@ -1029,12 +1028,12 @@ function findnearestLocations(lat1, lon1) {
             ddJQbranch.html(html);
             $("#shipping_popup").show();
             $("#submitpopup").hide();
-            ChangedValues_Latest.sort(SortByName);
-            setLS('branchcodenumber', ChangedValues_Latest[0][0]);
-            ddJQbranch.val(ChangedValues_Latest[0][0]); // select the nearest branch
+            ChangedValuesLatest.sort(SortByName);
+            setLS('branchcodenumber', ChangedValuesLatest[0][0]);
+            ddJQbranch.val(ChangedValuesLatest[0][0]); // select the nearest branch
             var addsplit;
             if (getLS('ShippingMethod') === 'P') {
-                addsplit = ChangedValues_Latest[0][3].split("@");
+                addsplit = ChangedValuesLatest[0][3].split("@");
                 $("#div_address1").html(addsplit[0]);
                 $("#div_address2").html(addsplit[1]);
                 $("#shipadddr").html("Pick up branch address :");
@@ -1069,7 +1068,7 @@ function SortByName(a, b) {
 function getShippingInfo() {
     var OrderMethodOfShipment = $("#ddshippment1").val();
     setLS('ShippingMethod', OrderMethodOfShipment);
-    var branch_id = getLS('default_branchcode'), shippingcharges = BlackmanApplicationVariables.SettingsShippingcharges;
+    var shippingcharges = BlackmanApplicationVariables.SettingsShippingcharges;
     if (OrderMethodOfShipment === "O") {
         shippingcharges = 0;
         JQFromBranch.html("Buy from branch :</br><span style='font-size:12px'>[Nearest branch will be selected by default]</span>");
@@ -1117,14 +1116,14 @@ function getShippingInfo() {
 
 
 function estimatePopupClose() {
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
     $("#shipping_popup").hide();
     $("#fade").hide();
@@ -1136,8 +1135,8 @@ function Estimate() {
     var BillOptionCode = "10";
 
     var Toaddress1 = getLS('Toaddress');
-    var address_split = Toaddress1.split(" ");
-    var Toaddress = address_split[0] + ',' + address_split[1] + ',' + address_split[2];
+    var addressSplit = Toaddress1.split(" ");
+    var Toaddress = addressSplit[0] + ',' + addressSplit[1] + ',' + addressSplit[2];
 
 
     var Tocity = getLS('Tocity');

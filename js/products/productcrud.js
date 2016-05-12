@@ -122,7 +122,7 @@ function loadsectionimages() {
             setLS('images_oldcount', totalgridlength);
             document.getElementById("prdtsectionimges").innerHTML = html;
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         });
     });
 }
@@ -191,7 +191,7 @@ function loadsectionfilter() {
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
             }
         });
     }
@@ -241,7 +241,7 @@ function loadsectionfilter() {
 
             }, error: function () {
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             }
         });
@@ -260,7 +260,7 @@ function filterkitchenproduts(sectioncode) {
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
     });
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     setLS('showmoreproducts', 'filter');
     writeToLogFile("Filter Search=Section:" + getLS('Filter_sectionname'), 3);
     pdtImgKitchenDivDisplay1(sectioncode, "", "");
@@ -289,7 +289,7 @@ function filterkitchensub(sectioncode, groupcode, x) {
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
     });
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     setLS('Filter_groupcode', groupcode);
     setLS('Filter_groupname', $(x).text());
     setLS('Filter_categoryname', null);
@@ -342,11 +342,11 @@ function filterkitchensub(sectioncode, groupcode, x) {
                 $("#kitchensubdiv" + sectioncode + groupcode).html(html);
                 $("#kitchensubdiv" + sectioncode + groupcode).slideToggle();
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
             }
             else {
 
-                filterkitchensub_products(sectioncode, groupcode);
+                filterKitchenSubProducts(sectioncode, groupcode);
             }
 
         }, error: function () {
@@ -354,14 +354,14 @@ function filterkitchensub(sectioncode, groupcode, x) {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         }
     });
 }
 
 // This function will fire when a group doesnt have categories 
 
-function filterkitchensub_products(sectioncode, groupcode) {
+function filterKitchenSubProducts(sectioncode, groupcode) {
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
@@ -370,7 +370,7 @@ function filterkitchensub_products(sectioncode, groupcode) {
         html: "<span class='ui-bar ui-overlay-a ui-corner-all' style='text-align:center;background:#ccc'><img src='images/ajax-loader.gif'/><br/><h2 style='color:#304589'>Please Wait...</h2></span>"
 
     });
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     setLS('showmoreproducts', 'filter');
     writeToLogFile("Filter Search=Section:" + getLS('Filter_sectionname') + "Group:" + getLS('Filter_groupname'), 3);
     pdtImgKitchenDivDisplay1(sectioncode, groupcode, "");
@@ -390,7 +390,7 @@ function displayfilterproducts(sectioncode, groupcode, categorycode, x) {
 
     setLS('Filter_categorycode', categorycode);
     setLS('Filter_categoryname', $(x).text());
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
 
     setLS('showmoreproducts', 'filter');
     setLS('filterbackbutton', 'filter');
@@ -408,7 +408,7 @@ function loadmorecategories() {
 
 // This function is used for handling swipe next function
 
-function product_next() {
+function productNext() {
 
     var count = getLS('images_oldcount');
     var from = parseInt(count, 10) + 1;
@@ -480,14 +480,14 @@ function product_next() {
             setLS('images_oldcount', to);
             document.getElementById("prdtsectionimges").innerHTML = html;
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         });
     });
 }
 
 // This function is used for handling swipe previous function
 
-function product_previous() {
+function productPrevious() {
     var count = getLS('images_oldcount');
     var from = parseInt(count, 10) - totalgridlength - (totalgridlength - 1);
     var to = parseInt(count, 10) - totalgridlength;
@@ -563,7 +563,7 @@ function product_previous() {
                 setLS('images_oldcount', to);
                 document.getElementById("prdtsectionimges").innerHTML = html;
                 $.mobile.loading("hide");
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
             });
         });
     }
@@ -571,15 +571,15 @@ function product_previous() {
 
 // This funtion is called when user opt for manual search by giving product name, based on categories
 
-function product_search() {
+function productSearch() {
     GlobalItemsList.length = 0;
-    var c_page = getLS('page');
-    var Pageresult = c_page.split(",");
+    var cPage = getLS('page');
+    var Pageresult = cPage.split(",");
     if (Pageresult[Pageresult.length - 1] !== 'sections') {
-        setLS('page', c_page + ",sections");
+        setLS('page', cPage + ",sections");
     }
-    var from_count = 1;
-    var to_count = BlackmanApplicationVariables.TotalProductCount;
+    var fromCount = 1;
+    var toCount = BlackmanApplicationVariables.TotalProductCount;
 
     var searchtext = $("#txtpdtsrch").val().trim();
     if (searchtext === "" || searchtext === null) {
@@ -590,7 +590,7 @@ function product_search() {
     }
     setLS('breadcrumb', 'search');
     setLS('LS_SearchText', searchtext);
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
@@ -600,7 +600,7 @@ function product_search() {
 
     });
     setLS('showmoreproducts', 'search');
-    var branch_id = getLS('default_branchcode');
+    var branchId = getLS('default_branchcode');
 
     searchtext = searchtext.split(" ");
     var result = "";
@@ -619,7 +619,7 @@ function product_search() {
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branchId + "&StartIndex=" + fromCount + "&EndIndex=" + toCount + "&SEARCHTYPE=PROD1&SEARCHTEXT=" + searchtext + "&cusno=" + CustomerNumber + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -669,7 +669,7 @@ function product_search() {
 
                     });
 
-                    setLS('product_count', to_count);
+                    setLS('product_count', toCount);
                     setLS('IsNewFilterAttributes', 'Yes');
                     setLS('SearchType', 'PROD1');
                     writeToLogFile("User searched for product " + searchtext + ".It has results.", 3);
@@ -677,7 +677,7 @@ function product_search() {
                 }
                 else {
                     setLS('IsNewFilterAttributes', 'Yes');
-                    loadsecondproductservice();
+                    loadSecondProductService();
 
                 }
             }, errorCB);
@@ -685,7 +685,7 @@ function product_search() {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         }
 
 
@@ -697,12 +697,12 @@ function product_search() {
 
 // Function for products serach on all the products
 
-function loadsecondproductservice() {
+function loadSecondProductService() {
     GlobalItemsList.length = 0;
-    var c_page = getLS('page');
-    var resultPage = c_page.split(",");
+    var cPage = getLS('page');
+    var resultPage = cPage.split(",");
     if (resultPage[resultPage.length - 1] !== 'sections') {
-        setLS('page', c_page + ",sections");
+        setLS('page', cPage + ",sections");
     }
 
     var searchtext = $("#txtpdtsrch").val().trim();
@@ -721,7 +721,7 @@ function loadsecondproductservice() {
     }
     searchtext = result;
 
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     $.mobile.loading("show", {
         text: "Loading,Please Wait...",
         textVisible: true,
@@ -731,15 +731,15 @@ function loadsecondproductservice() {
 
     });
     setLS('showmoreproducts', 'search');
-    var branch_id = getLS('default_branchcode');
+    var branchId = getLS('default_branchcode');
 
-    var from_count = 1;
-    var to_count = BlackmanApplicationVariables.TotalProductCount;
+    var fromCount = 1;
+    var toCount = BlackmanApplicationVariables.TotalProductCount;
 
     $.ajax({
         type: "GET",
         crossDomain: true,
-        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branch_id + "&StartIndex=" + from_count + "&EndIndex=" + to_count + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
+        url: BlackmanApplicationServices.AdvancedSearchURL + "BranchCode=" + branchId + "&StartIndex=" + fromCount + "&EndIndex=" + toCount + "&SEARCHTYPE=PROD2&SEARCHTEXT=" + searchtext + "&cusno=" + customerno + "&username=" + UserProfile + "&deviceencryptedkey=" + encryptedkey + "&accesstoken=" + AccessTokenKey + "&splib=" + BlackmanApplicationVariables.splib + "&tablelib=" + BlackmanApplicationVariables.tablelib + "&timestamp=" + Math.random(),
         dataType: "xml",
         success: function (xmlData) {
             var dbinsert = window.openDatabase("blackman", "1.0", "blackman", 2 * 1024 * 1024);       /* opening local database */
@@ -790,7 +790,7 @@ function loadsecondproductservice() {
 
                     });
 
-                    setLS('product_count', to_count);
+                    setLS('product_count', toCount);
                     setLS('SearchType', 'PROD2');
                     loadSectionProductsContents("Yes");
                 }
@@ -805,7 +805,7 @@ function loadsecondproductservice() {
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
 
             $.mobile.loading("hide");
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
         }
     });
 }
@@ -850,14 +850,14 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
     description = description.replace(/_/g, " ");
     setLS('breadlist1', description);
     setLS('F_HSCODE', HSCODE);
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== "filter") {
-        setLS('page', c_page + ",filter");
+        setLS('page', cPage + ",filter");
     }
 
     ListJQ1Products.html("");
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     $.mobile.loading("show",
     {
         text: "Please Wait...",
@@ -931,7 +931,7 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                 html = html + " </ul>";
                 ListJQ1Products.html(html);
                 ListJQ1Products.show();
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
 
             }
@@ -943,14 +943,14 @@ function pdtimgkitchendivdisplaynew1(HSCODE, Sectioncode, description) {
                 html = html + ' </div>';                
                 html = html + " <div><No Groups Found</div>";
                 ListJQ1Products.html(html);
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
 
         }, error: function () {
     
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
             $.mobile.loading("hide");
 
         }
@@ -983,14 +983,14 @@ function pdtImgKitchenDivDisplayNew1Back() {
     $(".breadcrumstylefilter").hide();
     $("#default_div").show();
 
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 
 
@@ -998,14 +998,14 @@ function pdtImgKitchenDivDisplayNew1Back() {
 function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
     newDESCRIPTION = newDESCRIPTION.replace(/_/g, " ");
     setLS('breadlist2', newDESCRIPTION);
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== 'filter2') {
-        setLS('page', c_page + ",filter2");
+        setLS('page', cPage + ",filter2");
     }
 
     ListJQ2Products.html('');
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     $.mobile.loading("show",
     {
         text: "Please Wait...",
@@ -1079,7 +1079,7 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
                 html = html + " </ul>";
                 ListJQ2Products.html(html);
                 setLS('IsNewFilterAttributes', 'Yes');
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
             else {
@@ -1091,14 +1091,14 @@ function pdtimgkitchendivdisplaynew2(HSCODE, sectioncode, newDESCRIPTION) {
                 html = html + " <div><No Groups Found</div>";
                 ListJQ2Products.html(html);
                 setLS('IsNewFilterAttributes', 'Yes');
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
 
         }, error: function () {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
             $.mobile.loading("hide");
 
         }
@@ -1123,14 +1123,14 @@ function pdtImgKitchenDivDisplayNew2Back() {
     $("#breadcrumstyle").hide();
     $(".breadcrumstylefilter").hide();
     $("#default_div").show();
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 }
 
@@ -1138,14 +1138,14 @@ function pdtImgKitchenDivDisplayNew2Back() {
 function productListingFinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
     DESCRIPTIONlast = DESCRIPTIONlast.replace(/_/g, ' ');
     setLS('breadlist3', DESCRIPTIONlast);
-    var c_page = getLS('page');
-    var result = c_page.split(",");
+    var cPage = getLS('page');
+    var result = cPage.split(",");
     if (result[result.length - 1] !== 'filter3') {
-        setLS('page', c_page + ",filter3");
+        setLS('page', cPage + ",filter3");
     }
 
     ListJQ3Products.html("");
-    $("#loading_pdt").show();
+    $("#loadingPdt").show();
     $.mobile.loading("show",
     {
         text: "Please Wait...",
@@ -1209,20 +1209,20 @@ function productListingFinal(HSCODE, sectioncode, groupcode, DESCRIPTIONlast) {
                 });
                 html = html + "</div>";
                 ListJQ3Products.html(html);
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
             else {
 
                 ListJQ3Products.html(html);
-                $("#loading_pdt").hide();
+                $("#loadingPdt").hide();
                 $.mobile.loading("hide");
             }
             setLS('IsNewFilterAttributes', 'Yes');
         }, error: function () {
 
             navigator.notification.alert('Unable to connect server.Please try again later!', null, 'Connection Failed', 'OK');
-            $("#loading_pdt").hide();
+            $("#loadingPdt").hide();
             $.mobile.loading("hide");
         }
     });
@@ -1248,14 +1248,14 @@ function pdtImgKitchenDivDisplayNew3Back() {
     $("#backbuttongrid").hide();
     $(".breadcrumstyle").show();
     $(".breadcrumstylefilter").hide();
-    var c_page = getLS('page');
-    var result = c_page.split(","), new_page;
+    var cPage = getLS('page');
+    var result = cPage.split(","), newPage;
     if (result.length === 1) {
-        new_page = c_page.replace(result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(result[result.length - 1], "");
+        setLS('page', newPage);
     } else {
-        new_page = c_page.replace(',' + result[result.length - 1], "");
-        setLS('page', new_page);
+        newPage = cPage.replace(',' + result[result.length - 1], "");
+        setLS('page', newPage);
     }
 }
 
